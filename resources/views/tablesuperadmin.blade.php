@@ -636,7 +636,7 @@
 									</div>
 									<div class="breadcomb-ctn">
 										<h2>Data Table</h2>
-										<p>Welcome to PDAM TOYO <span class="bread-ntd">Admin </span></p>
+										<p>Welcome to PDAM TOYO <span class="bread-ntd">Super Admin </span></p>
 									</div>
 								</div>
 							</div>

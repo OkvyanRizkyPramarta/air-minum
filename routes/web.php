@@ -22,6 +22,13 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+Route::get('/tablesuperadmin', function () {
+    return view('tablesuperadmin');
+});
+
+Route::get('/formsuperadmin', function () {
+    return view('formsuperadmin');
+});
 
 // login Owner
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
