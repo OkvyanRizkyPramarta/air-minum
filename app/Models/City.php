@@ -10,10 +10,19 @@ class City extends Model
     use HasFactory;
 
     protected $fillable = [
-        'city_name',
-        'prov_id',
+        'name',
+        'ocean_area',
+        'mmainland_area',
+        'total_area',
+        'oap',
+        'year',
     ];
 
+    public function population()
+    {
+       return $this->hasMany(Population::class);
+    }
+    
     public static function index()
     {
         return City::all();

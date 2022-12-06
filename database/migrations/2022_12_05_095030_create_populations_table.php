@@ -13,14 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('districts', function (Blueprint $table) {
+        Schema::create('populations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('postal_code');
-            //$table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('city_id');
+            $table->string('male_total');  
+            $table->string('female_total');  
+            $table->string('population_total');  
+            $table->string('year', 4);
             $table->timestamps();
 
-            //$table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('populations');
     }
 };

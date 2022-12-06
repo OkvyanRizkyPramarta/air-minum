@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('ocean_area');
+            $table->string('mainland_area');
+            $table->string('total_area');
+            $table->string('oap');
+            $table->string('year', 4);
             $table->timestamps();
         });
     }

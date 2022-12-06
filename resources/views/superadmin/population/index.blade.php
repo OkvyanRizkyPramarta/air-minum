@@ -91,6 +91,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -145,23 +146,20 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Home</a>
+                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Halaman Utama</a>
                                     <ul class="collapse dropdown-header-top">
                                         <li><a href="index.html">Dashboard One</a></li>
                                         <li><a href="index-2.html">Dashboard Two</a></li>
                                     </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Kumpulanda Tabel Data</a>
+                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="normal-table.html">Normal Table</a></li>
-                                        <li><a href="data-table.html">Data Table</a></li>
-                                    </ul>
-                                </li>
-                                <li><a data-toggle="collapse" data-target="#demo" href="#">Forms</a>
-                                    <ul id="demo" class="collapse dropdown-header-top">
-                                        <li><a href="form-elements.html">Form Elements</a></li>
-                                        <li><a href="form-components.html">Form Components</a></li>
-                                        <li><a href="form-examples.html">Form Examples</a></li>
+                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        </li>
+                                        <li><a href="">Tabel Desa / Kelurahan</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -178,11 +176,9 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Home</a>
+                        <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Tables</a>
-                        </li>
-                        <li><a data-toggle="tab" href="#Forms"><i class="notika-icon notika-form"></i> Forms</a>
+                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
@@ -204,16 +200,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <div id="Forms" class="tab-pane notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="form-elements.html">Form Elements</a>
-                                </li>
-                                <li><a href="form-components.html">Form Components</a>
-                                </li>
-                                <li><a href="form-examples.html">Form Examples</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -229,9 +215,6 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
-									<div class="breadcomb-icon">
-										<i class="notika-icon notika-windows"></i>
-									</div>
 									<div class="breadcomb-ctn">
 										<h2>Data Table</h2>
 										<p>Welcome to PDAM TOYO <span class="bread-ntd">Admin </span></p>
@@ -241,7 +224,8 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-								</div>
+                                    <a href="{{url('/superadmin/table/population/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                </div>
 							</div>
 						</div>
 					</div>
@@ -256,30 +240,54 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="data-table-list">
-                        <div class="basic-tb-hd">
-                            <h2>Basic Example</h2>
-                            <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>
-                        </div>
                         <div class="table-responsive">
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="50%">ID Kota</th>
-                                        <th class="text-center" width="50%">Nama Kota</th>
+                                        <th class="text-center" width="auto">Nama Kota</th>
+                                        <th class="text-center" width="auto">Laki Laki</th>
+                                        <th class="text-center" width="auto">perempuan</th>
+                                        <th class="text-center" width="auto">Jumlah Populasi</th>
+                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($city as $c)
+                                @foreach($population as $p)
                                     <tr>
-                                        <td class="text-center" width="50%">{{ $c->city_id }}</td>
-                                        <td class="text-center" width="50%">{{ $c->city_name }}</td>
+                                        <td class="text-center">{{ $p->city->name }}</td>
+                                        <td class="text-center">{{ $p->male_total }}</td>
+                                        <td class="text-center">{{ $p->female_total }}</td>
+                                        <td class="text-center">{{ $p->population_total }}</td>
+                                        <td class="text-center">{{ $p->year }}</td>
+                                        <div class="row">
+                                            <td class="text-center">
+                                                <div class="col-lg-6">
+                                                    <a href="{{ route('superadmin.table.population.edit', $p->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                        Edit
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <form action="{{ route('superadmin.table.population.destroy', $p->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                                                        Delete</a>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </div>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th class="text-center" width="50%">ID Kota</th>
-                                        <th class="text-center" width="50%">Nama Kota</th>
+                                        <th class="text-center" width="auto">Nama Kota</th>
+                                        <th class="text-center" width="auto">Laki Laki</th>
+                                        <th class="text-center" width="auto">perempuan</th>
+                                        <th class="text-center" width="auto">Jumlah Populasi</th>
+                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
