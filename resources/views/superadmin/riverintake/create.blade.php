@@ -248,16 +248,6 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>ID Data</label>
-                                        <input type="text" name="id_river_intake" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
                                         <label>Kode BMN</label>
                                         <input type="text" name="bmm_code" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
@@ -278,8 +268,8 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Unit</label>
-                                        <input type="text" name="unit" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Jenis Intake</label>
+                                        <input type="text" name="intake_type" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -288,8 +278,8 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Wilayah Sungai</label>
-                                        <input type="text" name="region_river" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Unit</label>
+                                        <input type="text" name="unit" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -378,6 +368,76 @@
                                     <div class="nk-int-st">
                                         <label>Longitude</label>
                                         <input type="text" name="longitude" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Orang / Jiwa</label>
+                                        <input type="text" name="people" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Debit (l/detik)</label>
+                                        <input type="text" name="debit" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jenis Pompa</label>
+                                        <input type="text" name="pump_type" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Head Pompa (m)</label>
+                                        <input type="text" name="head_pompa" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Tahun Pembuatan</label>
+                                        <input type="text" name="production_year" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Status Operasi</label>
+                                        <input type="text" name="operating_state" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Tanggal Diperbarui</label>
+                                        <input type="date" name="updated_date" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>

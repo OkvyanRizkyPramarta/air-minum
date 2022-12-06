@@ -260,10 +260,9 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="auto">ID Data</th>
-                                        <th class="text-center" width="auto">ID Infrastruktur</th>
+                                        <th class="text-center" width="auto">Kode Integrasi </th>
                                         <th class="text-center" width="auto">Nama </th>
-                                        <th class="text-center" width="auto">Kode BMM </th>
+                                        <th class="text-center" width="auto">Jenis Type</th>
                                         <th class="text-center" width="auto">Unit</th>
                                         <th class="text-center" width="auto">Wilayah Sungai</th>
                                         <th class="text-center" width="auto">Provinsi</th>
@@ -272,17 +271,23 @@
                                         <th class="text-center" width="auto">Kelurahan</th>
                                         <th class="text-center" width="auto">Latitude</th>
                                         <th class="text-center" width="auto">Longitude</th>
+                                        <th class="text-center" width="auto">Jiwa (orang)</th>
+                                        <th class="text-center" width="auto">Debit (l/detik)</th>
+                                        <th class="text-center" width="auto">Jenis Pompa</th>
+                                        <th class="text-center" width="auto">Head Pompa (m)</th>
+                                        <th class="text-center" width="auto">Tahun Pembuatan</th>
+                                        <th class="text-center" width="auto">Status Operasi</th>
+                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
                                         <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($riverintake as $r)
                                     <tr>
-                                        <td class="text-center">{{ $r->id_river_intake }}</td>
                                         <td class="text-center">{{ $r->bmm_code }}</td>
                                         <td class="text-center">{{ $r->name }}</td>
+                                        <td class="text-center">{{ $r->intake_type }}</td>
                                         <td class="text-center">{{ $r->unit }}</td>
-                                        <td class="text-center">{{ $r->region_river }}</td>
                                         <td class="text-center">{{ $r->watershed }}</td>
                                         <td class="text-center">{{ $r->province }}</td>
                                         <td class="text-center">{{ $r->city->name }}</td>
@@ -290,6 +295,13 @@
                                         <td class="text-center">{{ $r->village->name }}</td>
                                         <td class="text-center">{{ $r->latitude }}</td>
                                         <td class="text-center">{{ $r->longitude }}</td>
+                                        <td class="text-center">{{ $r->people }}</td>
+                                        <td class="text-center">{{ $r->debit }}</td>
+                                        <td class="text-center">{{ $r->pump_type }}</td>
+                                        <td class="text-center">{{ $r->head_pompa }}</td>
+                                        <td class="text-center">{{ $r->production_year }}</td>
+                                        <td class="text-center">{{ $r->operating_state }}</td>
+                                        <td class="text-center">{{ $r->updated_date }}</td>
                                         <div class="row">
                                             <td class="text-center">
                                                 <div>
@@ -312,10 +324,9 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th class="text-center" width="auto">ID Data</th>
-                                        <th class="text-center" width="auto">ID Infrastruktur</th>
+                                    <th class="text-center" width="auto">Kode Integrasi </th>
                                         <th class="text-center" width="auto">Nama </th>
-                                        <th class="text-center" width="auto">Kode BMM </th>
+                                        <th class="text-center" width="auto">Jenis Type</th>
                                         <th class="text-center" width="auto">Unit</th>
                                         <th class="text-center" width="auto">Wilayah Sungai</th>
                                         <th class="text-center" width="auto">Provinsi</th>
@@ -324,7 +335,14 @@
                                         <th class="text-center" width="auto">Kelurahan</th>
                                         <th class="text-center" width="auto">Latitude</th>
                                         <th class="text-center" width="auto">Longitude</th>
-                                        <th class="text-center" width="auto">Action</th>
+                                        <th class="text-center" width="auto">Jiwa (orang)</th>
+                                        <th class="text-center" width="auto">Debit (l/detik)</th>
+                                        <th class="text-center" width="auto">Jenis Pompa</th>
+                                        <th class="text-center" width="auto">Head Pompa (m)</th>
+                                        <th class="text-center" width="auto">Tahun Pembuatan</th>
+                                        <th class="text-center" width="auto">Status Operasi</th>
+                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
+                                        <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </tfoot>
                             </table>

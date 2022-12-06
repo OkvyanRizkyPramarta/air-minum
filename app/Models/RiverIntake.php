@@ -11,11 +11,10 @@ class RiverIntake extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_river_intake',
         'bmm_code',
         'name',
+        'intake_type',
         'unit',
-        'region_river',
         'watershed',
         'province',
         'city_id',
@@ -23,6 +22,13 @@ class RiverIntake extends Model
         'village_id',
         'latitude',
         'longitude',
+        'people',
+        'debit',
+        'pump_type',
+        'head_pompa',
+        'production_year',
+        'operating_state',
+        'updated_date',
     ];
 
     public function city()

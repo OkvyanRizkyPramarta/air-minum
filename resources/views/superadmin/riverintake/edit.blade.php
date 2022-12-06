@@ -249,16 +249,6 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>ID Data</label>
-                                        <input type="text" name="id_river_intake" value="{{ $riverintake->id_river_intake }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
                                         <label>Kode BMN</label>
                                         <input type="text" name="bmm_code" value="{{ $riverintake->bmm_code }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
@@ -279,6 +269,16 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
+                                        <label>Jenis Intake</label>
+                                        <input type="text" name="intake_type" value="{{ $riverintake->intake_type }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
                                         <label>Unit</label>
                                         <input type="text" name="unit" value="{{ $riverintake->unit }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
@@ -290,16 +290,6 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Wilayah Sungai</label>
-                                        <input type="text" name="region_river" value="{{ $riverintake->region_river }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Daerah Aliran Sungai</label>
                                         <input type="text" name="watershed" value="{{ $riverintake->watershed }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
@@ -388,10 +378,80 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Orang / Jiwa</label>
+                                        <input type="text" name="people" value="{{ $riverintake->people }}"  class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Debit (l/detik)</label>
+                                        <input type="text" name="debit" value="{{ $riverintake->debit }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jenis Pompa</label>
+                                        <input type="text" name="pump_type" value="{{ $riverintake->pump_type }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Head Pompa (m)</label>
+                                        <input type="text" name="head_pompa" value="{{ $riverintake->head_pompa }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Tahun Pembuatan</label>
+                                        <input type="text" name="production_year" value="{{ $riverintake->production_year }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Status Operasi</label>
+                                        <input type="text" name="operating_state" value="{{ $riverintake->operating_state }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Tanggal Diperbarui</label>
+                                        <input type="date" name="updated_date" value="{{ $riverintake->updated_date }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <button class="btn btn-default btn-icon-notika col-md-2">
                             <i class="notika-icon notika-left-arrow"></i> 
-                            <a href="{{ route('superadmin.table.riverintake.index') }}" style="color:black;">BACK</a>
+                            <a href="{{ url('superadmin/table/riverintake/index') }}" style="color:black;">BACK</a>
                         </button>
                         <button class="btn btn-default btn-icon-notika col-md-2" style="float: right;">                
                             SEND

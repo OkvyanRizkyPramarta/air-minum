@@ -326,11 +326,10 @@ class SuperAdminController extends Controller
     {
 
         RiverIntake::create([
-            'id_river_intake' => $request->id_river_intake,
             'bmm_code' => $request->bmm_code,
             'name' => $request->name,
+            'intake_type' => $request->intake_type,
             'unit' => $request->unit,
-            'region_river' => $request->region_river,
             'watershed' => $request->watershed,
             'province' => "Papua",
             'city_id' => $request->city_id,
@@ -338,6 +337,13 @@ class SuperAdminController extends Controller
             'village_id' => $request->village_id,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
+            'people' => $request->people,
+            'debit' => $request->debit, 
+            'pump_type' => $request->pump_type, 
+            'head_pompa' => $request->head_pompa, 
+            'production_year' => $request->production_year, 
+            'operating_state' => $request->operating_state, 
+            'updated_date' => $request->updated_date, 
         ]);
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
@@ -381,9 +387,9 @@ class SuperAdminController extends Controller
         $riverintake = RiverIntake::findOrFail($riverintake->id);
 
         $riverintake->update([
-            'id_river_intake' => $request->id_river_intake,
             'bmm_code' => $request->bmm_code,
             'name' => $request->name,
+            'intake_type' => $request->intake_type,
             'unit' => $request->unit,
             'region_river' => $request->region_river,
             'watershed' => $request->watershed,
@@ -393,6 +399,13 @@ class SuperAdminController extends Controller
             'village_id' => $request->village_id,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
+            'people' => $request->people,
+            'debit' => $request->debit, 
+            'pump_type' => $request->pump_type, 
+            'head_pompa' => $request->head_pompa, 
+            'production_year' => $request->production_year, 
+            'operating_state' => $request->operating_state, 
+            'updated_date' => $request->updated_date, 
         ]);
 
         Alert::toast('Informasi Berhasil Diganti', 'success');

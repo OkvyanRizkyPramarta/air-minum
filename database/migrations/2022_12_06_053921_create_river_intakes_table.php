@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('river_intakes', function (Blueprint $table) {
             $table->id();
-            $table->string('id_river_intake');  
+            //$table->string('id_river_intake');  
             $table->string('bmm_code');
-            $table->string('name'); 
+            $table->string('name');
+            $table->string('intake_type'); 
             $table->string('unit'); 
-            $table->string('region_river');
             $table->string('watershed');  
             $table->string('province');
             $table->unsignedBigInteger('city_id');
@@ -27,6 +27,13 @@ return new class extends Migration
             $table->unsignedBigInteger('village_id');
             $table->string('latitude');
             $table->string('longitude');
+            $table->string('debit');
+            $table->string('pump_type');
+            $table->string('people');
+            $table->string('head_pompa');
+            $table->string('production_year', 4);
+            $table->string('operating_state');
+            $table->date('updated_date');
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('cities');
