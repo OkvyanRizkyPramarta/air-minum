@@ -7,6 +7,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\City;
 use App\Models\District;
+use App\Models\Village;
+use App\Models\RiverIntake;
 use App\Models\Population;
 
 class SuperAdminController extends Controller
@@ -259,6 +261,115 @@ class SuperAdminController extends Controller
     public function AdminDestroyPopulation(Population $population)
     {
         $population->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function AdminIndexRiverIntake()
+    {
+        $riverintake = RiverIntake::index();
+        return view('superadmin.riverintake.index', compact('riverintake'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminCreateRiverIntake()
+    {
+        $city = City::index();
+        $district = District::index();
+        $village = Village::index();
+        return view('superadmin.riverintake.create', compact('city','district','village'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminStoreRiverIntake(Request $request)
+    {
+
+        RiverIntake::create([
+            'id_river_intake' => $request->id_river_intake,
+            'bmm_code' => $request->bmm_code,
+            'name' => $request->name,
+            'unit' => $request->unit,
+            'region_river' => $request->region_river,
+            'watershed' => $request->watershed,
+            'province' => "Papua",
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'village_id' => $request->village_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.riverintake.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminShowRiverIntake($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminEditRiverIntake(RiverIntake $riverintake)
+    {
+        $city = City::index();
+        $district = District::index();
+        $village = Village::index();
+        return view('superadmin.population.edit', compact('city', 'district', 'village', 'riverintake'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminUpdateRiverIntake(Request $request, RiverIntake $riverintake)
+    {
+        // $riverintake = RiverIntake::findOrFail($riverintake->id);
+
+        // $riverintake->update([
+        //     'city_id'     => $request->city_id,
+        //     'male_total'=>$request->male_total,
+        //     'female_total'=>$request->female_total,
+        //     'population_total'=>$request->population_total,
+        //     'year'    => $request->year,
+        // ]);
+
+        // Alert::toast('Informasi Berhasil Diganti', 'success');
+        // return redirect()->route('superadmin.table.riverintake.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminDestroyRiverIntake(RiverIntake $riverintake)
+    {
+        $riverintake->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

@@ -45,6 +45,13 @@ Route::get('/superadmin/table/population/edit/{population}', [SuperAdminControll
 Route::put('/superadmin/table/population/update/{population}', [SuperAdminController::class, 'AdminUpdatePopulation'])->name('superadmin.table.population.update');
 Route::delete('/superadmin/table/population/index/{population}', [SuperAdminController::class, 'AdminDestroyPopulation'])->name('superadmin.table.population.destroy');
 
+Route::get('/superadmin/table/riverintake/index', [SuperAdminController::class, 'AdminIndexRiverIntake'])->name('superadmin.table.riverintake.index'); 
+Route::get('/superadmin/table/riverintake/create', [SuperAdminController::class, 'AdminCreateRiverIntake'])->name('superadmin.table.riverintake.create'); 
+Route::post('/superadmin/table/riverintake/create', [SuperAdminController::class, 'AdminStoreRiverIntake'])->name('superadmin.table.riverintake.store');
+Route::get('/superadmin/table/riverintake/edit/{riverintake}', [SuperAdminController::class, 'AdminEditRiverIntake'])->name('superadmin.table.riverintake.edit');
+Route::put('/superadmin/table/riverintake/update/{riverintake}', [SuperAdminController::class, 'AdminUpdateRiverIntake'])->name('superadmin.table.riverintake.update');
+Route::delete('/superadmin/table/riverintake/index/{riverintake}', [SuperAdminController::class, 'AdminDestroyRiverIntake'])->name('superadmin.table.riverintake.destroy');
+
 Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::get('/superadmin/index', function () {
         return view('superadmin.index');

@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('villages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('district_id');
             $table->timestamps();
-
-            $table->foreign('district_id')->references('id')->on('districts');
         });
     }
 

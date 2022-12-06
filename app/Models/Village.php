@@ -5,23 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class City extends Model
+class Village extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'ocean_area',
-        'mmainland_area',
-        'total_area',
-        'oap',
-        'year',
     ];
-
-    public function population()
-    {
-       return $this->hasMany(Population::class);
-    }
 
     public function riverintake()
     {
@@ -40,17 +30,16 @@ class City extends Model
     
     public static function index()
     {
-        return City::all();
+        return Village::all();
     }
 
     public static function store(Request $request)
     {
-        City::create($request->all());
+        Village::create($request->all());
     }
 
-    public static function edit(Request $request, City $city)
+    public static function edit(Request $request, Village $village)
     {
-        $city->update($request->all());
+        $village->update($request->all());
     }
-
 }

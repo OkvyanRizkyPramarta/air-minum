@@ -14,6 +14,21 @@ class District extends Model
         'city_id',
     ];
 
+    public function riverintake()
+    {
+       return $this->hasMany(RiverIntake::class);
+    }
+
+    public function watertank()
+    {
+       return $this->hasMany(WaterTank::class);
+    }
+
+    public function waterwell()
+    {
+       return $this->hasMany(WaterWell::class);
+    }
+
     public static function index()
     {
         return District::all();
