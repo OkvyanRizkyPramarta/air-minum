@@ -233,14 +233,14 @@
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
 										<h2>Data Table</h2>
-										<p>Welcome to PDAM TOYO</p>
+										<p>Welcome to PDAM TOYO <span class="bread-ntd">Admin </span></p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                    <a href="{{url('/superadmin/table/city/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                    <a href="{{url('/superadmin/table/watertank/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
                                 </div>
 							</div>
 						</div>
@@ -260,35 +260,45 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="auto">ID Kota</th>
-                                        <th class="text-center" width="auto">Nama Kota</th>
-                                        <th class="text-center" width="auto">Luas Lautan (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">Luas Daratan (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">Total Luas (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">OAP</th>
-                                        <th class="text-center" width="auto">Tahun</th>
-                                        <th class="text-center" width="auto">Action</th>
+                                        <th class="text-center" width="auto">ID Data</th>
+                                        <th class="text-center" width="auto">ID Infrastruktur</th>
+                                        <th class="text-center" width="auto">Nama </th>
+                                        <th class="text-center" width="auto">Kode BMM </th>
+                                        <th class="text-center" width="auto">Unit</th>
+                                        <th class="text-center" width="auto">Wilayah Sungai</th>
+                                        <th class="text-center" width="auto">Provinsi</th>
+                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
+                                        <th class="text-center" width="auto">Kecamatan</th>
+                                        <th class="text-center" width="auto">Kelurahan</th>
+                                        <th class="text-center" width="auto">Latitude</th>
+                                        <th class="text-center" width="auto">Longitude</th>
+                                        <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($city as $c)
+                                @foreach($watertank as $w)
                                     <tr>
-                                        <td class="text-center">{{ $c->id }}</td>
-                                        <td class="text-center">{{ $c->name }}</td>
-                                        <td class="text-center">{{ $c->ocean_area }}</td>
-                                        <td class="text-center">{{ $c->mainland_area }}</td>
-                                        <td class="text-center">{{ $c->total_area }}</td>
-                                        <td class="text-center">{{ $c->oap }}</td>
-                                        <td class="text-center">{{ $c->year }}</td>
+                                        <td class="text-center">{{ $w->id_watertank }}</td>
+                                        <td class="text-center">{{ $w->bmm_code }}</td>
+                                        <td class="text-center">{{ $w->name }}</td>
+                                        <td class="text-center">{{ $w->unit }}</td>
+                                        <td class="text-center">{{ $w->region_river }}</td>
+                                        <td class="text-center">{{ $w->watershed }}</td>
+                                        <td class="text-center">{{ $w->province }}</td>
+                                        <td class="text-center">{{ $w->city->name }}</td>
+                                        <td class="text-center">{{ $w->district->name }}</td>
+                                        <td class="text-center">{{ $w->village->name }}</td>
+                                        <td class="text-center">{{ $w->latitude }}</td>
+                                        <td class="text-center">{{ $w->longitude }}</td>
                                         <div class="row">
                                             <td class="text-center">
-                                                <div class="col-lg-6">
-                                                    <a href="{{ route('superadmin.table.city.edit', $c->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                <div>
+                                                    <a href="{{ route('superadmin.table.watertank.edit', $w->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <form action="{{ route('superadmin.table.city.destroy', $c->id) }}" method="POST" class="d-inline">
+                                                <div>
+                                                    <form action="{{ route('superadmin.table.watertank.destroy', $w->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
@@ -302,13 +312,18 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th class="text-center" width="auto">ID Kota</th>
-                                        <th class="text-center" width="auto">Nama Kota</th>
-                                        <th class="text-center" width="auto">Luas Lautan (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">Luas Daratan (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">Total Luas (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">OAP</th>
-                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">ID Data</th>
+                                        <th class="text-center" width="auto">ID Infrastruktur</th>
+                                        <th class="text-center" width="auto">Nama </th>
+                                        <th class="text-center" width="auto">Kode BMM </th>
+                                        <th class="text-center" width="auto">Unit</th>
+                                        <th class="text-center" width="auto">Wilayah Sungai</th>
+                                        <th class="text-center" width="auto">Provinsi</th>
+                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
+                                        <th class="text-center" width="auto">Kecamatan</th>
+                                        <th class="text-center" width="auto">Kelurahan</th>
+                                        <th class="text-center" width="auto">Latitude</th>
+                                        <th class="text-center" width="auto">Longitude</th>
                                         <th class="text-center" width="auto">Action</th>
                                     </tr>
                                 </tfoot>

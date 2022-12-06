@@ -160,6 +160,14 @@
                                         </li>
                                         <li><a href="">Tabel Desa / Kelurahan</a>
                                         </li>
+                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        </li>
+                                        <li><a href="">Tabel Sumur</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -197,6 +205,14 @@
                                 <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                 </li>
                                 <li><a href="">Tabel Desa / Kelurahan</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                </li>
+                                <li><a href="">Tabel Sumur</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                 </li>
                             </ul>
                         </div>
@@ -277,12 +293,12 @@
                                         <div class="row">
                                             <td class="text-center">
                                                 <div>
-                                                    <a href="" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                    <a href="{{ route('superadmin.table.riverintake.edit', $r->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
                                                 <div>
-                                                    <form action="" method="POST" class="d-inline">
+                                                    <form action="{{ route('superadmin.table.riverintake.destroy', $r->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>

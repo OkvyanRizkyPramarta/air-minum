@@ -91,6 +91,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -159,6 +160,14 @@
                                         </li>
                                         <li><a href="">Tabel Desa / Kelurahan</a>
                                         </li>
+                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        </li>
+                                        <li><a href="">Tabel Sumur</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -197,6 +206,14 @@
                                 </li>
                                 <li><a href="">Tabel Desa / Kelurahan</a>
                                 </li>
+                                <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                </li>
+                                <li><a href="">Tabel Sumur</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -223,7 +240,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                    <a type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                    <a href="{{url('/superadmin/table/district/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
                                 </div>
 							</div>
 						</div>
@@ -245,6 +262,8 @@
                                     <tr>
                                         <th class="text-center" width="auto">ID Kecamatan</th>
                                         <th class="text-center" width="auto">Nama Kecamatan</th>
+                                        <th class="text-center" width="auto">Kode Pos</th>
+                                        <th class="text-center" width="200px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -252,6 +271,24 @@
                                     <tr>
                                         <td class="text-center">{{ $d->id }}</td>
                                         <td class="text-center">{{ $d->name }}</td>
+                                        <td class="text-center">{{ $d->postal_code }}</td>
+                                        <div class="row">
+                                            <td class="text-center">
+                                                <div class="col-lg-6">
+                                                    <a href="{{ route('superadmin.table.district.edit', $d->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                        Edit
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <form action="{{ route('superadmin.table.district.destroy', $d->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                                                        Delete</a>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </div>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -259,6 +296,7 @@
                                     <tr>
                                         <th class="text-center" width="auto">ID Kota</th>
                                         <th class="text-center" width="auto">Nama Kota</th>
+                                        <th class="text-center" width="auto">Action</th>
                                     </tr>
                                 </tfoot>
                             </table>

@@ -160,6 +160,14 @@
                                         </li>
                                         <li><a href="">Tabel Desa / Kelurahan</a>
                                         </li>
+                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        </li>
+                                        <li><a href="">Tabel Sumur</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -197,6 +205,14 @@
                                 <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                 </li>
                                 <li><a href="">Tabel Desa / Kelurahan</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                </li>
+                                <li><a href="">Tabel Sumur</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                 </li>
                             </ul>
                         </div>

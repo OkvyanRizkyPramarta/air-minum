@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\RiverIntake;
+use App\Models\Watertank;
 use App\Models\Population;
 
 class SuperAdminController extends Controller
@@ -31,7 +32,7 @@ class SuperAdminController extends Controller
      */
     public function AdminCreateCity()
     {
-        //
+        return view('superadmin.city.create');
     }
 
     /**
@@ -42,7 +43,9 @@ class SuperAdminController extends Controller
      */
     public function AdminStoreCity(Request $request)
     {
-        //
+        City::store($request);
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.city.index');
     }
 
     /**
@@ -62,9 +65,9 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminEditCity($id)
+    public function AdminEditCity(City $city)
     {
-        //
+        return view('superadmin.city.edit', compact('city'));
     }
 
     /**
@@ -74,9 +77,21 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminUpdateCity(Request $request, $id)
+    public function AdminUpdateCity(Request $request, City $city)
     {
-        //
+        $city = City::findOrFail($city->id);
+
+        $city->update([
+            'name'     => $request->name,
+            'ocean_area'     => $request->ocean_area,
+            'mainland_area'     => $request->mainland_area,
+            'total_area'     => $request->total_area,
+            'oap'     => $request->oap,
+            'year'     => $request->year,
+        ]);
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.city.index');
     }
 
     /**
@@ -85,9 +100,12 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminDestroyCity($id)
+    public function AdminDestroyCity(City $city)
     {
-        //
+        $city->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
     }
 
     /**
@@ -108,7 +126,7 @@ class SuperAdminController extends Controller
      */
     public function AdminCreateDistrict()
     {
-        //
+        return view('superadmin.district.create');
     }
 
     /**
@@ -119,7 +137,9 @@ class SuperAdminController extends Controller
      */
     public function AdminStoreDistrict(Request $request)
     {
-        //
+        District::store($request);
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.district.index');
     }
 
     /**
@@ -139,9 +159,9 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminEditDistrict($id)
+    public function AdminEditDistrict(District $district)
     {
-        //
+        return view('superadmin.district.edit', compact('district'));
     }
 
     /**
@@ -151,9 +171,17 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminUpdateDistrict(Request $request, $id)
+    public function AdminUpdateDistrict(Request $request, District $district)
     {
-        //
+        $district = District::findOrFail($district->id);
+
+        $district->update([
+            'name'     => $request->name,
+            'postal_code'=>$request->postal_code,
+        ]);
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.district.index');
     }
 
     /**
@@ -162,9 +190,12 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminDestroyDistrict($id)
+    public function AdminDestroyDistrict(District $district)
     {
-        //
+        $district->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
     }
 
     public function AdminIndexPopulation()
@@ -335,7 +366,7 @@ class SuperAdminController extends Controller
         $city = City::index();
         $district = District::index();
         $village = Village::index();
-        return view('superadmin.population.edit', compact('city', 'district', 'village', 'riverintake'));
+        return view('superadmin.riverintake.edit', compact('city', 'district', 'village', 'riverintake'));
     }
 
     /**
@@ -347,18 +378,25 @@ class SuperAdminController extends Controller
      */
     public function AdminUpdateRiverIntake(Request $request, RiverIntake $riverintake)
     {
-        // $riverintake = RiverIntake::findOrFail($riverintake->id);
+        $riverintake = RiverIntake::findOrFail($riverintake->id);
 
-        // $riverintake->update([
-        //     'city_id'     => $request->city_id,
-        //     'male_total'=>$request->male_total,
-        //     'female_total'=>$request->female_total,
-        //     'population_total'=>$request->population_total,
-        //     'year'    => $request->year,
-        // ]);
+        $riverintake->update([
+            'id_river_intake' => $request->id_river_intake,
+            'bmm_code' => $request->bmm_code,
+            'name' => $request->name,
+            'unit' => $request->unit,
+            'region_river' => $request->region_river,
+            'watershed' => $request->watershed,
+            'province' => "Papua",
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'village_id' => $request->village_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
 
-        // Alert::toast('Informasi Berhasil Diganti', 'success');
-        // return redirect()->route('superadmin.table.riverintake.index');
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.riverintake.index');
     }
 
     /**
@@ -370,6 +408,122 @@ class SuperAdminController extends Controller
     public function AdminDestroyRiverIntake(RiverIntake $riverintake)
     {
         $riverintake->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function AdminIndexWatertank()
+    {
+        $watertank = Watertank::index();
+        return view('superadmin.watertank.index', compact('watertank'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminCreateWatertank()
+    {
+        $city = City::index();
+        $district = District::index();
+        $village = Village::index();
+        return view('superadmin.watertank.create', compact('city','district','village'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminStoreWatertank(Request $request)
+    {
+
+        Watertank::create([
+            'id_watertank' => $request->id_watertank,
+            'bmm_code' => $request->bmm_code,
+            'name' => $request->name,
+            'unit' => $request->unit,
+            'region_river' => $request->region_river,
+            'watershed' => $request->watershed,
+            'province' => "Papua",
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'village_id' => $request->village_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.watertank.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminShowWatertank($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminEditWatertank(Watertank $watertank)
+    {
+        $city = City::index();
+        $district = District::index();
+        $village = Village::index();
+        return view('superadmin.watertank.edit', compact('city', 'district', 'village', 'watertank'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminUpdateWatertank(Request $request, Watertank $watertank)
+    {
+        $watertank = Watertank::findOrFail($watertank->id);
+
+        $watertank->update([
+            'id_watertank' => $request->id_watertank,
+            'bmm_code' => $request->bmm_code,
+            'name' => $request->name,
+            'unit' => $request->unit,
+            'region_river' => $request->region_river,
+            'watershed' => $request->watershed,
+            'province' => "Papua",
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'village_id' => $request->village_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+        ]);
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.watertank.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminDestroyWatertank(Watertank $watertank)
+    {
+        $watertank->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

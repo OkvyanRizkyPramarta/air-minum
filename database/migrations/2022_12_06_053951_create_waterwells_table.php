@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('waterwells', function (Blueprint $table) {
+        Schema::create('water_wells', function (Blueprint $table) {
             $table->id();
             $table->string('id_waterwell');  
             $table->string('bmm_code');

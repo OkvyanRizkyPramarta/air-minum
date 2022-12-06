@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class District extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'dis_name',
-        'city_id',
+        'name',
+        'postal_code',
     ];
 
     public function riverintake()

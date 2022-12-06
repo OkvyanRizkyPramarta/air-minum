@@ -36,7 +36,18 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.admin')->mi
 Route::get('/signout', [AuthController::class, 'signOut'])->name('signout');
 
 Route::get('/superadmin/table/city/index', [SuperAdminController::class, 'AdminIndexCity'])->name('superadmin.table.city.index');
-Route::get('/superadmin/table/district/index', [SuperAdminController::class, 'AdminIndexDistrict'])->name('superadmin.table.district.index'); 
+Route::get('/superadmin/table/city/create', [SuperAdminController::class, 'AdminCreateCity'])->name('superadmin.table.city.create'); 
+Route::post('/superadmin/table/city/create', [SuperAdminController::class, 'AdminStoreCity'])->name('superadmin.table.city.store');
+Route::get('/superadmin/table/city/edit/{city}', [SuperAdminController::class, 'AdminEditCity'])->name('superadmin.table.city.edit');
+Route::put('/superadmin/table/city/update/{city}', [SuperAdminController::class, 'AdminUpdateCity'])->name('superadmin.table.city.update');
+Route::delete('/superadmin/table/city/index/{city}', [SuperAdminController::class, 'AdminDestroyCity'])->name('superadmin.table.city.destroy');
+
+Route::get('/superadmin/table/district/index', [SuperAdminController::class, 'AdminIndexDistrict'])->name('superadmin.table.district.index');
+Route::get('/superadmin/table/district/create', [SuperAdminController::class, 'AdminCreateDistrict'])->name('superadmin.table.district.create'); 
+Route::post('/superadmin/table/district/create', [SuperAdminController::class, 'AdminStoreDistrict'])->name('superadmin.table.district.store');
+Route::get('/superadmin/table/district/edit/{district}', [SuperAdminController::class, 'AdminEditDistrict'])->name('superadmin.table.district.edit');
+Route::put('/superadmin/table/district/update/{district}', [SuperAdminController::class, 'AdminUpdateDistrict'])->name('superadmin.table.district.update');
+Route::delete('/superadmin/table/district/index/{district}', [SuperAdminController::class, 'AdminDestroyDistrict'])->name('superadmin.table.district.destroy');
 
 Route::get('/superadmin/table/population/index', [SuperAdminController::class, 'AdminIndexPopulation'])->name('superadmin.table.population.index'); 
 Route::get('/superadmin/table/population/create', [SuperAdminController::class, 'AdminCreatePopulation'])->name('superadmin.table.population.create'); 
@@ -51,6 +62,13 @@ Route::post('/superadmin/table/riverintake/create', [SuperAdminController::class
 Route::get('/superadmin/table/riverintake/edit/{riverintake}', [SuperAdminController::class, 'AdminEditRiverIntake'])->name('superadmin.table.riverintake.edit');
 Route::put('/superadmin/table/riverintake/update/{riverintake}', [SuperAdminController::class, 'AdminUpdateRiverIntake'])->name('superadmin.table.riverintake.update');
 Route::delete('/superadmin/table/riverintake/index/{riverintake}', [SuperAdminController::class, 'AdminDestroyRiverIntake'])->name('superadmin.table.riverintake.destroy');
+
+Route::get('/superadmin/table/watertank/index', [SuperAdminController::class, 'AdminIndexWatertank'])->name('superadmin.table.watertank.index'); 
+Route::get('/superadmin/table/watertank/create', [SuperAdminController::class, 'AdminCreateWatertank'])->name('superadmin.table.watertank.create'); 
+Route::post('/superadmin/table/watertank/create', [SuperAdminController::class, 'AdminStoreWatertank'])->name('superadmin.table.watertank.store');
+Route::get('/superadmin/table/watertank/edit/{watertank}', [SuperAdminController::class, 'AdminEditWatertank'])->name('superadmin.table.watertank.edit');
+Route::put('/superadmin/table/watertank/update/{watertank}', [SuperAdminController::class, 'AdminUpdateWatertank'])->name('superadmin.table.watertank.update');
+Route::delete('/superadmin/table/watertank/index/{watertank}', [SuperAdminController::class, 'AdminDestroyWatertank'])->name('superadmin.table.watertank.destroy');
 
 Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::get('/superadmin/index', function () {
