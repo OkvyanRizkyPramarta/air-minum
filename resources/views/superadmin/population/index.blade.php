@@ -275,7 +275,8 @@
                                         <th class="text-center" width="auto">Jumlah Laki - Laki Non Papua</th>
                                         <th class="text-center" width="auto">Jumlah Perempuan Non Papua</th>
                                         <th class="text-center" width="auto">Total Populasi Non Papua</th>
-                                        <th class="text-center" width="220px;">Action</th>
+                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -294,13 +295,13 @@
                                         <td class="text-center">{{ $p->populationnonoap_total }}</td>
                                         <td class="text-center">{{ $p->year }}</td>
                                         <div class="row">
-                                            <td class="text-center">
-                                                <div class="col-lg-6">
+                                        <td class="text-center">
+                                                <div class="">
                                                     <a href="{{ route('superadmin.table.population.edit', $p->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="">
                                                     <form action="{{ route('superadmin.table.population.destroy', $p->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
@@ -317,15 +318,17 @@
                                     <tr>
                                         <th class="text-center" width="auto">Nama Kota/Kabupaten</th>
                                         <th class="text-center" width="auto">Nama Kecamatan</th>
-                                        <th class="text-center" width="auto">Laki - Laki</th>
-                                        <th class="text-center" width="auto">Perempuan</th>
-                                        <th class="text-center" width="auto">Jumlah Populasi</th>
-                                        <th class="text-center" width="auto">Laki - Laki (OAP)</th>
-                                        <th class="text-center" width="auto">Perempuan (OAP)</th>
-                                        <th class="text-center" width="auto">Jumlah Populasi (OAP)</th>
-                                        <th class="text-center" width="auto">Laki - Laki Non Papua</th>
-                                        <th class="text-center" width="auto">Perempuan Non Papua</th>
-                                        <th class="text-center" width="auto">Jumlah Populasi Non Papua</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan</th>
+                                        <th class="text-center" width="auto">Total Populasi</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan (OAP)</th>
+                                        <th class="text-center" width="auto">Total Populasi (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki Non Papua</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan Non Papua</th>
+                                        <th class="text-center" width="auto">Total Populasi Non Papua</th>
+                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">Action</th>
 
                                     </tr>
                                 </tfoot>

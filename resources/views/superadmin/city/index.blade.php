@@ -275,7 +275,7 @@
                                         <th class="text-center" width="auto">Total Luas (KM<sup>2</sup>)</th>
                                         <!-- <th class="text-center" width="auto">OAP</th> -->
                                         <th class="text-center" width="auto">Tahun</th>
-                                        <th class="text-center" width="auto">Action</th>
+                                        <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -317,7 +317,7 @@
                                         <th class="text-center" width="auto">Total Luas (KM<sup>2</sup>)</th>
                                         <!-- <th class="text-center" width="auto">OAP</th> -->
                                         <th class="text-center" width="auto">Tahun</th>
-                                        <th class="text-center" width="auto">Action</th>
+                                        <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
