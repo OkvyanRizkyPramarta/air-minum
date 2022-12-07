@@ -128,8 +128,8 @@
         </div>
     </div>
     <!-- End Header Top Area -->
-    <!-- Mobile Menu start -->
-    <div class="mobile-menu-area" style="background-color:#61BDEB;">
+      <!-- Mobile Menu start -->
+      <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
@@ -216,7 +216,7 @@
         </div>
     </div>
     <!-- Main Menu area End-->
-	<!-- Breadcomb area Start-->
+	  <!-- Breadcomb area Start-->
 	<div class="breadcomb-area">
 		<div class="container">
 			<div class="row">
@@ -241,33 +241,13 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('superadmin.table.watertank.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.table.municipalwaterwork.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                        <div class="row" style="padding-bottom:100px;">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>ID Data</label>
-                                        <input type="text" name="id_watertank" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Kode BMN</label>
-                                        <input type="text" name="bmm_code" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
@@ -277,118 +257,82 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Unit</label>
-                                        <input type="text" name="unit" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Wilayah</label>
+                                        <input type="text" name="area" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Wilayah Sungai</label>
-                                        <input type="text" name="region_river" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Koord X</label>
+                                        <input type="text" name="koord_x" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Daerah Aliran Sungai</label>
-                                        <input type="text" name="watershed" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Koord Y</label>
+                                        <input type="text" name="koord_y" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Provinsi</label>
-                                        <input type="text" name="province" value="Papua" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" Disabled/>
+                                        <label>Elevasi (mdpl)</label>
+                                        <input type="text" name="elevasi_mdpl" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Nama Kota</label>
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="city_id" data-live-search="true">
-                                                @foreach($city as $c)
-                                                <option value="{{ $c->id }}">{{ $c->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        <label>Terpasang (L/d)</label>
+                                        <input type="number" name="installed" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Nama Kecamatan</label>
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="district_id" data-live-search="true">
-                                                @foreach($district as $d)
-                                                <option value="{{ $d->id }}">{{ $d->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Nama Kelurahan</label>
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="village_id" data-live-search="true">
-                                                @foreach($village as $v)
-                                                <option value="{{ $v->id }}">{{ $v->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Latitude</label>
-                                        <input type="text" name="latitude" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Longitude</label>
-                                        <input type="text" name="longitude" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Operasi (L/d)</label>
+                                        <input type="number" name="operation" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <button class="btn btn-default btn-icon-notika col-md-2">
                             <i class="notika-icon notika-left-arrow"></i> 
-                            <a href="{{ url('/superadmin/table/watertank/index') }}" style="color:black;">BACK</a>
+                            <a href="{{ url('/superadmin/table/municipalwaterwork/index') }}" style="color:black;">BACK</a>
                         </button>
                         <button class="btn btn-default btn-icon-notika col-md-2" style="float: right;">                
                             SEND

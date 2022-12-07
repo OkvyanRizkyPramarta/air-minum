@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\City;
+use App\Models\MunicipalWaterwork;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\RiverIntake;
@@ -537,6 +538,97 @@ class SuperAdminController extends Controller
     public function AdminDestroyWatertank(Watertank $watertank)
     {
         $watertank->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function AdminIndexMunicipalWaterwork()
+    {
+        $municipalwaterwork = MunicipalWaterwork::index();
+        return view('superadmin.municipalwaterwork.index', compact('municipalwaterwork'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminCreateMunicipalWaterwork()
+    {
+        return view('superadmin.municipalwaterwork.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminStoreMunicipalWaterwork(Request $request)
+    {
+        MunicipalWaterwork::store($request);
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.municipalwaterwork.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminShowMunicipalWaterwork($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminEditMunicipalWaterwork(MunicipalWaterwork $municipalwaterwork)
+    {
+        return view('superadmin.municipalwaterwork.edit', compact('municipalwaterwork'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminUpdateMunicipalWaterwork(Request $request, MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork = MunicipalWaterwork::findOrFail($municipalwaterwork->id);
+
+        $municipalwaterwork->update([
+            'name' => $request->name,
+            'area' => $request->area,
+            'koord_x' => $request->koord_x,
+            'koord_y' => $request->koord_y,
+            'elevasi_mdpl' => $request->elevasi_mdpl,
+            'installed' => $request->installed,
+            'operation' => $request->operation,
+        ]);
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.municipalwaterwork.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminDestroyMunicipalWaterwork(MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
