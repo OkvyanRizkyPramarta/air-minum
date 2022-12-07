@@ -164,11 +164,9 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                         </li>
-                                        <li><a href="">Tabel Sumur</a>
+                                        <li><a href="{{ url ('/superadmin/table/waterwell/index') }}">Tabel Sumur</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -212,11 +210,9 @@
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                 </li>
-                                <li><a href="">Tabel Sumur</a>
+                                <li><a href="{{ url ('/superadmin/table/waterwell/index') }}">Tabel Sumur</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                 </li>
                             </ul>
                         </div>
@@ -236,7 +232,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-										<h2>Data Table</h2>
+										<h2>DATA INFRASTRUKTUR TERBANGUN SUMUR AIR TANAH </h2>
 										<p>Welcome to PDAM TOYO <span class="bread-ntd">Admin </span></p>
 									</div>
 								</div>
@@ -244,7 +240,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                    <a href="{{url('/superadmin/table/riverintake/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                    <a href="{{url('/superadmin/table/waterwell/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
                                 </div>
 							</div>
 						</div>
@@ -264,10 +260,9 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="auto">Kode Integrasi </th>
-                                        <th class="text-center" width="auto">Nama </th>
-                                        <th class="text-center" width="auto">Jenis Type</th>
-                                        <th class="text-center" width="auto">Unit</th>
+                                        <th class="text-center" width="auto">Kode Integrasi</th>
+                                        <th class="text-center" width="auto">Nama Balai</th>
+                                        <th class="text-center" width="auto">Nama / No. Sumur</th>
                                         <th class="text-center" width="auto">Wilayah Sungai</th>
                                         <th class="text-center" width="auto">Provinsi</th>
                                         <th class="text-center" width="auto">Kabupaten / Kota</th>
@@ -275,46 +270,52 @@
                                         <th class="text-center" width="auto">Kelurahan</th>
                                         <th class="text-center" width="auto">Latitude</th>
                                         <th class="text-center" width="auto">Longitude</th>
-                                        <th class="text-center" width="auto">Jiwa (orang)</th>
-                                        <th class="text-center" width="auto">Debit (l/detik)</th>
-                                        <th class="text-center" width="auto">Jenis Pompa</th>
-                                        <th class="text-center" width="auto">Head Pompa (m)</th>
-                                        <th class="text-center" width="auto">Tahun Pembuatan</th>
+                                        <th class="text-center" width="auto">Fungsi Sumur </th>
                                         <th class="text-center" width="auto">Status Operasi</th>
+                                        <th class="text-center" width="auto">Debit (l/detik)</th>
+                                        <th class="text-center" width="auto">Jiwa (orang)</th>
+                                        <th class="text-center" width="auto">Luas (ha)</th>
+                                        <th class="text-center" width="auto">Kedalaman Sumur (m)</th>
+                                        <th class="text-center" width="auto">Jenis Pompa</th>
+                                        <th class="text-center" width="auto">Tahun Pembangunan</th>
+                                        <th class="text-center" width="auto">Kondisi Sumur</th>
                                         <th class="text-center" width="auto">Tanggal Diperbarui</th>
                                         <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($riverintake as $r)
+                                @foreach($waterwell as $wa)
                                     <tr>
-                                        <td class="text-center">{{ $r->bmm_code }}</td>
-                                        <td class="text-center">{{ $r->name }}</td>
-                                        <td class="text-center">{{ $r->intake_type }}</td>
-                                        <td class="text-center">{{ $r->unit }}</td>
-                                        <td class="text-center">{{ $r->watershed }}</td>
-                                        <td class="text-center">{{ $r->province }}</td>
-                                        <td class="text-center">{{ $r->city->name }}</td>
-                                        <td class="text-center">{{ $r->district->name }}</td>
-                                        <td class="text-center">{{ $r->village->name }}</td>
-                                        <td class="text-center">{{ $r->latitude }}</td>
-                                        <td class="text-center">{{ $r->longitude }}</td>
-                                        <td class="text-center">{{ $r->people }}</td>
-                                        <td class="text-center">{{ $r->debit }}</td>
-                                        <td class="text-center">{{ $r->pump_type }}</td>
-                                        <td class="text-center">{{ $r->head_pompa }}</td>
-                                        <td class="text-center">{{ $r->production_year }}</td>
-                                        <td class="text-center">{{ $r->operating_state }}</td>
-                                        <td class="text-center">{{ $r->updated_date }}</td>
+                                        <td class="text-center">{{ $wa->bmm_code }}</td>
+                                        <td class="text-center">{{ $wa->unit }}</td>
+                                        <td class="text-center">{{ $wa->name }}</td>
+                                        <td class="text-center">{{ $wa->watershed }}</td>
+                                        <td class="text-center">{{ $wa->province }}</td>
+                                        <td class="text-center">{{ $wa->city->name }}</td>
+                                        <td class="text-center">{{ $wa->district->name }}</td>
+                                        <td class="text-center">{{ $wa->village->name }}</td>
+                                        <td class="text-center">{{ $wa->latitude }}</td>
+                                        <td class="text-center">{{ $wa->longitude }}</td>
+                                        <td class="text-center">{{ $wa->well_function }}</td>
+                                        <td class="text-center">{{ $wa->operating_state }}</td>
+                                        <td class="text-center">{{ $wa->debit }}</td>
+                                        <td class="text-center">{{ $wa->people }}</td>
+                                        <td class="text-center">{{ $wa->luas }}</td>
+                                        <td class="text-center">{{ $wa->well_depth }}</td>
+                                        <td class="text-center">{{ $wa->pump_type }}</td>
+                                        <td class="text-center">{{ $wa->development_year }}</td>
+                                        <td class="text-center">{{ $wa->well_condition }}</td>
+                                        <td class="text-center">{{ $wa->update_date }}</td>
+                                        
                                         <div class="row">
                                             <td class="text-center">
                                                 <div>
-                                                    <a href="{{ route('superadmin.table.riverintake.edit', $r->bmm_code) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                    <a href="{{ route('superadmin.table.waterwell.edit', $wa->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
                                                 <div>
-                                                    <form action="{{ route('superadmin.table.riverintake.destroy', $r->bmm_code) }}" method="POST" class="d-inline">
+                                                    <form action="{{ route('superadmin.table.waterwell.destroy', $wa->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
@@ -328,10 +329,9 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                    <th class="text-center" width="auto">Kode Integrasi </th>
-                                        <th class="text-center" width="auto">Nama </th>
-                                        <th class="text-center" width="auto">Jenis Type</th>
-                                        <th class="text-center" width="auto">Unit</th>
+                                    <th class="text-center" width="auto">Kode Integrasi</th>
+                                        <th class="text-center" width="auto">Nama Balai</th>
+                                        <th class="text-center" width="auto">Nama / No. Sumur </th>
                                         <th class="text-center" width="auto">Wilayah Sungai</th>
                                         <th class="text-center" width="auto">Provinsi</th>
                                         <th class="text-center" width="auto">Kabupaten / Kota</th>
@@ -339,12 +339,15 @@
                                         <th class="text-center" width="auto">Kelurahan</th>
                                         <th class="text-center" width="auto">Latitude</th>
                                         <th class="text-center" width="auto">Longitude</th>
-                                        <th class="text-center" width="auto">Jiwa (orang)</th>
-                                        <th class="text-center" width="auto">Debit (l/detik)</th>
-                                        <th class="text-center" width="auto">Jenis Pompa</th>
-                                        <th class="text-center" width="auto">Head Pompa (m)</th>
-                                        <th class="text-center" width="auto">Tahun Pembuatan</th>
+                                        <th class="text-center" width="auto">Fungsi Sumur </th>
                                         <th class="text-center" width="auto">Status Operasi</th>
+                                        <th class="text-center" width="auto">Debit (l/detik)</th>
+                                        <th class="text-center" width="auto">Jiwa (orang)</th>
+                                        <th class="text-center" width="auto">Luas (ha)</th>
+                                        <th class="text-center" width="auto">Kedalaman Sumur</th>
+                                        <th class="text-center" width="auto">Jenis Pompa</th>
+                                        <th class="text-center" width="auto">Tahun Pembangunan</th>
+                                        <th class="text-center" width="auto">Kondisi Sumur</th>
                                         <th class="text-center" width="auto">Tanggal Diperbarui</th>
                                         <th class="text-center" width="220px;">Action</th>
                                     </tr>

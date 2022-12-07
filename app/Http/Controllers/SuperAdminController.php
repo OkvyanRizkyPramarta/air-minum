@@ -11,6 +11,7 @@ use App\Models\District;
 use App\Models\Village;
 use App\Models\RiverIntake;
 use App\Models\Watertank;
+use App\Models\Waterwell;
 use App\Models\Population;
 
 class SuperAdminController extends Controller
@@ -538,6 +539,140 @@ class SuperAdminController extends Controller
     public function AdminDestroyWatertank(Watertank $watertank)
     {
         $watertank->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function AdminIndexWaterwell()
+    {
+        $waterwell = Waterwell::index();
+        return view('superadmin.waterwell.index', compact('waterwell'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminCreateWaterwell()
+    {
+        $city = City::index();
+        $district = District::index();
+        $village = Village::index();
+        return view('superadmin.waterwell.create', compact('city','district','village'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+   
+    public function AdminStoreWaterwell(Request $request)
+    {
+
+        Waterwell::create([
+            'bmm_code' => $request->bmm_code,
+            'unit' => $request->unit,
+            'name' => $request->name,
+            'watershed' => $request->watershed,
+            'province' => "Papua",
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'village_id' => $request->village_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'well_function' => $request->well_function,
+            'operating_state' => $request->operating_state,
+            'debit' => $request->debit,
+            'people' => $request->people,
+            'luas' => $request->luas,
+            'well_depth' => $request->well_depth,
+            'pump_type' => $request->pump_type,
+            'development_year' => $request->development_year,
+            'well_condition' => $request->well_condition,
+            'updated_date' => $request->update_date,
+        ]);
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.riverintake.index');
+    }
+
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminShowWaterwell($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminEditWaterwell(Waterwell $waterwell)
+    {
+        $city = City::index();
+        $district = District::index();
+        $village = Village::index();
+        return view('superadmin.waterwell.edit', compact('city', 'district', 'village', 'waterwell'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminUpdateWaterwell(Request $request, Waterwell $waterwell)
+    {
+        $waterwell = Waterwell::findOrFail($waterwell->id);
+
+        $waterwell->update([
+            'bmm_code' => $request->bmm_code,
+            'unit' => $request->unit,
+            'name' => $request->name,
+            'watershed' => $request->watershed,
+            'province' => "Papua",
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'village_id' => $request->village_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'well_function' => $request->well_function,
+            'operating_state' => $request->operating_state,
+            'debit' => $request->debit,
+            'people' => $request->people,
+            'luas' => $request->luas,
+            'well_depth' => $request->well_depth,
+            'pump_type' => $request->pump_type,
+            'development_year' => $request->development_year,
+            'well_condition' => $request->well_condition,
+            'updated_date' => $request->update_date,
+        ]);
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.waterwell.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminDestroyWaterwell(Waterwell $waterwell)
+    {
+        $waterwell->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

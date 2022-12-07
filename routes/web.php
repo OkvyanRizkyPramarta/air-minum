@@ -77,6 +77,13 @@ Route::get('/superadmin/table/municipalwaterwork/edit/{municipalwaterwork}', [Su
 Route::put('/superadmin/table/municipalwaterwork/update/{municipalwaterwork}', [SuperAdminController::class, 'AdminUpdateMunicipalWaterwork'])->name('superadmin.table.municipalwaterwork.update');
 Route::delete('/superadmin/table/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'AdminDestroyMunicipalWaterwork'])->name('superadmin.table.municipalwaterwork.destroy');
 
+Route::get('/superadmin/table/waterwell/index', [SuperAdminController::class, 'AdminIndexWaterwell'])->name('superadmin.table.waterwell.index'); 
+Route::get('/superadmin/table/waterwell/create', [SuperAdminController::class, 'AdminCreateWaterwell'])->name('superadmin.table.waterwell.create'); 
+Route::post('/superadmin/table/waterwell/create', [SuperAdminController::class, 'AdminStoreWaterwell'])->name('superadmin.table.waterwell.store');
+Route::put('/superadmin/table/waterwell/update/{waterwell}', [SuperAdminController::class, 'AdminUpdateWaterwell'])->name('superadmin.table.waterwell.update');
+Route::delete('/superadmin/table/waterwell/index/{waterwell}', [SuperAdminController::class, 'AdminDestroyWaterwell'])->name('superadmin.table.waterwell.destroy');
+Route::get('superadmin/table/waterwell/edit/{waterwell}', [SuperAdminController::class, 'AdminEditWaterwell'])->name('superadmin.table.waterwell.edit');
+
 Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::get('/superadmin/index', function () {
         return view('superadmin.index');

@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('water_wells', function (Blueprint $table) {
             $table->id();
-            $table->string('id_waterwell');  
             $table->string('bmm_code');
-            $table->string('name'); 
-            $table->string('unit'); 
-            $table->string('region_river');
+            $table->string('unit');
+            $table->string('name');
             $table->string('watershed');  
             $table->string('province');
             $table->unsignedBigInteger('city_id');
@@ -27,6 +25,16 @@ return new class extends Migration
             $table->unsignedBigInteger('village_id');
             $table->string('latitude');
             $table->string('longitude');
+            $table->string('well_function');
+            $table->string('operating_state');
+            $table->string('debit');
+            $table->string('people');
+            $table->string('luas');
+            $table->string('well_depth');
+            $table->string('pump_type');
+            $table->string('development_year', 4);
+            $table->string('well_condition',);
+            $table->date('updated_date');
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('cities');
