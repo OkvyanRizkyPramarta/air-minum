@@ -267,7 +267,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
                         <div class="row" style="padding-bottom:100px;">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
@@ -277,10 +277,10 @@
                                     <div class="nk-int-st">
                                         <label>Nama Kecamatan</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" value="{{ $population->city->name }}" name="city_id" data-live-search="true">
+                                            <select class="selectpicker" value="{{ $population->district->name }}" name="district_id" data-live-search="true">
                                                 @foreach($district as $d)  
                                                   <option value="{{ $d->id }}" {{ ($d->id == $population->district->id) ? 'selected' : ''}} >
-                                                   {{ $c->name }}
+                                                   {{ $d->name }}
                                                   </option>
                                                 @endforeach
                                             </select>
@@ -317,7 +317,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Total Populasi</label>
-                                        <input type="number" name="population_total"  value="{{ $population->_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="population_total"  value="{{ $population->population_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -328,7 +328,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Jumlah Laki Laki (OAP)</label>
-                                        <input type="number" name="maleoap_total" value="{{ $maleoap->_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="maleoap_total" value="{{ $population->maleoap_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +339,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Jumlah Perempuan (OAP)</label>
-                                        <input type="number" name="femaleoap_total" value="{{ $femaleoap->_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="femaleoap_total" value="{{ $population->femaleoap_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -350,7 +350,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Total Populasi</label>
-                                        <input type="number" name="populationoap_total" value="{{ $populationoap->_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="populationoap_total" value="{{ $population->populationoap_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -361,7 +361,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Jumlah Laki Laki Non Papua</label>
-                                        <input type="number" name="malenonoap_total" value="{{ $malenonoap->_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="malenonoap_total" value="{{ $population->malenonoap_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -372,7 +372,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Jumlah Perempuan (OAP)</label>
-                                        <input type="number" name="femalenonoap_total" value="{{ $femalenonoap->_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="femalenonoap_total" value="{{ $population->femalenonoap_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -383,7 +383,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Total Populasi</label>
-                                        <input type="number" name="populationnonoap_total" value="{{ $populationnonoap->_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="populationnonoap_total" value="{{ $population->populationnonoap_total }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>

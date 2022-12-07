@@ -273,7 +273,7 @@ class SuperAdminController extends Controller
         'male_total' => $request->male_total,
         'female_total' => $request->female_total,
         'population_total' => $request->population_total,
-        'maleoap_total' => $request->maleopa_total,
+        'maleoap_total' => $request->maleoap_total,
         'femaleoap_total' => $request->femaleoap_total,
         'populationoap_total' => $request->populationoap_total,
         'malenonoap_total' => $request->malenonoap_total,
