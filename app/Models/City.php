@@ -15,7 +15,7 @@ class City extends Model
         'ocean_area',
         'mainland_area',
         'total_area',
-        'oap',
+        // 'oap',
         'year',
     ];
 

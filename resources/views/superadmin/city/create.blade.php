@@ -295,7 +295,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                            <!-- <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
@@ -305,7 +305,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">

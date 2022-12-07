@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('ocean_area');
             $table->string('mainland_area');
             $table->string('total_area');
-            $table->string('oap');
+            // $table->string('oap');
             $table->string('year', 4);
             $table->timestamps();
         });

@@ -88,7 +88,7 @@ class SuperAdminController extends Controller
             'ocean_area'     => $request->ocean_area,
             'mainland_area'     => $request->mainland_area,
             'total_area'     => $request->total_area,
-            'oap'     => $request->oap,
+            // 'oap'     => $request->oap,
             'year'     => $request->year,
         ]);
 

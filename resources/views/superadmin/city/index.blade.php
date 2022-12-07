@@ -269,7 +269,7 @@
                                         <th class="text-center" width="auto">Luas Lautan (KM<sup>2</sup>)</th>
                                         <th class="text-center" width="auto">Luas Daratan (KM<sup>2</sup>)</th>
                                         <th class="text-center" width="auto">Total Luas (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">OAP</th>
+                                        <!-- <th class="text-center" width="auto">OAP</th> -->
                                         <th class="text-center" width="auto">Tahun</th>
                                         <th class="text-center" width="auto">Action</th>
                                     </tr>
@@ -282,7 +282,7 @@
                                         <td class="text-center">{{ $c->ocean_area }}</td>
                                         <td class="text-center">{{ $c->mainland_area }}</td>
                                         <td class="text-center">{{ $c->total_area }}</td>
-                                        <td class="text-center">{{ $c->oap }}</td>
+                                        <!-- <td class="text-center">{{ $c->oap }}</td> -->
                                         <td class="text-center">{{ $c->year }}</td>
                                         <div class="row">
                                             <td class="text-center">
@@ -311,7 +311,7 @@
                                         <th class="text-center" width="auto">Luas Lautan (KM<sup>2</sup>)</th>
                                         <th class="text-center" width="auto">Luas Daratan (KM<sup>2</sup>)</th>
                                         <th class="text-center" width="auto">Total Luas (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">OAP</th>
+                                        <!-- <th class="text-center" width="auto">OAP</th> -->
                                         <th class="text-center" width="auto">Tahun</th>
                                         <th class="text-center" width="auto">Action</th>
                                     </tr>
