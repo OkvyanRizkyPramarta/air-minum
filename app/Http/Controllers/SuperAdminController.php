@@ -215,7 +215,8 @@ class SuperAdminController extends Controller
     public function AdminCreatePopulation()
     {
         $city = City::index();
-        return view('superadmin.population.create', compact('city'));
+        $district = District::index();
+        return view('superadmin.population.create', compact('city', 'district'));
     }
 
     /**
@@ -226,15 +227,6 @@ class SuperAdminController extends Controller
      */
     public function AdminStorePopulation(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-
-        // ]);
-
-        // if ($validator->fails()) {
-        //     Alert::toast($validator->messages()->all()[0], 'error');
-        //     return redirect()->back()->withInput();
-        // }
-
         Population::store($request);
         Alert::toast('Informasi Berhasil Disimpan', 'success');
         return redirect()->route('superadmin.table.population.index');
@@ -260,7 +252,8 @@ class SuperAdminController extends Controller
     public function AdminEditPopulation(Population $population)
     {
         $city = City::index();
-        return view('superadmin.population.edit', compact('city', 'population'));
+        $district = District::index();
+        return view('superadmin.population.edit', compact('city', 'population', 'district'));
     }
 
     /**
@@ -275,11 +268,18 @@ class SuperAdminController extends Controller
         $population = Population::findOrFail($population->id);
 
         $population->update([
-            'city_id'     => $request->city_id,
-            'male_total'=>$request->male_total,
-            'female_total'=>$request->female_total,
-            'population_total'=>$request->population_total,
-            'year'    => $request->year,
+        'city_id' => $request->city_id,
+        'district_id' => $request->district_id,
+        'male_total' => $request->male_total,
+        'female_total' => $request->female_total,
+        'population_total' => $request->population_total,
+        'maleoap_total' => $request->maleopa_total,
+        'femaleoap_total' => $request->femaleoap_total,
+        'populationoap_total' => $request->populationoap_total,
+        'malenonoap_total' => $request->malenonoap_total,
+        'femalenonoap_total' => $request->femalenonoap_total,
+        'populationnonoap_total' => $request->populationnonoap_total,
+        'year' => $request->year,
         ]);
 
         Alert::toast('Informasi Berhasil Diganti', 'success');
@@ -287,7 +287,7 @@ class SuperAdminController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from stpopuorage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

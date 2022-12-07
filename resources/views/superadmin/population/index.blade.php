@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Data Table | Notika - Notika Admin Template</title>
+    <title>Data Tabel Populasi | Notika - Notika Admin Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -212,7 +212,7 @@
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                 </li>
-                                <li><a href="">Tabel Sumur</a>
+                                <li><a href="/superadmin/table/waterwell/index">Tabel Sumur</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                 </li>
@@ -236,8 +236,8 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-										<h2>Data Table</h2>
-										<p>Welcome to PDAM TOYO <span class="bread-ntd">Admin </span></p>
+										<h2>Data Tabel Populasi</h2>
+										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
 							</div>
@@ -264,11 +264,17 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="auto">Nama Kota</th>
-                                        <th class="text-center" width="auto">Laki Laki</th>
-                                        <th class="text-center" width="auto">perempuan</th>
-                                        <th class="text-center" width="auto">Jumlah Populasi</th>
-                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">Nama Kota/Kabupaten</th>
+                                        <th class="text-center" width="auto">Nama Kecamatan</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan</th>
+                                        <th class="text-center" width="auto">Total Populasi</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan (OAP)</th>
+                                        <th class="text-center" width="auto">Total Populasi (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki Non Papua</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan Non Papua</th>
+                                        <th class="text-center" width="auto">Total Populasi Non Papua</th>
                                         <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </thead>
@@ -276,9 +282,16 @@
                                 @foreach($population as $p)
                                     <tr>
                                         <td class="text-center">{{ $p->city->name }}</td>
+                                        <td class="text-center">{{ $p->district->name }}</td>
                                         <td class="text-center">{{ $p->male_total }}</td>
                                         <td class="text-center">{{ $p->female_total }}</td>
                                         <td class="text-center">{{ $p->population_total }}</td>
+                                        <td class="text-center">{{ $p->maleoap_total }}</td>
+                                        <td class="text-center">{{ $p->femaleoap_total }}</td>
+                                        <td class="text-center">{{ $p->populationoap_total }}</td>
+                                        <td class="text-center">{{ $p->malenonoap_total }}</td>
+                                        <td class="text-center">{{ $p->femalenonoap_total }}</td>
+                                        <td class="text-center">{{ $p->populationnonoap_total }}</td>
                                         <td class="text-center">{{ $p->year }}</td>
                                         <div class="row">
                                             <td class="text-center">
@@ -302,12 +315,18 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th class="text-center" width="auto">Nama Kota</th>
-                                        <th class="text-center" width="auto">Laki Laki</th>
-                                        <th class="text-center" width="auto">perempuan</th>
+                                        <th class="text-center" width="auto">Nama Kota/Kabupaten</th>
+                                        <th class="text-center" width="auto">Nama Kecamatan</th>
+                                        <th class="text-center" width="auto">Laki - Laki</th>
+                                        <th class="text-center" width="auto">Perempuan</th>
                                         <th class="text-center" width="auto">Jumlah Populasi</th>
-                                        <th class="text-center" width="auto">Tahun</th>
-                                        <th class="text-center" width="220px;">Action</th>
+                                        <th class="text-center" width="auto">Laki - Laki (OAP)</th>
+                                        <th class="text-center" width="auto">Perempuan (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Populasi (OAP)</th>
+                                        <th class="text-center" width="auto">Laki - Laki Non Papua</th>
+                                        <th class="text-center" width="auto">Perempuan Non Papua</th>
+                                        <th class="text-center" width="auto">Jumlah Populasi Non Papua</th>
+
                                     </tr>
                                 </tfoot>
                             </table>

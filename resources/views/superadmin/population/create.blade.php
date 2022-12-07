@@ -247,12 +247,13 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
                         <div class="row" style="padding-bottom:100px;">
+
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Nama Kota</label>
+                                        <label>Nama Kota/Kabupaten</label>
                                         <div class="bootstrap-select fm-cmp-mg">
                                             <select class="selectpicker" name="city_id" data-live-search="true">
                                                 @foreach($city as $c)
@@ -263,6 +264,24 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Nama Kecamatan</label>
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker" name="district_id" data-live-search="true">
+                                                @foreach($district as $d)
+                                                <option value="{{ $d->id }}">{{ $d->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -273,6 +292,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -283,6 +303,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -293,6 +314,73 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Laki Laki (OAP)</label>
+                                        <input type="number" name="maleoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Perempuan (OAP)</label>
+                                        <input type="number" name="femaleoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Total Populasi (OAP)</label>
+                                        <input type="number" name="populationoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Laki Laki Non Papua</label>
+                                        <input type="number" name="malenonoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Perempuan Non Papua</label>
+                                        <input type="number" name="femalenonoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Total Populasi Non Papua</label>
+                                        <input type="number" name="populationnonoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
