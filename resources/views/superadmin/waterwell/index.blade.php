@@ -164,9 +164,13 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterwell/index') }}">Tabel Sumur</a>
+                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel PDAM</a>
                                         </li>
                                     </ul>
                                 </li>

@@ -245,9 +245,8 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('superadmin.table.riverintake.update', $riverintake->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.table.waterspring.store') }}" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
@@ -257,8 +256,8 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Kode BMN</label>
-                                        <input type="text" name="bmm_code" value="{{ $riverintake->bmm_code }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Kode Integrasi</label>
+                                        <input type="text" name="integration_code" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -267,8 +266,8 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Nama</label>
-                                        <input type="text" name="name" value="{{ $riverintake->name }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Pengelola</label>
+                                        <input type="text" name="administrator" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -277,18 +276,8 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Jenis Intake</label>
-                                        <input type="text" name="intake_type" value="{{ $riverintake->intake_type }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Unit</label>
-                                        <input type="text" name="unit" value="{{ $riverintake->unit }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Nama Objek Infrastruktur (Sub Sistem)</label>
+                                        <input type="text" name="sub_sistem" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +287,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Wilayah Sungai</label>
-                                        <input type="text" name="watershed" value="{{ $riverintake->watershed }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="text" name="watershed" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -308,7 +297,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Provinsi</label>
-                                        <input type="text" name="province" value="{{ $riverintake->province }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" Disabled/>
+                                        <input type="text" name="province" value="Papua" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" Disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -319,11 +308,9 @@
                                     <div class="nk-int-st">
                                         <label>Nama Kota</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" value="{{ $riverintake->city->name }}" name="city_id" data-live-search="true">
-                                                @foreach($city as $c)  
-                                                  <option value="{{ $c->id }}" {{ ($c->id == $riverintake->city->id) ? 'selected' : ''}} >
-                                                   {{ $c->name }}
-                                                  </option>
+                                            <select class="selectpicker" name="city_id" data-live-search="true">
+                                                @foreach($city as $c)
+                                                <option value="{{ $c->id }}">{{ $c->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -337,11 +324,9 @@
                                     <div class="nk-int-st">
                                         <label>Nama Kecamatan</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" value="{{ $riverintake->district->name }}" name="district_id" data-live-search="true">
-                                                @foreach($district as $d)  
-                                                  <option value="{{ $d->id }}" {{ ($d->id == $riverintake->district->id) ? 'selected' : ''}} >
-                                                   {{ $d->name }}
-                                                  </option>
+                                            <select class="selectpicker" name="district_id" data-live-search="true">
+                                                @foreach($district as $d)
+                                                <option value="{{ $d->id }}">{{ $d->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -355,11 +340,9 @@
                                     <div class="nk-int-st">
                                         <label>Nama Kelurahan</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" value="{{ $riverintake->village->name }}" name="village_id" data-live-search="true">
-                                                @foreach($village as $v)  
-                                                  <option value="{{ $v->id }}" {{ ($v->id == $riverintake->village->id) ? 'selected' : ''}} >
-                                                   {{ $v->name }}
-                                                  </option>
+                                            <select class="selectpicker" name="village_id" data-live-search="true">
+                                                @foreach($village as $v)
+                                                <option value="{{ $v->id }}">{{ $v->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -372,7 +355,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Latitude</label>
-                                        <input type="text" name="latitude" value="{{ $riverintake->latitude }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="text" name="latitude" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -382,7 +365,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Longitude</label>
-                                        <input type="text" name="longitude" value="{{ $riverintake->longitude }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="text" name="longitude" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -392,7 +375,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Orang / Jiwa</label>
-                                        <input type="text" name="people" value="{{ $riverintake->people }}"  class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="text" name="people" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -402,7 +385,27 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Debit (l/detik)</label>
-                                        <input type="text" name="debit" value="{{ $riverintake->debit }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="text" name="debit" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Nama Mata Air</label>
+                                        <input type="text" name="spring_name" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Sistem Pengambilan Air</label>
+                                        <input type="text" name="water_intake_system" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -412,17 +415,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Jenis Pompa</label>
-                                        <input type="text" name="pump_type" value="{{ $riverintake->pump_type }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Head Pompa (m)</label>
-                                        <input type="text" name="head_pompa" value="{{ $riverintake->head_pompa }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="text" name="pump_type" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -432,7 +425,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Tahun Pembuatan</label>
-                                        <input type="text" name="production_year" value="{{ $riverintake->production_year }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="text" name="production_year" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -442,7 +435,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Status Operasi</label>
-                                        <input type="text" name="operating_state" value="{{ $riverintake->operating_state }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="text" name="operating_state" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -452,14 +445,14 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Tanggal Diperbarui</label>
-                                        <input type="date" name="updated_date" value="{{ $riverintake->updated_date }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="date" name="updated_date" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <button class="btn btn-default btn-icon-notika col-md-2">
                             <i class="notika-icon notika-left-arrow"></i> 
-                            <a href="{{ url('superadmin/table/riverintake/index') }}" style="color:black;">BACK</a>
+                            <a href="{{ url('/superadmin/table/waterspring/index') }}" style="color:black;">BACK</a>
                         </button>
                         <button class="btn btn-default btn-icon-notika col-md-2" style="float: right;">                
                             SEND

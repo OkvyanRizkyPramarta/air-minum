@@ -27,6 +27,11 @@ class Village extends Model
     {
        return $this->hasMany(WaterWell::class);
     }
+
+    public function waterspring()
+    {
+       return $this->hasMany(WaterSpring::class);
+    }
     
     public static function index()
     {

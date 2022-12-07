@@ -12,6 +12,7 @@ use App\Models\Village;
 use App\Models\RiverIntake;
 use App\Models\Watertank;
 use App\Models\Waterwell;
+use App\Models\WaterSpring;
 use App\Models\Population;
 
 class SuperAdminController extends Controller
@@ -764,6 +765,136 @@ class SuperAdminController extends Controller
     public function AdminDestroyMunicipalWaterwork(MunicipalWaterwork $municipalwaterwork)
     {
         $municipalwaterwork->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function AdminIndexWaterSpring()
+    {
+        $waterspring = WaterSpring::index();
+        return view('superadmin.waterspring.index', compact('waterspring'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminCreateWaterSpring()
+    {
+        $city = City::index();
+        $district = District::index();
+        $village = Village::index();
+        return view('superadmin.waterspring.create', compact('city','district','village'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+   
+    public function AdminStoreWaterSpring(Request $request)
+    {
+
+        WaterSpring::create([
+            'integration_code' => $request->integration_code,
+            'administrator' => $request->administrator,
+            'sub_sistem' => $request->sub_sistem,
+            'watershed' => $request->watershed,
+            'province' => "Papua",
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'village_id' => $request->village_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'people' => $request->people,
+            'debit' => $request->debit,
+            'spring_name' => $request->spring_name,
+            'water_intake_system' => $request->water_intake_system,
+            'pump_type' => $request->pump_type,
+            'production_year' => $request->production_year,
+            'operating_state' => $request->operating_state,
+            'updated_date' => $request->updated_date,
+        ]);
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.waterspring.index');
+    }
+
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminShowWaterSpring($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminEditWaterSpring(WaterSpring $waterspring)
+    {
+        $city = City::index();
+        $district = District::index();
+        $village = Village::index();
+        return view('superadmin.waterspring.edit', compact('city', 'district', 'village', 'waterspring'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminUpdateWaterSpring(Request $request, WaterSpring $waterspring)
+    {
+        $waterspring = WaterSpring::findOrFail($waterspring->id);
+
+        $waterspring->update([
+            'integration_code' => $request->integration_code,
+            'administrator' => $request->administrator,
+            'sub_sistem' => $request->sub_sistem,
+            'watershed' => $request->watershed,
+            'province' => "Papua",
+            'city_id' => $request->city_id,
+            'district_id' => $request->district_id,
+            'village_id' => $request->village_id,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude,
+            'people' => $request->people,
+            'debit' => $request->debit,
+            'spring_name' => $request->spring_name,
+            'water_intake_system' => $request->water_intake_system,
+            'pump_type' => $request->pump_type,
+            'production_year' => $request->production_year,
+            'operating_state' => $request->operating_state,
+            'updated_date' => $request->updated_date,
+        ]);
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.waterspring.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminDestroyWaterSpring(WaterSpring $waterspring)
+    {
+        $waterspring->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

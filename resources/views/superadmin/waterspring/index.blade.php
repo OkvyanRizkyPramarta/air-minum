@@ -241,14 +241,14 @@
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
 										<h2>Data Table</h2>
-										<p>Welcome to PDAM TOYO</p>
+										<p>Welcome to PDAM TOYO <span class="bread-ntd">Admin </span></p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                    <a href="{{url('/superadmin/table/municipalwaterwork/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                    <a href="{{url('/superadmin/table/waterspring/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
                                 </div>
 							</div>
 						</div>
@@ -268,37 +268,56 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="auto">ID PDAM</th>
-                                        <th class="text-center" width="auto">Nama</th>
-                                        <th class="text-center" width="auto">Wilayah</th>
-                                        <th class="text-center" width="auto">Koord X (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">Koord Y (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">Elevasi (mdpl)</th>
-                                        <th class="text-center" width="auto">Terpasang L/d</th>
-                                        <th class="text-center" width="auto">Operasi L/d</th>
-                                        <th class="text-center" width="auto">Action</th>
+                                        <th class="text-center" width="auto">Kode Integrasi </th>
+                                        <th class="text-center" width="auto">Pengelola</th>
+                                        <th class="text-center" width="auto">Nama Objek Infrastruktur (Sub Sistem)</th>
+                                        <th class="text-center" width="auto">Wilayah Sungai</th>
+                                        <th class="text-center" width="auto">Provinsi</th>
+                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
+                                        <th class="text-center" width="auto">Kecamatan</th>
+                                        <th class="text-center" width="auto">Kelurahan</th>
+                                        <th class="text-center" width="auto">Latitude</th>
+                                        <th class="text-center" width="auto">Longitude</th>
+                                        <th class="text-center" width="auto">Jiwa (orang)</th>
+                                        <th class="text-center" width="auto">Debit (l/detik)</th>
+                                        <th class="text-center" width="auto">Sistem Pengambilan Air</th>
+                                        <th class="text-center" width="auto">Jenis Pompa</th>
+                                        <th class="text-center" width="auto">Tahun Pembuatan</th>
+                                        <th class="text-center" width="auto">Status Operasi</th>
+                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
+                                        <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($municipalwaterwork as $m)
+                                @foreach($waterspring as $w)
                                     <tr>
-                                        <td class="text-center">{{ $m->id }}</td>
-                                        <td class="text-center">{{ $m->name }}</td>
-                                        <td class="text-center">{{ $m->area }}</td>
-                                        <td class="text-center">{{ $m->koord_x }}</td>
-                                        <td class="text-center">{{ $m->koord_y }}</td>
-                                        <td class="text-center">{{ $m->elevasi_mdpl }}</td>
-                                        <td class="text-center">{{ $m->installed }}</td>
-                                        <td class="text-center">{{ $m->operation }}</td>
+                                        <td class="text-center">{{ $w->integration_code }}</td>
+                                        <td class="text-center">{{ $w->administrator }}</td>
+                                        <td class="text-center">{{ $w->sub_sistem }}</td>
+                                        <td class="text-center">{{ $w->watershed }}</td>
+                                        <td class="text-center">{{ $w->province }}</td>
+                                        <td class="text-center">{{ $w->city->name }}</td>
+                                        <td class="text-center">{{ $w->district->name }}</td>
+                                        <td class="text-center">{{ $w->village->name }}</td>
+                                        <td class="text-center">{{ $w->latitude }}</td>
+                                        <td class="text-center">{{ $w->longitude }}</td>
+                                        <td class="text-center">{{ $w->people }}</td>
+                                        <td class="text-center">{{ $w->debit }}</td>
+                                        <td class="text-center">{{ $w->spring_name }}</td>
+                                        <td class="text-center">{{ $w->water_intake_system	 }}</td>
+                                        <td class="text-center">{{ $w->pump_type }}</td>
+                                        <td class="text-center">{{ $w->production_year }}</td>
+                                        <td class="text-center">{{ $w->operating_state }}</td>
+                                        <td class="text-center">{{ $w->updated_date }}</td>
                                         <div class="row">
                                             <td class="text-center">
-                                                <div class="col-lg-6">
-                                                    <a href="{{ route('superadmin.table.municipalwaterwork.edit', $m->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                <div>
+                                                    <a href="{{ route('superadmin.table.waterspring.edit', $w->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <form action="{{ route('superadmin.table.municipalwaterwork.destroy', $m->id) }}" method="POST" class="d-inline">
+                                                <div>
+                                                    <form action="{{ route('superadmin.table.waterspring.destroy', $w->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
@@ -312,15 +331,24 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th class="text-center" width="auto">ID PDAM</th>
-                                        <th class="text-center" width="auto">Nama</th>
-                                        <th class="text-center" width="auto">Wilayah</th>
-                                        <th class="text-center" width="auto">Koord X (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">Koord Y (KM<sup>2</sup>)</th>
-                                        <th class="text-center" width="auto">Elevasi (mdpl)</th>
-                                        <th class="text-center" width="auto">Terpasang L/d</th>
-                                        <th class="text-center" width="auto">Operasi L/d</th>
-                                        <th class="text-center" width="auto">Action</th>
+                                        <th class="text-center" width="auto">Kode Integrasi </th>
+                                        <th class="text-center" width="auto">Pengelola</th>
+                                        <th class="text-center" width="auto">Nama Objek Infrastruktur (Sub Sistem)</th>
+                                        <th class="text-center" width="auto">Wilayah Sungai</th>
+                                        <th class="text-center" width="auto">Provinsi</th>
+                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
+                                        <th class="text-center" width="auto">Kecamatan</th>
+                                        <th class="text-center" width="auto">Kelurahan</th>
+                                        <th class="text-center" width="auto">Latitude</th>
+                                        <th class="text-center" width="auto">Longitude</th>
+                                        <th class="text-center" width="auto">Jiwa (orang)</th>
+                                        <th class="text-center" width="auto">Debit (l/detik)</th>
+                                        <th class="text-center" width="auto">Sistem Pengambilan Air</th>
+                                        <th class="text-center" width="auto">Jenis Pompa</th>
+                                        <th class="text-center" width="auto">Tahun Pembuatan</th>
+                                        <th class="text-center" width="auto">Status Operasi</th>
+                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
+                                        <th class="text-center" width="220px;">Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
