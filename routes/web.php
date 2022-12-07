@@ -87,10 +87,20 @@ Route::get('superadmin/table/waterwell/edit/{waterwell}', [SuperAdminController:
 Route::get('/superadmin/table/waterspring/index', [SuperAdminController::class, 'AdminIndexWaterSpring'])->name('superadmin.table.waterspring.index'); 
 Route::get('/superadmin/table/waterspring/create', [SuperAdminController::class, 'AdminCreateWaterSpring'])->name('superadmin.table.waterspring.create'); 
 Route::post('/superadmin/table/waterspring/create', [SuperAdminController::class, 'AdminStoreWaterSpring'])->name('superadmin.table.waterspring.store');
+Route::get('superadmin/table/waterspring/edit/{waterspring}', [SuperAdminController::class, 'AdminEditWaterSpring'])->name('superadmin.table.waterspring.edit');
 Route::put('/superadmin/table/waterspring/update/{waterspring}', [SuperAdminController::class, 'AdminUpdateWaterSpring'])->name('superadmin.table.waterspring.update');
 Route::delete('/superadmin/table/waterspring/index/{waterspring}', [SuperAdminController::class, 'AdminDestroyWaterSpring'])->name('superadmin.table.waterspring.destroy');
-Route::get('superadmin/table/waterspring/edit/{waterspring}', [SuperAdminController::class, 'AdminEditWaterSpring'])->name('superadmin.table.waterspring.edit');
 
+Route::get('/superadmin/table/file/index', [SuperAdminController::class, 'AdminIndexFile'])->name('superadmin.table.file.index'); 
+Route::get('/superadmin/table/file/create', [SuperAdminController::class, 'AdminCreateFile'])->name('superadmin.table.file.create'); 
+Route::post('/superadmin/table/file/create', [SuperAdminController::class, 'AdminStoreFile'])->name('superadmin.table.file.store');
+Route::get('superadmin/table/file/edit/{file}', [SuperAdminController::class, 'AdminEditFile'])->name('superadmin.table.file.edit');
+Route::put('/superadmin/table/file/update/{file}', [SuperAdminController::class, 'AdminUpdateFile'])->name('superadmin.table.file.update');
+Route::delete('/superadmin/table/file/index/{file}', [SuperAdminController::class, 'AdminDestroyFile'])->name('superadmin.table.file.destroy');
+
+// Route::get('/superadmin/table/pdf/index', function () {
+//     return view('superadmin.file.index');
+// });
 
 Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::get('/superadmin/index', function () {

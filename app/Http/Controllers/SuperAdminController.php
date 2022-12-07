@@ -14,6 +14,7 @@ use App\Models\Watertank;
 use App\Models\Waterwell;
 use App\Models\WaterSpring;
 use App\Models\Population;
+use App\Models\File;
 
 class SuperAdminController extends Controller
 {
@@ -895,6 +896,103 @@ class SuperAdminController extends Controller
     public function AdminDestroyWaterSpring(WaterSpring $waterspring)
     {
         $waterspring->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function AdminIndexFile()
+    {
+        $file = File::index();
+        return view('superadmin.file.index', compact('file'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminCreateFile()
+    {
+        $city = City::index();
+        return view('superadmin.file.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+   
+    public function AdminStoreFile(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id');
+        
+        $file = new File;
+        $file->name = $request->file('file')->getClientOriginalName();
+        $file->file = $request->file('file')->store('public/files');
+
+        $file->city()->associate($city);
+
+        $file->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.file.index');
+    }
+
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminShowFile($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminEditFile(File $file)
+    {
+        $city = City::index();
+        return view('superadmin.file.edit', compact('city', 'file'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminUpdateFile(Request $request, File $file)
+    {
+        $file = File::findOrFail($file->id);
+
+        
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.waterspring.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminDestroyFile(File $file)
+    {
+        $file->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

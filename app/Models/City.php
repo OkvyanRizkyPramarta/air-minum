@@ -43,6 +43,11 @@ class City extends Model
     {
        return $this->hasMany(WaterSpring::class);
     }
+
+    public function file()
+    {
+       return $this->hasMany(File::class);
+    }
     
     public static function index()
     {
