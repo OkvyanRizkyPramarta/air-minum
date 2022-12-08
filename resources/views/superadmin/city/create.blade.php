@@ -148,7 +148,7 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
@@ -200,7 +200,7 @@
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                 </li>
-                                <li><a href="">Tabel Desa / Kelurahan</a>
+                                <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                 </li>
@@ -302,18 +302,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <!-- <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>OAP</label>
-                                        <input type="number" name="oap" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="row">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">

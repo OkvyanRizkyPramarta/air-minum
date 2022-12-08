@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class Village extends Model
 {
@@ -13,26 +14,6 @@ class Village extends Model
         'name',
     ];
 
-    public function riverintake()
-    {
-       return $this->hasMany(RiverIntake::class);
-    }
-
-    public function watertank()
-    {
-       return $this->hasMany(WaterTank::class);
-    }
-
-    public function waterwell()
-    {
-       return $this->hasMany(WaterWell::class);
-    }
-
-    public function waterspring()
-    {
-       return $this->hasMany(WaterSpring::class);
-    }
-    
     public static function index()
     {
         return Village::all();

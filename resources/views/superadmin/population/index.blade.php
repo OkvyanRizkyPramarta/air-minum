@@ -158,13 +158,13 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                         </li>
-                                        <li><a href="">Tabel Sumur</a>
+                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                         </li>
@@ -210,13 +210,13 @@
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                 </li>
-                                <li><a href="">Tabel Desa / Kelurahan</a>
+                                <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                 </li>
-                                <li><a href="/superadmin/table/waterwell/index">Tabel Sumur</a>
+                                <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                 </li>

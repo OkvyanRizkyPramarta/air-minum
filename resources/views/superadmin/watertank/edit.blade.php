@@ -148,7 +148,7 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
@@ -200,7 +200,7 @@
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                 </li>
-                                <li><a href="">Tabel Desa / Kelurahan</a>
+                                <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                 </li>

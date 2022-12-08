@@ -202,6 +202,90 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
+    public function AdminIndexVillage()
+    {
+        $village = Village::index();
+        return view('superadmin.village.index', compact('village'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminCreateVillage()
+    {
+        return view('superadmin.village.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminStoreVillage(Request $request)
+    {
+        Village::store($request);
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.village.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminShowVillage($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminEditVillage(Village $village)
+    {
+        return view('superadmin.village.edit', compact('village'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminUpdateVillage(Request $request, Village $village)
+    {
+        $village = Village::findOrFail($village->id);
+
+        $village->update([
+            'name'     => $request->name,
+        ]);
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.village.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminDestroyVillage(Village $village)
+    {
+        $village->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
     public function AdminIndexPopulation()
     {
         $population = Population::index();
@@ -599,7 +683,7 @@ class SuperAdminController extends Controller
         ]);
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('superadmin.table.riverintake.index');
+        return redirect()->route('superadmin.table.waterwell.index');
     }
 
     

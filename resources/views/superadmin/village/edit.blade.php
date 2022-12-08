@@ -234,8 +234,8 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-										<h2>Form Components</h2>
-										<p>Welcome to PDAM TOYO </p>
+										<h2>Data Tabel Desa/Kelurahan</h2>
+										<p>Provinsi Papua</p>
 									</div>
 								</div>
 							</div>
@@ -249,221 +249,27 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('superadmin.table.waterspring.update', $waterspring->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.table.village.update', $village->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-            <div class="row">
+        <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                        <div class="row" style="padding-bottom:100px;">
-                        <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Kode Integrasi</label>
-                                        <input type="text" name="integration_code" value="{{ $waterspring->integration_code }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Pengelola</label>
-                                        <input type="text" name="administrator" value="{{ $waterspring->administrator }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Nama Objek Infrastruktur (Sub Sistem)</label>
-                                        <input type="text" name="sub_sistem" value="{{ $waterspring->sub_sistem }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Wilayah Sungai</label>
-                                        <input type="text" name="watershed" value="{{ $waterspring->watershed }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Provinsi</label>
-                                        <input type="text" name="province" value="{{ $waterspring->province }}" value="Papua" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" Disabled/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Nama Kota</label>
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" value="{{ $waterspring->city->name }}" name="city_id" data-live-search="true">
-                                                @foreach($city as $c)  
-                                                  <option value="{{ $c->id }}" {{ ($c->id == $waterspring->city->id) ? 'selected' : ''}} >
-                                                   {{ $c->name }}
-                                                  </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Nama Kecamatan</label>
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" value="{{ $waterspring->district->name }}" name="district_id" data-live-search="true">
-                                                @foreach($district as $d)  
-                                                  <option value="{{ $d->id }}" {{ ($d->id == $waterspring->district->id) ? 'selected' : ''}} >
-                                                   {{ $d->name }}
-                                                  </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Nama Kelurahan</label>
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" value="{{ $waterspring->village->name }}" name="village_id" data-live-search="true">
-                                                @foreach($village as $v)  
-                                                  <option value="{{ $v->id }}" {{ ($v->id == $waterspring->village->id) ? 'selected' : ''}} >
-                                                   {{ $v->name }}
-                                                  </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Latitude</label>
-                                        <input type="text" name="latitude" value="{{ $waterspring->latitude }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Longitude</label>
-                                        <input type="text" name="longitude" value="{{ $waterspring->longitude }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Orang / Jiwa</label>
-                                        <input type="text" name="people" value="{{ $waterspring->people }}"  class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Debit (l/detik)</label>
-                                        <input type="text" name="debit" value="{{ $waterspring->debit }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Nama Mata Air</label>
-                                        <input type="text" name="spring_name" value="{{ $waterspring->spring_name }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Sistem Pengambilan Air</label>
-                                        <input type="text" name="water_intake_system" value="{{ $waterspring->water_intake_system }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Jenis Pompa</label>
-                                        <input type="text" name="pump_type" value="{{ $waterspring->pump_type }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Tahun Pembuatan</label>
-                                        <input type="text" name="production_year" value="{{ $waterspring->production_year }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Status Operasi</label>
-                                        <input type="text" name="operating_state" value="{{ $waterspring->operating_state }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Tanggal Diperbarui</label>
-                                        <input type="date" name="updated_date" value="{{ $waterspring->updated_date }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Nama Desa Kelurahan</label>
+                                        <input type="text" name="name" value="{{ $village->name}}"  class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <button class="btn btn-default btn-icon-notika col-md-2">
                             <i class="notika-icon notika-left-arrow"></i> 
-                            <a href="{{ url('superadmin/table/riverintake/index') }}" style="color:black;">BACK</a>
+                            <a href="{{ url('/superadmin/table/village/index') }}" style="color:black;">BACK</a>
                         </button>
                         <button class="btn btn-default btn-icon-notika col-md-2" style="float: right;">                
                             SEND

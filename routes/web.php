@@ -57,6 +57,13 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::put('/superadmin/table/district/update/{district}', [SuperAdminController::class, 'AdminUpdateDistrict'])->name('superadmin.table.district.update');
     Route::delete('/superadmin/table/district/index/{district}', [SuperAdminController::class, 'AdminDestroyDistrict'])->name('superadmin.table.district.destroy');
 
+    Route::get('/superadmin/table/village/index', [SuperAdminController::class, 'AdminIndexVillage'])->name('superadmin.table.village.index');
+Route::get('/superadmin/table/village/create', [SuperAdminController::class, 'AdminCreateVillage'])->name('superadmin.table.village.create'); 
+Route::post('/superadmin/table/village/create', [SuperAdminController::class, 'AdminStoreVillage'])->name('superadmin.table.village.store');
+Route::get('/superadmin/table/village/edit/{village}', [SuperAdminController::class, 'AdminEditVillage'])->name('superadmin.table.village.edit');
+Route::put('/superadmin/table/village/update/{village}', [SuperAdminController::class, 'AdminUpdateVillage'])->name('superadmin.table.village.update');
+Route::delete('/superadmin/table/village/index/{village}', [SuperAdminController::class, 'AdminDestroyVillage'])->name('superadmin.table.village.destroy');
+
     Route::get('/superadmin/table/population/index', [SuperAdminController::class, 'AdminIndexPopulation'])->name('superadmin.table.population.index'); 
     Route::get('/superadmin/table/population/create', [SuperAdminController::class, 'AdminCreatePopulation'])->name('superadmin.table.population.create'); 
     Route::post('/superadmin/table/population/create', [SuperAdminController::class, 'AdminStorePopulation'])->name('superadmin.table.population.store');
