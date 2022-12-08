@@ -317,12 +317,12 @@
                                         <div class="row">
                                             <td class="text-center">
                                                 <div>
-                                                    <a href="{{ route('superadmin.table.riverintake.edit', $r->bmm_code) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                    <a href="{{ route('superadmin.table.riverintake.edit', $r->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
                                                 <div>
-                                                    <form action="{{ route('superadmin.table.riverintake.destroy', $r->bmm_code) }}" method="POST" class="d-inline">
+                                                    <form action="{{ route('superadmin.table.riverintake.destroy', $r->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
