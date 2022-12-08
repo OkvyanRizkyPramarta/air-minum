@@ -142,15 +142,11 @@
     <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Halaman Utama</a>
-                                    <ul class="collapse dropdown-header-top">
-                                        <li><a href="index.html">Dashboard One</a></li>
-                                        <li><a href="index-2.html">Dashboard Two</a></li>
-                                    </ul>
+                                <li><a data-target="#Charts" href="{{ url('/superadmin/index') }}">Halaman Utama</a>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
@@ -190,21 +186,13 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                        <li class="active"><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
+                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
-                        <div id="Home" class="tab-pane in notika-tab-menu-bg animated flipInX">
-                            <ul class="notika-main-menu-dropdown">
-                                <li><a href="index.html">Dashboard One</a>
-                                </li>
-                                <li><a href="index-2.html">Dashboard Two</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
+                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
                                 </li>
@@ -241,8 +229,8 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="breadcomb-list">
 						<div class="row">
-							<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="height:100px;margin-top:100px;">
-									<h2 class="center-text" style="text-align: center;">Halaman {{ Auth::user()->name }}</h2>
+							<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="height:200px;margin-top:150px;">
+								<h2 class="center-text" style="text-align: center;">Halaman {{ Auth::user()->name }}</h2>
 							</div>
 						</div>
 					</div>
