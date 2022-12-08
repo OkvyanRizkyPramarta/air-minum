@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
-        <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
     <!-- font awesome CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css') }}">
@@ -128,8 +128,8 @@
         </div>
     </div>
     <!-- End Header Top Area -->
-    <!-- Mobile Menu start -->
-    <div class="mobile-menu-area" style="background-color:#61BDEB;">
+      <!-- Mobile Menu start -->
+      <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
@@ -223,8 +223,8 @@
             </div>
         </div>
     </div>
-  <!-- Main Menu area End-->
-	<!-- Breadcomb area Start-->
+    <!-- Main Menu area End-->
+	  <!-- Breadcomb area Start-->
 	<div class="breadcomb-area">
 		<div class="container">
 			<div class="row">
@@ -249,99 +249,68 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('superadmin.table.municipalwaterwork.update', $municipalwaterwork->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.table.file.update', $file->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                    <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Nama</label>
-                                        <input type="text" name="name" value="{{ $municipalwaterwork->name }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <label>Nama Kota</label>
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker" value="{{ $file->city->name }}" name="city_id" data-live-search="true">
+                                                @foreach($city as $c)  
+                                                  <option value="{{ $c->id }}" {{ ($c->id == $file->city->id) ? 'selected' : ''}} >
+                                                   {{ $c->name }}
+                                                  </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Wilayah</label>
-                                        <input type="text" name="area" value="{{ $municipalwaterwork->area }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                            <label>Nama Berkas</label>
+                                            <input type="text" name="name" value="{{ $file->name }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                      <label>Kerkas PDF</label>
+                                      <input type="file" name="file" value="{{ $file->file }}" class="form-control" >
+                                      </br>
+                                      <iframe width="550px" width="250px" src="{{asset('storage/'.$file->file)}}"></iframe>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Koord X</label>
-                                        <input type="text" name="koord_x" value="{{ $municipalwaterwork->koord_x }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Koord Y</label>
-                                        <input type="text" name="koord_y" value="{{ $municipalwaterwork->koord_y }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Elevasi (mdpl)</label>
-                                        <input type="text" name="elevasi_mdpl" value="{{ $municipalwaterwork->elevasi_mdpl }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Terpasang (L/d)</label>
-                                        <input type="number" name="installed" value="{{ $municipalwaterwork->installed }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>Operasi (L/d)</label>
-                                        <input type="number" name="operation" value="{{ $municipalwaterwork->operation }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    <div class="form-group ic-cmp-int">
+                                        <div class="form-ic-cmp">
+                                        </div>
+                                        <div class="nk-int-st">
+                                            <label>Year</label>
+                                            <input type="text" name="year" value="{{ $file->year }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <button class="btn btn-default btn-icon-notika col-md-2">
                             <i class="notika-icon notika-left-arrow"></i> 
-                            <a href="{{ url('/superadmin/table/municipalwaterwork/index') }}" style="color:black;">BACK</a>
+                            <a href="{{ url('/superadmin/table/file/index') }}" style="color:black;">BACK</a>
                         </button>
                         <button class="btn btn-default btn-icon-notika col-md-2" style="float: right;">                
                             SEND

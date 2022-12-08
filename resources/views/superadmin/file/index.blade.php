@@ -170,7 +170,9 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel PDAM</a>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -220,7 +222,9 @@
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel PDAM</a>
+                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
                                 </li>
                             </ul>
                         </div>
@@ -270,27 +274,27 @@
                                     <tr>
                                         <th class="text-center" width="auto">ID</th>
                                         <th class="text-center" width="auto">Nama Kota</th>
-                                        <th class="text-center" width="auto">Nama File</th>
+                                        <th class="text-center" width="auto">Nama Berkas</th>
                                         <th class="text-center" width="auto">Tahun</th>
                                         <th class="text-center" width="auto">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
+                                @foreach($file as $f)
                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">KABUPATEN KEPULAUAN YAPEN</td>
-                                        <td class="text-center"><p><a href="{{ asset ('storage/pdf/JARINGAN PIPA.pdf')}}" target="_blank">JARINGAN PIPA</a>.</p></td>
-                                        <td class="text-center">2021</td>
+                                        <td class="text-center">{{ $f->id }}</td>
+                                        <td class="text-center">{{ $f->city->name }}</td>
+                                        <td class="text-center"><p><a href="{{ asset ('storage/'.$f->file)}}" target="_blank">{{ $f->name }}</a>.</p></td>
+                                        <td class="text-center">{{ $f->year }}</td>
                                         <div class="row">
                                             <td class="text-center">
                                                 <div class="col-lg-6">
-                                                    <a href="" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                    <a href="{{ route('superadmin.table.file.edit', $f->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <form action="" method="POST" class="d-inline">
+                                                    <form action="{{ route('superadmin.table.file.destroy', $f->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
@@ -300,7 +304,7 @@
                                             </td>
                                         </div>
                                     </tr>
-                                    
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>

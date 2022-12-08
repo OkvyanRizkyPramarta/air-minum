@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('city_id');
             $table->string('name');
             $table->string('file');
+            $table->string('year');
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('cities');

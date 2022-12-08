@@ -932,8 +932,9 @@ class SuperAdminController extends Controller
         $city->id = $request->get('city_id');
         
         $file = new File;
-        $file->name = $request->file('file')->getClientOriginalName();
-        $file->file = $request->file('file')->store('public/files');
+        $file->name = $request->name;
+        $file->file = $request->file('file')->store('files', 'public');
+        $file->year = $request->year;
 
         $file->city()->associate($city);
 
@@ -978,10 +979,38 @@ class SuperAdminController extends Controller
     {
         $file = File::findOrFail($file->id);
 
-        
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $file->update([
+                'name'=>$request->name,
+                'city_id' => $request->city_id,
+                'year'     => $request->year,
+            ]);
+
+            $file->city()->associate($city);
+
+        } else {
+
+            if ($file->file&&file_exists(storage_path('app/public/'.$file->file))) {
+                \Storage::delete('public/'.$file->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $file->update([
+            'name'     => $request->name,
+            'city_id' => $request->city_id,
+            'file'     => $path->hashName(),
+            'year'     => $request->year,
+        ]);
+        }
+
 
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('superadmin.table.waterspring.index');
+        return redirect()->route('superadmin.table.file.index');
     }
 
     /**

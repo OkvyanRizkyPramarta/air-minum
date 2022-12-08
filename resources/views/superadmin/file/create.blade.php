@@ -160,7 +160,9 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel PDAM</a>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -210,7 +212,9 @@
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel PDAM</a>
+                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
                                 </li>
                             </ul>
                         </div>
@@ -267,24 +271,34 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                            <label>Nama Berkas</label>
+                                            <input type="text" name="name" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                            <label>Kerkas PDF</label>
+                                            <input type="file" name="file" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        </div>
+                                </div>
+                            </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
                                     <div class="form-group ic-cmp-int">
                                         <div class="form-ic-cmp">
                                         </div>
                                         <div class="nk-int-st">
-                                            <label>Nama File</label>
-                                            <input type="text" name="name" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                            <label>Year</label>
+                                            <input type="text" name="year" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <label>File PDF</label>
-                                        <input type="file" name="file" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>

@@ -13,6 +13,7 @@ class File extends Model
         'city_id',
         'name',
         'file',
+        'year',
     ];
 
     public function city()

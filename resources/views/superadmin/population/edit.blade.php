@@ -160,6 +160,10 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                         </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -207,6 +211,10 @@
                                 <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
                                 </li>
                             </ul>
                         </div>
