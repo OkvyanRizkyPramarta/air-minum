@@ -40,9 +40,10 @@ Route::get('/signout', [AuthController::class, 'signOut'])->name('signout');
 // });
 
 Route::middleware(['auth', 'SuperAdmin'])->group(function () {
-    Route::get('/superadmin/index', function () {
-        return view('superadmin.index');
-    });
+    Route::get('/superadmin/index', [SuperAdminController::class, 'AdminIndexChart'])->name('superadmin.chart.index');
+    // Route::get('/superadmin/index', function () {
+    //     return view('superadmin.index');
+    // });
     Route::get('/superadmin/table/city/index', [SuperAdminController::class, 'AdminIndexCity'])->name('superadmin.table.city.index');
     Route::get('/superadmin/table/city/create', [SuperAdminController::class, 'AdminCreateCity'])->name('superadmin.table.city.create'); 
     Route::post('/superadmin/table/city/create', [SuperAdminController::class, 'AdminStoreCity'])->name('superadmin.table.city.store');
@@ -112,6 +113,13 @@ Route::delete('/superadmin/table/village/index/{village}', [SuperAdminController
     Route::get('superadmin/table/file/edit/{file}', [SuperAdminController::class, 'AdminEditFile'])->name('superadmin.table.file.edit');
     Route::put('/superadmin/table/file/update/{file}', [SuperAdminController::class, 'AdminUpdateFile'])->name('superadmin.table.file.update');
     Route::delete('/superadmin/table/file/index/{file}', [SuperAdminController::class, 'AdminDestroyFile'])->name('superadmin.table.file.destroy');
+
+    Route::get('/superadmin/table/map/index', [SuperAdminController::class, 'AdminIndexMap'])->name('superadmin.table.map.index'); 
+    Route::get('/superadmin/table/map/create', [SuperAdminController::class, 'AdminCreateMap'])->name('superadmin.table.map.create'); 
+    Route::post('/superadmin/table/map/create', [SuperAdminController::class, 'AdminStoreMap'])->name('superadmin.table.map.store');
+    Route::get('superadmin/table/map/edit/{map}', [SuperAdminController::class, 'AdminEditMap'])->name('superadmin.table.map.edit');
+    Route::put('/superadmin/table/map/update/{map}', [SuperAdminController::class, 'AdminUpdateMap'])->name('superadmin.table.map.update');
+    Route::delete('/superadmin/table/map/index/{map}', [SuperAdminController::class, 'AdminDestroyMap'])->name('superadmin.table.map.destroy');
 });
 
 Route::middleware(['auth', 'AdminSub'])->group(function () {

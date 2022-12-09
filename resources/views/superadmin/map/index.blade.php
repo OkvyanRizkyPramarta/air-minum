@@ -120,14 +120,14 @@
                                                     <div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>
                                                 </div>
                                                 <div class="hd-mg-ctn">
-                                                    <h3>{{ Auth::user()->name }}</h3>
+                                                    <h3>Glenn Jecobs</h3>
                                                     <p>Available</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="hd-mg-va">
-                                        <a href="{{ route('signout') }}">Logout</a>
+                                        <a href="#">Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -142,11 +142,15 @@
     <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-target="#Charts" href="{{ url('/superadmin/index') }}">Halaman Utama</a>
+                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Halaman Utama</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="index.html">Dashboard One</a></li>
+                                        <li><a href="index-2.html">Dashboard Two</a></li>
+                                    </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
@@ -154,7 +158,7 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
@@ -186,19 +190,27 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li class="active"><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                        <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
+                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
-                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
+                        <div id="Home" class="tab-pane in notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="index.html">Dashboard One</a>
+                                </li>
+                                <li><a href="index-2.html">Dashboard Two</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                 </li>
-                                <li><a href="">Tabel Desa / Kelurahan</a>
+                                <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                 </li>
@@ -229,37 +241,19 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="breadcomb-list">
 						<div class="row">
-							<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="height:100px;margin-top:50px;">
-								<h2 class="center-text" style="text-align: center;">Halaman {{ Auth::user()->name }}</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-    <!-- Breadcomb area Start-->
-	<div class="breadcomb-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="breadcomb-list">
-						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
-									<div class="breadcomb-icon">
-										<i class="notika-icon notika-bar-chart"></i>
-									</div>
 									<div class="breadcomb-ctn">
-										<h2>Bar Charts</h2>
-										<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
+										<h2>Data Table</h2>
+										<p>Welcome to PDAM TOYO</p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
-									<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-								</div>
+									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+                                    <a href="{{url('/superadmin/table/map/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                </div>
 							</div>
 						</div>
 					</div>
@@ -268,73 +262,67 @@
 		</div>
 	</div>
 	<!-- Breadcomb area End-->
-    <!-- Bar Chart area End-->
-    <div class="bar-chart-area">
+    <!-- Data Table area Start-->
+    <div class="data-table-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="bar-chart-wp">
-                        <canvas height="150px" width="180px;" id="population1"></canvas>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" width="auto">ID Kota</th>
+                                        <th class="text-center" width="auto">Nama Kota</th>
+                                        <th class="text-center" width="auto">Nama Berkas</th>
+                                        <th class="text-center" width="auto">Gambar</th>
+                                        <th class="text-center" width="220px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($map as $m)
+                                    <tr>
+                                        <td class="text-center">{{ $m->id }}</td>
+                                        <td class="text-center">{{ $m->city->name }}</td>
+                                        <td class="text-center">{{ $m->name }}</td>
+                                        <td class="text-center"><img src="{{ asset ('storage/'.$m->image)}}" width="150px;"></img></td>
+                                        <div class="row">
+                                            <td class="text-center">
+                                                <div class="col-lg-6">
+                                                    <a href="{{ route('superadmin.table.map.edit', $m->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                        Edit
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <form action="{{ route('superadmin.table.map.destroy', $m->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                                                        Delete</a>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="text-center" width="auto">ID Kota</th>
+                                        <th class="text-center" width="auto">Nama Kota</th>
+                                        <th class="text-center" width="auto">Nama Berkas</th>
+                                        <th class="text-center" width="auto">Gambar</th>
+                                        <th class="text-center" width="220px;">Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Bar Chart area End-->
-    <div class="container">
-            <canvas id="myChart" width="100" height="100"></canvas>
-        </div>
-        <script>
-            var ctx = document.getElementById("myChart");
-            var myChart = new Chart(ctx, {
-                // tipe chart
-                type: 'bar',
-                data: {
-
-                    //karena hanya menggunakan 2 batang
-                    //maka buat dua lebel, yaitu lebel laki-laki dan perempuan
-                    labels: ['Laki-laki', 'Perempuan'],
-
-                    //dataset adalah data yang akan ditampilkan
-                    datasets: [{
-                            label: 'jumlah mahasiswa',
-
-                            //karena hanya menggunakan 2 batang/bar
-                            //maka 2 sql yang dibutuhkan
-                            //hitung jumlah mahasiswa laki-laki dan jumlah mahasiswa perempuan
-                            data: [
-                                20, 
-                                30,
-                            ],
-
-                            //atur background barchartnya
-                            //karena cuma dua, maka 2 saja yang diatur
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)'
-                            ],
-
-                            //atur border barchartnya
-                            //karena cuma dua, maka 2 saja yang diatur
-                            borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                    }
-                }
-            });
-        </script>
+    <!-- Data Table area End-->
     <!-- Start Footer area-->
     <div class="footer-copyright-area">
         <div class="container">
@@ -392,10 +380,9 @@
     <script src="{{ asset('admin/js/knob/jquery.knob.js') }}"></script>
     <script src="{{ asset('admin/js/knob/jquery.appear.js') }}"></script>
     <script src="{{ asset('admin/js/knob/knob-active.js') }}"></script>
-    <!-- Charts JS
-	============================================ -->
-    <script src="{{ asset('admin/js/charts/Chart.js') }}"></script>
-    <script src="{{ asset('admin/js/charts/bar-chart.js') }}"></script>
+    <!--  Chat JS
+		============================================ -->
+    <script src="{{ asset('admin/js/chat/jquery.chat.js') }}"></script>
     <!--  todo JS
 		============================================ -->
     <script src="{{ asset('admin/js/todo/jquery.todo.js') }}"></script>
@@ -413,63 +400,6 @@
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('admin/js/main.js') }}"></script>
-
-<script type="text/javascript">
-(function ($) {
-    "use strict";
-	 /*----------------------------------------*/
-	/*  1.  Bar Chart
-	/*----------------------------------------*/
-
-	var ctx = document.getElementById("population1");
-	var population1 = new Chart(ctx, {
-		type: 'bar',
-		data: {
-			labels: [
-                @php
-                foreach($district as $d) {
-                    echo "['".$d->name."'],";
-                }
-                @endphp
-            ],
-			datasets: [{
-				label: 'Bar Chart',
-				data: [
-                    @php
-                    foreach($population_total as $pt) {
-                        echo "['".$pt->city_id."'],";
-                    }
-                @endphp
-                ],
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgb(50,205,50, 0.2)',
-					'rgba(255, 206, 86, 0.2)',
-					'rgba(75, 192, 192, 0.2)'
-				],
-				borderColor: [
-					'rgba(255,99,132,1)',
-					'rgba(54, 162, 235, 1)',
-					'rgba(255, 206, 86, 1)',
-					'rgba(75, 192, 192, 1)'
-				],
-				borderWidth: 1
-			}]
-		},
-		options: {
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero:true
-					}
-				}]
-			}
-		}
-	});
-})(jQuery); 
-</script>
-
-    
 </body>
 
 </html>

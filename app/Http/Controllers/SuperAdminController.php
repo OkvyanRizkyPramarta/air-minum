@@ -15,6 +15,7 @@ use App\Models\Waterwell;
 use App\Models\WaterSpring;
 use App\Models\Population;
 use App\Models\File;
+use App\Models\Map;
 
 class SuperAdminController extends Controller
 {
@@ -1111,11 +1112,143 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
+    public function AdminIndexMap()
+    {
+        $map = Map::index();
+        return view('superadmin.map.index', compact('map'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminCreateMap()
+    {
+        $city = City::index();
+        return view('superadmin.map.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+   
+    public function AdminStoreMap(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id');
+        
+        $map = new Map;
+        $map->name = $request->name;
+        $map->image = $request->file('image')->store('images', 'public');
+
+        $map->city()->associate($city);
+
+        $map->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.table.map.index');
+    }
+
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminShowMap($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminEditMap(Map $map)
+    {
+        $city = City::index();
+        return view('superadmin.map.edit', compact('city', 'map'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminUpdateMap(Request $request, Map $map)
+    {
+        $map = Map::findOrFail($map->id);
+
+        $city = new City;
+
+        if($request->file('image') == "") {
+
+            $map->update([
+                'name'=>$request->name,
+                'city_id' => $request->city_id,
+            ]);
+
+            $map->city()->associate($city);
+
+        } else {
+
+            if ($map->image&&file_exists(storage_path('app/public/'.$map->image))) {
+                \Storage::delete('public/'.$map->image);
+            }
+
+        $path = $request->file('image');
+        $path->storeAs('public/', $path->hashName());
+
+        $map->update([
+            'name'     => $request->name,
+            'city_id' => $request->city_id,
+            'image'     => $path->hashName(),
+        ]);
+        }
+
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.table.map.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function AdminDestroyMap(Map $map)
+    {
+        $map->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function AdminIndexChart()
+    {
+        $district = District::all();
+        $population = $topics->find(2);
+        $population_total = Population::all();
+        //$population_total = Population::where('district_id')->get('population_total');
+        return view('superadmin.index', compact('district','population_total'));
+    }
+
     public function index()
     {
         //
