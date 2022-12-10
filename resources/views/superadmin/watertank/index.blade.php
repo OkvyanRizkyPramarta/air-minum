@@ -244,8 +244,8 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-										<h2>Data Table</h2>
-										<p>Welcome to PDAM TOYO <span class="bread-ntd">Admin </span></p>
+                                        <h2>Data Tabel Tampungan Air Baku</h2>
+										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
 							</div>

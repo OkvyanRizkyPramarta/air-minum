@@ -234,8 +234,8 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-										<h2>Data Tabel Desa/Kelurahan</h2>
-										<p>Provinsi Papua</p>
+                    <h2>Halaman Edit Data Desa/Kelurahan</h2>
+										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
 							</div>
