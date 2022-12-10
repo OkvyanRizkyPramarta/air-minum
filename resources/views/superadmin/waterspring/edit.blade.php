@@ -110,14 +110,14 @@
                                                     <div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>
                                                 </div>
                                                 <div class="hd-mg-ctn">
-                                                    <h3>Glenn Jecobs</h3>
+                                                <h3>{{ Auth::user()->name }}</h3>
                                                     <p>Available</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="hd-mg-va">
-                                        <a href="#">Logout</a>
+                                        <a href="{{ route('signout') }}">Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -386,7 +386,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Orang / Jiwa</label>
-                                        <input type="text" name="people" value="{{ $waterspring->people }}"  class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="people" value="{{ $waterspring->people }}"  class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -396,7 +396,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Debit (l/detik)</label>
-                                        <input type="text" name="debit" value="{{ $waterspring->debit }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="debit" value="{{ $waterspring->debit }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -436,7 +436,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Tahun Pembuatan</label>
-                                        <input type="text" name="production_year" value="{{ $waterspring->production_year }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        <input type="number" name="production_year" value="{{ $waterspring->production_year }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
