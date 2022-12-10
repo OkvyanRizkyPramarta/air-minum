@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SuperAdminController;
 /*
 |--------------------------------------------------------------------------
@@ -14,41 +15,24 @@ use App\Http\Controllers\SuperAdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('user.index');
-});
+Route::get('/', [UserController::class, 'UserIndex'])->name('user.index');
+Route::post('/', [UserController::class, 'UserStoreComment'])->name('user.comment.store');
 
 Route::get('/peta', function () {
     return view('user.peta');
 });
 
-
-// Route::get('/login', function () {
-//     return view('auth.login');
-// });
-
-// Route::get('/tablesuperadmin', function () {
-//     return view('tablesuperadmin');
-// });
-
-// Route::get('/formsuperadmin', function () {
-//     return view('formsuperadmin');
-// });
+Route::get('/ulasan', [UserController::class, 'UserUlasan'])->name('user.ulasan');
 
 // login Owner
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->name('login.admin')->middleware('guest');
 Route::get('/signout', [AuthController::class, 'signOut'])->name('signout');
 
-// Route::get('/superadmin/table/pdf/index', function () {
-//     return view('superadmin.file.index');
-// });
-
 Route::middleware(['auth', 'SuperAdmin'])->group(function () {
+
     Route::get('/superadmin/index', [SuperAdminController::class, 'AdminIndexChart'])->name('superadmin.chart.index');
-    // Route::get('/superadmin/index', function () {
-    //     return view('superadmin.index');
-    // });
+
     Route::get('/superadmin/table/city/index', [SuperAdminController::class, 'AdminIndexCity'])->name('superadmin.table.city.index');
     Route::get('/superadmin/table/city/create', [SuperAdminController::class, 'AdminCreateCity'])->name('superadmin.table.city.create'); 
     Route::post('/superadmin/table/city/create', [SuperAdminController::class, 'AdminStoreCity'])->name('superadmin.table.city.store');
@@ -64,11 +48,11 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::delete('/superadmin/table/district/index/{district}', [SuperAdminController::class, 'AdminDestroyDistrict'])->name('superadmin.table.district.destroy');
 
     Route::get('/superadmin/table/village/index', [SuperAdminController::class, 'AdminIndexVillage'])->name('superadmin.table.village.index');
-Route::get('/superadmin/table/village/create', [SuperAdminController::class, 'AdminCreateVillage'])->name('superadmin.table.village.create'); 
-Route::post('/superadmin/table/village/create', [SuperAdminController::class, 'AdminStoreVillage'])->name('superadmin.table.village.store');
-Route::get('/superadmin/table/village/edit/{village}', [SuperAdminController::class, 'AdminEditVillage'])->name('superadmin.table.village.edit');
-Route::put('/superadmin/table/village/update/{village}', [SuperAdminController::class, 'AdminUpdateVillage'])->name('superadmin.table.village.update');
-Route::delete('/superadmin/table/village/index/{village}', [SuperAdminController::class, 'AdminDestroyVillage'])->name('superadmin.table.village.destroy');
+    Route::get('/superadmin/table/village/create', [SuperAdminController::class, 'AdminCreateVillage'])->name('superadmin.table.village.create'); 
+    Route::post('/superadmin/table/village/create', [SuperAdminController::class, 'AdminStoreVillage'])->name('superadmin.table.village.store');
+    Route::get('/superadmin/table/village/edit/{village}', [SuperAdminController::class, 'AdminEditVillage'])->name('superadmin.table.village.edit');
+    Route::put('/superadmin/table/village/update/{village}', [SuperAdminController::class, 'AdminUpdateVillage'])->name('superadmin.table.village.update');
+    Route::delete('/superadmin/table/village/index/{village}', [SuperAdminController::class, 'AdminDestroyVillage'])->name('superadmin.table.village.destroy');
 
     Route::get('/superadmin/table/population/index', [SuperAdminController::class, 'AdminIndexPopulation'])->name('superadmin.table.population.index'); 
     Route::get('/superadmin/table/population/create', [SuperAdminController::class, 'AdminCreatePopulation'])->name('superadmin.table.population.create'); 
@@ -125,6 +109,9 @@ Route::delete('/superadmin/table/village/index/{village}', [SuperAdminController
     Route::get('superadmin/table/map/edit/{map}', [SuperAdminController::class, 'AdminEditMap'])->name('superadmin.table.map.edit');
     Route::put('/superadmin/table/map/update/{map}', [SuperAdminController::class, 'AdminUpdateMap'])->name('superadmin.table.map.update');
     Route::delete('/superadmin/table/map/index/{map}', [SuperAdminController::class, 'AdminDestroyMap'])->name('superadmin.table.map.destroy');
+
+    Route::get('/superadmin/table/comment/index', [SuperAdminController::class, 'AdminIndexComment'])->name('superadmin.table.comment.index'); 
+    Route::delete('/superadmin/table/comment/index/{comment}', [SuperAdminController::class, 'AdminDestroyComment'])->name('superadmin.table.comment.destroy');
 });
 
 Route::middleware(['auth', 'AdminSub'])->group(function () {

@@ -62,6 +62,7 @@
     <!-- newsletter section start -->
     <div class="newsletter_section" style="background-color:#f5f5f5;">
       <div class="container">
+      <form method="POST" action="{{ route('user.comment.store') }}" enctype="multipart/form-data">
         <div class="row">
           <div class="col-md-4" style="padding-top:10%">
             <h1 class="newsletter_text" style="color:#10597D;">Kritik Dan Saran</h1>
@@ -69,17 +70,21 @@
               Apabila ada kritik dan saran silahkan tuliskan pada kolom yang tertera.
               Kami tidak akan mendapatkan kontak dan masukan anda pada siapapun
             </p>
-          </div>
+          </div> 
+          
+          @csrf 
           <div class="col-md-8" style="padding-left:180px;">
-            <div class="mail_bt_main">
-              <input type="text" class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Nama Anda" name="Nama" > <br> <br> <br>
-              <input type="text" class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Nomer Telepon Anda" name="Nomer Telepon" > <br> <br> <br>
-              <input type="text" class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Email Anda" name="Email" > <br> <br> <br>
-              <textarea type="textarea" class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Saran Dan Kritik Anda" name="Saran Dan Kritik"></textarea> <br> <br> <br>
+            <div>
+              <input type="text" name="name" class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Nama Anda" required> <br> <br> <br>
+              <input type="number" name="telp_number"  class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Nomer Telepon Anda" required> <br> <br> <br>
+              <input type="email" name="email"  class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Email Anda" required> <br> <br> <br>
+              <textarea type="textarea" name="description"  class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Saran Dan Kritik Anda" required></textarea> <br> <br> <br>
             </div>
-            <div class="send_bt" style="background-color: #10597D;width:80%;border-radius: 4px;"><a href="#" style="background-color: #10597D;color:white;">Kirim</a></div>
+            <button class="send_bt" style="background-color: #10597D;color:white;width:80%;height:10%;border-radius: 4px;">Kirim
+            </button>
           </div>
         </div>
+        </form>
       </div>
     </div>
     <!-- newsletter section end -->

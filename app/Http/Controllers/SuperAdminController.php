@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\City;
+use App\Models\Comment;
 use App\Models\MunicipalWaterwork;
 use App\Models\District;
 use App\Models\Village;
@@ -1242,6 +1243,20 @@ class SuperAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function AdminIndexComment()
+     {
+        $comment = Comment::index();
+        return view('superadmin.comment.index', compact('comment'));
+     }
+ 
+     public function AdminDestroyComment(Comment $comment)
+     {
+         $comment->delete();
+ 
+         Alert::toast('Data Berhasil Dihapus', 'success');
+         return redirect()->back();
+     }
 
     public function AdminIndexChart()
     {
