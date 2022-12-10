@@ -18,9 +18,14 @@ Route::get('/', function () {
     return view('user.index');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
+Route::get('/peta', function () {
+    return view('user.peta');
 });
+
+
+// Route::get('/login', function () {
+//     return view('auth.login');
+// });
 
 // Route::get('/tablesuperadmin', function () {
 //     return view('tablesuperadmin');

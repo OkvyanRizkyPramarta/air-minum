@@ -36,12 +36,13 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8">
-            <div class="menu_main" style="padding-top:30px;padding-right:30px;">
+            <div class="menu_main" style="padding-top:30px;">
               <div class="">
-                <span class="padding_left0" style="padding-right:30px;"><a href="#">Beranda</a></span>
-                <span class="padding_left0" style="padding-right:30px;"><a href="#">Peta</a></span>
-                <span class="padding_left0" style="padding-right:30px;"><a href="#">Capaian Air Minum</a></span>
-                <span class="padding_left0" style="padding-right:30px;"><a href="#">Open Data</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="#">Beranda</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="#">Peta</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="#">Capaian Air Minum</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="#">Open Data</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="#">Ulasan</a></span>
               </div>
             </div>
           </div>
