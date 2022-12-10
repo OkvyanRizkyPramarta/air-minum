@@ -154,7 +154,7 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
@@ -169,6 +169,8 @@
                                         <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -213,6 +215,8 @@
                                 <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
                                 </li>
                                 <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                 </li>
                             </ul>
                         </div>

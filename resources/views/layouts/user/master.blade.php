@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <!-- site metas -->
-<title>Capiclean</title>
+<title>PU Papua</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content=""> 
@@ -38,11 +38,11 @@
           <div class="col-md-8">
             <div class="menu_main" style="padding-top:30px;">
               <div class="">
-                <span class="padding_left0" style="padding-right:10px;"><a href="#">Beranda</a></span>
-                <span class="padding_left0" style="padding-right:10px;"><a href="#">Peta</a></span>
-                <span class="padding_left0" style="padding-right:10px;"><a href="#">Capaian Air Minum</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="{{ url ('/')}}">Beranda</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="{{ url ('/peta')}}"">Peta</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="">Capaian Air Minum</a></span>
                 <span class="padding_left0" style="padding-right:10px;"><a href="#">Open Data</a></span>
-                <span class="padding_left0" style="padding-right:10px;"><a href="#">Ulasan</a></span>
+                <span class="padding_left0" style="padding-right:10px;"><a href="{{ url ('/ulasan')}}"">Ulasan</a></span>
               </div>
             </div>
           </div>
