@@ -1243,7 +1243,6 @@ class SuperAdminController extends Controller
     public function AdminIndexChart()
     {
         $district = District::all();
-        $population = $topics->find(2);
         $population_total = Population::all();
         //$population_total = Population::where('district_id')->get('population_total');
         return view('superadmin.index', compact('district','population_total'));

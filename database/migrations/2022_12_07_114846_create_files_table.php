@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('file');
             $table->string('year');
+            $table->enum('show', 
+            [
+            'Yes',
+            'No',
+            ]);
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('cities');
