@@ -1020,6 +1020,7 @@ class SuperAdminController extends Controller
         $file->name = $request->name;
         $file->file = $request->file('file')->store('files', 'public');
         $file->year = $request->year;
+        $file->show = $request->show;
 
         $file->city()->associate($city);
 
@@ -1072,6 +1073,7 @@ class SuperAdminController extends Controller
                 'name'=>$request->name,
                 'city_id' => $request->city_id,
                 'year'     => $request->year,
+                'show'     => $request->show,
             ]);
 
             $file->city()->associate($city);
@@ -1090,6 +1092,7 @@ class SuperAdminController extends Controller
             'city_id' => $request->city_id,
             'file'     => $path->hashName(),
             'year'     => $request->year,
+            'show'     => $request->show,
         ]);
         }
 

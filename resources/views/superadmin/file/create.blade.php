@@ -286,7 +286,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                            <label>Kerkas PDF</label>
+                                            <label>Berkas PDF</label>
                                             <input type="file" name="file" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                         </div>
                                 </div>
@@ -298,6 +298,19 @@
                                         <div class="nk-int-st">
                                             <label>Year</label>
                                             <input type="text" name="year" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="nk-int-st">
+                                        <label>Tampil Pada Halaman Website</label>
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker" name="show" data-live-search="true">
+                                                <option value="Yes">Tampil</option>
+                                                <option value="No">Tidak Tampil</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

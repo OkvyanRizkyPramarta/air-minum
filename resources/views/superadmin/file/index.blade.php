@@ -276,6 +276,7 @@
                                         <th class="text-center" width="auto">Nama Kota</th>
                                         <th class="text-center" width="auto">Nama Berkas</th>
                                         <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">Tampil Di Website</th>
                                         <th class="text-center" width="auto">Action</th>
                                     </tr>
                                 </thead>
@@ -286,6 +287,15 @@
                                         <td class="text-center">{{ $f->city->name }}</td>
                                         <td class="text-center"><p><a href="{{ asset ('storage/'.$f->file)}}" target="_blank">{{ $f->name }}</a>.</p></td>
                                         <td class="text-center">{{ $f->year }}</td>
+                                        <td class="text-center">
+											<span>
+												@if ($f->show == 'Yes')
+													<span>Menampilkan</span>
+												@else
+													<span>Tidak Menampilkan</span>
+												@endif
+											</span>
+										</td>
                                         <div class="row">
                                             <td class="text-center">
                                                 <div class="col-lg-6">
@@ -312,6 +322,7 @@
                                         <th class="text-center" width="auto">Nama Kota</th>
                                         <th class="text-center" width="auto">Nama File</th>
                                         <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">Tampil DI Website</th>
                                         <th class="text-center" width="auto">Action</th>
                                     </tr>
                                 </tfoot>

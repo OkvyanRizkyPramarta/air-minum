@@ -307,6 +307,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="nk-int-st">
+                                        <label>Tampil Pada Halaman Website</label>
+                                        <div class="bootstrap-select fm-cmp-mg">
+                                            <select class="selectpicker" name="show" value="{{($file->show)}}" data-live-search="true">
+                                            <option value="Yes" @if(old('show', $file->show) === 'Yes')  'selected' @endif>Menampilkan</option>
+                                            <option value="No" @if(old('show', $file->show) === 'No')  'selected' @endif>Tidak Menampilkan</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <button class="btn btn-default btn-icon-notika col-md-2">
                             <i class="notika-icon notika-left-arrow"></i> 
