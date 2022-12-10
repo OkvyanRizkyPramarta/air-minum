@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Auth;
 
-class AdminSub
+class SubAdmin
 {
     /**
      * Handle an incoming request.
@@ -21,7 +21,7 @@ class AdminSub
             return redirect()->route('login');
         }
 
-        if (Auth::user()->role == 'AdminSub') {
+        if (Auth::user()->role == 'SubAdmin') {
             return $next($request);
         }
 

@@ -120,7 +120,7 @@
                                                     <div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>
                                                 </div>
                                                 <div class="hd-mg-ctn">
-                                                    <h3>{{ Auth::user()->name }}</h3>
+                                                <h3>{{ Auth::user()->name }}</h3>
                                                     <p>Available</p>
                                                 </div>
                                             </div>
@@ -142,33 +142,35 @@
     <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-target="#Charts" href="{{ url('/superadmin/index') }}">Halaman Utama</a>
+                                <li><a data-target="#Charts" href="{{ url('/subadmin/index') }}">Halaman Utama</a>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
+                                        <li><a href="{{ url ('/subadmin/table/city/index') }}">Tabel Kota</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        <li><a href="{{ url ('/subadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/subadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        <li><a href="{{ url ('/subadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        <li><a href="{{ url ('/subadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        <li><a href="{{ url ('/subadmin/table/waterwell/index')}}">Tabel Sumur</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        <li><a href="{{ url ('/subadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        <li><a href="{{ url ('/subadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        <li><a href="{{ url ('/subadmin/table/waterspring/index') }}">Tabel Mata Air</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                        <li><a href="{{ url ('/subadmin/table/file/index') }}">Tabel Berkas</a>
+                                        </li>
+                                        <li><a href="{{ url ('/subadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -186,33 +188,35 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li class="active"><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                        <li><a href="{{ url('/subadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
+                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
-                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
+                        <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
+                                <li><a href="{{ url ('/subadmin/table/city/index') }}">Tabel Kota</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                <li><a href="{{ url ('/subadmin/table/district/index') }}">Tabel Kecamatan</a>
                                 </li>
-                                <li><a href="">Tabel Desa / Kelurahan</a>
+                                <li><a href="{{ url ('/subadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                <li><a href="{{ url ('/subadmin/table/population/index') }}">Tabel Populasi</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                <li><a href="{{ url ('/subadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                <li><a href="{{ url ('/subadmin/table/waterwell/index')}}">Tabel Sumur</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                <li><a href="{{ url ('/subadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                <li><a href="{{ url ('/subadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                <li><a href="{{ url ('/subadmin/table/waterspring/index') }}">Tabel Mata Air</a>
                                 </li>
-                                <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                <li><a href="{{ url ('/subadmin/table/file/index') }}">Tabel Berkas</a>
+                                </li>
+                                <li><a href="{{ url ('/subadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                 </li>
                             </ul>
                         </div>
@@ -229,37 +233,19 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="breadcomb-list">
 						<div class="row">
-							<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="height:100px;margin-top:50px;">
-								<h2 class="center-text" style="text-align: center;">Halaman {{ Auth::user()->name }}</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-    <!-- Breadcomb area Start-->
-	<div class="breadcomb-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="breadcomb-list">
-						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
-									<div class="breadcomb-icon">
-										<i class="notika-icon notika-bar-chart"></i>
-									</div>
 									<div class="breadcomb-ctn">
-										<h2>Bar Charts</h2>
-										<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
+										<h2>DATA TABEL SUMUR AIR TANAH </h2>
+										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
-									<button data-toggle="tooltip" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-								</div>
+									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+                                    <a href="{{url('/subadmin/table/waterwell/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                </div>
 							</div>
 						</div>
 					</div>
@@ -268,6 +254,117 @@
 		</div>
 	</div>
 	<!-- Breadcomb area End-->
+    <!-- Data Table area Start-->
+    <div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" width="auto">Kode Integrasi</th>
+                                        <th class="text-center" width="auto">Nama Balai</th>
+                                        <th class="text-center" width="auto">Nama / No. Sumur</th>
+                                        <th class="text-center" width="auto">Wilayah Sungai</th>
+                                        <th class="text-center" width="auto">Provinsi</th>
+                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
+                                        <th class="text-center" width="auto">Kecamatan</th>
+                                        <th class="text-center" width="auto">Kelurahan</th>
+                                        <th class="text-center" width="auto">Latitude</th>
+                                        <th class="text-center" width="auto">Longitude</th>
+                                        <th class="text-center" width="auto">Fungsi Sumur </th>
+                                        <th class="text-center" width="auto">Status Operasi</th>
+                                        <th class="text-center" width="auto">Debit (l/detik)</th>
+                                        <th class="text-center" width="auto">Jiwa (orang)</th>
+                                        <th class="text-center" width="auto">Luas (ha)</th>
+                                        <th class="text-center" width="auto">Kedalaman Sumur (m)</th>
+                                        <th class="text-center" width="auto">Jenis Pompa</th>
+                                        <th class="text-center" width="auto">Tahun Pembangunan</th>
+                                        <th class="text-center" width="auto">Kondisi Sumur</th>
+                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
+                                        <th class="text-center" width="220px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($waterwell as $wa)
+                                    <tr>
+                                        <td class="text-center">{{ $wa->bmm_code }}</td>
+                                        <td class="text-center">{{ $wa->unit }}</td>
+                                        <td class="text-center">{{ $wa->name }}</td>
+                                        <td class="text-center">{{ $wa->watershed }}</td>
+                                        <td class="text-center">{{ $wa->province }}</td>
+                                        <td class="text-center">{{ $wa->city->name }}</td>
+                                        <td class="text-center">{{ $wa->district->name }}</td>
+                                        <td class="text-center">{{ $wa->village->name }}</td>
+                                        <td class="text-center">{{ $wa->latitude }}</td>
+                                        <td class="text-center">{{ $wa->longitude }}</td>
+                                        <td class="text-center">{{ $wa->well_function }}</td>
+                                        <td class="text-center">{{ $wa->operating_state }}</td>
+                                        <td class="text-center">{{ $wa->debit }}</td>
+                                        <td class="text-center">{{ $wa->people }}</td>
+                                        <td class="text-center">{{ $wa->luas }}</td>
+                                        <td class="text-center">{{ $wa->well_depth }}</td>
+                                        <td class="text-center">{{ $wa->pump_type }}</td>
+                                        <td class="text-center">{{ $wa->development_year }}</td>
+                                        <td class="text-center">{{ $wa->well_condition }}</td>
+                                        <td class="text-center">{{ $wa->update_date }}</td>
+                                        
+                                        <div class="row">
+                                            <td class="text-center">
+                                                <div>
+                                                    <a href="{{ route('subadmin.table.waterwell.edit', $wa->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                        Edit
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <form action="{{ route('subadmin.table.waterwell.destroy', $wa->id) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                                                        Delete</a>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                    <th class="text-center" width="auto">Kode Integrasi</th>
+                                        <th class="text-center" width="auto">Nama Balai</th>
+                                        <th class="text-center" width="auto">Nama / No. Sumur </th>
+                                        <th class="text-center" width="auto">Wilayah Sungai</th>
+                                        <th class="text-center" width="auto">Provinsi</th>
+                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
+                                        <th class="text-center" width="auto">Kecamatan</th>
+                                        <th class="text-center" width="auto">Kelurahan</th>
+                                        <th class="text-center" width="auto">Latitude</th>
+                                        <th class="text-center" width="auto">Longitude</th>
+                                        <th class="text-center" width="auto">Fungsi Sumur </th>
+                                        <th class="text-center" width="auto">Status Operasi</th>
+                                        <th class="text-center" width="auto">Debit (l/detik)</th>
+                                        <th class="text-center" width="auto">Jiwa (orang)</th>
+                                        <th class="text-center" width="auto">Luas (ha)</th>
+                                        <th class="text-center" width="auto">Kedalaman Sumur</th>
+                                        <th class="text-center" width="auto">Jenis Pompa</th>
+                                        <th class="text-center" width="auto">Tahun Pembangunan</th>
+                                        <th class="text-center" width="auto">Kondisi Sumur</th>
+                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
+                                        <th class="text-center" width="220px;">Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Data Table area End-->
+    <!-- Start Footer area-->
     <div class="footer-copyright-area">
         <div class="container">
             <div class="row">
@@ -324,10 +421,9 @@
     <script src="{{ asset('admin/js/knob/jquery.knob.js') }}"></script>
     <script src="{{ asset('admin/js/knob/jquery.appear.js') }}"></script>
     <script src="{{ asset('admin/js/knob/knob-active.js') }}"></script>
-    <!-- Charts JS
-	============================================ -->
-    <script src="{{ asset('admin/js/charts/Chart.js') }}"></script>
-    <script src="{{ asset('admin/js/charts/bar-chart.js') }}"></script>
+    <!--  Chat JS
+		============================================ -->
+    <script src="{{ asset('admin/js/chat/jquery.chat.js') }}"></script>
     <!--  todo JS
 		============================================ -->
     <script src="{{ asset('admin/js/todo/jquery.todo.js') }}"></script>
@@ -345,10 +441,6 @@
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('admin/js/main.js') }}"></script>
-
-
-
-    
 </body>
 
 </html>

@@ -16,8 +16,8 @@ class AuthController extends Controller
         if ($user = Auth::user()) {
             if ($user->role == 'SuperAdmin') {
                 return redirect()->intended('/superadmin/index');
-            } elseif ($user->role == 'AdminSub') {
-                return redirect()->intended('/adminsub/index');
+            } elseif ($user->role == 'SubAdmin') {
+                return redirect()->intended('/subadmin/index');
             } elseif ($user->role == 'AdminPU') {
                 return redirect()->intended('/adminpu/index');
             } elseif ($user->role == 'AdminX') {
@@ -37,9 +37,9 @@ class AuthController extends Controller
                 if ($user->role == 'SuperAdmin') {
                     $request->session()->regenerate();
                     return redirect()->intended('/superadmin/index');
-                } elseif ($user->role == 'AdminSub') {
+                } elseif ($user->role == 'SubAdmin') {
                     $request->session()->regenerate();
-                    return redirect()->intended('/adminsub/index');
+                    return redirect()->intended('/subadmin/index');
                 } elseif ($user->role == 'AdminPU') {
                     $request->session()->regenerate();
                     return redirect()->intended('/adminpu/index');
