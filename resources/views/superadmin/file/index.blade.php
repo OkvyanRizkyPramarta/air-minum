@@ -120,14 +120,14 @@
                                                     <div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>
                                                 </div>
                                                 <div class="hd-mg-ctn">
-                                                    <h3>Glenn Jecobs</h3>
+                                                <h3>{{ Auth::user()->name }}</h3>
                                                     <p>Available</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="hd-mg-va">
-                                        <a href="#">Logout</a>
+                                        <a href="{{ route('signout') }}">Logout</a>
                                     </div>
                                 </div>
                             </li>
