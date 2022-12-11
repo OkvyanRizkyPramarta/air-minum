@@ -24,6 +24,7 @@
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
     <!-- banner section start -->
     <div class="banner_section layout_padding" style="padding-top:-300px;">
       <div class="container">
@@ -62,17 +63,59 @@
         </div>
       </div>
     </div>
-    <div class="about_section layout_padding" style="background-color:white;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="text-center" style="color:#10597D;padding-right:50px;">
-              <span style=""><b>Peta Persebaran</b></span>
-            </h3>
-          </div>
+    <!-- Data Table area Start-->
+    <div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3 class="text-center" style="color:#10597D;padding-right:50px;">
+                    <span style=""><b>PDAM</b></span>
+                  </h3>
+                    <div class="data-table-list">
+                        <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" width="auto">Nama</th>
+                                        <th class="text-center" width="auto">Daerah</th>
+                                        <th class="text-center" width="auto">Koord X</th>
+                                        <th class="text-center" width="auto">Koord Y</th>
+                                        <th class="text-center" width="auto">Elevasi (MDPL)</th>
+                                        <th class="text-center" width="auto">Terpasang</th>
+                                        <th class="text-center" width="auto">Operasi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($municipalwaterwork as $m)
+                                <tr>
+                                  <td class="text-center">{{$m -> name }}</td>
+                                  <td class="text-center">{{$m -> area }}</td>
+                                  <td class="text-center">{{$m -> koord_x }}</td>
+                                  <td class="text-center">{{$m -> koord_y }}</td>
+                                  <td class="text-center">{{$m -> elevasi_mdpl }}</td>
+                                  <td class="text-center">{{$m -> installed }}</td>
+                                  <td class="text-center">{{$m -> operation }}</td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="text-center" width="auto">Nama</th>
+                                        <th class="text-center" width="auto">Daerah</th>
+                                        <th class="text-center" width="auto">Koord X</th>
+                                        <th class="text-center" width="auto">Koord Y</th>
+                                        <th class="text-center" width="auto">Elevasi (MDPL)</th>
+                                        <th class="text-center" width="auto">Terpasang</th>
+                                        <th class="text-center" width="auto">Operasi</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div> 
+    </div>
 
     <!-- Data Table area End-->
         <!-- jquery

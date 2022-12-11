@@ -18,11 +18,9 @@ use App\Http\Controllers\SubAdminController;
 
 Route::get('/', [UserController::class, 'UserIndex'])->name('user.index');
 Route::post('/', [UserController::class, 'UserStoreComment'])->name('user.comment.store');
-
-Route::get('/peta', function () {
-    return view('user.peta');
-});
-
+Route::get('/peta', [UserController::class, 'UserPeta'])->name('user.peta');
+    Route::get('/peta/pdam', [UserController::class, 'UserPetaPDAM'])->name('user.peta.pdam');
+    Route::get('/peta/populasi', [UserController::class, 'UserPetaPopulasi'])->name('user.peta.populasi');
 Route::get('/ulasan', [UserController::class, 'UserUlasan'])->name('user.ulasan');
 
 // login Owner

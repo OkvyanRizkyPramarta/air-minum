@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Map;
+use App\Models\Population;
+use App\Models\MunicipalWaterwork;
 
 class UserController extends Controller
 {
@@ -19,6 +22,23 @@ class UserController extends Controller
         Comment::store($request);
         Alert::toast('Kritik Dan Saran Berhasil Disimpan', 'success');
         return redirect()->back();
+    }
+
+    public function UserPeta(Request $request)
+    {
+        return view('user.peta');
+    }
+
+    public function UserPetaPDAM(Request $request)
+    {
+        $municipalwaterwork = MunicipalWaterwork::index();
+        return view('user.peta.pdam', compact('municipalwaterwork'));
+    }
+
+    public function UserPetaPopulasi(Request $request)
+    {
+        $population = Population::index();
+        return view('user.peta.populasi', compact('population'));
     }
 
     public function UserUlasan(Request $request)
