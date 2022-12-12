@@ -162,6 +162,8 @@
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                         </li>
+                                        <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -207,7 +209,9 @@
                                         <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                </li>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
+                                        </li>
                             </ul>
                         </div>
                     </div>
@@ -226,8 +230,8 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-										<h2>Form Components</h2>
-										<p>Welcome to PDAM TOYO </p>
+                    <h2>Halaman Edit Data Peta</h2>
+										<h2>Provinsi Papua</h2>
 									</div>
 								</div>
 							</div>
