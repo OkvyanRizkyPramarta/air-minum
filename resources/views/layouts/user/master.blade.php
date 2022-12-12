@@ -29,6 +29,49 @@
 <link rel="stylesheet" href="{{ asset('user/css/owl.carousel.min.css') }}">
 <link rel="stylesheet" href="{{ asset('user/css/owl.theme.default.min.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<style>
+.dropbtn {
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+</style>
 </head>
 <body>
 <!--header section start -->
@@ -43,9 +86,48 @@
               <ul>
                   <div class="text-center" style="">
                     <a href="{{ url ('/') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Beranda</a>
-                    <a href="{{ url ('/peta') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Peta</a>
-                    <a href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Capaian Air Minum</a>
-                    <a href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Open Data</a>
+                    <div class="dropdown">
+                      <a class="dropbtn" href="{{ url ('/peta') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Peta</a>
+                      <div class="dropdown-content scrollable-menu">
+                        <a href="#">Kota Jayapura</a>
+                        <a href="#">Kabupaten Jayapura</a>
+                        <a href="#">Kabupaten Biak Numfor</a>
+                        <a href="#">Kabupaten Keerom</a>
+                        <a href="#">Kabupaten Kepulauan Yapen</a>
+                        <a href="#">Kabupaten Mamberamo Raya</a>
+                        <a href="#">Kabupaten Sarmi</a>
+                        <a href="#">Kabupaten Supiori</a>
+                        <a href="#">Kabupaten Waropen</a>
+                      </div>
+                    </div>
+                    <div class="dropdown">
+                      <a class="dropbtn" href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Capaian Air Minum</a>
+                      <div class="dropdown-content scrollable-menu">
+                        <a href="#">Kota Jayapura</a>
+                        <a href="#">Kabupaten Jayapura</a>
+                        <a href="#">Kabupaten Biak Numfor</a>
+                        <a href="#">Kabupaten Keerom</a>
+                        <a href="#">Kabupaten Kepulauan Yapen</a>
+                        <a href="#">Kabupaten Mamberamo Raya</a>
+                        <a href="#">Kabupaten Sarmi</a>
+                        <a href="#">Kabupaten Supiori</a>
+                        <a href="#">Kabupaten Waropen</a>
+                      </div>
+                    </div>
+                    <div class="dropdown">
+                      <a class="dropbtn" href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Open Data</a>
+                      <div class="dropdown-content scrollable-menu">
+                        <a href="#">Kota Jayapura</a>
+                        <a href="#">Kabupaten Jayapura</a>
+                        <a href="#">Kabupaten Biak Numfor</a>
+                        <a href="#">Kabupaten Keerom</a>
+                        <a href="#">Kabupaten Kepulauan Yapen</a>
+                        <a href="#">Kabupaten Mamberamo Raya</a>
+                        <a href="#">Kabupaten Sarmi</a>
+                        <a href="#">Kabupaten Supiori</a>
+                        <a href="#">Kabupaten Waropen</a>
+                      </div>
+                    </div>
                     <a href="{{ url ('/ulasan') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Ulasan</a>
                   </div>
               </ul>
