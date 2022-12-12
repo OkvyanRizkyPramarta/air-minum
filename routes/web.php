@@ -21,6 +21,9 @@ Route::post('/', [UserController::class, 'UserStoreComment'])->name('user.commen
 Route::get('/peta', [UserController::class, 'UserPeta'])->name('user.peta');
     Route::get('/peta/pdam', [UserController::class, 'UserPetaPDAM'])->name('user.peta.pdam');
     Route::get('/peta/populasi', [UserController::class, 'UserPetaPopulasi'])->name('user.peta.populasi');
+    Route::get('/peta/intakesungai', [UserController::class, 'UserPetaIntakeSungai'])->name('user.peta.intakesungai');
+    Route::get('/peta/mataair', [UserController::class, 'UserPetaMataAir'])->name('user.peta.mataair');
+    Route::get('/peta/tangkiair', [UserController::class, 'UserPetaTangkiAir'])->name('user.peta.tangkiair');
 Route::get('/ulasan', [UserController::class, 'UserUlasan'])->name('user.ulasan');
 
 // login Owner

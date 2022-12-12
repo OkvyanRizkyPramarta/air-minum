@@ -59,7 +59,7 @@
                 <span style="padding-right:50px;"><b>Mata Air</b></span>
             </a>
             <a href="{{ url ('/peta/tangkiair') }}" style="color: inherit;text-decoration: none;">
-                <span style="padding-right:50px;"><b>Tangi Air</b></span>
+                <span style="padding-right:50px;"><b>Tangki Air</b></span>
             </a>
             <a href="{{ url ('/peta') }}" style="color: inherit;text-decoration: none;">
                 <span style=""><b>Peta Persebaran</b></span>
@@ -75,41 +75,59 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <h3 class="text-center" style="color:#10597D;padding-right:50px;">
-                    <span style=""><b>Populasi</b></span>
+                    <span style=""><b>Tangki Air</b></span>
                   </h3>
                     <div class="data-table-list">
                         <div class="table-responsive">
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="auto">Nama Kota/Kabupaten</th>
-                                        <th class="text-center" width="auto">Nama Kecamatan</th>
-                                        <th class="text-center" width="auto">Total Populasi</th>
-                                        <th class="text-center" width="auto">Total Populasi OAP</th>
-                                        <th class="text-center" width="auto">Total Populasi Non OAP</th>
-                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">ID Data</th>
+                                        <th class="text-center" width="auto">ID Infrastruktur</th>
+                                        <th class="text-center" width="auto">Nama </th>
+                                        <th class="text-center" width="auto">Kode BMM </th>
+                                        <th class="text-center" width="auto">Unit</th>
+                                        <th class="text-center" width="auto">Wilayah Sungai</th>
+                                        <th class="text-center" width="auto">Provinsi</th>
+                                        <th class="text-center" width="auto">Kota/Kabupaten</th>
+                                        <th class="text-center" width="auto">Kecamatan</th>
+                                        <th class="text-center" width="auto">Desa/Kelurahan</th>
+                                        <th class="text-center" width="auto">Latitude</th>
+                                        <th class="text-center" width="auto">Longitude</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($population as $p)
+                                @foreach($watertank as $w)
                                 <tr>
-                                  <td class="text-center">{{$p -> city -> name }}</td>
-                                  <td class="text-center">{{$p -> district -> name }}</td>
-                                  <td class="text-center">{{$p -> population_total }}</td>
-                                  <td class="text-center">{{$p -> populationoap_total }}</td>
-                                  <td class="text-center">{{$p -> populationnonoap_total }}</td>
-                                  <td class="text-center">{{$p -> year }}</td>
+                                <td class="text-center">{{ $w->id_watertank }}</td>
+                                        <td class="text-center">{{ $w->bmm_code }}</td>
+                                        <td class="text-center">{{ $w->name }}</td>
+                                        <td class="text-center">{{ $w->unit }}</td>
+                                        <td class="text-center">{{ $w->region_river }}</td>
+                                        <td class="text-center">{{ $w->watershed }}</td>
+                                        <td class="text-center">{{ $w->province }}</td>
+                                        <td class="text-center">{{ $w->city->name }}</td>
+                                        <td class="text-center">{{ $w->district->name }}</td>
+                                        <td class="text-center">{{ $w->village->name }}</td>
+                                        <td class="text-center">{{ $w->latitude }}</td>
+                                        <td class="text-center">{{ $w->longitude }}</td>
                                 </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th class="text-center" width="auto">Nama Kota/Kabupaten</th>
-                                        <th class="text-center" width="auto">Nama Kecamatan</th>
-                                        <th class="text-center" width="auto">Total Populasi</th>
-                                        <th class="text-center" width="auto">Total Populasi OAP</th>
-                                        <th class="text-center" width="auto">Total Populasi Non OAP</th>
-                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">ID Data</th>
+                                        <th class="text-center" width="auto">ID Infrastruktur</th>
+                                        <th class="text-center" width="auto">Nama </th>
+                                        <th class="text-center" width="auto">Kode BMM </th>
+                                        <th class="text-center" width="auto">Unit</th>
+                                        <th class="text-center" width="auto">Wilayah Sungai</th>
+                                        <th class="text-center" width="auto">Provinsi</th>
+                                        <th class="text-center" width="auto">Kota/Kabupaten</th>
+                                        <th class="text-center" width="auto">Kecamatan</th>
+                                        <th class="text-center" width="auto">Desa/Kelurahan</th>
+                                        <th class="text-center" width="auto">Latitude</th>
+                                        <th class="text-center" width="auto">Longitude</th>
                                     </tr>
                                 </tfoot>
                             </table>

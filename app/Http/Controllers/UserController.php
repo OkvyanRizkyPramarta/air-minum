@@ -6,9 +6,13 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Comment;
-use App\Models\Map;
-use App\Models\Population;
-use App\Models\MunicipalWaterwork;
+use App\Models\Map;     
+use App\Models\Population; 
+use App\Models\MunicipalWaterwork; 
+use App\Models\RiverIntake; 
+use App\Models\WaterSpring; 
+use App\Models\WaterTank; 
+
 
 class UserController extends Controller
 {
@@ -33,6 +37,24 @@ class UserController extends Controller
     {
         $municipalwaterwork = MunicipalWaterwork::index();
         return view('user.peta.pdam', compact('municipalwaterwork'));
+    }
+
+       public function UserPetaIntakeSUngai(Request $request)
+    {
+        $riverintake = RiverIntake::index();
+        return view('user.peta.intakesungai', compact('riverintake'));
+    }
+
+    public function UserPetaMataAir(Request $request)
+    {
+        $waterspring = WaterSpring::index();
+        return view('user.peta.mataair', compact('waterspring'));
+    }
+
+    public function UserPetaTangkiAir(Request $request)
+    {
+        $watertank = WaterTank::index();
+        return view('user.peta.tangkiair', compact('watertank'));
     }
 
     public function UserPetaPopulasi(Request $request)

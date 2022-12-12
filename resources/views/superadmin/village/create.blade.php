@@ -140,11 +140,11 @@
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
+                                    <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>

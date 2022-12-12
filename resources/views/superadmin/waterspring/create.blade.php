@@ -140,11 +140,11 @@
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
+                                    <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
@@ -186,27 +186,28 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
+
+                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                 </li>
                             </ul>
                         </div>
@@ -302,7 +303,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Nama Kota</label>
+                                        <label>Nama Kota/Kabupaten</label>
                                         <div class="bootstrap-select fm-cmp-mg">
                                             <select class="selectpicker" name="city_id" data-live-search="true">
                                                 @foreach($city as $c)
@@ -334,7 +335,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Nama Kelurahan</label>
+                                        <label>Nama Desa/Kelurahan</label>
                                         <div class="bootstrap-select fm-cmp-mg">
                                             <select class="selectpicker" name="village_id" data-live-search="true">
                                                 @foreach($village as $v)
