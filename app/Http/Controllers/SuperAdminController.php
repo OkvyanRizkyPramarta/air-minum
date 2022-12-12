@@ -15,7 +15,8 @@ use App\Models\Watertank;
 use App\Models\Waterwell;
 use App\Models\WaterSpring;
 use App\Models\Population;
-use App\Models\File;
+use App\Models\SuperAdminFile;
+use App\Models\SubAdminFile;
 use App\Models\Map;
 
 class SuperAdminController extends Controller
@@ -989,8 +990,8 @@ class SuperAdminController extends Controller
 
     public function AdminIndexFile()
     {
-        $file = File::index();
-        return view('superadmin.file.index', compact('file'));
+        $superadminfile = SuperAdminFile::index();
+        return view('superadmin.file.index', compact('superadminfile'));
     }
 
     /**
@@ -1017,15 +1018,15 @@ class SuperAdminController extends Controller
         $city = new City;
         $city->id = $request->get('city_id');
         
-        $file = new File;
-        $file->name = $request->name;
-        $file->file = $request->file('file')->store('files', 'public');
-        $file->year = $request->year;
-        $file->show = $request->show;
+        $superadminfile = new SuperAdminFile;
+        $superadminfile->name = $request->name;
+        $superadminfile->file = $request->file('file')->store('files', 'public');
+        $superadminfile->year = $request->year;
+        $superadminfile->show = $request->show;
 
-        $file->city()->associate($city);
+        $superadminfile->city()->associate($city);
 
-        $file->save();
+        $superadminfile->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
         return redirect()->route('superadmin.table.file.index');
@@ -1049,10 +1050,10 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminEditFile(File $file)
+    public function AdminEditFile(SuperAdminFile $superadminfile)
     {
         $city = City::index();
-        return view('superadmin.file.edit', compact('city', 'file'));
+        return view('superadmin.file.edit', compact('city', 'superadminfile'));
     }
 
     /**
@@ -1062,41 +1063,40 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminUpdateFile(Request $request, File $file)
+    public function AdminUpdateFile(Request $request, SuperAdminFile $superadminfile)
     {
-        $file = File::findOrFail($file->id);
+        $superadminfile = SuperAdminFile::findOrFail($superadminfile->id);
 
         $city = new City;
 
         if($request->file('file') == "") {
 
-            $file->update([
-                'name'=>$request->name,
-                'city_id' => $request->city_id,
-                'year'     => $request->year,
-                'show'     => $request->show,
+            $superadminfile->update([
+                'name'      =>$request->name,
+                'city_id'   => $request->city_id,
+                'year'      => $request->year,
+                'show'      => $request->show,
             ]);
 
-            $file->city()->associate($city);
+            $superadminfile->city()->associate($city);
 
         } else {
 
-            if ($file->file&&file_exists(storage_path('app/public/'.$file->file))) {
-                \Storage::delete('public/'.$file->file);
+            if ($superadminfile->file&&file_exists(storage_path('app/public/'.$superadminfile->file))) {
+                \Storage::delete('public/'.$superadminfile->file);
             }
 
         $path = $request->file('file');
         $path->storeAs('public/', $path->hashName());
 
-        $file->update([
-            'name'     => $request->name,
-            'city_id' => $request->city_id,
-            'file'     => $path->hashName(),
-            'year'     => $request->year,
-            'show'     => $request->show,
+        $superadminfile->update([
+            'name'      => $request->name,
+            'city_id'   => $request->city_id,
+            'file'      => $path->hashName(),
+            'year'      => $request->year,
+            'show'      => $request->show,
         ]);
         }
-
 
         Alert::toast('Informasi Berhasil Diganti', 'success');
         return redirect()->route('superadmin.table.file.index');
@@ -1108,9 +1108,9 @@ class SuperAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function AdminDestroyFile(File $file)
+    public function AdminDestroyFile(SuperAdminFile $superadminfile)
     {
-        $file->delete();
+        $superadminfile->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

@@ -226,7 +226,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-									  <h2>Halaman Edit Data Berkas</h2>
+									  <h2>Halaman Edit Data Berkas Super Admin</h2>
 										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
@@ -241,7 +241,7 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('superadmin.table.file.update', $file->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.table.file.update', $superadminfile->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
             <div class="row">
@@ -255,9 +255,9 @@
                                     <div class="nk-int-st">
                                         <label>Nama Kota</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" value="{{ $file->city->name }}" name="city_id" data-live-search="true">
+                                            <select class="selectpicker" value="{{ $superadminfile->city->name }}" name="city_id" data-live-search="true">
                                                 @foreach($city as $c)  
-                                                  <option value="{{ $c->id }}" {{ ($c->id == $file->city->id) ? 'selected' : ''}} >
+                                                  <option value="{{ $c->id }}" {{ ($c->id == $superadminfile->city->id) ? 'selected' : ''}} >
                                                    {{ $c->name }}
                                                   </option>
                                                 @endforeach
@@ -272,7 +272,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                             <label>Nama Berkas</label>
-                                            <input type="text" name="name" value="{{ $file->name }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                            <input type="text" name="name" value="{{ $superadminfile->name }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                         </div>
                                 </div>
                             </div>
@@ -282,9 +282,9 @@
                                     </div>
                                     <div class="nk-int-st">
                                       <label>Kerkas PDF</label>
-                                      <input type="file" name="file" value="{{ $file->file }}" class="form-control" >
+                                      <input type="file" name="file" value="{{ $superadminfile->file }}" class="form-control" >
                                       </br>
-                                      <iframe width="550px" width="250px" src="{{asset('storage/'.$file->file)}}"></iframe>
+                                      <iframe width="550px" width="250px" src="{{asset('storage/'.$superadminfile->file)}}"></iframe>
                                     </div>
                                 </div>
                             </div>
@@ -294,7 +294,7 @@
                                         </div>
                                         <div class="nk-int-st">
                                             <label>Year</label>
-                                            <input type="text" name="year" value="{{ $file->year }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                            <input type="text" name="year" value="{{ $superadminfile->year }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                         </div>
                                     </div>
                                 </div>
@@ -304,9 +304,9 @@
                                     <div class="nk-int-st">
                                         <label>Tampil Pada Halaman Website</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="show" value="{{($file->show)}}" data-live-search="true">
-                                            <option value="Yes" @if(old('show', $file->show) === 'Yes')  'selected' @endif>Menampilkan</option>
-                                            <option value="No" @if(old('show', $file->show) === 'No')  'selected' @endif>Tidak Menampilkan</option>
+                                            <select class="selectpicker" name="show" value="{{($superadminfile->show)}}" data-live-search="true">
+                                            <option value="Yes" @if(old('show', $superadminfile->show) === 'Yes')  'selected' @endif>Menampilkan</option>
+                                            <option value="No" @if(old('show', $superadminfile->show) === 'No')  'selected' @endif>Tidak Menampilkan</option>
                                             </select>
                                         </div>
                                     </div>

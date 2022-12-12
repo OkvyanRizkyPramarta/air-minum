@@ -236,7 +236,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-                                        <h2>Data Tabel Berkas</h2>
+                                        <h2>Data Tabel Berkas Sub Admin</h2>
 										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
@@ -273,7 +273,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($file as $f)
+                                @foreach($subadminfile as $f)
                                     <tr>
                                         <td class="text-center">{{ $f->id }}</td>
                                         <td class="text-center">{{ $f->city->name }}</td>

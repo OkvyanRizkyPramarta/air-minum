@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+class SubAdminFile extends Model
 {
     use HasFactory;
 
@@ -24,16 +24,16 @@ class File extends Model
     
     public static function index()
     {
-        return File::all();
+        return SubAdminFile::all();
     }
 
     public static function store(Request $request)
     {
-        File::create($request->all());
+        SubAdminFile::create($request->all());
     }
 
-    public static function edit(Request $request, File $file)
+    public static function edit(Request $request, SubAdminFile $subadminfile)
     {
-        $file->update($request->all());
+        $subadminfile->update($request->all());
     }
 }

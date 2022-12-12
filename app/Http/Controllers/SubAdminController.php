@@ -15,7 +15,7 @@ use App\Models\Watertank;
 use App\Models\Waterwell;
 use App\Models\WaterSpring;
 use App\Models\Population;
-use App\Models\File;
+use App\Models\SubAdminFile;
 use App\Models\Map;
 
 class SubAdminController extends Controller
@@ -984,8 +984,8 @@ class SubAdminController extends Controller
 
     public function SubAdminIndexFile()
     {
-        $file = File::index();
-        return view('subadmin.file.index', compact('file'));
+        $subadminfile = SubAdminFile::index();
+        return view('subadmin.file.index', compact('subadminfile'));
     }
 
     /**
@@ -1012,15 +1012,15 @@ class SubAdminController extends Controller
         $city = new City;
         $city->id = $request->get('city_id');
         
-        $file = new File;
-        $file->name = $request->name;
-        $file->file = $request->file('file')->store('files', 'public');
-        $file->year = $request->year;
-        $file->show = $request->show;
+        $subadminfile = new SubAdminFile;
+        $subadminfile->name = $request->name;
+        $subadminfile->file = $request->file('file')->store('files', 'public');
+        $subadminfile->year = $request->year;
+        $subadminfile->show = $request->show;
 
-        $file->city()->associate($city);
+        $subadminfile->city()->associate($city);
 
-        $file->save();
+        $subadminfile->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
         return redirect()->route('subadmin.table.file.index');
@@ -1044,10 +1044,10 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditFile(File $file)
+    public function SubAdminEditFile(SubAdminFile $subadminfile)
     {
         $city = City::index();
-        return view('subadmin.file.edit', compact('city', 'file'));
+        return view('subadmin.file.edit', compact('city', 'subadminfile'));
     }
 
     /**
@@ -1057,35 +1057,35 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateFile(Request $request, File $file)
+    public function SubAdminUpdateFile(Request $request, SubAdminFile $subadminfile)
     {
-        $file = File::findOrFail($file->id);
+        $subadminfile = SubAdminFile::findOrFail($subadminfile->id);
 
         $city = new City;
 
         if($request->file('file') == "") {
 
-            $file->update([
-                'name'=>$request->name,
-                'city_id' => $request->city_id,
-                'year'     => $request->year,
-                'show'     => $request->show,
+            $subadminfile->update([
+                'name'      =>$request->name,
+                'city_id'   => $request->city_id,
+                'year'      => $request->year,
+                'show'      => $request->show,
             ]);
 
-            $file->city()->associate($city);
+            $subadminfile->city()->associate($city);
 
         } else {
 
-            if ($file->file&&file_exists(storage_path('app/public/'.$file->file))) {
-                \Storage::delete('public/'.$file->file);
+            if ($subadminfile->file&&file_exists(storage_path('app/public/'.$subadminfile->file))) {
+                \Storage::delete('public/'.$subadminfile->file);
             }
 
         $path = $request->file('file');
         $path->storeAs('public/', $path->hashName());
 
-        $file->update([
+        $subadminfile->update([
             'name'     => $request->name,
-            'city_id' => $request->city_id,
+            'city_id'  => $request->city_id,
             'file'     => $path->hashName(),
             'year'     => $request->year,
             'show'     => $request->show,
@@ -1103,9 +1103,9 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyFile(File $file)
+    public function SubAdminDestroyFile(SubAdminFile $subadminfile)
     {
-        $file->delete();
+        $subadminfile->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();

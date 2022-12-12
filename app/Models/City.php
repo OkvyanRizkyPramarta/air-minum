@@ -15,7 +15,6 @@ class City extends Model
         'ocean_area',
         'mainland_area',
         'total_area',
-        // 'oap',
         'year',
     ];
 
@@ -44,9 +43,14 @@ class City extends Model
        return $this->hasMany(WaterSpring::class);
     }
 
-    public function file()
+    public function superadmin_file()
     {
-       return $this->hasMany(File::class);
+       return $this->hasMany(SuperAdminFile::class);
+    }
+
+    public function subadmin_file()
+    {
+       return $this->hasMany(SubAdminFile::class);
     }
     
     public static function index()

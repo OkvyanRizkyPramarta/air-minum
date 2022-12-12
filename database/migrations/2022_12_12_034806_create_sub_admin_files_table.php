@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('sub_admin_files', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('city_id');
             $table->string('name');
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('sub_admin_files');
     }
 };
