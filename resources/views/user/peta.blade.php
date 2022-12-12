@@ -46,7 +46,7 @@
           <div class="col-md-12">
             <h3 class="text-center" style="color:#10597D;padding-right:50px;">
             <a href="{{ url ('/peta/pdam') }}" style="color: inherit;text-decoration: none;">
-                <span style="padding-right:50px;"><b>PDAM</b></span>
+            <span style="padding-right:50px;"><b>PDAM</b></span>
             </a>
             <a href="{{ url ('/peta/populasi') }}" style="color: inherit;text-decoration: none;">
                 <span style="padding-right:50px;"><b>Populasi</b></span>
@@ -58,13 +58,8 @@
                 <span style="padding-right:50px;"><b>Mata Air</b></span>
             </a>
             <a href="{{ url ('/peta/tangkiair') }}" style="color: inherit;text-decoration: none;">
-                <span style="padding-right:50px;"><b>Tangki Air</b></span>
+                <span style="padding-right:50px;"><b>Tangi Air</b></span>
             </a>
-              <span style="padding-right:50px;"><b>PDAM</b></span>
-              <span style="padding-right:50px;"><b>Populasi</b></span>
-              <span style="padding-right:50px;"><b>Intake Sungai</b></span>
-              <span style="padding-right:50px;"><b>Mata Air</b></span>
-              <span style="padding-right:50px;"><b>Tangki Air</b></span>
             <a href="{{ url ('/peta') }}" style="color: inherit;text-decoration: none;">
                 <span style=""><b>Peta Persebaran</b></span>
             </a>
