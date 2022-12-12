@@ -98,9 +98,9 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::get('/superadmin/table/file/index', [SuperAdminController::class, 'AdminIndexFile'])->name('superadmin.table.file.index'); 
     Route::get('/superadmin/table/file/create', [SuperAdminController::class, 'AdminCreateFile'])->name('superadmin.table.file.create'); 
     Route::post('/superadmin/table/file/create', [SuperAdminController::class, 'AdminStoreFile'])->name('superadmin.table.file.store');
-    Route::get('superadmin/table/file/edit/{file}', [SuperAdminController::class, 'AdminEditFile'])->name('superadmin.table.file.edit');
-    Route::put('/superadmin/table/file/update/{file}', [SuperAdminController::class, 'AdminUpdateFile'])->name('superadmin.table.file.update');
-    Route::delete('/superadmin/table/file/index/{file}', [SuperAdminController::class, 'AdminDestroyFile'])->name('superadmin.table.file.destroy');
+    Route::get('superadmin/table/file/edit/{superadminfile}', [SuperAdminController::class, 'AdminEditFile'])->name('superadmin.table.file.edit');
+    Route::put('/superadmin/table/file/update/{superadminfile}', [SuperAdminController::class, 'AdminUpdateFile'])->name('superadmin.table.file.update');
+    Route::delete('/superadmin/table/file/index/{superadminfile}', [SuperAdminController::class, 'AdminDestroyFile'])->name('superadmin.table.file.destroy');
 
     Route::get('/superadmin/table/map/index', [SuperAdminController::class, 'AdminIndexMap'])->name('superadmin.table.map.index'); 
     Route::get('/superadmin/table/map/create', [SuperAdminController::class, 'AdminCreateMap'])->name('superadmin.table.map.create'); 
@@ -182,9 +182,9 @@ Route::middleware(['auth', 'SubAdmin'])->group(function () {
     Route::get('/subadmin/table/file/index', [SubAdminController::class, 'SubAdminIndexFile'])->name('subadmin.table.file.index'); 
     Route::get('/subadmin/table/file/create', [SubAdminController::class, 'SubAdminCreateFile'])->name('subadmin.table.file.create'); 
     Route::post('/subadmin/table/file/create', [SubAdminController::class, 'SubAdminStoreFile'])->name('subadmin.table.file.store');
-    Route::get('/subadmin/table/file/edit/{file}', [SubAdminController::class, 'SubAdminEditFile'])->name('subadmin.table.file.edit');
-    Route::put('/subadmin/table/file/update/{file}', [SubAdminController::class, 'SubAdminUpdateFile'])->name('subadmin.table.file.update');
-    Route::delete('/subadmin/table/file/index/{file}', [SubAdminController::class, 'SubAdminDestroyFile'])->name('subadmin.table.file.destroy');
+    Route::get('/subadmin/table/file/edit/{subadminfile}', [SubAdminController::class, 'SubAdminEditFile'])->name('subadmin.table.file.edit');
+    Route::put('/subadmin/table/file/update/{subadminfile}', [SubAdminController::class, 'SubAdminUpdateFile'])->name('subadmin.table.file.update');
+    Route::delete('/subadmin/table/file/index/{subadminfile}', [SubAdminController::class, 'SubAdminDestroyFile'])->name('subadmin.table.file.destroy');
 
     Route::get('/subadmin/table/map/index', [SubAdminController::class, 'SubAdminIndexMap'])->name('subadmin.table.map.index'); 
     Route::get('/subadmin/table/map/create', [SubAdminController::class, 'SubAdminCreateMap'])->name('subadmin.table.map.create'); 
