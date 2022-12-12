@@ -36,8 +36,14 @@ class UserController extends Controller
 
     public function UserPetaKotaJayapura(Request $request)
     {
-        $kotajayapuramap = Map::index();
+        $kotajayapuramap = Map::where('city_id', '10')->get();
         return view('user.peta.kotajayapura.index', compact('kotajayapuramap'));
+    }
+
+    public function UserPetaKabupatenJayapura(Request $request)
+    {
+        $kabjayapuramap = Map::where('city_id', '2')->get();
+        return view('user.peta.kabjayapura.index', compact('kabjayapuramap'));
     }
 
     public function UserPetaPDAM(Request $request)
@@ -68,6 +74,19 @@ class UserController extends Controller
     {
         $population = Population::index();
         return view('user.peta.populasi', compact('population'));
+    }
+
+
+    //Air Minum
+    public function UserAirMinumKotaJayapura(Request $request)
+    {
+        return view('user.airminum.kotajayapura.index');
+    }
+
+    public function UserAirMinumKotaJayapuraPDAM(Request $request)
+    {
+        $municipalwaterwork = MunicipalWaterwork::index();
+        return view('user.airminum.kotajayapura.pdam', compact('municipalwaterwork'));
     }
 
     public function UserUlasan(Request $request)

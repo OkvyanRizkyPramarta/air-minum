@@ -90,7 +90,7 @@
                       <a class="dropbtn" href="{{ url ('/peta') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Peta</a>
                       <div class="dropdown-content scrollable-menu">
                         <a href="{{ url ('/peta/kota/jayapura') }}">Kota Jayapura</a>
-                        <a href="#">Kabupaten Jayapura</a>
+                        <a href="{{ url ('/peta/kabupaten/jayapura') }}">Kabupaten Jayapura</a>
                         <a href="#">Kabupaten Biak Numfor</a>
                         <a href="#">Kabupaten Keerom</a>
                         <a href="#">Kabupaten Kepulauan Yapen</a>
@@ -103,7 +103,7 @@
                     <div class="dropdown">
                       <a class="dropbtn" href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Capaian Air Minum</a>
                       <div class="dropdown-content scrollable-menu">
-                        <a href="#">Kota Jayapura</a>
+                        <a href="{{ url ('/airminum/kota/jayapura') }}">Kota Jayapura</a>
                         <a href="#">Kabupaten Jayapura</a>
                         <a href="#">Kabupaten Biak Numfor</a>
                         <a href="#">Kabupaten Keerom</a>

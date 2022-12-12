@@ -21,11 +21,17 @@ Route::get('/', [UserController::class, 'UserIndex'])->name('user.index');
 Route::post('/', [UserController::class, 'UserStoreComment'])->name('user.comment.store');
 Route::get('/peta', [UserController::class, 'UserPeta'])->name('user.peta');
     Route::get('/peta/kota/jayapura', [UserController::class, 'UserPetaKotaJayapura'])->name('user.peta.kota.jayapura');
+    Route::get('/peta/kabupaten/jayapura', [UserController::class, 'UserPetaKabupatenJayapura'])->name('user.peta.kabupaten.jayapura');
+    
     Route::get('/peta/pdam', [UserController::class, 'UserPetaPDAM'])->name('user.peta.pdam');
     Route::get('/peta/populasi', [UserController::class, 'UserPetaPopulasi'])->name('user.peta.populasi');
     Route::get('/peta/intakesungai', [UserController::class, 'UserPetaIntakeSungai'])->name('user.peta.intakesungai');
     Route::get('/peta/mataair', [UserController::class, 'UserPetaMataAir'])->name('user.peta.mataair');
     Route::get('/peta/tangkiair', [UserController::class, 'UserPetaTangkiAir'])->name('user.peta.tangkiair');
+
+    Route::get('/airminum/kota/jayapura', [UserController::class, 'UserAirMinumKotaJayapura'])->name('user.airminum.kotajayapura');
+    Route::get('/airminum/kota/jayapura/pdam', [UserController::class, 'UserAirMinumKotaJayapuraPDAM'])->name('user.airminum.kotajayapura.pdam');
+
 Route::get('/ulasan', [UserController::class, 'UserUlasan'])->name('user.ulasan');
 
 // login Owner
