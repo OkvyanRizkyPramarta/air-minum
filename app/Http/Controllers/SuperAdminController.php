@@ -10940,10 +10940,21 @@ class SuperAdminController extends Controller
     //  public function AdminDestroyComment(Comment $comment)
     //  {
     //      $comment->delete();
- 
+
     //      Alert::toast('Data Berhasil Dihapus', 'success');
     //      return redirect()->back();
     //  }
+         Alert::toast('Data Berhasil Dihapus', 'success');
+         return redirect()->back();
+     }
+
+    public function AdminIndexChart()
+    {
+        // $district = District::all();
+        $population_total = Population::all();
+        //$population_total = Population::where('district_id')->get('population_total');
+        return view('superadmin.index', compact(/*'district',*/'population_total'));
+    }
 
     public function index()
     {
