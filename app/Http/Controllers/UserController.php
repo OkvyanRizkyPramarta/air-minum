@@ -26,7 +26,8 @@ class UserController extends Controller
 
     public function UserPeta(Request $request)
     {
-        return view('user.peta');
+        $map = Map::index();
+        return view('user.peta', compact('map'));
     }
 
     public function UserPetaPDAM(Request $request)

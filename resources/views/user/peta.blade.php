@@ -66,9 +66,16 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h3 class="text-center" style="color:#10597D;padding-right:50px;">
+            <h3 class="text-center" style="color:#10597D;">
               <span style=""><b>Peta Persebaran</b></span>
             </h3>
+            @foreach( $map as $m)
+            <h3 class="text-center" style="color:#10597D;padding-top:50px;">
+              <span style=""><b>{{ $m -> city -> name }}</b></span>
+              <p style=""><b>{{ $m -> name }}</b></p>
+              <img src="{{ asset ('storage/'.$m->image)}}" width="100%;"></img>
+            </h3>
+            @endforeach
           </div>
         </div>
       </div>
