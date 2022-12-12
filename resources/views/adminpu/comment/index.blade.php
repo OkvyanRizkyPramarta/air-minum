@@ -218,7 +218,9 @@
                                         <li><a href="{{ url ('/adminpu/table/file/index') }}">Tabel Berkas</a>
                                         </li>
                                         <li><a href="{{ url ('/adminpu/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                </li>
+                                        </li>
+                                        <li><a href="{{ url ('/adminpu/table/map/index') }}">Tabel Peta</a>
+                                        </li>
                             </ul>
                         </div>
                     </div>

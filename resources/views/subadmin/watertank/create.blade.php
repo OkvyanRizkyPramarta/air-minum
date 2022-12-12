@@ -162,6 +162,8 @@
                                         </li>
                                         <li><a href="{{ url ('/subadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                         </li>
+                                        <li><a href="{{ url ('/subadmin/table/map/index') }}">Tabel Peta</a>
+                                </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -215,6 +217,8 @@
                                 <li><a href="{{ url ('/subadmin/table/file/index') }}">Tabel Berkas</a>
                                 </li>
                                 <li><a href="{{ url ('/subadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
+                                </li>
+                                <li><a href="{{ url ('/subadmin/table/map/index') }}">Tabel Peta</a>
                                 </li>
                             </ul>
                         </div>

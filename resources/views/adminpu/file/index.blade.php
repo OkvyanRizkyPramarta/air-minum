@@ -152,7 +152,7 @@
                                     <ul id="demodepart" class="collapse dropdown-header-top">
                                         <li><a href="{{ url ('/adminpu/table/city/index') }}">Tabel Kota</a>
                                         </li>
-                                        <li><a href="{{ url ('/adminpun/table/district/index') }}">Tabel Kecamatan</a>
+                                        <li><a href="{{ url ('/adminpu/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
                                         <li><a href="{{ url ('/adminpu/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                         </li>
@@ -196,30 +196,30 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ url ('/adminpu/table/city/index') }}">Tabel Kota/Kabupaten</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/district/index') }}">Tabel Kecamatan</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/village/index') }}">Tabel Desa/Kelurahan</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/population/index') }}">Tabel Populasi</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/riverintake/index') }}">Tabel Intake Sungai</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/waterwell/index')}}">Tabel Sumur</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/waterspring/index') }}">Tabel Mata Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/file/index') }}">Tabel Berkas</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                        </li>
-                                        <li><a href="{{ url ('/adminpu/table/map/index') }}">Tabel Peta</a>
-                                        </li>
+                                <li><a href="{{ url ('/adminpu/table/city/index') }}">Tabel Kota</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/district/index') }}">Tabel Kecamatan</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/village/index') }}">Tabel Desa / Kelurahan</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/population/index') }}">Tabel Populasi</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/waterwell/index')}}">Tabel Sumur</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/waterspring/index') }}">Tabel Mata Air</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/file/index') }}">Tabel Berkas</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/comment/index') }}">Tabel Kritik Dan Saran</a>
+                                </li>
+                                <li><a href="{{ url ('/adminpu/table/map/index') }}">Tabel Peta</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -238,7 +238,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-                                        <h2>Data Tabel Mata Air</h2>
+                                        <h2>Data Tabel Berkas AdminPU</h2>
 										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
@@ -265,75 +265,41 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="auto">Kode Integrasi </th>
-                                        <th class="text-center" width="auto">Pengelola</th>
-                                        <th class="text-center" width="auto">Nama Objek Infrastruktur (Sub Sistem)</th>
-                                        <th class="text-center" width="auto">Wilayah Sungai</th>
-                                        <th class="text-center" width="auto">Provinsi</th>
-                                        <th class="text-center" width="auto">Kota/Kabupaten</th>
-                                        <th class="text-center" width="auto">Kecamatan</th>
-                                        <th class="text-center" width="auto">Desa/Kelurahan</th>
-                                        <th class="text-center" width="auto">Latitude</th>
-                                        <th class="text-center" width="auto">Longitude</th>
-                                        <th class="text-center" width="auto">Jiwa (orang)</th>
-                                        <th class="text-center" width="auto">Debit (l/detik)</th>
-                                        <th class="text-center" width="auto">Nama Mata Air</th>
-                                        <th class="text-center" width="auto">Sistem Pengambilan Air</th>
-                                        <th class="text-center" width="auto">Jenis Pompa</th>
-                                        <th class="text-center" width="auto">Tahun Pembuatan</th>
-                                        <th class="text-center" width="auto">Status Operasi</th>
-                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
-                                    
+                                        <th class="text-center" width="auto">ID</th>
+                                        <th class="text-center" width="auto">Nama Kota</th>
+                                        <th class="text-center" width="auto">Nama Berkas</th>
+                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">Tampil Di Website</th>
+                                
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($waterspring as $w)
+                                @foreach($adminpufile as $f)
                                     <tr>
-                                        <td class="text-center">{{ $w->integration_code }}</td>
-                                        <td class="text-center">{{ $w->administrator }}</td>
-                                        <td class="text-center">{{ $w->sub_sistem }}</td>
-                                        <td class="text-center">{{ $w->watershed }}</td>
-                                        <td class="text-center">{{ $w->province }}</td>
-                                        <td class="text-center">{{ $w->city->name }}</td>
-                                        <td class="text-center">{{ $w->district->name }}</td>
-                                        <td class="text-center">{{ $w->village->name }}</td>
-                                        <td class="text-center">{{ $w->latitude }}</td>
-                                        <td class="text-center">{{ $w->longitude }}</td>
-                                        <td class="text-center">{{ $w->people }}</td>
-                                        <td class="text-center">{{ $w->debit }}</td>
-                                        <td class="text-center">{{ $w->spring_name }}</td>
-                                        <td class="text-center">{{ $w->water_intake_system	 }}</td>
-                                        <td class="text-center">{{ $w->pump_type }}</td>
-                                        <td class="text-center">{{ $w->production_year }}</td>
-                                        <td class="text-center">{{ $w->operating_state }}</td>
-                                        <td class="text-center">{{ $w->updated_date }}</td>
-                                        <div class="row">
-                                            <td class="text-center">
-                                            </td>
-                                        </div>
+                                        <td class="text-center">{{ $f->id }}</td>
+                                        <td class="text-center">{{ $f->city->name }}</td>
+                                        <td class="text-center"><p><a href="{{ asset ('storage/'.$f->file)}}" target="_blank">{{ $f->name }}</a>.</p></td>
+                                        <td class="text-center">{{ $f->year }}</td>
+                                        <td class="text-center">
+											<span>
+												@if ($f->show == 'Yes')
+													<span>Menampilkan</span>
+												@else
+													<span>Tidak Menampilkan</span>
+												@endif
+											</span>
+										</td>
                                     </tr>
-                                @endforeach
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th class="text-center" width="auto">Kode Integrasi </th>
-                                        <th class="text-center" width="auto">Pengelola</th>
-                                        <th class="text-center" width="auto">Nama Objek Infrastruktur (Sub Sistem)</th>
-                                        <th class="text-center" width="auto">Wilayah Sungai</th>
-                                        <th class="text-center" width="auto">Provinsi</th>
-                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
-                                        <th class="text-center" width="auto">Kecamatan</th>
-                                        <th class="text-center" width="auto">Kelurahan</th>
-                                        <th class="text-center" width="auto">Latitude</th>
-                                        <th class="text-center" width="auto">Longitude</th>
-                                        <th class="text-center" width="auto">Jiwa (orang)</th>
-                                        <th class="text-center" width="auto">Debit (l/detik)</th>
-                                        <th class="text-center" width="auto">Nama Mata Air</th>
-                                        <th class="text-center" width="auto">Sistem Pengambilan Air</th>
-                                        <th class="text-center" width="auto">Jenis Pompa</th>
-                                        <th class="text-center" width="auto">Tahun Pembuatan</th>
-                                        <th class="text-center" width="auto">Status Operasi</th>
-                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
+                                        <th class="text-center" width="auto">ID</th>
+                                        <th class="text-center" width="auto">Nama Kota</th>
+                                        <th class="text-center" width="auto">Nama File</th>
+                                        <th class="text-center" width="auto">Tahun</th>
+                                        <th class="text-center" width="auto">Tampil DI Website</th>
+                                        
                                     </tr>
                                 </tfoot>
                             </table>

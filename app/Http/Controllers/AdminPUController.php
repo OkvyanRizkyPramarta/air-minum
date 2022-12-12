@@ -16,6 +16,8 @@ use App\Models\Waterwell;
 use App\Models\WaterSpring;
 use App\Models\Population;
 use App\Models\Map;
+use App\Models\SubAdminFile;
+
 
 class AdminPUController extends Controller
 {
@@ -91,5 +93,11 @@ class AdminPUController extends Controller
         $population_total = Population::all();
         //$population_total = Population::where('district_id')->get('population_total');
         return view('adminpu.index', compact('district','population_total'));
+    }
+
+    public function AdminPUIndexFile()
+    {
+        $adminpufile = SubAdminFile::index();
+        return view('adminpu.file.index', compact('adminpufile'));
     }
 }
