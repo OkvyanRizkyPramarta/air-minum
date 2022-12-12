@@ -43,29 +43,24 @@
     <div class="about_section layout_padding" style="background-color:white;">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <h3 class="text-center" style="color:#10597D;padding-right:50px;">
-            <a href="{{ url ('/peta/pdam') }}" style="color: inherit;text-decoration: none;">
-                <span style="padding-right:50px;"><b>PDAM</b></span>
+          <div class="col-md-12 col-md-12 col-sm-12">
+            <h3 class="text-center" style="color:#10597D;">
+            <a href="{{ url ('/peta/pdam') }}" style="font-size:1.5vw; padding-right:30px; color: inherit;text-decoration: none;">
+                <span style=""><b>PDAM</b></span>
             </a>
-            <a href="{{ url ('/peta/populasi') }}" style="color: inherit;text-decoration: none;">
-                <span style="padding-right:50px;"><b>Populasi</b></span>
+            <a href="{{ url ('/peta/populasi') }}" style="font-size:1.5vw; padding-right:30px; color: inherit;text-decoration: none;">
+                <span style=""><b>Populasi</b></span>
             </a>
-            <a href="{{ url ('/peta/intakesungai') }}" style="color: inherit;text-decoration: none;">
-                <span style="padding-right:50px;"><b>Intake Sungai</b></span>
+            <a href="{{ url ('/peta/intakesungai') }}" style="font-size:1.5vw; padding-right:30px; color: inherit;text-decoration: none;">
+                <span style=""><b>Intake Sungai</b></span>
             </a>
-            <a href="{{ url ('/peta/mataair') }}" style="color: inherit;text-decoration: none;">
-                <span style="padding-right:50px;"><b>Mata Air</b></span>
+            <a href="{{ url ('/peta/mataair') }}" style="font-size:1.5vw; padding-right:30px; color: inherit;text-decoration: none;">
+                <span style=""><b>Mata Air</b></span>
             </a>
-            <a href="{{ url ('/peta/tangkiair') }}" style="color: inherit;text-decoration: none;">
-                <span style="padding-right:50px;"><b>Tangki Air</b></span>
+            <a href="{{ url ('/peta/tangkiair') }}" style="font-size:1.5vw; padding-right:30px; color: inherit;text-decoration: none;">
+                <span style=""><b>Tangki Air</b></span>
             </a>
-              <span style="padding-right:50px;"><b>PDAM</b></span>
-              <span style="padding-right:50px;"><b>Populasi</b></span>
-              <span style="padding-right:50px;"><b>Intake Sungai</b></span>
-              <span style="padding-right:50px;"><b>Mata Air</b></span>
-              <span style="padding-right:50px;"><b>Tangki Air</b></span>
-            <a href="{{ url ('/peta') }}" style="color: inherit;text-decoration: none;">
+            <a href="{{ url ('/peta') }}" style="font-size:1.5vw; padding-right:30px; color: inherit;text-decoration: none;">
                 <span style=""><b>Peta Persebaran</b></span>
             </a>
             </h3>

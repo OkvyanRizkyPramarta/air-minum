@@ -32,29 +32,31 @@
 </head>
 <body>
 <!--header section start -->
-    <div class="header_section" style="background-image:url({{url('user/images/dashboard.png')}})">
+  <div class="header_section" style="background-image:url({{url('user/images/TelukCenderawasih.jpg')}})">
       <div class="container">
         <div class="row">
-          <div class="col-md-8">
-            <div class="menu_main" style="padding-top:30px;">
-              <div class="">
-                <span class="padding_left0" style="padding-right:10px;"><a href="{{ url ('/')}}">Beranda</a></span>
-                <span class="padding_left0" style="padding-right:10px;"><a href="{{ url ('/peta')}}"">Peta</a></span>
-                <span class="padding_left0" style="padding-right:10px;"><a href="">Capaian Air Minum</a></span>
-                <span class="padding_left0" style="padding-right:10px;"><a href="#">Open Data</a></span>
-                <span class="padding_left0" style="padding-right:10px;"><a href="{{ url ('/ulasan')}}"">Ulasan</a></span>
-              </div>
-            </div>
+          <div class="col-sm-2 col-md-2">
+            <div><img src="{{ asset('user/images/pemerintah_papua.png') }}" style="" width="100px;"></div>  
           </div>
-          <div class="col-md-4">
-            <div class="menu_text">
+          <div class="col-md-8 col-sm-8">
+            <div class="" style="padding-top:2%">
               <ul>
-                <div><img src="{{ asset('user/images/tirta.png') }}" width="250px;"></a></div>
+                  <div class="text-center" style="">
+                    <a href="{{ url ('/') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Beranda</a>
+                    <a href="{{ url ('/peta') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Peta</a>
+                    <a href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Capaian Air Minum</a>
+                    <a href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Open Data</a>
+                    <a href="{{ url ('/ulasan') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Ulasan</a>
+                  </div>
               </ul>
             </div>      
           </div>
+          <div class="col-sm-2 col-md-2">
+            <div><img src="{{ asset('user/images/pu_papua.jpg') }}" style="padding-right:-30px;" width="100px;"></div>  
+          </div>
         </div>
-
+      </div>
+      
     @yield('content')
     
     @include('sweetalert::alert')

@@ -16,7 +16,7 @@
     </div>
     <!-- header section end -->
     <!-- newsletter section start -->
-    <h1 class="banner_taital text-center" style="color:#10597D;padding-bottom:10%;">Ulasan</h1>
+    <h1 class="banner_taital text-center" style="color:#10597D;padding-bottom:10%;padding-top:10%;">Ulasan</h1>
     @foreach($comment as $c )
     <div class="" style="background-color:white;">
       <div class="container">

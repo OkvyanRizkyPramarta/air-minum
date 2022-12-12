@@ -1,23 +1,14 @@
 @extends('layouts.user.master')
 
 @section('content')
-    <!-- banner section start -->
-    <div class="banner_section layout_padding" style="padding-top:-300px;">
+<div class="banner_section layout_padding" >
       <div class="container">
         <div class="row">
-          <div class="col-md-7">
-            <h2 class="banner_taital" style="color:white;">SISTEM INFORMASI DATABASE</h2>
-            <h1 class="banner_taital" style="color:white;">AIR MINUM Provinsi Papua</h1>
+          <div class="col-sm-6 col-md-12 col-sm-12" style="padding-top: 60px;">
+            <h1 class="text-center" style="font-size:3vw;color:white;text-shadow: 2px 2px black;"><b>SELAMAT DATANG DI WEBSITE</b></h1>
+            <h1 class="text-center" style="font-size:3vw;color:white;text-shadow: 2px 2px black;"><b>SISTEM INFORMASI DATABASE</b></h1>
+            <h1 class="text-center" style="font-size:3vw;color:white;text-shadow: 2px 2px black;"><b>AIR MINUM PROVINSI PAPUA</b></h1> 
           </div>
-          <div class="col-sm-3">
-            <div>
-              <img src="{{ asset('user/images/pemerintah_papua.png') }} " style="height:200px;padding-left:50px;">
-            </div>
-          </div>
-          <div class="col-sm-2">
-            <div>
-              <img src="{{ asset('user/images/pu_papua.png') }}" style="height:200px;">
-            </div>
         </div>
       </div>
     </div>
@@ -27,13 +18,13 @@
     </div>
     <!-- header section end -->
     <!-- about section start -->
-    <div class="about_section layout_padding" style="background-color:white;">
+    <div class="about_section" style="background-color:white;padding-top:100px;">
       <div class="container">
         <div class="row">
-          <div class="col-md-5">
-            <div><img src="{{ asset('user/images/kids.jpg') }}" style="height:600px;padding-top:25%;"></div>
+          <div class="col-md-6 py-4">
+            <div><img src="{{ asset('user/images/kids.jpg') }}" style="max-width: 500px;width: 100%;"></div>
           </div>
-          <div class="col-md-7">
+          <div class="col-md-6">
             <h1 class="services_taital" style="color:#10597D;"><span>Latar Belakang </span></h1>
             <p class="ipsum_text" style="text-align:justify;">
               Penyediaan air minum merupakan salah satu kebutuhan dasar dan hak sosial ekonomi 
@@ -45,15 +36,20 @@
               masyarakat. Hal ini seiring dengan program Pemerintah Pusat dalam pengembang 
               permukiman berkelanjutan, dengan mencapai 100 persen akses air minum, mengurangi 
               kawasan kumuh 0 persen, dan 100 persen akses sanitasi untuk masyarakat.</p>
-            <p class="ipsum_text" style="text-align:justify;">Permasalahan pengelolaan data base air minum salah satunya tentang sistem pengarsipan 
-              yang masih belum terkomputerisasi di era digital ini. Padahal dalam rangka 
-              pengembangan dan pembangunan sektor keciptakaryaan, diperlukan gambaran yang jelas 
-              tentang kondisi eksisting sarana perkotaan beserta perangkat pendukungnya. Maka dari 
-              itu untuk peningkatan sistem tata kelola keciptakaryaan Dinas Pekerjaan Umum dan 
-              Penataan Ruang Kabupaten Kendal membuat database air minum dengan tujuan untuk 
-              menghimpun, mengolah dan menyediakan informasi dan data air bersih yang sudah disepakati 
-              secara akurat, cepat dan mudah diakses oleh Masyarakat.
-            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="ipsum_text" style="text-align:justify;">
+              Penyediaan air minum merupakan salah satu kebutuhan dasar dan hak sosial ekonomi 
+              masyarakat yang harus dipenuhi oleh pemerintah, baik Pemerintah Daerah maupun 
+              Pemerintah Pusat. Ketersediaan air minum merupakan salah satu penentu peningkatan 
+              kesejahteraan masyarakat. Diharapkan dengan ketersediaan air minum yang mencukupi 
+              dapat meningkatkan derajat kesehatan masyarakat, dan dapat mendorong peningkatan 
+              produktivitas masyarakat, sehingga dapat terjadi peningkatan pertumbuhan ekonomi 
+              masyarakat. Hal ini seiring dengan program Pemerintah Pusat dalam pengembang 
+              permukiman berkelanjutan, dengan mencapai 100 persen akses air minum, mengurangi 
+              kawasan kumuh 0 persen, dan 100 persen akses sanitasi untuk masyarakat.</p>
           </div>
         </div>
       </div>
@@ -64,16 +60,15 @@
       <div class="container">
       <form method="POST" action="{{ route('user.comment.store') }}" enctype="multipart/form-data">
         <div class="row">
-          <div class="col-md-4" style="padding-top:10%">
+          <div class="col-md-4 col-md-4 col-sm-12" style="padding-top:10%">
             <h1 class="newsletter_text" style="color:#10597D;">Kritik Dan Saran</h1>
             <p class="tempor_text" style="color:black;">
               Apabila ada kritik dan saran silahkan tuliskan pada kolom yang tertera.
               Kami tidak akan mendapatkan kontak dan masukan anda pada siapapun
             </p>
-          </div> 
-          
+          </div>
           @csrf 
-          <div class="col-md-8" style="padding-left:180px;">
+          <div class="col-md-8 col-md-8 col-sm-12" style="">
             <div>
               <input type="text" name="name" class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Nama Anda" required> <br> <br> <br>
               <input type="number" name="telp_number"  class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Nomer Telepon Anda" required> <br> <br> <br>

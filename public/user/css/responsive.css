@@ -286,7 +286,7 @@ padding: 126px 40px;
 .logo { width: 40%; padding-left: 0px;}
 .togle_3 { display: none; }
 .toggle_menu { top: -48px; float: right; }
-.header_section { background-size: cover; padding-top: 15px; padding-bottom: 90px; background: #89cbeb; }
+.header_section { background-size: cover; padding-top: 15px; padding-bottom: 90px; }
 .banner_section { padding-top: 30px; }
 .banner_taital { font-size: 28px; }
 .banner_taital_1 { font-size: 28px; }
