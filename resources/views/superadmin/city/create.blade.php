@@ -186,7 +186,7 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
+                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
                                         </li>
                                         <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>

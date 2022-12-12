@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Data Table | Notika - Notika Admin Template</title>
+    <title>Data Tabel Populasi | Notika - Notika Admin Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -146,31 +146,31 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-target="#Charts" href="{{ url('/superadmin/index') }}">Halaman Utama</a>
+                                <li><a data-target="#Charts" href="{{ url('/adminpu/index') }}">Halaman Utama</a>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                    <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
+                                    <li><a href="{{ url ('/adminpu/table/city/index') }}">Tabel Kota/Kabupaten</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        <li><a href="{{ url ('/adminpu/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
+                                        <li><a href="{{ url ('/adminpu/table/village/index') }}">Tabel Desa/Kelurahan</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        <li><a href="{{ url ('/adminpu/table/population/index') }}">Tabel Populasi</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        <li><a href="{{ url ('/adminpu/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        <li><a href="{{ url ('/adminpu/table/waterwell/index')}}">Tabel Sumur</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        <li><a href="{{ url ('/adminpu/table/watertank/index') }}">Tabel Tampungan Air</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        <li><a href="{{ url ('/adminpu/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        <li><a href="{{ url ('/adminpu/table/waterspring/index') }}">Tabel Mata Air</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                        <li><a href="{{ url ('/adminpu/table/file/index') }}">Tabel Berkas</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
+                                        <li><a href="{{ url ('/adminpu/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -188,7 +188,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                        <li><a href="{{ url('/adminpu/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
                         <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
                         </li>
@@ -196,27 +196,27 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
+                            <li><a href="{{ url ('/adminpu/table/city/index') }}">Tabel Kota/Kabupaten</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        <li><a href="{{ url ('/adminpu/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
+                                        <li><a href="{{ url ('/adminpu/table/village/index') }}">Tabel Desa/Kelurahan</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        <li><a href="{{ url ('/adminpu/table/population/index') }}">Tabel Populasi</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        <li><a href="{{ url ('/adminpu/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        <li><a href="{{ url ('/adminpu/table/waterwell/index')}}">Tabel Sumur</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        <li><a href="{{ url ('/adminpu/table/watertank/index') }}">Tabel Tampungan Air</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        <li><a href="{{ url ('/adminpu/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        <li><a href="{{ url ('/adminpu/table/waterspring/index') }}">Tabel Mata Air</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                        <li><a href="{{ url ('/adminpu/table/file/index') }}">Tabel Berkas</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
+                                        <li><a href="{{ url ('/adminpu/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                 </li>
                             </ul>
                         </div>
@@ -236,7 +236,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-										<h2>Data Tabel Sumur Air Tanah </h2>
+										<h2>Data Tabel Populasi</h2>
 										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
@@ -244,7 +244,6 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                    <a href="{{url('/superadmin/table/waterwell/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
                                 </div>
 							</div>
 						</div>
@@ -264,68 +263,38 @@
                             <table id="data-table-basic" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="text-center" width="auto">Kode Integrasi</th>
-                                        <th class="text-center" width="auto">Nama Balai</th>
-                                        <th class="text-center" width="auto">Nama / No. Sumur</th>
-                                        <th class="text-center" width="auto">Wilayah Sungai</th>
-                                        <th class="text-center" width="auto">Provinsi</th>
-                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
-                                        <th class="text-center" width="auto">Kecamatan</th>
-                                        <th class="text-center" width="auto">Kelurahan</th>
-                                        <th class="text-center" width="auto">Latitude</th>
-                                        <th class="text-center" width="auto">Longitude</th>
-                                        <th class="text-center" width="auto">Fungsi Sumur </th>
-                                        <th class="text-center" width="auto">Status Operasi</th>
-                                        <th class="text-center" width="auto">Debit (l/detik)</th>
-                                        <th class="text-center" width="auto">Jiwa (orang)</th>
-                                        <th class="text-center" width="auto">Luas (ha)</th>
-                                        <th class="text-center" width="auto">Kedalaman Sumur (m)</th>
-                                        <th class="text-center" width="auto">Jenis Pompa</th>
-                                        <th class="text-center" width="auto">Tahun Pembangunan</th>
-                                        <th class="text-center" width="auto">Kondisi Sumur</th>
-                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
-                                        <th class="text-center" width="220px;">Action</th>
+                                        <th class="text-center" width="auto">Nama Kota/Kabupaten</th>
+                                        <th class="text-center" width="auto">Nama Kecamatan</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan</th>
+                                        <th class="text-center" width="auto">Total Populasi</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan (OAP)</th>
+                                        <th class="text-center" width="auto">Total Populasi (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki Non Papua</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan Non Papua</th>
+                                        <th class="text-center" width="auto">Total Populasi Non Papua</th>
+                                        <th class="text-center" width="auto">Tahun</th>
+                                     
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($waterwell as $wa)
+                                @foreach($population as $p)
                                     <tr>
-                                        <td class="text-center">{{ $wa->bmm_code }}</td>
-                                        <td class="text-center">{{ $wa->unit }}</td>
-                                        <td class="text-center">{{ $wa->name }}</td>
-                                        <td class="text-center">{{ $wa->watershed }}</td>
-                                        <td class="text-center">{{ $wa->province }}</td>
-                                        <td class="text-center">{{ $wa->city->name }}</td>
-                                        <td class="text-center">{{ $wa->district->name }}</td>
-                                        <td class="text-center">{{ $wa->village->name }}</td>
-                                        <td class="text-center">{{ $wa->latitude }}</td>
-                                        <td class="text-center">{{ $wa->longitude }}</td>
-                                        <td class="text-center">{{ $wa->well_function }}</td>
-                                        <td class="text-center">{{ $wa->operating_state }}</td>
-                                        <td class="text-center">{{ $wa->debit }}</td>
-                                        <td class="text-center">{{ $wa->people }}</td>
-                                        <td class="text-center">{{ $wa->luas }}</td>
-                                        <td class="text-center">{{ $wa->well_depth }}</td>
-                                        <td class="text-center">{{ $wa->pump_type }}</td>
-                                        <td class="text-center">{{ $wa->development_year }}</td>
-                                        <td class="text-center">{{ $wa->well_condition }}</td>
-                                        <td class="text-center">{{ $wa->updated_date }}</td>
-                                        
+                                        <td class="text-center">{{ $p->city->name }}</td>
+                                        <td class="text-center">{{ $p->district->name }}</td>
+                                        <td class="text-center">{{ $p->male_total }}</td>
+                                        <td class="text-center">{{ $p->female_total }}</td>
+                                        <td class="text-center">{{ $p->population_total }}</td>
+                                        <td class="text-center">{{ $p->maleoap_total }}</td>
+                                        <td class="text-center">{{ $p->femaleoap_total }}</td>
+                                        <td class="text-center">{{ $p->populationoap_total }}</td>
+                                        <td class="text-center">{{ $p->malenonoap_total }}</td>
+                                        <td class="text-center">{{ $p->femalenonoap_total }}</td>
+                                        <td class="text-center">{{ $p->populationnonoap_total }}</td>
+                                        <td class="text-center">{{ $p->year }}</td>
                                         <div class="row">
-                                            <td class="text-center">
-                                                <div>
-                                                    <a href="{{ route('superadmin.table.waterwell.edit', $wa->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
-                                                        Edit
-                                                    </a>
-                                                </div>
-                                                <div>
-                                                    <form action="{{ route('superadmin.table.waterwell.destroy', $wa->id) }}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
-                                                        Delete</a>
-                                                    </form>
-                                                </div>
+                                        <td class="text-center">
                                             </td>
                                         </div>
                                     </tr>
@@ -333,27 +302,20 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                    <th class="text-center" width="auto">Kode Integrasi</th>
-                                        <th class="text-center" width="auto">Nama Balai</th>
-                                        <th class="text-center" width="auto">Nama / No. Sumur </th>
-                                        <th class="text-center" width="auto">Wilayah Sungai</th>
-                                        <th class="text-center" width="auto">Provinsi</th>
-                                        <th class="text-center" width="auto">Kabupaten / Kota</th>
-                                        <th class="text-center" width="auto">Kecamatan</th>
-                                        <th class="text-center" width="auto">Kelurahan</th>
-                                        <th class="text-center" width="auto">Latitude</th>
-                                        <th class="text-center" width="auto">Longitude</th>
-                                        <th class="text-center" width="auto">Fungsi Sumur </th>
-                                        <th class="text-center" width="auto">Status Operasi</th>
-                                        <th class="text-center" width="auto">Debit (l/detik)</th>
-                                        <th class="text-center" width="auto">Jiwa (orang)</th>
-                                        <th class="text-center" width="auto">Luas (ha)</th>
-                                        <th class="text-center" width="auto">Kedalaman Sumur</th>
-                                        <th class="text-center" width="auto">Jenis Pompa</th>
-                                        <th class="text-center" width="auto">Tahun Pembangunan</th>
-                                        <th class="text-center" width="auto">Kondisi Sumur</th>
-                                        <th class="text-center" width="auto">Tanggal Diperbarui</th>
-                                        <th class="text-center" width="220px;">Action</th>
+                                        <th class="text-center" width="auto">Nama Kota/Kabupaten</th>
+                                        <th class="text-center" width="auto">Nama Kecamatan</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan</th>
+                                        <th class="text-center" width="auto">Total Populasi</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan (OAP)</th>
+                                        <th class="text-center" width="auto">Total Populasi (OAP)</th>
+                                        <th class="text-center" width="auto">Jumlah Laki - Laki Non Papua</th>
+                                        <th class="text-center" width="auto">Jumlah Perempuan Non Papua</th>
+                                        <th class="text-center" width="auto">Total Populasi Non Papua</th>
+                                        <th class="text-center" width="auto">Tahun</th>
+                                       
+
                                     </tr>
                                 </tfoot>
                             </table>
