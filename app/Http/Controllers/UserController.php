@@ -34,6 +34,12 @@ class UserController extends Controller
         return view('user.peta', compact('map'));
     }
 
+    public function UserPetaKotaJayapura(Request $request)
+    {
+        $kotajayapuramap = Map::index();
+        return view('user.peta.kotajayapura.index', compact('kotajayapuramap'));
+    }
+
     public function UserPetaPDAM(Request $request)
     {
         $municipalwaterwork = MunicipalWaterwork::index();

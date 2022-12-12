@@ -20,6 +20,7 @@ use App\Http\Controllers\AdminPUController;
 Route::get('/', [UserController::class, 'UserIndex'])->name('user.index');
 Route::post('/', [UserController::class, 'UserStoreComment'])->name('user.comment.store');
 Route::get('/peta', [UserController::class, 'UserPeta'])->name('user.peta');
+    Route::get('/peta/kota/jayapura', [UserController::class, 'UserPetaKotaJayapura'])->name('user.peta.kota.jayapura');
     Route::get('/peta/pdam', [UserController::class, 'UserPetaPDAM'])->name('user.peta.pdam');
     Route::get('/peta/populasi', [UserController::class, 'UserPetaPopulasi'])->name('user.peta.populasi');
     Route::get('/peta/intakesungai', [UserController::class, 'UserPetaIntakeSungai'])->name('user.peta.intakesungai');
