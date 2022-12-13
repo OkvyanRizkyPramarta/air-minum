@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class Dukcapil extends Model
+class DataProces extends Model
 {
     use HasFactory;
 
@@ -24,16 +24,16 @@ class Dukcapil extends Model
 
     public static function index()
     {
-        return Dukcapil::all();
+        return DataProces::all();
     }
 
     public static function store(Request $request)
     {
-        Dukcapil::create($request->all());
+        DataProces::create($request->all());
     }
 
-    public static function edit(Request $request, Dukcapil $dukcapil)
+    public static function edit(Request $request, DataProces $dataproces)
     {
-        $dukcapil->update($request->all());
+        $dataproces->update($request->all());
     }
 }

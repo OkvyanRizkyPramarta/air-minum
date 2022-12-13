@@ -50,13 +50,37 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::put('/superadmin/table/city/update/{city}', [SuperAdminController::class, 'AdminUpdateCity'])->name('superadmin.table.city.update');
     Route::delete('/superadmin/table/city/index/{city}', [SuperAdminController::class, 'AdminDestroyCity'])->name('superadmin.table.city.destroy');
 
-    //Kota Jayapura
+    //Kota Jayapura -> WaterResource
     Route::get('/superadmin/airbersih/kota/jayapura/waterresource/index', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterResourceIndex'])->name('superadmin.airbersih.kotajayapura.waterresource.index');
     Route::get('/superadmin/airbersih/kota/jayapura/waterresource/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterResourceCreate'])->name('superadmin.airbersih.kotajayapura.waterresource.create'); 
     Route::post('/superadmin/airbersih/kota/jayapura/waterresource/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterResourceStore'])->name('superadmin.airbersih.kotajayapura.waterresource.store');
     Route::get('/superadmin/airbersih/kota/jayapura/waterresource/edit/{waterresource}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterResourceEdit'])->name('superadmin.airbersih.kotajayapura.waterresource.edit');
     Route::put('/superadmin/airbersih/kota/jayapura/waterresource/update/{waterresource}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterResourceUpdate'])->name('superadmin.airbersih.kotajayapura.waterresource.update');
     Route::delete('/superadmin/airbersih/kota/jayapura/waterresource/index/{waterresource}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterResourceDestroy'])->name('superadmin.airbersih.kotajayapura.waterresource.destroy');
+
+     //Kota Jayapura -> Dukcapil
+    Route::get('/superadmin/airbersih/kota/jayapura/dukcapil/index', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDukcapilIndex'])->name('superadmin.airbersih.kotajayapura.dukcapil.index');
+    Route::get('/superadmin/airbersih/kota/jayapura/dukcapil/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDukcapilCreate'])->name('superadmin.airbersih.kotajayapura.dukcapil.create'); 
+    Route::post('/superadmin/airbersih/kota/jayapura/dukcapil/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDukcapilStore'])->name('superadmin.airbersih.kotajayapura.dukcapil.store');
+    Route::get('/superadmin/airbersih/kota/jayapura/dukcapil/edit/{dukcapil}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDukcapilEdit'])->name('superadmin.airbersih.kotajayapura.dukcapil.edit');
+    Route::put('/superadmin/airbersih/kota/jayapura/dukcapil/update/{dukcapil}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDukcapilUpdate'])->name('superadmin.airbersih.kotajayapura.dukcapil.update');
+    Route::delete('/superadmin/airbersih/kota/jayapura/dukcapil/index/{dukcapil}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDukcapilDestroy'])->name('superadmin.airbersih.kotajayapura.dukcapil.destroy');
+
+    //Kota Jayapura -> Badan Pusat Statistik (BPS)
+    Route::get('/superadmin/airbersih/kota/jayapura/statistic/index', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraStatisticIndex'])->name('superadmin.airbersih.kotajayapura.statistic.index');
+    Route::get('/superadmin/airbersih/kota/jayapura/statistic/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraStatisticCreate'])->name('superadmin.airbersih.kotajayapura.statistic.create'); 
+    Route::post('/superadmin/airbersih/kota/jayapura/statistic/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraStatisticStore'])->name('superadmin.airbersih.kotajayapura.statistic.store');
+    Route::get('/superadmin/airbersih/kota/jayapura/statistic/edit/{statistic}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraStatisticEdit'])->name('superadmin.airbersih.kotajayapura.statistic.edit');
+    Route::put('/superadmin/airbersih/kota/jayapura/statistic/update/{statistic}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraStatisticUpdate'])->name('superadmin.airbersih.kotajayapura.statistic.update');
+    Route::delete('/superadmin/airbersih/kota/jayapura/statistic/index/{statistic}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraStatisticDestroy'])->name('superadmin.airbersih.kotajayapura.statistic.destroy');
+
+    //Kota Jayapura -> Badan Pengelolaan dan Pendataan Daerah
+    Route::get('/superadmin/airbersih/kota/jayapura/dataproces/index', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDataProcesIndex'])->name('superadmin.airbersih.kotajayapura.dataproces.index');
+    Route::get('/superadmin/airbersih/kota/jayapura/dataproces/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDataProcesCreate'])->name('superadmin.airbersih.kotajayapura.dataproces.create'); 
+    Route::post('/superadmin/airbersih/kota/jayapura/dataproces/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDataProcesStore'])->name('superadmin.airbersih.kotajayapura.dataproces.store');
+    Route::get('/superadmin/airbersih/kota/jayapura/dataproces/edit/{dataproces}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDataProcesEdit'])->name('superadmin.airbersih.kotajayapura.dataproces.edit');
+    Route::put('/superadmin/airbersih/kota/jayapura/dataproces/update/{dataproces}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDataProcesUpdate'])->name('superadmin.airbersih.kotajayapura.dataproces.update');
+    Route::delete('/superadmin/airbersih/kota/jayapura/dataproces/index/{dataproces}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraDataProcesDestroy'])->name('superadmin.airbersih.kotajayapura.dataproces.destroy');
 });
 
 Route::middleware(['auth', 'SubAdmin'])->group(function () {

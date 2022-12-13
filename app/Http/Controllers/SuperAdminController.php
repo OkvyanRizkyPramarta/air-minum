@@ -15,6 +15,9 @@ use App\Models\Waterwell;
 use App\Models\WaterSpring;
 use App\Models\Population;
 use App\Models\WaterResource;
+use App\Models\Dukcapil;
+use App\Models\Statistic;
+use App\Models\DataProces;
 
 class SuperAdminController extends Controller
 {
@@ -225,6 +228,350 @@ class SuperAdminController extends Controller
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }
+
+    public function SuperAdminAirBersihKotaJayapuraDukcapilIndex()
+    {
+        $dukcapil = Dukcapil::where('city_id', '9')->get();
+        return view('superadmin.kotajayapura.dukcapil.index', compact('dukcapil'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDukcapilCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kotajayapura.dukcapil.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDukcapilStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+            
+        $dukcapil = new Dukcapil;
+        $dukcapil->name = $request->name;
+        $dukcapil->file = $request->file('file')->store('files', 'public');
+        $dukcapil->show = $request->show;
+        $dukcapil->city()->associate($city);
+        $dukcapil->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kotajayapura.dukcapil.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDukcapilEdit(Dukcapil $dukcapil)
+    {
+        $city = City::all();
+        return view('superadmin.kotajayapura.dukcapil.edit', compact('dukcapil', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDukcapilUpdate(Request $request, Dukcapil $dukcapil)
+    {
+        $dukcapil = Dukcapil::findOrFail($dukcapil->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dukcapil->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dukcapil->city()->associate($city);
+
+        } else {
+
+            if ($dukcapil->file&&file_exists(storage_path('app/public/'.$dukcapil->file))) {
+                \Storage::delete('public/'.$dukcapil->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dukcapil->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kotajayapura.dukcapil.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDukcapilDestroy(Dukcapil $dukcapil)
+    {
+        $dukcapil->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKotaJayapuraStatisticIndex()
+    {
+        $statistic = Statistic::where('city_id', '9')->get();
+        return view('superadmin.kotajayapura.statistic.index', compact('statistic'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraStatisticCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kotajayapura.statistic.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraStatisticStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+            
+        $statistic = new Statistic;
+        $statistic->name = $request->name;
+        $statistic->file = $request->file('file')->store('files', 'public');
+        $statistic->show = $request->show;
+        $statistic->city()->associate($city);
+        $statistic->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kotajayapura.statistic.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraStatisticEdit(Statistic $statistic)
+    {
+        $city = City::all();
+        return view('superadmin.kotajayapura.statistic.edit', compact('statistic', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraStatisticUpdate(Request $request, Statistic $statistic)
+    {
+        $statistic = Statistic::findOrFail($statistic->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $statistic->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $statistic->city()->associate($city);
+
+        } else {
+
+            if ($statistic->file&&file_exists(storage_path('app/public/'.$statistic->file))) {
+                \Storage::delete('public/'.$statistic->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $statistic->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kotajayapura.statistic.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraStatisticDestroy(Statistic $statistic)
+    {
+        $statistic->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKotaJayapuraDataProcesIndex()
+    {
+        $dataproces = DataProces::where('city_id', '9')->get();
+        return view('superadmin.kotajayapura.dataproces.index', compact('dataproces'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDataProcesCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kotajayapura.dataproces.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDataProcesStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+            
+        $dataproces = new DataProces;
+        $dataproces->name = $request->name;
+        $dataproces->file = $request->file('file')->store('files', 'public');
+        $dataproces->show = $request->show;
+        $dataproces->city()->associate($city);
+        $dataproces->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kotajayapura.dataproces.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDataProcesEdit(DataProces $dataproces)
+    {
+        $city = City::all();
+        return view('superadmin.kotajayapura.dataproces.edit', compact('dataproces', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDataProcesUpdate(Request $request, DataProces $dataproces)
+    {
+        $dataproces = DataProces::findOrFail($dataproces->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dataproces->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dataproces->city()->associate($city);
+
+        } else {
+
+            if ($dataproces->file&&file_exists(storage_path('app/public/'.$dataproces->file))) {
+                \Storage::delete('public/'.$dataproces->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dataproces->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kotajayapura.dataproces.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraDataProcesDestroy(DataProces $dataproces)
+    {
+        $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    
 
     // /**
     //  * Display a listing of the resource.
