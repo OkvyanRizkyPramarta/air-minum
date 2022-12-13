@@ -598,6 +598,130 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
+    public function SuperAdminAirBersihKotaJayapuraWaterspringIndex()
+    {
+        $waterspring = Waterspring::where('city_id', '9')->get();
+        return view('superadmin.kotajayapura.waterspring.index', compact('waterspring'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraWaterspringCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kotajayapura.waterspring.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraWaterspringStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterspring = new Waterspring;
+        $waterspring->name = $request->name;
+        $waterspring->file = $request->file('file')->store('files', 'public');
+        $waterspring->show = $request->show;
+        $waterspring->city()->associate($city);
+        $waterspring->district()->associate($district);
+        $waterspring->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kotajayapura.waterspring.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraWaterspringEdit(Waterspring $waterspring)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kotajayapura.waterspring.edit', compact('city', 'district', 'waterspring'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraWaterspringUpdate(Request $request, Waterspring $waterspring)
+    {
+        $waterspring = Waterspring::findOrFail($waterspring->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterspring->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterspring->city()->associate($city);
+
+        } else {
+
+            if ($waterspring->file&&file_exists(storage_path('app/public/'.$waterspring->file))) {
+                \Storage::delete('public/'.$waterspring->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterspring->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kotajayapura.waterspring.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKotaJayapuraWaterspringDestroy(Waterspring $waterspring)
+    {
+        $waterspring->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
     public function SuperAdminAirBersihKotaJayapuraMunicipalWaterworkIndex()
     {
         $municipalwaterwork = MunicipalWaterwork::where('city_id', '9')->get();

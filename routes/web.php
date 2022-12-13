@@ -79,6 +79,13 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::put('/superadmin/airbersih/kota/jayapura/watertank/update/{watertank}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWatertankUpdate'])->name('superadmin.airbersih.kotajayapura.watertank.update');
     Route::delete('/superadmin/airbersih/kota/jayapura/watertank/index/{watertank}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWatertankDestroy'])->name('superadmin.airbersih.kotajayapura.watertank.destroy');
 
+    Route::get('/superadmin/airbersih/kota/jayapura/waterspring/index', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterspringIndex'])->name('superadmin.airbersih.kotajayapura.waterspring.index');
+    Route::get('/superadmin/airbersih/kota/jayapura/waterspring/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterspringCreate'])->name('superadmin.airbersih.kotajayapura.waterspring.create'); 
+    Route::post('/superadmin/airbersih/kota/jayapura/waterspring/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterspringStore'])->name('superadmin.airbersih.kotajayapura.waterspring.store');
+    Route::get('/superadmin/airbersih/kota/jayapura/waterspring/edit/{waterspring}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterspringEdit'])->name('superadmin.airbersih.kotajayapura.waterspring.edit');
+    Route::put('/superadmin/airbersih/kota/jayapura/waterspring/update/{waterspring}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterspringUpdate'])->name('superadmin.airbersih.kotajayapura.waterspring.update');
+    Route::delete('/superadmin/airbersih/kota/jayapura/waterspring/index/{waterspring}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraWaterspringDestroy'])->name('superadmin.airbersih.kotajayapura.waterspring.destroy');
+
     Route::get('/superadmin/airbersih/kota/jayapura/municipalwaterwork/index', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraMunicipalWaterworkIndex'])->name('superadmin.airbersih.kotajayapura.municipalwaterwork.index');
     Route::get('/superadmin/airbersih/kota/jayapura/municipalwaterwork/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraMunicipalWaterworkCreate'])->name('superadmin.airbersih.kotajayapura.municipalwaterwork.create'); 
     Route::post('/superadmin/airbersih/kota/jayapura/municipalwaterwork/create', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraMunicipalWaterworkStore'])->name('superadmin.airbersih.kotajayapura.municipalwaterwork.store');

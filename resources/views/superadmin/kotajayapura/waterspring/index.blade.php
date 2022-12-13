@@ -11,7 +11,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-                                        <h2> Data Tabel Tampungan Air</h2>
+                                        <h2> Data Tabel Mata Air</h2>
 										<h2> Kota Jayapura <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
@@ -19,7 +19,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                    <a href="{{url('/superadmin/airbersih/kota/jayapura/watertank/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                    <a href="{{url('/superadmin/airbersih/kota/jayapura/waterspring/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
                                 </div>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($watertank as $w)
+                                @foreach($waterspring as $w)
                                     <tr>
                                         <td class="text-center">{{ $w -> city -> name }}</td>
                                         <td class="text-center">{{ $w -> district -> name }}</td>
@@ -64,12 +64,12 @@
                                         <div class="row">
                                             <td class="text-center">
                                                 <div class="col-lg-6">
-                                                    <a href="{{ route('superadmin.airbersih.kotajayapura.watertank.edit', $w->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                    <a href="{{ route('superadmin.airbersih.kotajayapura.waterspring.edit', $w->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <form action="{{ route('superadmin.airbersih.kotajayapura.watertank.destroy', $w->id) }}" method="POST" class="d-inline">
+                                                    <form action="{{ route('superadmin.airbersih.kotajayapura.waterspring.destroy', $w->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>

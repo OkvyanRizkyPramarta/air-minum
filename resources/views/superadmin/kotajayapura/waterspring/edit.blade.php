@@ -1,7 +1,7 @@
 @extends('layouts.superadmin.master')
 
 @section('content')
-    <!-- Breadcomb area Start-->
+	<!-- Breadcomb area Start-->
     <div class="breadcomb-area">
       <div class="container">
         <div class="row">
@@ -11,7 +11,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
-                      <h2>Halaman Tambah Data Tabel Tampungan Air</h2>
+                      <h2>Halaman Ubah Data Tabel Mata Air</h2>
                       <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
@@ -25,9 +25,10 @@
     <!-- Breadcomb area End-->
     <!-- Form Element area Start-->
     <div class="form-element-area">
-      <div class="container">
-        <form method="POST" action="{{ route('superadmin.airbersih.kotajayapura.watertank.store') }}" enctype="multipart/form-data">
+        <div class="container">
+        <form method="POST" action="{{ route('superadmin.airbersih.kotajayapura.waterspring.update', $waterspring->id) }}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
@@ -38,7 +39,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Nama Kota</label>
-                                        <input type="text" name="city_id" value="Kota Jayapura" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" Disabled/>
+                                        <input type="text" name="city_id" value="{{ $waterspring->city->name }}" class="form-control" Disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -47,11 +48,13 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Kecamatan</label>
+                                        <label>Nama Kecamatan</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="district_id" data-live-search="true">
-                                                @foreach($district as $d)
-                                                <option value="{{ $d->id }}">{{ $d->name }}</option>
+                                            <select class="selectpicker" value="{{ $waterspring->district->name }}" name="district_id" data-live-search="true">
+                                                @foreach($district as $d)  
+                                                  <option value="{{ $d -> id }}" {{ ($d->id == $waterspring->district->id) ? 'selected' : ''}} >
+                                                   {{ $d->name }}
+                                                  </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -64,7 +67,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                       <label>Nama Berkas</label>
-                                      <input type="text" name="name" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                      <input type="text" name="name" value="{{ $waterspring->name }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -73,21 +76,21 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Berkas PDF</label>
-                                        <input type="file" name="file" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                      <label>Kerkas PDF</label>
+                                      <input type="file" name="file" value="{{ $waterspring->file }}" class="form-control" >
+                                      </br>
+                                      <iframe width="550px" width="250px" src="{{asset('storage/'.$waterspring->file)}}"></iframe>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
                                     <div class="nk-int-st">
                                         <label>Tampil Pada Halaman Website</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="show" data-live-search="true">
-                                                <option value="Yes">Tampil</option>
-                                                <option value="No">Tidak Tampil</option>
+                                            <select class="selectpicker" name="show" value="{{($waterspring->show)}}" data-live-search="true">
+                                            <option value="Yes" @if(old('show', $waterspring->show) === 'Yes')  'selected' @endif>Menampilkan</option>
+                                            <option value="No" @if(old('show', $waterspring->show) === 'No')  'selected' @endif>Tidak Menampilkan</option>
                                             </select>
                                         </div>
                                     </div>
@@ -102,7 +105,5 @@
                 </div>
             </div>
         </form>
-      </div>
-    </div>
     <!-- Form Element area End-->
 @endsection
