@@ -17,13 +17,16 @@ use App\Models\WaterSpring;
 use App\Models\Population;
 use App\Models\SubAdminFile;
 use App\Models\Map;
+use App\Models\Dukcapil;
+use App\Models\Statistic;
+use App\Models\DataProces;
 
 class SubAdminController extends Controller
 {
-    public function SubAdminIndexCity()
+    public function AdminIndexCity()
     {
         $city = City::index();
-        return view('subadmin.city.index', compact('city'));
+        return view('superadmin.city.index', compact('city'));
     }
 
     /**
@@ -31,9 +34,9 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreateCity()
+    public function AdminCreateCity()
     {
-        return view('subadmin.city.create');
+        return view('superadmin.city.create');
     }
 
     /**
@@ -42,11 +45,11 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminStoreCity(Request $request)
+    public function AdminStoreCity(Request $request)
     {
         City::store($request);
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.city.index');
+        return redirect()->route('superadmin.table.city.index');
     }
 
     /**
@@ -55,7 +58,7 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowCity($id)
+    public function AdminShowCity($id)
     {
         //
     }
@@ -66,9 +69,9 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditCity(City $city)
+    public function AdminEditCity(City $city)
     {
-        return view('subadmin.city.edit', compact('city'));
+        return view('superadmin.city.edit', compact('city'));
     }
 
     /**
@@ -78,7 +81,7 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateCity(Request $request, City $city)
+    public function AdminUpdateCity(Request $request, City $city)
     {
         $city = City::findOrFail($city->id);
 
@@ -92,7 +95,7 @@ class SubAdminController extends Controller
         ]);
 
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.city.index');
+        return redirect()->route('superadmin.table.city.index');
     }
 
     /**
@@ -101,7 +104,7 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyCity(City $city)
+    public function AdminDestroyCity(City $city)
     {
         $city->delete();
 
@@ -109,15 +112,10 @@ class SubAdminController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminIndexDistrict()
+    public function SubAdminAirBersihKotaJayapuraWaterResourceIndex()
     {
-        $district = District::index();
-        return view('subadmin.district.index', compact('district'));
+        $waterresource = WaterResource::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.waterresource.index', compact('waterresource'));
     }
 
     /**
@@ -125,9 +123,10 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreateDistrict()
+    public function SubAdminAirBersihKotaJayapuraWaterResourceCreate()
     {
-        return view('subadmin.district.create');
+        $city = City::all();
+        return view('subadmin.kotajayapura.waterresource.create', compact('city'));
     }
 
     /**
@@ -136,11 +135,20 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminStoreDistrict(Request $request)
+    public function SubAdminAirBersihKotaJayapuraWaterResourceStore(Request $request)
     {
-        District::store($request);
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+            
+        $waterresource = new WaterResource;
+        $waterresource->name = $request->name;
+        $waterresource->file = $request->file('file')->store('files', 'public');
+        $waterresource->show = $request->show;
+        $waterresource->city()->associate($city);
+        $waterresource->save();
+
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.district.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.waterresource.index');
     }
 
     /**
@@ -149,10 +157,6 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowDistrict($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -160,9 +164,10 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditDistrict(District $district)
+    public function SubAdminAirBersihKotaJayapuraWaterResourceEdit(WaterResource $waterresource)
     {
-        return view('subadmin.district.edit', compact('district'));
+        $city = City::all();
+        return view('subadmin.kotajayapura.waterresource.edit', compact('waterresource', 'city'));
     }
 
     /**
@@ -172,17 +177,39 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateDistrict(Request $request, District $district)
+    public function SubAdminAirBersihKotaJayapuraWaterResourceUpdate(Request $request, WaterResource $waterresource)
     {
-        $district = District::findOrFail($district->id);
+        $waterresource = WaterResource::findOrFail($waterresource->id);
 
-        $district->update([
-            'name'     => $request->name,
-            'postal_code'=>$request->postal_code,
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $waterresource->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $waterresource->city()->associate($city);
+
+        } else {
+
+            if ($waterresource->file&&file_exists(storage_path('app/public/'.$waterresource->file))) {
+                \Storage::delete('public/'.$waterresource->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterresource->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
         ]);
-
+        }
+       
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.district.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.waterresource.index');
     }
 
     /**
@@ -191,18 +218,634 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyDistrict(District $district)
+    public function SubAdminAirBersihKotaJayapuraWaterResourceDestroy(WaterResource $waterresource)
     {
-        $district->delete();
+        $waterresource->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }
 
-    public function SubAdminIndexVillage()
+    // public function SubAdminAirBersihKotaJayapuraRiverintakeIndex()
+    // {
+    //     $riverintake = RiverIntake::where('city_id', '9')->get();
+    //     return view('subadmin.kotajayapura.riverintake.index', compact('riverintake'));
+    // }
+
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraRiverintakeCreate()
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.riverintake.create', compact('city','district'));
+    // }
+
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraRiverintakeStore(Request $request)
+    // {
+
+    //     $city = new City;
+    //     $city->id = $request->get('city_id', '9');
+
+    //     $district = new District;
+    //     $district -> id = $request->get('district_id');
+            
+    //     $riverintake = new RiverIntake;
+    //     $riverintake->name = $request->name;
+    //     $riverintake->file = $request->file('file')->store('files', 'public');
+    //     $riverintake->show = $request->show;
+    //     $riverintake->city()->associate($city);
+    //     $riverintake->district()->associate($district);
+    //     $riverintake->save();
+
+    //     Alert::toast('Informasi Berhasil Disimpan', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.riverintake.index');
+    // }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraRiverintakeEdit(RiverIntake $riverintake)
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.riverintake.edit', compact('city', 'district', 'riverintake'));
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraRiverintakeUpdate(Request $request, RiverIntake $riverintake)
+    // {
+    //     $riverintake = RiverIntake::findOrFail($riverintake->id);
+
+    //     $city = new City;
+    //     $district = new District;
+
+    //     if($request->file('file') == "") {
+
+    //         $riverintake->update([
+    //             'name'      =>$request->name,
+    //             'show'      => $request->show,
+    //             'district_id'   => $request->district_id,
+    //         ]);
+
+    //         $riverintake->city()->associate($city);
+
+    //     } else {
+
+    //         if ($riverintake->file&&file_exists(storage_path('app/public/'.$riverintake->file))) {
+    //             \Storage::delete('public/'.$riverintake->file);
+    //         }
+
+    //     $path = $request->file('file');
+    //     $path->storeAs('public/', $path->hashName());
+
+    //     $riverintake->update([
+    //         'name'          => $request->name,
+    //         'district_id'   => $request->district_id,
+    //         'file'          => $path->hashName(),
+    //         'show'          => $request->show,
+    //     ]);
+    //     }
+       
+    //     Alert::toast('Informasi Berhasil Diganti', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.riverintake.index');
+    // }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraRiverintakeDestroy(RiverIntake $riverintake)
+    // {
+    //     $riverintake->delete();
+
+    //     Alert::toast('Data Berhasil Dihapus', 'success');
+    //     return redirect()->back();
+    // }
+
+    // public function SubAdminAirBersihKotaJayapuraWaterwellIndex()
+    // {
+    //     $waterwell = WaterWell::where('city_id', '9')->get();
+    //     return view('subadmin.kotajayapura.waterwell.index', compact('waterwell'));
+    // }
+
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterwellCreate()
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.waterwell.create', compact('city','district'));
+    // }
+
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterwellStore(Request $request)
+    // {
+
+    //     $city = new City;
+    //     $city->id = $request->get('city_id', '9');
+
+    //     $district = new District;
+    //     $district -> id = $request->get('district_id');
+            
+    //     $waterwell = new WaterWell;
+    //     $waterwell->name = $request->name;
+    //     $waterwell->file = $request->file('file')->store('files', 'public');
+    //     $waterwell->show = $request->show;
+    //     $waterwell->city()->associate($city);
+    //     $waterwell->district()->associate($district);
+    //     $waterwell->save();
+
+    //     Alert::toast('Informasi Berhasil Disimpan', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.waterwell.index');
+    // }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterwellEdit(WaterWell $waterwell)
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.waterwell.edit', compact('city', 'district', 'waterwell'));
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterwellUpdate(Request $request, WaterWell $waterwell)
+    // {
+    //     $waterwell = WaterWell::findOrFail($waterwell->id);
+
+    //     $city = new City;
+    //     $district = new District;
+
+    //     if($request->file('file') == "") {
+
+    //         $waterwell->update([
+    //             'name'      =>$request->name,
+    //             'show'      => $request->show,
+    //             'district_id'   => $request->district_id,
+    //         ]);
+
+    //         $waterwell->city()->associate($city);
+
+    //     } else {
+
+    //         if ($waterwell->file&&file_exists(storage_path('app/public/'.$waterwell->file))) {
+    //             \Storage::delete('public/'.$waterwell->file);
+    //         }
+
+    //     $path = $request->file('file');
+    //     $path->storeAs('public/', $path->hashName());
+
+    //     $waterwell->update([
+    //         'name'          => $request->name,
+    //         'district_id'   => $request->district_id,
+    //         'file'          => $path->hashName(),
+    //         'show'          => $request->show,
+    //     ]);
+    //     }
+       
+    //     Alert::toast('Informasi Berhasil Diganti', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.waterwell.index');
+    // }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterwellDestroy(WaterWell $waterwell)
+    // {
+    //     $waterwell->delete();
+
+    //     Alert::toast('Data Berhasil Dihapus', 'success');
+    //     return redirect()->back();
+    // }
+
+    // public function SubAdminAirBersihKotaJayapuraWatertankIndex()
+    // {
+    //     $watertank = Watertank::where('city_id', '9')->get();
+    //     return view('subadmin.kotajayapura.watertank.index', compact('watertank'));
+    // }
+
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWatertankCreate()
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.watertank.create', compact('city','district'));
+    // }
+
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWatertankStore(Request $request)
+    // {
+
+    //     $city = new City;
+    //     $city->id = $request->get('city_id', '9');
+
+    //     $district = new District;
+    //     $district -> id = $request->get('district_id');
+            
+    //     $watertank = new WaterTank;
+    //     $watertank->name = $request->name;
+    //     $watertank->file = $request->file('file')->store('files', 'public');
+    //     $watertank->show = $request->show;
+    //     $watertank->city()->associate($city);
+    //     $watertank->district()->associate($district);
+    //     $watertank->save();
+
+    //     Alert::toast('Informasi Berhasil Disimpan', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.watertank.index');
+    // }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWatertankEdit(WaterTank $watertank)
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.watertank.edit', compact('city', 'district', 'watertank'));
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWatertankUpdate(Request $request, WaterTank $watertank)
+    // {
+    //     $watertank = WaterTank::findOrFail($watertank->id);
+
+    //     $city = new City;
+    //     $district = new District;
+
+    //     if($request->file('file') == "") {
+
+    //         $watertank->update([
+    //             'name'      =>$request->name,
+    //             'show'      => $request->show,
+    //             'district_id'   => $request->district_id,
+    //         ]);
+
+    //         $watertank->city()->associate($city);
+
+    //     } else {
+
+    //         if ($watertank->file&&file_exists(storage_path('app/public/'.$watertank->file))) {
+    //             \Storage::delete('public/'.$watertank->file);
+    //         }
+
+    //     $path = $request->file('file');
+    //     $path->storeAs('public/', $path->hashName());
+
+    //     $watertank->update([
+    //         'name'          => $request->name,
+    //         'district_id'   => $request->district_id,
+    //         'file'          => $path->hashName(),
+    //         'show'          => $request->show,
+    //     ]);
+    //     }
+       
+    //     Alert::toast('Informasi Berhasil Diganti', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.watertank.index');
+    // }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWatertankDestroy(WaterTank $watertank)
+    // {
+    //     $watertank->delete();
+
+    //     Alert::toast('Data Berhasil Dihapus', 'success');
+    //     return redirect()->back();
+    // }
+
+    // public function SubAdminAirBersihKotaJayapuraWaterspringIndex()
+    // {
+    //     $waterspring = Waterspring::where('city_id', '9')->get();
+    //     return view('subadmin.kotajayapura.waterspring.index', compact('waterspring'));
+    // }
+
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterspringCreate()
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.waterspring.create', compact('city','district'));
+    // }
+
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterspringStore(Request $request)
+    // {
+
+    //     $city = new City;
+    //     $city->id = $request->get('city_id', '9');
+
+    //     $district = new District;
+    //     $district -> id = $request->get('district_id');
+            
+    //     $waterspring = new Waterspring;
+    //     $waterspring->name = $request->name;
+    //     $waterspring->file = $request->file('file')->store('files', 'public');
+    //     $waterspring->show = $request->show;
+    //     $waterspring->city()->associate($city);
+    //     $waterspring->district()->associate($district);
+    //     $waterspring->save();
+
+    //     Alert::toast('Informasi Berhasil Disimpan', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.waterspring.index');
+    // }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterspringEdit(Waterspring $waterspring)
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.waterspring.edit', compact('city', 'district', 'waterspring'));
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterspringUpdate(Request $request, Waterspring $waterspring)
+    // {
+    //     $waterspring = Waterspring::findOrFail($waterspring->id);
+
+    //     $city = new City;
+    //     $district = new District;
+
+    //     if($request->file('file') == "") {
+
+    //         $waterspring->update([
+    //             'name'      =>$request->name,
+    //             'show'      => $request->show,
+    //             'district_id'   => $request->district_id,
+    //         ]);
+
+    //         $waterspring->city()->associate($city);
+
+    //     } else {
+
+    //         if ($waterspring->file&&file_exists(storage_path('app/public/'.$waterspring->file))) {
+    //             \Storage::delete('public/'.$waterspring->file);
+    //         }
+
+    //     $path = $request->file('file');
+    //     $path->storeAs('public/', $path->hashName());
+
+    //     $waterspring->update([
+    //         'name'          => $request->name,
+    //         'district_id'   => $request->district_id,
+    //         'file'          => $path->hashName(),
+    //         'show'          => $request->show,
+    //     ]);
+    //     }
+       
+    //     Alert::toast('Informasi Berhasil Diganti', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.waterspring.index');
+    // }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraWaterspringDestroy(Waterspring $waterspring)
+    // {
+    //     $waterspring->delete();
+
+    //     Alert::toast('Data Berhasil Dihapus', 'success');
+    //     return redirect()->back();
+    // }
+
+    // public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkIndex()
+    // {
+    //     $municipalwaterwork = MunicipalWaterwork::where('city_id', '9')->get();
+    //     return view('subadmin.kotajayapura.municipalwaterwork.index', compact('municipalwaterwork'));
+    // }
+
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkCreate()
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.municipalwaterwork.create', compact('city','district'));
+    // }
+
+    // /**
+    //  * Store a newly created resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkStore(Request $request)
+    // {
+
+    //     $city = new City;
+    //     $city->id = $request->get('city_id', '9');
+            
+    //     $watertank = new MunicipalWaterwork;
+    //     $watertank->name = $request->name;
+    //     $watertank->file = $request->file('file')->store('files', 'public');
+    //     $watertank->show = $request->show;
+    //     $watertank->data = $request->data;
+    //     $watertank->city()->associate($city);
+    //     $watertank->save();
+
+    //     Alert::toast('Informasi Berhasil Disimpan', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.municipalwaterwork.index');
+    // }
+
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkEdit(MunicipalWaterwork $municipalwaterwork)
+    // {
+    //     $city = City::index();
+    //     $district = District::index();
+    //     return view('subadmin.kotajayapura.municipalwaterwork.edit', compact('city', 'district', 'municipalwaterwork'));
+    // }
+
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkUpdate(Request $request, MunicipalWaterwork $municipalwaterwork)
+    // {
+    //     $municipalwaterwork = MunicipalWaterwork::findOrFail($municipalwaterwork->id);
+
+    //     $city = new City;
+
+    //     if($request->file('file') == "") {
+
+    //         $municipalwaterwork->update([
+    //             'name'      =>$request->name,
+    //             'data'      => $request->data,
+    //             'show'      => $request->show,
+    //         ]);
+
+    //         $municipalwaterwork->city()->associate($city);
+
+    //     } else {
+
+    //         if ($municipalwaterwork->file&&file_exists(storage_path('app/public/'.$municipalwaterwork->file))) {
+    //             \Storage::delete('public/'.$municipalwaterwork->file);
+    //         }
+
+    //     $path = $request->file('file');
+    //     $path->storeAs('public/', $path->hashName());
+
+    //     $municipalwaterwork->update([
+    //         'name'          => $request->name,
+    //         'file'          => $path->hashName(),
+    //         'data'          => $request->data,
+    //         'show'          => $request->show,
+    //     ]);
+    //     }
+       
+    //     Alert::toast('Informasi Berhasil Diganti', 'success');
+    //     return redirect()->route('subadmin.airbersih.kotajayapura.municipalwaterwork.index');
+    // }
+
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkDestroy(MunicipalWaterwork $municipalwaterwork)
+    // {
+    //     $municipalwaterwork->delete();
+
+    //     Alert::toast('Data Berhasil Dihapus', 'success');
+    //     return redirect()->back();
+    // }
+
+    public function SubAdminAirBersihKotaJayapuraDukcapilIndex()
     {
-        $village = Village::index();
-        return view('subadmin.village.index', compact('village'));
+        $dukcapil = Dukcapil::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.dukcapil.index', compact('dukcapil'));
     }
 
     /**
@@ -210,9 +853,10 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreateVillage()
+    public function SubAdminAirBersihKotaJayapuraDukcapilCreate()
     {
-        return view('subadmin.village.create');
+        $city = City::all();
+        return view('subadmin.kotajayapura.dukcapil.create', compact('city'));
     }
 
     /**
@@ -221,11 +865,20 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminStoreVillage(Request $request)
+    public function SubAdminAirBersihKotaJayapuraDukcapilStore(Request $request)
     {
-        Village::store($request);
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+            
+        $dukcapil = new Dukcapil;
+        $dukcapil->name = $request->name;
+        $dukcapil->file = $request->file('file')->store('files', 'public');
+        $dukcapil->show = $request->show;
+        $dukcapil->city()->associate($city);
+        $dukcapil->save();
+
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.village.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.dukcapil.index');
     }
 
     /**
@@ -234,10 +887,6 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowVillage($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -245,9 +894,10 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditVillage(Village $village)
+    public function SubAdminAirBersihKotaJayapuraDukcapilEdit(Dukcapil $dukcapil)
     {
-        return view('subadmin.village.edit', compact('village'));
+        $city = City::all();
+        return view('subadmin.kotajayapura.dukcapil.edit', compact('dukcapil', 'city'));
     }
 
     /**
@@ -257,16 +907,39 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateVillage(Request $request, Village $village)
+    public function SubAdminAirBersihKotaJayapuraDukcapilUpdate(Request $request, Dukcapil $dukcapil)
     {
-        $village = Village::findOrFail($village->id);
+        $dukcapil = Dukcapil::findOrFail($dukcapil->id);
 
-        $village->update([
-            'name'     => $request->name,
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dukcapil->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dukcapil->city()->associate($city);
+
+        } else {
+
+            if ($dukcapil->file&&file_exists(storage_path('app/public/'.$dukcapil->file))) {
+                \Storage::delete('public/'.$dukcapil->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dukcapil->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
         ]);
-
+        }
+       
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.village.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.dukcapil.index');
     }
 
     /**
@@ -275,18 +948,18 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyVillage(Village $village)
+    public function SubAdminAirBersihKotaJayapuraDukcapilDestroy(Dukcapil $dukcapil)
     {
-        $village->delete();
+        $dukcapil->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }
 
-    public function SubAdminIndexPopulation()
+  public function SubAdminAirBersihKotaJayapuraStatisticIndex()
     {
-        $population = Population::index();
-        return view('subadmin.population.index', compact('population'));
+        $statistic = Statistic::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.statistic.index', compact('statistic'));
     }
 
     /**
@@ -294,11 +967,10 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreatePopulation()
+    public function SubAdminAirBersihKotaJayapuraStatisticCreate()
     {
-        $city = City::index();
-        $district = District::index();
-        return view('subadmin.population.create', compact('city', 'district'));
+        $city = City::all();
+        return view('subadmin.kotajayapura.statistic.create', compact('city'));
     }
 
     /**
@@ -307,11 +979,20 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminStorePopulation(Request $request)
+    public function SubAdminAirBersihKotaJayapuraStatisticStore(Request $request)
     {
-        Population::store($request);
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+            
+        $statistic = new Statistic;
+        $statistic->name = $request->name;
+        $statistic->file = $request->file('file')->store('files', 'public');
+        $statistic->show = $request->show;
+        $statistic->city()->associate($city);
+        $statistic->save();
+
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.population.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.statistic.index');
     }
 
     /**
@@ -320,10 +1001,6 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowPopulation($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -331,11 +1008,10 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditPopulation(Population $population)
+    public function SubAdminAirBersihKotaJayapuraStatisticEdit(Statistic $statistic)
     {
-        $city = City::index();
-        $district = District::index();
-        return view('subadmin.population.edit', compact('city', 'population', 'district'));
+        $city = City::all();
+        return view('subadmin.kotajayapura.statistic.edit', compact('statistic', 'city'));
     }
 
     /**
@@ -345,47 +1021,59 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdatePopulation(Request $request, Population $population)
+    public function SubAdminAirBersihKotaJayapuraStatisticUpdate(Request $request, Statistic $statistic)
     {
-        $population = Population::findOrFail($population->id);
+        $statistic = Statistic::findOrFail($statistic->id);
 
-        $population->update([
-        'city_id' => $request->city_id,
-        'district_id' => $request->district_id,
-        'male_total' => $request->male_total,
-        'female_total' => $request->female_total,
-        'population_total' => $request->population_total,
-        'maleoap_total' => $request->maleoap_total,
-        'femaleoap_total' => $request->femaleoap_total,
-        'populationoap_total' => $request->populationoap_total,
-        'malenonoap_total' => $request->malenonoap_total,
-        'femalenonoap_total' => $request->femalenonoap_total,
-        'populationnonoap_total' => $request->populationnonoap_total,
-        'year' => $request->year,
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $statistic->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $statistic->city()->associate($city);
+
+        } else {
+
+            if ($statistic->file&&file_exists(storage_path('app/public/'.$statistic->file))) {
+                \Storage::delete('public/'.$statistic->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $statistic->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
         ]);
-
+        }
+       
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.population.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.statistic.index');
     }
 
     /**
-     * Remove the specified resource from stpopuorage.
+     * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyPopulation(Population $population)
+    public function SubAdminAirBersihKotaJayapuraStatisticDestroy(Statistic $statistic)
     {
-        $population->delete();
+        $statistic->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }
 
-    public function SubAdminIndexRiverIntake()
+ public function SubAdminAirBersihKotaJayapuraDataProcesIndex()
     {
-        $riverintake = RiverIntake::index();
-        return view('subadmin.riverintake.index', compact('riverintake'));
+        $dataproces = DataProces::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.dataproces.index', compact('dataproces'));
     }
 
     /**
@@ -393,12 +1081,10 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreateRiverIntake()
+    public function SubAdminAirBersihKotaJayapuraDataProcesCreate()
     {
-        $city = City::index();
-        $district = District::index();
-        $village = Village::index();
-        return view('subadmin.riverintake.create', compact('city','district','village'));
+        $city = City::all();
+        return view('subadmin.kotajayapura.dataproces.create', compact('city'));
     }
 
     /**
@@ -407,32 +1093,20 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminStoreRiverIntake(Request $request)
+    public function SubAdminAirBersihKotaJayapuraDataProcesStore(Request $request)
     {
-
-        RiverIntake::create([
-            'bmm_code' => $request->bmm_code,
-            'name' => $request->name,
-            'intake_type' => $request->intake_type,
-            'unit' => $request->unit,
-            'watershed' => $request->watershed,
-            'province' => "Papua",
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'people' => $request->people,
-            'debit' => $request->debit, 
-            'pump_type' => $request->pump_type, 
-            'head_pompa' => $request->head_pompa, 
-            'production_year' => $request->production_year, 
-            'operating_state' => $request->operating_state, 
-            'updated_date' => $request->updated_date, 
-        ]);
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+            
+        $dataproces = new DataProces;
+        $dataproces->name = $request->name;
+        $dataproces->file = $request->file('file')->store('files', 'public');
+        $dataproces->show = $request->show;
+        $dataproces->city()->associate($city);
+        $dataproces->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.riverintake.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.dataproces.index');
     }
 
     /**
@@ -441,10 +1115,6 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowRiverIntake($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -452,12 +1122,10 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditRiverIntake(RiverIntake $riverintake)
+    public function SubAdminAirBersihKotaJayapuraDataProcesEdit(DataProces $dataproces)
     {
-        $city = City::index();
-        $district = District::index();
-        $village = Village::index();
-        return view('subadmin.riverintake.edit', compact('city', 'district', 'village', 'riverintake'));
+        $city = City::all();
+        return view('subadmin.kotajayapura.dataproces.edit', compact('dataproces', 'city'));
     }
 
     /**
@@ -467,34 +1135,163 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateRiverIntake(Request $request, RiverIntake $riverintake)
+    public function SubAdminAirBersihKotaJayapuraDataProcesUpdate(Request $request, DataProces $dataproces)
+    {
+        $dataproces = DataProces::findOrFail($dataproces->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dataproces->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dataproces->city()->associate($city);
+
+        } else {
+
+            if ($dataproces->file&&file_exists(storage_path('app/public/'.$dataproces->file))) {
+                \Storage::delete('public/'.$dataproces->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dataproces->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('subadmin.airbersih.kotajayapura.dataproces.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKotaJayapuraDataProcesDestroy(DataProces $dataproces)
+    {
+        $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SubAdminAirBersihKotaJayapuraRiverintakeIndex()
+    {
+        $riverintake = RiverIntake::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.riverintake.index', compact('riverintake'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKotaJayapuraRiverintakeCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kotajayapura.riverintake.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKotaJayapuraRiverintakeStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $riverintake = new RiverIntake;
+        $riverintake->name = $request->name;
+        $riverintake->file = $request->file('file')->store('files', 'public');
+        $riverintake->show = $request->show;
+        $riverintake->city()->associate($city);
+        $riverintake->district()->associate($district);
+        $riverintake->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('subadmin.airbersih.kotajayapura.riverintake.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKotaJayapuraRiverintakeEdit(RiverIntake $riverintake)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kotajayapura.riverintake.edit', compact('city', 'district', 'riverintake'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKotaJayapuraRiverintakeUpdate(Request $request, RiverIntake $riverintake)
     {
         $riverintake = RiverIntake::findOrFail($riverintake->id);
 
-        $riverintake->update([
-            'bmm_code' => $request->bmm_code,
-            'name' => $request->name,
-            'intake_type' => $request->intake_type,
-            'unit' => $request->unit,
-            'region_river' => $request->region_river,
-            'watershed' => $request->watershed,
-            'province' => "Papua",
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'people' => $request->people,
-            'debit' => $request->debit, 
-            'pump_type' => $request->pump_type, 
-            'head_pompa' => $request->head_pompa, 
-            'production_year' => $request->production_year, 
-            'operating_state' => $request->operating_state, 
-            'updated_date' => $request->updated_date, 
-        ]);
+        $city = new City;
+        $district = new District;
 
+        if($request->file('file') == "") {
+
+            $riverintake->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $riverintake->city()->associate($city);
+
+        } else {
+
+            if ($riverintake->file&&file_exists(storage_path('app/public/'.$riverintake->file))) {
+                \Storage::delete('public/'.$riverintake->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $riverintake->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.riverintake.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.riverintake.index');
     }
 
     /**
@@ -503,7 +1300,7 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyRiverIntake(RiverIntake $riverintake)
+    public function SubAdminAirBersihKotaJayapuraRiverintakeDestroy(RiverIntake $riverintake)
     {
         $riverintake->delete();
 
@@ -511,10 +1308,10 @@ class SubAdminController extends Controller
         return redirect()->back();
     }
 
-    public function SubAdminIndexWatertank()
+    public function SubAdminAirBersihKotaJayapuraWaterwellIndex()
     {
-        $watertank = Watertank::index();
-        return view('subadmin.watertank.index', compact('watertank'));
+        $waterwell = WaterWell::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.waterwell.index', compact('waterwell'));
     }
 
     /**
@@ -522,12 +1319,11 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreateWatertank()
+    public function SubAdminAirBersihKotaJayapuraWaterwellCreate()
     {
         $city = City::index();
         $district = District::index();
-        $village = Village::index();
-        return view('subadmin.watertank.create', compact('city','district','village'));
+        return view('subadmin.kotajayapura.waterwell.create', compact('city','district'));
     }
 
     /**
@@ -536,26 +1332,25 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminStoreWatertank(Request $request)
+    public function SubAdminAirBersihKotaJayapuraWaterwellStore(Request $request)
     {
 
-        Watertank::create([
-            'id_watertank' => $request->id_watertank,
-            'bmm_code' => $request->bmm_code,
-            'name' => $request->name,
-            'unit' => $request->unit,
-            'region_river' => $request->region_river,
-            'watershed' => $request->watershed,
-            'province' => "Papua",
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-        ]);
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterwell = new WaterWell;
+        $waterwell->name = $request->name;
+        $waterwell->file = $request->file('file')->store('files', 'public');
+        $waterwell->show = $request->show;
+        $waterwell->city()->associate($city);
+        $waterwell->district()->associate($district);
+        $waterwell->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.watertank.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.waterwell.index');
     }
 
     /**
@@ -564,10 +1359,6 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowWatertank($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -575,12 +1366,11 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditWatertank(Watertank $watertank)
+    public function SubAdminAirBersihKotaJayapuraWaterwellEdit(WaterWell $waterwell)
     {
         $city = City::index();
         $district = District::index();
-        $village = Village::index();
-        return view('subadmin.watertank.edit', compact('city', 'district', 'village', 'watertank'));
+        return view('subadmin.kotajayapura.waterwell.edit', compact('city', 'district', 'waterwell'));
     }
 
     /**
@@ -590,161 +1380,42 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateWatertank(Request $request, Watertank $watertank)
+    public function SubAdminAirBersihKotaJayapuraWaterwellUpdate(Request $request, WaterWell $waterwell)
     {
-        $watertank = Watertank::findOrFail($watertank->id);
+        $waterwell = WaterWell::findOrFail($waterwell->id);
 
-        $watertank->update([
-            'id_watertank' => $request->id_watertank,
-            'bmm_code' => $request->bmm_code,
-            'name' => $request->name,
-            'unit' => $request->unit,
-            'region_river' => $request->region_river,
-            'watershed' => $request->watershed,
-            'province' => "Papua",
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-        ]);
+        $city = new City;
+        $district = new District;
 
-        Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.watertank.index');
-    }
+        if($request->file('file') == "") {
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminDestroyWatertank(Watertank $watertank)
-    {
-        $watertank->delete();
+            $waterwell->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
 
-        Alert::toast('Data Berhasil Dihapus', 'success');
-        return redirect()->back();
-    }
+            $waterwell->city()->associate($city);
 
-    public function SubAdminIndexWaterwell()
-    {
-        $waterwell = Waterwell::index();
-        return view('subadmin.waterwell.index', compact('waterwell'));
-    }
+        } else {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminCreateWaterwell()
-    {
-        $city = City::index();
-        $district = District::index();
-        $village = Village::index();
-        return view('subadmin.waterwell.create', compact('city','district','village'));
-    }
+            if ($waterwell->file&&file_exists(storage_path('app/public/'.$waterwell->file))) {
+                \Storage::delete('public/'.$waterwell->file);
+            }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-   
-    public function SubAdminStoreWaterwell(Request $request)
-    {
-
-        Waterwell::create([
-            'bmm_code' => $request->bmm_code,
-            'unit' => $request->unit,
-            'name' => $request->name,
-            'watershed' => $request->watershed,
-            'province' => "Papua",
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'well_function' => $request->well_function,
-            'operating_state' => $request->operating_state,
-            'debit' => $request->debit,
-            'people' => $request->people,
-            'luas' => $request->luas,
-            'well_depth' => $request->well_depth,
-            'pump_type' => $request->pump_type,
-            'development_year' => $request->development_year,
-            'well_condition' => $request->well_condition,
-            'updated_date' => $request->update_date,
-        ]);
-
-        Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.waterwell.index');
-    }
-
-    
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminShowWaterwell($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminEditWaterwell(Waterwell $waterwell)
-    {
-        $city = City::index();
-        $district = District::index();
-        $village = Village::index();
-        return view('subadmin.waterwell.edit', compact('city', 'district', 'village', 'waterwell'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminUpdateWaterwell(Request $request, Waterwell $waterwell)
-    {
-        $waterwell = Waterwell::findOrFail($waterwell->id);
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
 
         $waterwell->update([
-            'bmm_code' => $request->bmm_code,
-            'unit' => $request->unit,
-            'name' => $request->name,
-            'watershed' => $request->watershed,
-            'province' => "Papua",
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'well_function' => $request->well_function,
-            'operating_state' => $request->operating_state,
-            'debit' => $request->debit,
-            'people' => $request->people,
-            'luas' => $request->luas,
-            'well_depth' => $request->well_depth,
-            'pump_type' => $request->pump_type,
-            'development_year' => $request->development_year,
-            'well_condition' => $request->well_condition,
-            'updated_date' => $request->update_date,
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
         ]);
-
+        }
+       
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.waterwell.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.waterwell.index');
     }
 
     /**
@@ -753,7 +1424,7 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyWaterwell(Waterwell $waterwell)
+    public function SubAdminAirBersihKotaJayapuraWaterwellDestroy(WaterWell $waterwell)
     {
         $waterwell->delete();
 
@@ -761,10 +1432,10 @@ class SubAdminController extends Controller
         return redirect()->back();
     }
 
-    public function SubAdminIndexMunicipalWaterwork()
+    public function SubAdminAirBersihKotaJayapuraWatertankIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::index();
-        return view('subadmin.municipalwaterwork.index', compact('municipalwaterwork'));
+        $watertank = Watertank::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.watertank.index', compact('watertank'));
     }
 
     /**
@@ -772,9 +1443,11 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreateMunicipalWaterwork()
+    public function SubAdminAirBersihKotaJayapuraWatertankCreate()
     {
-        return view('subadmin.municipalwaterwork.create');
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kotajayapura.watertank.create', compact('city','district'));
     }
 
     /**
@@ -783,12 +1456,25 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminStoreMunicipalWaterwork(Request $request)
+    public function SubAdminAirBersihKotaJayapuraWatertankStore(Request $request)
     {
-        MunicipalWaterwork::store($request);
+
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $watertank = new WaterTank;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->city()->associate($city);
+        $watertank->district()->associate($district);
+        $watertank->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.municipalwaterwork.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.watertank.index');
     }
 
     /**
@@ -797,10 +1483,6 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowMunicipalWaterwork($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -808,9 +1490,11 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditMunicipalWaterwork(MunicipalWaterwork $municipalwaterwork)
+    public function SubAdminAirBersihKotaJayapuraWatertankEdit(WaterTank $watertank)
     {
-        return view('subadmin.municipalwaterwork.edit', compact('municipalwaterwork'));
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kotajayapura.watertank.edit', compact('city', 'district', 'watertank'));
     }
 
     /**
@@ -820,22 +1504,42 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateMunicipalWaterwork(Request $request, MunicipalWaterwork $municipalwaterwork)
+    public function SubAdminAirBersihKotaJayapuraWatertankUpdate(Request $request, WaterTank $watertank)
     {
-        $municipalwaterwork = MunicipalWaterwork::findOrFail($municipalwaterwork->id);
+        $watertank = WaterTank::findOrFail($watertank->id);
 
-        $municipalwaterwork->update([
-            'name' => $request->name,
-            'area' => $request->area,
-            'koord_x' => $request->koord_x,
-            'koord_y' => $request->koord_y,
-            'elevasi_mdpl' => $request->elevasi_mdpl,
-            'installed' => $request->installed,
-            'operation' => $request->operation,
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $watertank->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $watertank->city()->associate($city);
+
+        } else {
+
+            if ($watertank->file&&file_exists(storage_path('app/public/'.$watertank->file))) {
+                \Storage::delete('public/'.$watertank->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $watertank->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
         ]);
-
+        }
+       
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.municipalwaterwork.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.watertank.index');
     }
 
     /**
@@ -844,18 +1548,18 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyMunicipalWaterwork(MunicipalWaterwork $municipalwaterwork)
+    public function SubAdminAirBersihKotaJayapuraWatertankDestroy(WaterTank $watertank)
     {
-        $municipalwaterwork->delete();
+        $watertank->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }
 
-    public function SubAdminIndexWaterSpring()
+    public function SubAdminAirBersihKotaJayapuraWaterspringIndex()
     {
-        $waterspring = WaterSpring::index();
-        return view('subadmin.waterspring.index', compact('waterspring'));
+        $waterspring = Waterspring::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.waterspring.index', compact('waterspring'));
     }
 
     /**
@@ -863,12 +1567,11 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreateWaterSpring()
+    public function SubAdminAirBersihKotaJayapuraWaterspringCreate()
     {
         $city = City::index();
         $district = District::index();
-        $village = Village::index();
-        return view('subadmin.waterspring.create', compact('city','district','village'));
+        return view('subadmin.kotajayapura.waterspring.create', compact('city','district'));
     }
 
     /**
@@ -877,46 +1580,33 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   
-    public function SubAdminStoreWaterSpring(Request $request)
+    public function SubAdminAirBersihKotaJayapuraWaterspringStore(Request $request)
     {
 
-        WaterSpring::create([
-            'integration_code' => $request->integration_code,
-            'administrator' => $request->administrator,
-            'sub_sistem' => $request->sub_sistem,
-            'watershed' => $request->watershed,
-            'province' => "Papua",
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'people' => $request->people,
-            'debit' => $request->debit,
-            'spring_name' => $request->spring_name,
-            'water_intake_system' => $request->water_intake_system,
-            'pump_type' => $request->pump_type,
-            'production_year' => $request->production_year,
-            'operating_state' => $request->operating_state,
-            'updated_date' => $request->updated_date,
-        ]);
+        $city = new City;
+        $city->id = $request->get('city_id', '9');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterspring = new Waterspring;
+        $waterspring->name = $request->name;
+        $waterspring->file = $request->file('file')->store('files', 'public');
+        $waterspring->show = $request->show;
+        $waterspring->city()->associate($city);
+        $waterspring->district()->associate($district);
+        $waterspring->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.waterspring.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.waterspring.index');
     }
 
-    
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowWaterSpring($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -924,12 +1614,11 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditWaterSpring(WaterSpring $waterspring)
+    public function SubAdminAirBersihKotaJayapuraWaterspringEdit(Waterspring $waterspring)
     {
         $city = City::index();
         $district = District::index();
-        $village = Village::index();
-        return view('subadmin.waterspring.edit', compact('city', 'district', 'village', 'waterspring'));
+        return view('subadmin.kotajayapura.waterspring.edit', compact('city', 'district', 'waterspring'));
     }
 
     /**
@@ -939,33 +1628,42 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateWaterSpring(Request $request, WaterSpring $waterspring)
+    public function SubAdminAirBersihKotaJayapuraWaterspringUpdate(Request $request, Waterspring $waterspring)
     {
-        $waterspring = WaterSpring::findOrFail($waterspring->id);
+        $waterspring = Waterspring::findOrFail($waterspring->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterspring->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterspring->city()->associate($city);
+
+        } else {
+
+            if ($waterspring->file&&file_exists(storage_path('app/public/'.$waterspring->file))) {
+                \Storage::delete('public/'.$waterspring->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
 
         $waterspring->update([
-            'integration_code' => $request->integration_code,
-            'administrator' => $request->administrator,
-            'sub_sistem' => $request->sub_sistem,
-            'watershed' => $request->watershed,
-            'province' => "Papua",
-            'city_id' => $request->city_id,
-            'district_id' => $request->district_id,
-            'village_id' => $request->village_id,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-            'people' => $request->people,
-            'debit' => $request->debit,
-            'spring_name' => $request->spring_name,
-            'water_intake_system' => $request->water_intake_system,
-            'pump_type' => $request->pump_type,
-            'production_year' => $request->production_year,
-            'operating_state' => $request->operating_state,
-            'updated_date' => $request->updated_date,
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
         ]);
-
+        }
+       
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.waterspring.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.waterspring.index');
     }
 
     /**
@@ -974,7 +1672,7 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyWaterSpring(WaterSpring $waterspring)
+    public function SubAdminAirBersihKotaJayapuraWaterspringDestroy(Waterspring $waterspring)
     {
         $waterspring->delete();
 
@@ -982,10 +1680,10 @@ class SubAdminController extends Controller
         return redirect()->back();
     }
 
-    public function SubAdminIndexFile()
+    public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkIndex()
     {
-        $subadminfile = SubAdminFile::index();
-        return view('subadmin.file.index', compact('subadminfile'));
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '9')->get();
+        return view('subadmin.kotajayapura.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
     /**
@@ -993,10 +1691,11 @@ class SubAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminCreateFile()
+    public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkCreate()
     {
         $city = City::index();
-        return view('subadmin.file.create', compact('city'));
+        $district = District::index();
+        return view('subadmin.kotajayapura.municipalwaterwork.create', compact('city','district'));
     }
 
     /**
@@ -1005,38 +1704,30 @@ class SubAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   
-    public function SubAdminStoreFile(Request $request)
+    public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkStore(Request $request)
     {
 
         $city = new City;
-        $city->id = $request->get('city_id');
-        
-        $subadminfile = new SubAdminFile;
-        $subadminfile->name = $request->name;
-        $subadminfile->file = $request->file('file')->store('files', 'public');
-        $subadminfile->year = $request->year;
-        $subadminfile->show = $request->show;
-
-        $subadminfile->city()->associate($city);
-
-        $subadminfile->save();
+        $city->id = $request->get('city_id', '9');
+            
+        $watertank = new MunicipalWaterwork;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->data = $request->data;
+        $watertank->city()->associate($city);
+        $watertank->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.file.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.municipalwaterwork.index');
     }
 
-    
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminShowFile($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -1044,10 +1735,11 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminEditFile(SubAdminFile $subadminfile)
+    public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkEdit(MunicipalWaterwork $municipalwaterwork)
     {
         $city = City::index();
-        return view('subadmin.file.edit', compact('city', 'subadminfile'));
+        $district = District::index();
+        return view('subadmin.kotajayapura.municipalwaterwork.edit', compact('city', 'district', 'municipalwaterwork'));
     }
 
     /**
@@ -1057,44 +1749,41 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminUpdateFile(Request $request, SubAdminFile $subadminfile)
+    public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkUpdate(Request $request, MunicipalWaterwork $municipalwaterwork)
     {
-        $subadminfile = SubAdminFile::findOrFail($subadminfile->id);
+        $municipalwaterwork = MunicipalWaterwork::findOrFail($municipalwaterwork->id);
 
         $city = new City;
 
         if($request->file('file') == "") {
 
-            $subadminfile->update([
+            $municipalwaterwork->update([
                 'name'      =>$request->name,
-                'city_id'   => $request->city_id,
-                'year'      => $request->year,
+                'data'      => $request->data,
                 'show'      => $request->show,
             ]);
 
-            $subadminfile->city()->associate($city);
+            $municipalwaterwork->city()->associate($city);
 
         } else {
 
-            if ($subadminfile->file&&file_exists(storage_path('app/public/'.$subadminfile->file))) {
-                \Storage::delete('public/'.$subadminfile->file);
+            if ($municipalwaterwork->file&&file_exists(storage_path('app/public/'.$municipalwaterwork->file))) {
+                \Storage::delete('public/'.$municipalwaterwork->file);
             }
 
         $path = $request->file('file');
         $path->storeAs('public/', $path->hashName());
 
-        $subadminfile->update([
-            'name'     => $request->name,
-            'city_id'  => $request->city_id,
-            'file'     => $path->hashName(),
-            'year'     => $request->year,
-            'show'     => $request->show,
+        $municipalwaterwork->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
         ]);
         }
-
-
+       
         Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.file.index');
+        return redirect()->route('subadmin.airbersih.kotajayapura.municipalwaterwork.index');
     }
 
     /**
@@ -1103,161 +1792,11 @@ class SubAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function SubAdminDestroyFile(SubAdminFile $subadminfile)
+    public function SubAdminAirBersihKotaJayapuraMunicipalWaterworkDestroy(MunicipalWaterwork $municipalwaterwork)
     {
-        $subadminfile->delete();
+        $municipalwaterwork->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
-    }
-
-    public function SubAdminIndexMap()
-    {
-        $map = Map::index();
-        return view('subadmin.map.index', compact('map'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminCreateMap()
-    {
-        $city = City::index();
-        return view('subadmin.map.create', compact('city'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-   
-    public function SubAdminStoreMap(Request $request)
-    {
-
-        $city = new City;
-        $city->id = $request->get('city_id');
-        
-        $map = new Map;
-        $map->name = $request->name;
-        $map->image = $request->file('image')->store('images', 'public');
-
-        $map->city()->associate($city);
-
-        $map->save();
-
-        Alert::toast('Informasi Berhasil Disimpan', 'success');
-        return redirect()->route('subadmin.table.map.index');
-    }
-
-    
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminShowMap($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminEditMap(Map $map)
-    {
-        $city = City::index();
-        return view('subadmin.map.edit', compact('city', 'map'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminUpdateMap(Request $request, Map $map)
-    {
-        $map = Map::findOrFail($map->id);
-
-        $city = new City;
-
-        if($request->file('image') == "") {
-
-            $map->update([
-                'name'=>$request->name,
-                'city_id' => $request->city_id,
-            ]);
-
-            $map->city()->associate($city);
-
-        } else {
-
-            if ($map->image&&file_exists(storage_path('app/public/'.$map->image))) {
-                \Storage::delete('public/'.$map->image);
-            }
-
-        $path = $request->file('image');
-        $path->storeAs('public/', $path->hashName());
-
-        $map->update([
-            'name'     => $request->name,
-            'city_id' => $request->city_id,
-            'image'     => $path->hashName(),
-        ]);
-        }
-
-        Alert::toast('Informasi Berhasil Diganti', 'success');
-        return redirect()->route('subadmin.table.map.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function SubAdminDestroyMap(Map $map)
-    {
-        $map->delete();
-
-        Alert::toast('Data Berhasil Dihapus', 'success');
-        return redirect()->back();
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-     public function SubAdminIndexComment()
-     {
-        $comment = Comment::index();
-        return view('subadmin.comment.index', compact('comment'));
-     }
- 
-     public function SubAdminDestroyComment(Comment $comment)
-     {
-         $comment->delete();
- 
-         Alert::toast('Data Berhasil Dihapus', 'success');
-         return redirect()->back();
-     }
-
-    public function SubAdminIndexChart()
-    {
-        $district = District::all();
-        $population_total = Population::all();
-        //$population_total = Population::where('district_id')->get('population_total');
-        return view('subadmin.index', compact('district','population_total'));
     }
 }

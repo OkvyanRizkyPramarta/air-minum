@@ -88,10 +88,53 @@
       <!-- modernizr JS
       ============================================ -->
       <script src="{{ asset('admin/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+    <style>
+        .dropbtn {
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+
+        .scrollable-menu {
+            height: auto;
+            max-height: 200px;
+            overflow-x: hidden;
+        }
+
+    </style>
 </head>
 
 <body>
-    @include('sweetalert::alert')
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -120,7 +163,6 @@
                                                     <div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>
                                                 </div>
                                                 <div class="hd-mg-ctn">
-                                                <div class="hd-mg-ctn">
                                                     <h3>{{ Auth::user()->name }}</h3>
                                                     <p>Available</p>
                                                 </div>
@@ -143,37 +185,27 @@
     <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-target="#Charts" href="{{ url('/superadmin/index') }}">Halaman Utama</a>
+                                <li><a data-target="#Charts" href="{{ url('/subadmin/index') }}">Halaman Utama</a>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
+                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Capaian Air Bersih</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                    <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
+                                        <li><a href="">Kota Jayapura</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        <li><a href="">Kabupaten Jayapura</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
+                                        <li><a href="">Kabupaten Keerom</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        <li><a href="">Kabupaten Sarmi</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        <li><a href="">Kabupaten Biar Numfor</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        <li><a href="">Kabupaten Supiori</a>
                                         </li>
-                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
+                                        <li><a href="">Kabupaten Yapen</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -191,39 +223,47 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                        <li><a href="{{ url('/subadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
+                            <li>
+                                <div class="dropdown">
+                                    <a href="#Tables" class="dropbtn" href="#">
+                                        <i class="notika-icon notika-windows"></i>
+                                        Capaian Air Bersih
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Kabupaten Jayapura</a>
+                                        <a href="#">Kabupaten Biak Numfor</a>
+                                        <a href="#">Kabupaten Keerom</a>
+                                        <a href="#">Kabupaten Kepulauan Yapen</a>
+                                        <a href="#">Kabupaten Mamberamo Raya</a>
+                                        <a href="#">Kabupaten Sarmi</a>
+                                        <a href="#">Kabupaten Supiori</a>
+                                        <a href="#">Kabupaten Waropen</a>
+                                    </div>
+                                </div> 
+                            </li>
+                        <li><a href="#Tables"><i class="notika-icon notika-windows"></i>Ulasan</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
-                        <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
+                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
-                                        </li>
-                            </ul>
+                                <li><a href="">Kota Jayapura</a>
+                                </li>
+                                <li><a href="">Kabupaten Jayapura</a>
+                                </li>
+                                <li><a href="">Kabupaten Keerom</a>
+                                </li>
+                                <li><a href="">Kabupaten Sarmi</a>
+                                </li>
+                                <li><a href="">Kabupaten Biar Numfor</a>
+                                </li>
+                                <li><a href="">Kabupaten Supiori</a>
+                                </li>
+                                <li><a href="">Kabupaten Yapen</a>
+                                </li>
+                            </ul>       
                         </div>
                     </div>
                 </div>
@@ -231,93 +271,11 @@
         </div>
     </div>
     <!-- Main Menu area End-->
-	<!-- Breadcomb area Start-->
-	<div class="breadcomb-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<div class="breadcomb-list">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-								<div class="breadcomb-wp">
-									<div class="breadcomb-ctn">
-									    <h2>Data Tabel Kritik Dan Saran</h2>
-										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-								<div class="breadcomb-report">
-									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                </div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Breadcomb area End-->
-    <!-- Data Table area Start-->
-    <div class="data-table-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="data-table-list">
-                        <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center" width="auto">ID</th>
-                                        <th class="text-center" width="auto">Nama Pengguna</th>
-                                        <th class="text-center" width="auto">Nomer Telepon</th>
-                                        <th class="text-center" width="auto">Email</th>
-                                        <th class="text-center" width="auto">Kritik Dan Saran</th>
-                                        <th class="text-center" width="220px;">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($comment as $c)
-                                    <tr>
-                                        <td class="text-center">{{ $c->id }}</td>
-                                        <td class="text-center">{{ $c->name }}</td>
-                                        <td class="text-center">{{ $c->telp_number }}</td>
-                                        <td class="text-center">{{ $c->email }}</td>
-                                        <td class="text-center">{{ $c->description }}</td>
-                                        <div class="row">
-                                            <td class="text-center">
-                                                <div class="">
-                                                    <form action="{{ route('superadmin.table.comment.destroy', $c->id) }}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
-                                                        Delete</a>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </div>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th class="text-center" width="auto">ID</th>
-                                        <th class="text-center" width="auto">Nama Pengguna</th>
-                                        <th class="text-center" width="auto">Nomer Telepon</th>
-                                        <th class="text-center" width="auto">Email</th>
-                                        <th class="text-center" width="auto">Kritik Dan Saran</th>
-                                        <th class="text-center" width="220px;">Action</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Data Table area End-->
-    <!-- Start Footer area-->
+
+    @yield('content')
+    
+    @include('sweetalert::alert')
+
     <div class="footer-copyright-area">
         <div class="container">
             <div class="row">
@@ -374,9 +332,10 @@
     <script src="{{ asset('admin/js/knob/jquery.knob.js') }}"></script>
     <script src="{{ asset('admin/js/knob/jquery.appear.js') }}"></script>
     <script src="{{ asset('admin/js/knob/knob-active.js') }}"></script>
-    <!--  Chat JS
-		============================================ -->
-    <script src="{{ asset('admin/js/chat/jquery.chat.js') }}"></script>
+    <!-- Charts JS
+	============================================ -->
+    <script src="{{ asset('admin/js/charts/Chart.js') }}"></script>
+    <script src="{{ asset('admin/js/charts/bar-chart.js') }}"></script>
     <!--  todo JS
 		============================================ -->
     <script src="{{ asset('admin/js/todo/jquery.todo.js') }}"></script>
@@ -394,6 +353,10 @@
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('admin/js/main.js') }}"></script>
+
+
+
+    
 </body>
 
 </html>

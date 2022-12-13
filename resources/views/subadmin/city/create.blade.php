@@ -136,33 +136,33 @@
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-target="#Charts" href="{{ url('/subadmin/index') }}">Halaman Utama</a>
+                                <li><a data-target="#Charts" href="{{ url('/superadmin/index') }}">Halaman Utama</a>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="{{ url ('/subadmin/table/city/index') }}">Tabel Kota</a>
+                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/population/index') }}">Tabel Populasi</a>
+                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/file/index') }}">Tabel Berkas</a>
+                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
+                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/map/index') }}">Tabel Peta</a>
+                                        <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -180,7 +180,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="{{ url('/subadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                        <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
                         <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
                         </li>
@@ -188,30 +188,30 @@
                     <div class="tab-content custom-menu-content">
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="{{ url ('/subadmin/table/city/index') }}">Tabel Kota</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/district/index') }}">Tabel Kecamatan</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/population/index') }}">Tabel Populasi</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/waterwell/index')}}">Tabel Sumur</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/waterspring/index') }}">Tabel Mata Air</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/file/index') }}">Tabel Berkas</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                </li>
-                                <li><a href="{{ url ('/subadmin/table/map/index') }}">Tabel Peta</a>
-                                </li>
+                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
+                                        </li>
                             </ul>
                         </div>
                     </div>
@@ -245,7 +245,7 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('subadmin.table.city.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.table.city.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -312,7 +312,7 @@
                         </div>
                         <button class="btn btn-default btn-icon-notika col-md-2">
                             <i class="notika-icon notika-left-arrow"></i> 
-                            <a href="{{ url('/subadmin/table/city/index') }}" style="color:black;">BACK</a>
+                            <a href="{{ url('/superadmin/table/city/index') }}" style="color:black;">BACK</a>
                         </button>
                         <button class="btn btn-default btn-icon-notika col-md-2" style="float: right;">                
                             SEND

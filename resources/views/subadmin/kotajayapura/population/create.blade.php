@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
     <!-- Bootstrap CSS
 		============================================ -->
-    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
     <!-- font awesome CSS
 		============================================ -->
     <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css') }}">
@@ -128,8 +128,8 @@
         </div>
     </div>
     <!-- End Header Top Area -->
-      <!-- Mobile Menu start -->
-      <div class="mobile-menu-area" style="background-color:#61BDEB;">
+    <!-- Mobile Menu start -->
+    <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
@@ -220,7 +220,7 @@
         </div>
     </div>
     <!-- Main Menu area End-->
-	  <!-- Breadcomb area Start-->
+	<!-- Breadcomb area Start-->
 	<div class="breadcomb-area">
 		<div class="container">
 			<div class="row">
@@ -230,7 +230,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-									  <h2>Halaman Tambah Data Berkas Super Admin</h2>
+                   <h2>Halaman Tambah Data Populasi</h2>
 										<h2>Provinsi Papua <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
@@ -245,18 +245,19 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('superadmin.table.file.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.table.population.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
-                        <div class="row">
+                        <div class="row" style="padding-bottom:100px;">
+
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Nama Kota</label>
+                                        <label>Nama Kota/Kabupaten</label>
                                         <div class="bootstrap-select fm-cmp-mg">
                                             <select class="selectpicker" name="city_id" data-live-search="true">
                                                 @foreach($city as $c)
@@ -267,54 +268,137 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                            <label>Nama Berkas</label>
-                                            <input type="text" name="name" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
-                                            <label>Berkas PDF</label>
-                                            <input type="file" name="file" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="form-group ic-cmp-int">
-                                        <div class="form-ic-cmp">
-                                        </div>
-                                        <div class="nk-int-st">
-                                            <label>Year</label>
-                                            <input type="text" name="year" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="nk-int-st">
-                                        <label>Tampil Pada Halaman Website</label>
+                                        <label>Nama Kecamatan</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="show" data-live-search="true">
-                                                <option value="Yes">Tampil</option>
-                                                <option value="No">Tidak Tampil</option>
+                                            <select class="selectpicker" name="district_id" data-live-search="true">
+                                                @foreach($district as $d)
+                                                <option value="{{ $d->id }}">{{ $d->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Laki Laki</label>
+                                        <input type="number" name="male_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Perempuan</label>
+                                        <input type="number" name="female_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Total Populasi</label>
+                                        <input type="number" name="population_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Laki Laki (OAP)</label>
+                                        <input type="number" name="maleoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Perempuan (OAP)</label>
+                                        <input type="number" name="femaleoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Total Populasi (OAP)</label>
+                                        <input type="number" name="populationoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Laki Laki Non Papua</label>
+                                        <input type="number" name="malenonoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Jumlah Perempuan Non Papua</label>
+                                        <input type="number" name="femalenonoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Total Populasi Non Papua</label>
+                                        <input type="number" name="populationnonoap_total" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <label>Tahun</label>
+                                        <input type="number" name="year" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <button class="btn btn-default btn-icon-notika col-md-2">
                             <i class="notika-icon notika-left-arrow"></i> 
-                            <a href="{{ url('/superadmin/table/file/index') }}" style="color:black;">BACK</a>
+                            <a href="{{ route('superadmin.table.population.index') }}" style="color:black;">BACK</a>
                         </button>
                         <button class="btn btn-default btn-icon-notika col-md-2" style="float: right;">                
                             SEND
