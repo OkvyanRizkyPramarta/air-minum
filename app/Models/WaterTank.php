@@ -12,7 +12,7 @@ class WaterTank extends Model
 
     protected $fillable = [
         'id_watertank',
-        'bmm_code',
+        'code',
         'name',
         'unit',
         'region_river',

@@ -23,6 +23,21 @@ class City extends Model
        return $this->hasMany(Population::class);
     }
 
+    public function municipalwaterwork()
+    {
+       return $this->hasMany(MunicipalWaterwork::class);
+    }
+
+    public function datamanagement()
+    {
+       return $this->hasMany(DataManagement::class);
+    }
+
+    public function dukcapil()
+    {
+       return $this->hasMany(Dukcapil::class);
+    }
+
     public function riverintake()
     {
        return $this->hasMany(RiverIntake::class);
@@ -41,16 +56,6 @@ class City extends Model
     public function waterspring()
     {
        return $this->hasMany(WaterSpring::class);
-    }
-
-    public function superadmin_file()
-    {
-       return $this->hasMany(SuperAdminFile::class);
-    }
-
-    public function subadmin_file()
-    {
-       return $this->hasMany(SubAdminFile::class);
     }
     
     public static function index()

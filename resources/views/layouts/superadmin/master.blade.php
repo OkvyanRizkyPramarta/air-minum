@@ -1,93 +1,83 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Data Table | Notika - Notika Admin Template</title>
+    <title>Form Input Data | Notika - Notika Admin Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
 		============================================ -->
     <link rel="shortcut icon" type="">
-      <!-- Google Fonts
-      ============================================ -->
-      <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-      <!-- Bootstrap CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
-      <!-- Bootstrap CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css') }}">
-      <!-- owl.carousel CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/owl.carousel.css') }}">
-      <link rel="stylesheet" href="{{ asset('admin/css/owl.theme.css') }}">
-      <link rel="stylesheet" href="{{ asset('admin/css/owl.transitions.css') }}">
-      <!-- meanmenu CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/meanmenu/meanmenu.min.css') }}">
-      <!-- animate CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/animate.css') }}">
-      <!-- summernote CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/summernote/summernote.css') }}">
-      <!-- Range Slider CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/themesaller-forms.css') }}">
-      <!-- normalize CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/normalize.css') }}">
-      <!-- wave CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/wave/waves.min.css') }}">
-      <link rel="stylesheet" href="{{ asset('admin/css/wave/button.css') }}">
-      <!-- mCustomScrollbar CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
-      <!-- jvectormap CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/jvectormap/jquery-jvectormap-2.0.3.css') }}">
-      <!-- mCustomScrollbar CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
-      <!-- notika icon CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/notika-custom-icon.css') }}">
-      <!-- bootstrap select CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/bootstrap-select/bootstrap-select.css') }}">
-      <!-- datapicker CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/datapicker/datepicker3.css') }}">
-      <!-- main CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/chosen/chosen.css') }}">
-      <!-- notification CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/notification/notification.css') }}">
-      <!-- dropzone CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/dropzone/dropzone.css') }}">
-      <!-- Data Table JS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/jquery.dataTables.min.css') }}">
-      <!-- wave CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/wave/waves.min.css') }}">
-      <!-- main CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
-      <!-- style CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/style.css') }}">
-      <!-- responsive CSS
-      ============================================ -->
-      <link rel="stylesheet" href="{{ asset('admin/css/responsive.css') }}">
-      <!-- modernizr JS
-      ============================================ -->
-      <script src="{{ asset('admin/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
+    <!-- font awesome CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/font-awesome.min.css') }}">
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/owl.transitions.css') }}">
+    <!-- meanmenu CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/meanmenu/meanmenu.min.css') }}">
+    <!-- animate CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/animate.css') }}">
+    <!-- summernote CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/summernote/summernote.css') }}">
+    <!-- Range Slider CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/themesaller-forms.css') }}">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/normalize.css') }}">
+    <!-- mCustomScrollbar CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/scrollbar/jquery.mCustomScrollbar.min.css') }}">
+    <!-- Notika icon CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/notika-custom-icon.css') }}">
+    <!-- bootstrap select CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap-select/bootstrap-select.css') }}">
+    <!-- datapicker CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/datapicker/datepicker3.css') }}">
+    <!-- Color Picker CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/color-picker/farbtastic.css') }}">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/chosen/chosen.css') }}">
+    <!-- notification CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/notification/notification.css') }}">
+    <!-- dropzone CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/dropzone/dropzone.css') }}">
+    <!-- wave CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/wave/waves.min.css') }}">
+    <!-- main CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/main.css') }}">
+    <!-- style CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/style.css') }}">
+    <!-- responsive CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{ asset('admin/css/responsive.css') }}">
+    <!-- modernizr JS
+		============================================ -->
+    <script src="{{ asset('admin/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 </head>
 
 <body>
@@ -138,15 +128,15 @@
         </div>
     </div>
     <!-- End Header Top Area -->
-    <!-- Mobile Menu start -->
-    <div class="mobile-menu-area" style="background-color:#61BDEB;">
+      <!-- Mobile Menu start -->
+      <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a href="{{ url('/superadmin/index') }}">Halaman Utama</a>
+                                <li><a data-target="#Charts" href="{{ url('/superadmin/index') }}">Halaman Utama</a>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
@@ -190,7 +180,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="{{ url('/superadmin/index') }}">Halaman Utama</a>
+                        <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
                         <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
                         </li>
@@ -199,29 +189,29 @@
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                             <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                </li>
-                                <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
-                                </li>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
+                                        </li>
                             </ul>
                         </div>
                     </div>
@@ -230,6 +220,11 @@
         </div>
     </div>
     <!-- Main Menu area End-->
+
+    @yield('content')
+    
+    @include('sweetalert::alert')
+
     <!-- Start Footer area-->
     <div class="footer-copyright-area">
         <div class="container">
@@ -287,26 +282,60 @@
     <script src="{{ asset('admin/js/knob/jquery.knob.js') }}"></script>
     <script src="{{ asset('admin/js/knob/jquery.appear.js') }}"></script>
     <script src="{{ asset('admin/js/knob/knob-active.js') }}"></script>
+    <!-- Input Mask JS
+		============================================ -->
+    <script src="{{ asset('admin/js/jasny-bootstrap.min.js') }}"></script>
+    <!-- icheck JS
+		============================================ -->
+    <script src="{{ asset('admin/js/icheck/icheck.min.js') }}"></script>
+    <script src="{{ asset('admin/js/icheck/icheck-active.js') }}"></script>
+    <!-- rangle-slider JS
+		============================================ -->
+    <script src="{{ asset('admin/js/rangle-slider/jquery-ui-1.10.4.custom.min.js') }}"></script>
+    <script src="{{ asset('admin/js/rangle-slider/jquery-ui-touch-punch.min.js') }}"></script>
+    <script src="{{ asset('admin/js/rangle-slider/rangle-active.js') }}"></script>
+    <!-- datapicker JS
+		============================================ -->
+    <script src="{{ asset('admin/js/datapicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('admin/js/datapicker/datepicker-active.js') }}"></script>
+    <!-- bootstrap select JS
+		============================================ -->
+    <script src="{{ asset('admin/js/bootstrap-select/bootstrap-select.js') }}"></script>
+    <!--  color-picker JS
+		============================================ -->
+    <script src="{{ asset('admin/js/color-picker/farbtastic.min.js') }}"></script>
+    <script src="{{ asset('admin/js/color-picker/color-picker.js') }}"></script>
+    <!--  notification JS
+		============================================ -->
+    <script src="{{ asset('admin/js/notification/bootstrap-growl.min.js') }}"></script>
+    <script src="{{ asset('admin/js/notification/notification-active.js') }}"></script>
+    <!--  summernote JS
+		============================================ -->
+    <script src="{{ asset('admin/js/summernote/summernote-updated.min.js') }}"></script>
+    <script src="{{ asset('admin/js/summernote/summernote-active.js') }}"></script>
+    <!-- dropzone JS
+		============================================ -->
+    <script src="{{ asset('admin/js/dropzone/dropzone.js') }}"></script>
+    <!--  wave JS
+		============================================ -->
+    <script src="{{ asset('admin/js/wave/waves.min.js') }}"></script>
+    <script src="{{ asset('admin/js/wave/wave-active.js') }}"></script>
+    <!--  chosen JS
+		============================================ -->
+    <script src="{{ asset('admin/js/chosen/chosen.jquery.js') }}"></script>
     <!--  Chat JS
 		============================================ -->
     <script src="{{ asset('admin/js/chat/jquery.chat.js') }}"></script>
     <!--  todo JS
 		============================================ -->
     <script src="{{ asset('admin/js/todo/jquery.todo.js') }}"></script>
-	<!--  wave JS
-		============================================ -->
-    <script src="{{ asset('admin/js/wave/waves.min.js') }}"></script>
-    <script src="{{ asset('admin/js/wave/wave-active.js') }}"></script>
     <!-- plugins JS
 		============================================ -->
     <script src="{{ asset('admin/js/plugins.js') }}"></script>
-    <!-- Data Table JS
-		============================================ -->
-    <script src="{{ asset('admin/js/data-table/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('admin/js/data-table/data-table-act.js') }}"></script>
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('admin/js/main.js') }}"></script>
+
 </body>
 
 </html>

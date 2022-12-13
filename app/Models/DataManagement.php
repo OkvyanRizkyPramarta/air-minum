@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
-class SuperAdminFile extends Model
+class DataManagement extends Model
 {
     use HasFactory;
 
@@ -14,27 +13,26 @@ class SuperAdminFile extends Model
         'city_id',
         'name',
         'file',
-        'year',
         'show',
     ];
 
     public function city()
     {
-       return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class);
     }
-    
+
     public static function index()
     {
-        return SuperAdminFile::all();
+        return DataManagement::all();
     }
 
     public static function store(Request $request)
     {
-        SuperAdminFile::create($request->all());
+        DataManagement::create($request->all());
     }
 
-    public static function edit(Request $request, SuperAdminFile $superadminfile)
+    public static function edit(Request $request, DataManagement $datamanagement)
     {
-        $superadminfile->update($request->all());
+        $datamanagement->update($request->all());
     }
 }

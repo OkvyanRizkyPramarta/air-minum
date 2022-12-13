@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SubAdminFile extends Model
+class Dukcapil extends Model
 {
     use HasFactory;
 
@@ -13,27 +13,26 @@ class SubAdminFile extends Model
         'city_id',
         'name',
         'file',
-        'year',
         'show',
     ];
 
     public function city()
     {
-       return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class);
     }
-    
+
     public static function index()
     {
-        return SubAdminFile::all();
+        return Dukcapil::all();
     }
 
     public static function store(Request $request)
     {
-        SubAdminFile::create($request->all());
+        Dukcapil::create($request->all());
     }
 
-    public static function edit(Request $request, SubAdminFile $subadminfile)
+    public static function edit(Request $request, Dukcapil $dukcapil)
     {
-        $subadminfile->update($request->all());
+        $dukcapil->update($request->all());
     }
 }

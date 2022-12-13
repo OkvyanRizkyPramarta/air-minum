@@ -24,13 +24,18 @@ return new class extends Migration
             // $table->string('installed');
             // $table->string('operation');
             $table->string('file');
-            $table->enum('role', 
+            $table->enum('data', 
             [
-            'Pelanggan',
-            'MataAir',
-            'PanjangPipa',
-            'PetaPelayanan',
-            'SumberAir',
+                'Pelanggan',
+                'MataAir',
+                'PanjangPipa',
+                'PetaPelayanan',
+                'SumberAir',
+            ]);
+            $table->enum('show', 
+            [
+                'Yes',
+                'No',
             ]);
             $table->timestamps();
 

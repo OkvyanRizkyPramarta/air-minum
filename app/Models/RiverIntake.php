@@ -11,7 +11,7 @@ class RiverIntake extends Model
     use HasFactory;
 
     protected $fillable = [
-        'bmm_code',
+        'code',
         'name',
         'intake_type',
         'unit',

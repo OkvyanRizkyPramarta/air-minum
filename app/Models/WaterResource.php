@@ -4,34 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
-class Map extends Model
+class WaterResource extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'city_id',
         'name',
-        'image',
+        'file',
+        'show',
     ];
 
     public function city()
     {
-       return $this->belongsTo(City::class);
+        return $this->belongsTo(City::class);
     }
-    
+
     public static function index()
     {
-        return Map::all();
+        return WaterResource::all();
     }
 
     public static function store(Request $request)
     {
-        Map::create($request->all());
+        WaterResource::create($request->all());
     }
 
-    public static function edit(Request $request, Map $map)
+    public static function edit(Request $request, WaterResource $waterresource)
     {
-        $map->update($request->all());
+        $waterresource->update($request->all());
     }
 }

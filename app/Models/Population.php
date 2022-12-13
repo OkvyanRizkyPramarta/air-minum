@@ -13,15 +13,8 @@ class Population extends Model
     protected $fillable = [
         'city_id',
         'district_id',
-        'male_total',
-        'female_total',
-        'population_total',
-        'maleoap_total',
-        'femaleoap_total',
-        'populationoap_total',
-        'malenonoap_total',
-        'femalenonoap_total',
-        'populationnonoap_total',
+        'name',
+        'file',
         'year',
     ];
 

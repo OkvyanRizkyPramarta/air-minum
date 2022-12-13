@@ -11,7 +11,7 @@ class WaterWell extends Model
     use HasFactory;
 
     protected $fillable = [
-        'bmm_code',
+        'code',
         'unit',
         'name',
         'watershed',

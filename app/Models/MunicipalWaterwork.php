@@ -11,14 +11,16 @@ class MunicipalWaterwork extends Model
     use HasFactory;
 
     protected $fillable = [
+        'city_id',
         'name',
-        'area',
-        'koord_x',
-        'koord_y',
-        'elevasi_mdpl',
-        'installed',
-        'operation',
+        'file',
+        'show',
     ];
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 
     public static function index()
     {
