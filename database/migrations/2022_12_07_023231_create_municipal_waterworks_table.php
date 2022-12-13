@@ -27,10 +27,8 @@ return new class extends Migration
             $table->enum('data', 
             [
                 'Pelanggan',
-                'MataAir',
-                'PanjangPipa',
-                'PetaPelayanan',
-                'SumberAir',
+                'Anggaran',
+                'Perencanaan',
             ]);
             $table->enum('show', 
             [

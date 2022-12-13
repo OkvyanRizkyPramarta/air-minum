@@ -11,26 +11,11 @@ class WaterWell extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code',
-        'unit',
         'name',
-        'watershed',
-        'province',
         'city_id',
         'district_id',
-        'village_id',
-        'latitude',
-        'longitude',
-        'well_function',
-        'operating_state',
-        'debit',
-        'people',
-        'luas',
-        'well_depth',
-        'pump_type',
-        'development_year',
-        'well_condition',
-        'updated_date'
+        'file',
+        'show',
     ];
 
     public function city()

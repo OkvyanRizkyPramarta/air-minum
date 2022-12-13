@@ -11,7 +11,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
-                      <h2>Halaman Tambah Data Tabel Tampungan Air</h2>
+                      <h2>Halaman Tambah Data Tabel Mata Air</h2>
                       <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
@@ -26,7 +26,7 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
       <div class="container">
-        <form method="POST" action="{{ route('superadmin.airbersih.kotajayapura.watertank.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.airbersih.kotajayapura.waterspring.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

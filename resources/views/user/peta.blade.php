@@ -60,9 +60,6 @@
             <a href="{{ url ('/peta/tangkiair') }}" style="font-size:1.5vw; padding-right:30px; color: inherit;text-decoration: none;">
                 <span style=""><b>Tangki Air</b></span>
             </a>
-            <a href="{{ url ('/peta') }}" style="font-size:1.5vw; padding-right:30px; color: inherit;text-decoration: none;">
-                <span style=""><b>Peta Persebaran</b></span>
-            </a>
             </h3>
           </div>
         </div>
@@ -75,13 +72,6 @@
             <h3 class="text-center" style="color:#10597D;">
               <span style=""><b>Peta Persebaran</b></span>
             </h3>
-            @foreach( $map as $m)
-            <h3 class="text-center" style="color:#10597D;padding-top:50px;">
-              <span style=""><b>{{ $m -> city -> name }}</b></span>
-              <p style=""><b>{{ $m -> name }}</b></p>
-              <img src="{{ asset ('storage/'.$m->image)}}" width="100%;"></img>
-            </h3>
-            @endforeach
           </div>
         </div>
       </div>

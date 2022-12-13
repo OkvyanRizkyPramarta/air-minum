@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Comment;
-use App\Models\Map;     
 use App\Models\Population; 
 use App\Models\MunicipalWaterwork; 
 use App\Models\RiverIntake; 
@@ -30,8 +29,7 @@ class UserController extends Controller
 
     public function UserPeta(Request $request)
     {
-        $map = Map::index();
-        return view('user.peta', compact('map'));
+        return view('user.peta');
     }
 
     public function UserPetaKotaJayapura(Request $request)
