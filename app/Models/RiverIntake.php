@@ -11,24 +11,11 @@ class RiverIntake extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code',
         'name',
-        'intake_type',
-        'unit',
-        'watershed',
-        'province',
         'city_id',
         'district_id',
-        'village_id',
-        'latitude',
-        'longitude',
-        'people',
-        'debit',
-        'pump_type',
-        'head_pompa',
-        'production_year',
-        'operating_state',
-        'updated_date',
+        'file',
+        'show',
     ];
 
     public function city()
@@ -39,11 +26,6 @@ class RiverIntake extends Model
     public function district()
     {
        return $this->belongsTo(District::class);
-    }
-
-    public function village()
-    {
-       return $this->belongsTo(Village::class);
     }
 
     public static function index()

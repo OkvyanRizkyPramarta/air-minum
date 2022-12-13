@@ -11,24 +11,11 @@ class WaterSpring extends Model
     use HasFactory;
 
     protected $fillable = [
-        'integration_code',
-        'administrator',
-        'sub_sistem',
-        'watershed',
-        'province',
+        'name',
         'city_id',
         'district_id',
-        'village_id',
-        'latitude',
-        'longitude',
-        'people',
-        'debit',
-        'spring_name',
-        'water_intake_system',
-        'pump_type',
-        'production_year',
-        'operating_state',
-        'updated_date',
+        'file',
+        'show',
     ];
 
     public function city()

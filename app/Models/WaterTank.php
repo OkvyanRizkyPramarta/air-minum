@@ -11,18 +11,11 @@ class WaterTank extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_watertank',
-        'code',
         'name',
-        'unit',
-        'region_river',
-        'watershed',
-        'province',
         'city_id',
         'district_id',
-        'village_id',
-        'latitude',
-        'longitude',
+        'file',
+        'show',
     ];
 
     public function city()

@@ -14,6 +14,7 @@ class MunicipalWaterwork extends Model
         'city_id',
         'name',
         'file',
+        'data',
         'show',
     ];
 
