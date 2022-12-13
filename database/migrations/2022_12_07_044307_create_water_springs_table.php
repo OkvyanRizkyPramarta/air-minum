@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('province'); 
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('district_id');
-            $table->unsignedBigInteger('village_id');
             $table->string('latitude');
             $table->string('longitude');
             $table->string('people');
@@ -37,7 +36,6 @@ return new class extends Migration
 
             $table->foreign('city_id')->references('id')->on('cities');
             $table->foreign('district_id')->references('id')->on('districts');
-            $table->foreign('village_id')->references('id')->on('villages');
         });
     }
 

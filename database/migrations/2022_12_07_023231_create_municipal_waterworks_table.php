@@ -16,13 +16,25 @@ return new class extends Migration
         Schema::create('municipal_waterworks', function (Blueprint $table) {
             $table->id();
             $table->string('name'); 
-            $table->string('area'); 
-            $table->string('koord_x'); 
-            $table->string('koord_y');
-            $table->string('elevasi_mdpl'); 
-            $table->string('installed');
-            $table->string('operation');
+            $table->unsignedBigInteger('city_id');
+            // $table->string('area'); 
+            // $table->string('koord_x'); 
+            // $table->string('koord_y');
+            // $table->string('elevasi_mdpl'); 
+            // $table->string('installed');
+            // $table->string('operation');
+            $table->string('file');
+            $table->enum('role', 
+            [
+            'Pelanggan',
+            'MataAir',
+            'PanjangPipa',
+            'PetaPelayanan',
+            'SumberAir',
+            ]);
             $table->timestamps();
+
+            $table->foreign('city_id')->references('id')->on('cities');
         });
     }
 

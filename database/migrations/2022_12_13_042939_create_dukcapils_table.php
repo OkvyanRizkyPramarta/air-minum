@@ -13,17 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sub_admin_files', function (Blueprint $table) {
+        Schema::create('dukcapils', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('city_id');
             $table->string('name');
             $table->string('file');
-            $table->string('year');
-            $table->enum('show', 
-            [
-            'Yes',
-            'No',
-            ]);
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('cities');
@@ -37,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_admin_files');
+        Schema::dropIfExists('dukcapils');
     }
 };

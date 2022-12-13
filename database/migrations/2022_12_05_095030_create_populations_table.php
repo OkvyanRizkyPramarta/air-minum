@@ -17,16 +17,18 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('district_id');
-            $table->string('male_total')->nullable();  
-            $table->string('female_total')->nullable();  
-            $table->string('population_total')->nullable();  
-            $table->string('maleoap_total')->nullable();  
-            $table->string('femaleoap_total')->nullable();    
-            $table->string('populationoap_total')->nullable();   
-            $table->string('malenonoap_total')->nullable();    
-            $table->string('femalenonoap_total')->nullable();    
-            $table->string('populationnonoap_total')->nullable();     
-            $table->string('year', 4);
+            // $table->string('male_total')->nullable();  
+            // $table->string('female_total')->nullable();  
+            // $table->string('population_total')->nullable();  
+            // $table->string('maleoap_total')->nullable();  
+            // $table->string('femaleoap_total')->nullable();    
+            // $table->string('populationoap_total')->nullable();   
+            // $table->string('malenonoap_total')->nullable();    
+            // $table->string('femalenonoap_total')->nullable();    
+            // $table->string('populationnonoap_total')->nullable();     
+            //$table->string('year', 4);
+            $table->string('name');
+            $table->string('file');
             $table->timestamps();
 
             $table->foreign('city_id')->references('id')->on('cities');

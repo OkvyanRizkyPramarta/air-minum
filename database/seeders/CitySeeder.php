@@ -17,6 +17,7 @@ class CitySeeder extends Seeder
     {
         DB::table('cities')->insert([
             [
+                'id' => '1',
                 'name' => 'Kabupaten Biak Numfor',
                 'ocean_area' => '3900',
                 'mainland_area' => '2600',
@@ -25,6 +26,7 @@ class CitySeeder extends Seeder
                 'year' => '2020',
             ],
             [
+                'id' => '2',
                 'name' => 'Kabupaten Jayapura',
                 'ocean_area' => '697',
                 'mainland_area' => '11150',
@@ -33,6 +35,7 @@ class CitySeeder extends Seeder
                 'year' => '2020',
             ],
             [
+                'id' => '3',
                 'name' => 'Kabupaten Keerom ',
                 'ocean_area' => '0',
                 'mainland_area' => '8390',
@@ -41,6 +44,7 @@ class CitySeeder extends Seeder
                 'year' => '2020',
             ],
             [
+                'id' => '4',
                 'name' => 'Kabupaten Kepulauan Yapen',
                 'ocean_area' => '4664',
                 'mainland_area' => '2050',
@@ -49,6 +53,7 @@ class CitySeeder extends Seeder
                 'year' => '2020',
             ],
             [
+                'id' => '5',
                 'name' => 'Kabupaten Mamberamo Raya',
                 'ocean_area' => '1688',
                 'mainland_area' => '23813',
@@ -57,6 +62,7 @@ class CitySeeder extends Seeder
                 'year' => '2020',
             ],
             [
+                'id' => '6',
                 'name' => 'Kabupaten Sarmi',
                 'ocean_area' => '2626',
                 'mainland_area' => '17742',
@@ -65,6 +71,7 @@ class CitySeeder extends Seeder
                 'year' => '2020',
             ],
             [
+                'id' => '7',
                 'name' => 'Kabupaten Supiori',
                 'ocean_area' => '2107',
                 'mainland_area' => '678',
@@ -73,6 +80,7 @@ class CitySeeder extends Seeder
                 'year' => '2020',
             ],
             [
+                'id' => '8',
                 'name' => 'Kabupaten Waropen',
                 'ocean_area' => '1216',
                 'mainland_area' => '10977',
@@ -81,6 +89,7 @@ class CitySeeder extends Seeder
                 'year' => '2020',
             ],
             [
+                'id' => '9',
                 'name' => 'Kota Jayapura',
                 'ocean_area' => '469',
                 'mainland_area' => '935',
