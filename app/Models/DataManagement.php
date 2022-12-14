@@ -9,6 +9,8 @@ class DataManagement extends Model
 {
     use HasFactory;
 
+    protected $table = "data_managements";
+
     protected $fillable = [
         'city_id',
         'name',

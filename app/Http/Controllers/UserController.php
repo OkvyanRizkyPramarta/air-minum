@@ -7,6 +7,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Creation;
+use App\Models\DataManagement;
 use App\Models\Population; 
 use App\Models\MunicipalWaterwork; 
 use App\Models\WaterResource; 
@@ -15,12 +16,18 @@ use App\Models\DataProces;
 use App\Models\Dukcapil;
 use App\Models\Statistic;
 
-
 class UserController extends Controller
 {
     public function UserIndex(Request $request)
     {
-        return view('user.index');
+        $jayapuraWaterResource = WaterResource::where(["city_id" => 9, "show" => "Yes"])->get();
+        $statisticJayapura = Statistic::where(["city_id" => 9, "show" => "Yes"])->get();
+        $kotaJayapuraPDAM = MunicipalWaterwork::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dukcapil = Dukcapil::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dataproces = DataProces::where(["city_id" => 9, "show" => "Yes"])->get();
+        $bws = RiverIntake::where(["city_id" => 9, "show" => "Yes"])->get();
+        
+        return view('user.index', compact("jayapuraWaterResource", "statisticJayapura", "kotaJayapuraPDAM", "dukcapil", "dataproces", "bws"));
     }
 
     public function UserStoreComment(Request $request)
@@ -264,5 +271,17 @@ class UserController extends Controller
     {
         $comment = Comment::index();
         return view('user.ulasan', compact('comment'));
+    }
+
+    public function showFile($id){
+        // $bps = Statistic::find($id);
+        $id = decrypt($id);
+        $path = storage_path()."/app/public/{$id}";
+        $content_type = mime_content_type($path);
+        // return $pdf->stream("", array("Attachments" => false));
+        // return $pdf->stream();
+        return response()->make(file_get_contents($path), 200, [
+            "content-type" => $content_type
+        ]);
     }
 }

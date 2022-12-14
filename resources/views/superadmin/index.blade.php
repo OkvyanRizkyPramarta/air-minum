@@ -138,6 +138,7 @@
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('admin/js/main.js') }}"></script>
+    {{-- 
     <script>
         (function ($) {
             "use strict";
@@ -209,7 +210,7 @@
             });
         })(jQuery); 
     </script>
-
+    --}}
     
 </body>
 
