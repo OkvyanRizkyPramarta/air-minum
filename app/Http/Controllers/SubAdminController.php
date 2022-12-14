@@ -23,6 +23,12 @@ use App\Models\DataProces;
 
 class SubAdminController extends Controller
 {
+
+    public function SubAdminIndex()
+     {
+         return view('subadmin.index');
+     }
+
     public function AdminIndexCity()
     {
         $city = City::index();

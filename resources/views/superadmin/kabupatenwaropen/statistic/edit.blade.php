@@ -1,4 +1,4 @@
-@extends('layouts.subadmin.master')
+@extends('layouts.superadmin.master')
 
 @section('content')
 
@@ -12,8 +12,8 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
-                    <h2>Halaman Edit Data Tabel Badan Pusat Statistik (BPS)</h2>
-                      <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
+                      <h2>Halaman Tambah Data Tabel Badan Pusat Statistik (BPS)</h2>
+                      <h2>Kabupaten Waropen <span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
                 </div>
@@ -27,7 +27,7 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('subadmin.airbersih.kotajayapura.statistic.update', $statistic->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.airbersih.kabupatenwaropen.statistic.update', $statistic->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
             <div class="row">

@@ -88,53 +88,10 @@
       <!-- modernizr JS
       ============================================ -->
       <script src="{{ asset('admin/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-
-      <style>
-        .dropbtn {
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        }
-
-        .dropdown {
-        position: relative;
-        display: inline-block;
-        }
-
-        .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        }
-
-        .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        }
-
-        .dropdown-content a:hover {background-color: #f1f1f1}
-
-        .dropdown:hover .dropdown-content {
-        display: block;
-        }
-
-        .scrollable-menu {
-            height: auto;
-            max-height: 200px;
-            overflow-x: hidden;
-        }
-
-    </style>
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -163,14 +120,14 @@
                                                     <div class="chat-avaible"><i class="notika-icon notika-dot"></i></div>
                                                 </div>
                                                 <div class="hd-mg-ctn">
-                                                    <h3>{{ Auth::user()->name }}</h3>
+                                                    <h3>Glenn Jecobs</h3>
                                                     <p>Available</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="hd-mg-va">
-                                        <a href="{{ route('signout') }}">Logout</a>
+                                        <a href="#">Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -185,27 +142,37 @@
     <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
-                                <li><a data-target="#Charts" href="{{ url('/superadmin/index') }}">Halaman Utama</a>
+                                <li><a data-toggle="collapse" data-target="#Charts" href="#">Halaman Utama</a>
+                                    <ul class="collapse dropdown-header-top">
+                                        <li><a href="index.html">Dashboard One</a></li>
+                                        <li><a href="index-2.html">Dashboard Two</a></li>
+                                    </ul>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Capaian Air Bersih</a>
+                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                        <li><a href="">Kota Jayapura</a>
+                                        <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
                                         </li>
-                                        <li><a href="">Kabupaten Jayapura</a>
+                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
                                         </li>
-                                        <li><a href="">Kabupaten Keerom</a>
+                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
                                         </li>
-                                        <li><a href="">Kabupaten Sarmi</a>
+                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
                                         </li>
-                                        <li><a href="">Kabupaten Biar Numfor</a>
+                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
                                         </li>
-                                        <li><a href="">Kabupaten Supiori</a>
+                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
                                         </li>
-                                        <li><a href="">Kabupaten Yapen</a>
+                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                        </li>
+                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -222,116 +189,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
+                        <li><a data-toggle="tab" href="#Home"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Minum </a>
+                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
+                        <div id="Home" class="tab-pane in notika-tab-menu-bg animated flipInX">
+                            <ul class="notika-main-menu-dropdown">
+                                <li><a href="index.html">Dashboard One</a>
+                                </li>
+                                <li><a href="index-2.html">Dashboard Two</a>
+                                </li>
+                            </ul>
+                        </div>
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kota Jayapura
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
-                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai Intake Sungai</a>
-                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/municipalwaterwork/index') }}">PDAM Kota Jayapura</a>
-                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
-                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
-                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
-                                    </div>
-                                </div> 
-                                <div class="dropdown" style="margin-top:10px;margin-bottom:20px;">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kabupaten Jayapura
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">PDAM Kabupaten Jayapura</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                    </div>
-                                </div> 
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kabupaten Keerom
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                    </div>
-                                </div> 
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kabupaten Sarmi
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                    </div>
-                                </div> 
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kabupaten Biak Numfor
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Balai WIlayah Sungai</a>
-                                        <a href="#">PDAM Kabupaten Biak Numfor</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                    </div>
-                                </div> 
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kabupaten Supiori
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                    </div>
-                                </div> 
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kabupaten Kepulauan Yapen
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">PDAM Kabupaten Kepulauan Yapen</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kabupaten Waropen
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Dinas PU Bidang SDA</a>
-                                        <a href="#">Balai WIlayah Sungai</a>
-                                        <a href="#">PDAM Kabupaten Waropen</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <a class="dropbtn" href="#" style="color:black;">
-                                        Kabupaten Mamberamo Raya
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Dinas PU Bidang SDA</a>
-                                        <a href="#">Balai WIlayah Sungai</a>
-                                        <a href="#">PDAM Kabupaten Mamberamo Raya</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
-                                    </div>
-                                </div>
+                                <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa / Kelurahan</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
+                                </li>
+                                <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -340,11 +234,98 @@
         </div>
     </div>
     <!-- Main Menu area End-->
-
-    @yield('content')
-    
-    @include('sweetalert::alert')
-
+	<!-- Breadcomb area Start-->
+	<div class="breadcomb-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="breadcomb-list">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+								<div class="breadcomb-wp">
+									<div class="breadcomb-ctn">
+										<h2>Data Table</h2>
+										<p>Welcome to PDAM TOYO <span class="bread-ntd">Admin </span></p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
+								<div class="breadcomb-report">
+									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
+                                    <a href="{{url('/superadmin/rab/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Breadcomb area End-->
+    <!-- Data Table area Start-->
+    <div class="data-table-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="data-table-list">
+                        <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" width="auto">Pekerjaan</th>
+                                        <th class="text-center" width="auto">Tahun Anggaran</th>
+                                        <th class="text-center" width="auto">Total Cost</th>
+                                        <th class="text-center" width="220px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($rab as $w)
+                                    <tr>
+                                        <td class="text-center">{{ $w->pekerjaan }}</td>
+                                        <td class="text-center">{{ $w->tahun_anggaran }}</td>
+                                        <td class="text-center">Rp. {{ number_format($w->total_cost,0, 0,'.') }}</td>
+                                        <div class="row">
+                                            <td class="text-center">
+                                                <div>
+                                                    <a href="{{ route('superadmin.rab.edit', $w->kode_rab) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                        Edit
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <form action="{{ route('superadmin.rab.destroy', $w->kode_rab) }}" method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                                                        Delete</a>
+                                                    </form>
+                                                </div>
+                                                <div>
+                                                    <a href="{{ route('superadmin.rab.detail', $w->kode_rab) }}" class="btn notika-btn-blue" style="color: white;"><i class="fa fa-info"></i>
+                                                        Detail
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </div>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="text-center" width="auto">Pekerjaan</th>
+                                        <th class="text-center" width="auto">Tahun Anggaran</th>
+                                        <th class="text-center" width="auto">Total Cost</th>
+                                        <th class="text-center" width="auto">Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Data Table area End-->
+    <!-- Start Footer area-->
     <div class="footer-copyright-area">
         <div class="container">
             <div class="row">
@@ -401,10 +382,9 @@
     <script src="{{ asset('admin/js/knob/jquery.knob.js') }}"></script>
     <script src="{{ asset('admin/js/knob/jquery.appear.js') }}"></script>
     <script src="{{ asset('admin/js/knob/knob-active.js') }}"></script>
-    <!-- Charts JS
-	============================================ -->
-    <script src="{{ asset('admin/js/charts/Chart.js') }}"></script>
-    <script src="{{ asset('admin/js/charts/bar-chart.js') }}"></script>
+    <!--  Chat JS
+		============================================ -->
+    <script src="{{ asset('admin/js/chat/jquery.chat.js') }}"></script>
     <!--  todo JS
 		============================================ -->
     <script src="{{ asset('admin/js/todo/jquery.todo.js') }}"></script>
@@ -422,42 +402,6 @@
     <!-- main JS
 		============================================ -->
     <script src="{{ asset('admin/js/main.js') }}"></script>
-
-
-<script>
-    if (window.innerWidth < 992) {
-
-// close all inner dropdowns when parent is closed
-document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
-  everydropdown.addEventListener('hidden.bs.dropdown', function () {
-    // after dropdown is hidden, then find all submenus
-      this.querySelectorAll('.submenu').forEach(function(everysubmenu){
-        // hide every submenu as well
-        everysubmenu.style.display = 'none';
-      });
-  })
-});
-
-document.querySelectorAll('.dropdown-menu a').forEach(function(element){
-  element.addEventListener('click', function (e) {
-      let nextEl = this.nextElementSibling;
-      if(nextEl && nextEl.classList.contains('submenu')) {	
-        // prevent opening link if link needs to open dropdown
-        e.preventDefault();
-        if(nextEl.style.display == 'block'){
-          nextEl.style.display = 'none';
-        } else {
-          nextEl.style.display = 'block';
-        }
-
-      }
-  });
-})
-}
-// end if innerWidth
-}); 
-    </script>
-    
 </body>
 
 </html>

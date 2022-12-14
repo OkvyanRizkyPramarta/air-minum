@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\AdminPUController;
+use App\Http\Controllers\RABController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,7 +42,7 @@ Route::get('/signout', [AuthController::class, 'signOut'])->name('signout');
 
 Route::middleware(['auth', 'SuperAdmin'])->group(function () {
 
-    Route::get('/superadmin/index', [SuperAdminController::class, 'AdminIndexChart'])->name('superadmin.chart.index');
+    Route::get('/superadmin/index', [SuperAdminController::class, 'SuperAdminIndex']);
 
     Route::get('/superadmin/table/city/index', [SuperAdminController::class, 'AdminIndexCity'])->name('superadmin.table.city.index');
     Route::get('/superadmin/table/city/create', [SuperAdminController::class, 'AdminCreateCity'])->name('superadmin.table.city.create'); 
@@ -634,14 +635,21 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
      Route::put('/superadmin/airbersih/kabupaten/waropen/municipalwaterwork/update/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabWaropenmiMunicipalWaterworkUpdate'])->name('superadmin.airbersih.kabupatenwaropen.municipalwaterwork.update');
      Route::delete('/superadmin/airbersih/kabupaten/waropen/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabWaropenMunicipalWaterworkDestroy'])->name('superadmin.airbersih.kabupatenwaropen.municipalwaterwork.destroy');
 
+    /** ======================== RAB ROUTES FOR SUPERADMIN ============================= */
+    Route::get('/superadmin/rab', [RABController::class, "index"])->name("superadmin.rab.index");
+    Route::get('/superadmin/rab/create', [RABController::class, "create"])->name("superadmin.rab.create");
+    Route::post('/superadmin/rab/store', [RABController::class, "store"])->name("superadmin.rab.store");
+    Route::get('/superadmin/rab/edit/{rab}', [RABController::class, "edit"])->name("superadmin.rab.edit");
+    Route::delete('/superadmin/rab/destroy/{rab}', [RABController::class, "destroy"])->name("superadmin.rab.destroy");
+    Route::post('/superadmin/rab/update', [RABController::class, "update"])->name("superadmin.rab.update");
+    Route::get('/superadmin/rab/detail/{rab}', [RABController::class, "detail"])->name("superadmin.rab.detail");
     });
 
     
 
 Route::middleware(['auth', 'SubAdmin'])->group(function () {
     
-        // Route::get('/superadmin/index', [SuperAdminController::class, 'AdminIndexChart'])->name('superadmin.chart.index');
-    // Route::get('/subadmin/index', [SubAdminController::class]);
+    Route::get('/subadmin/index', [SubAdminController::class, 'SubAdminIndex']);
 
     Route::get('/subadmin/table/city/index', [SubAdminController::class, 'SubAdminIndexCity'])->name('subadmin.table.city.index');
     Route::get('/subadmin/table/city/create', [SubAdminController::class, 'SubAdminCreateCity'])->name('subadmin.table.city.create'); 
