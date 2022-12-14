@@ -21,17 +21,47 @@ use App\Http\Controllers\RABController;
 Route::get('/', [UserController::class, 'UserIndex'])->name('user.index');
 Route::post('/', [UserController::class, 'UserStoreComment'])->name('user.comment.store');
 Route::get('/peta', [UserController::class, 'UserPeta'])->name('user.peta');
-    Route::get('/peta/kota/jayapura', [UserController::class, 'UserPetaKotaJayapura'])->name('user.peta.kota.jayapura');
-    Route::get('/peta/kabupaten/jayapura', [UserController::class, 'UserPetaKabupatenJayapura'])->name('user.peta.kabupaten.jayapura');
     
-    Route::get('/peta/pdam', [UserController::class, 'UserPetaPDAM'])->name('user.peta.pdam');
-    Route::get('/peta/populasi', [UserController::class, 'UserPetaPopulasi'])->name('user.peta.populasi');
-    Route::get('/peta/intakesungai', [UserController::class, 'UserPetaIntakeSungai'])->name('user.peta.intakesungai');
-    Route::get('/peta/mataair', [UserController::class, 'UserPetaMataAir'])->name('user.peta.mataair');
-    Route::get('/peta/tangkiair', [UserController::class, 'UserPetaTangkiAir'])->name('user.peta.tangkiair');
+Route::get('/capaian/air/bersih/kota/jayapura/dinas/pu/sumber/daya/air', [UserController::class, 'CapaianAirBersihWaterResourceKotaJayapura'])->name('user.capaian.air.bersih.waterresource.kota.jayapura');
+Route::get('/capaian/air/bersih/kota/jayapura/balai/wilayah/sungai', [UserController::class, 'CapaianAirBersihRiverIntakeKotaJayapura'])->name('user.capaian.air.bersih.riverintake.kota.jayapura');
+Route::get('/capaian/air/bersih/kota/jayapura/pdam', [UserController::class, 'CapaianAirBersihMunicipalWaterworkKotaJayapura'])->name('user.capaian.air.bersih.municipalwaterwork.kota.jayapura');
+Route::get('/capaian/air/bersih/kota/jayapura/dinas/dukcapil', [UserController::class, 'CapaianAirBersihDukcapilKotaJayapura'])->name('user.capaian.air.bersih.dukcapil.kota.jayapura');
+Route::get('/capaian/air/bersih/kota/jayapura/badan/pusat/statistik', [UserController::class, 'CapaianAirBersihStatisticKotaJayapura'])->name('user.capaian.air.bersih.statistic.kota.jayapura');
+Route::get('/capaian/air/bersih/kota/jayapura/badan/pengelolahan/dan/pendataan/daerah', [UserController::class, 'CapaianAirBersihDataProcesKotaJayapura'])->name('user.capaian.air.bersih.dataproces.kota.jayapura');
 
-    Route::get('/airminum/kota/jayapura', [UserController::class, 'UserAirMinumKotaJayapura'])->name('user.airminum.kotajayapura');
-    Route::get('/airminum/kota/jayapura/pdam', [UserController::class, 'UserAirMinumKotaJayapuraPDAM'])->name('user.airminum.kotajayapura.pdam');
+//Route::get('/capaian/air/bersih/kabupaten/jayapura/dinas/pu/bidang/cipta/karya', [UserController::class, 'CapaianAirBersihWaterResourceKotaJayapura'])->name('user.capaian.air.bersih.waterresource.kota.jayapura');
+Route::get('/capaian/air/bersih/kabupaten/jayapura/pdam', [UserController::class, 'CapaianAirBersihMunicipalWaterworkKabJayapura'])->name('user.capaian.air.bersih.municipalwaterwork.kabupaten.jayapura');
+Route::get('/capaian/air/bersih/kabupaten/jayapura/dinas/dukcapil', [UserController::class, 'CapaianAirBersihDukcapilKabJayapura'])->name('user.capaian.air.bersih.dukcapil.kabupaten.jayapura');
+Route::get('/capaian/air/bersih/kabupaten/jayapura/badan/pusat/statistik', [UserController::class, 'CapaianAirBersihStatisticKabJayapura'])->name('user.capaian.air.bersih.statistic.kabupaten.jayapura');
+   
+//Route::get('/capaian/air/bersih/kabupaten/keerom/dinas/pu/bidang/cipta/karya', [UserController::class, 'CapaianAirBersihWaterResourceKabKeerom'])->name('user.capaian.air.bersih.waterresource.kabupaten.keerom');
+Route::get('/capaian/air/bersih/kabupaten/keerom/badan/pusat/statistik', [UserController::class, 'CapaianAirBersihStatisticKabKeerom'])->name('user.capaian.air.bersih.statistic.kabupaten.keerom');
+
+//Route::get('/capaian/air/bersih/kabupaten/sarmi/dinas/pu/bidang/cipta/karya', [UserController::class, 'CapaianAirBersihWaterResourceKabSarmi'])->name('user.capaian.air.bersih.waterresource.kabupaten.sarmi');
+Route::get('/capaian/air/bersih/kabupaten/sarmi/badan/pusat/statistik', [UserController::class, 'CapaianAirBersihStatisticKabSarmi'])->name('user.capaian.air.bersih.statistic.kabupaten.keerom');
+
+Route::get('/capaian/air/bersih/kabupaten/biaknumfor/balai/wilayah/sungai', [UserController::class, 'CapaianAirBersihRiverIntakeKabBiakNumfor'])->name('user.capaian.air.bersih.riverintake.kabupaten.biaknumfor');
+Route::get('/capaian/air/bersih/kabupaten/biaknumfor/pdam', [UserController::class, 'CapaianAirBersihMunicipalWaterworkKabBiakNumfor'])->name('user.capaian.air.bersih.municipalwaterwork.kabupaten.biaknumfor');
+Route::get('/capaian/air/bersih/kabupaten/biaknumfor/dinas/dukcapil', [UserController::class, 'CapaianAirBersihDukcapilKabBiakNumfor'])->name('user.capaian.air.bersih.dukcapil.kabupaten.biaknumfor');
+Route::get('/capaian/air/bersih/kabupaten/biaknumfor/badan/pusat/statistik', [UserController::class, 'CapaianAirBersihStatisticKabBiakNumfor'])->name('user.capaian.air.bersih.statistic.kabupaten.biaknumfor');
+
+//Route::get('/capaian/air/bersih/kabupaten/supiori/dinas/pu/bidang/cipta/karya', [UserController::class, 'CapaianAirBersihWaterResourceKabSupiori'])->name('user.capaian.air.bersih.waterresource.kabupaten.sarmi');
+Route::get('/capaian/air/bersih/kabupaten/supiori/dinas/dukcapil', [UserController::class, 'CapaianAirBersihDukcapilKabSupiori'])->name('user.capaian.air.bersih.dukcapil.kabupaten.supiori');
+
+//Route::get('/capaian/air/bersih/kabupaten/kepulauan/yapen/dinas/pu/bidang/cipta/karya', [UserController::class, 'CapaianAirBersihWaterResourceKabKepulauanYapen'])->name('user.capaian.air.bersih.waterresource.kabupaten.kepulauanyapen');
+Route::get('/capaian/air/bersih/kabupaten/kepulauan/yapen/pdam', [UserController::class, 'CapaianAirBersihMunicipalWaterworkKabKepulauanYapen'])->name('user.capaian.air.bersih.municipalwaterwork.kabupaten.kepulauanyapen');
+Route::get('/capaian/air/bersih/kabupaten/kepulauan/yapen/dinas/dukcapil', [UserController::class, 'CapaianAirBersihDukcapilKabKepulauanYapen'])->name('user.capaian.air.bersih.dukcapil.kabupaten.kepulauanyapen');
+Route::get('/capaian/air/bersih/kabupaten/kepulauan/yapen/badan/pusat/statistik', [UserController::class, 'CapaianAirBersihStatisticKabKepulauanYapen'])->name('user.capaian.air.bersih.statistic.kabupaten.kepulauanyapen');
+
+
+    // Route::get('/peta/pdam', [UserController::class, 'UserPetaPDAM'])->name('user.peta.pdam');
+    // Route::get('/peta/populasi', [UserController::class, 'UserPetaPopulasi'])->name('user.peta.populasi');
+    // Route::get('/peta/intakesungai', [UserController::class, 'UserPetaIntakeSungai'])->name('user.peta.intakesungai');
+    // Route::get('/peta/mataair', [UserController::class, 'UserPetaMataAir'])->name('user.peta.mataair');
+    // Route::get('/peta/tangkiair', [UserController::class, 'UserPetaTangkiAir'])->name('user.peta.tangkiair');
+
+    // Route::get('/airminum/kota/jayapura', [UserController::class, 'UserAirMinumKotaJayapura'])->name('user.airminum.kotajayapura');
+    // Route::get('/airminum/kota/jayapura/pdam', [UserController::class, 'UserAirMinumKotaJayapuraPDAM'])->name('user.airminum.kotajayapura.pdam');
 
 Route::get('/ulasan', [UserController::class, 'UserUlasan'])->name('user.ulasan');
 
@@ -503,7 +533,7 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
      Route::get('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/create', [SuperAdminController::class, 'SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkCreate'])->name('superadmin.airbersih.kabupatenkepulauanyapen.municipalwaterwork.create'); 
      Route::post('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/create', [SuperAdminController::class, 'SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkStore'])->name('superadmin.airbersih.kabupatenkepulauanyapen.municipalwaterwork.store');
      Route::get('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/edit/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkEdit'])->name('superadmin.airbersih.kabupatenkepulauanyapen.municipalwaterwork.edit');
-     Route::put('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/update/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabKepulauanYapenmiMunicipalWaterworkUpdate'])->name('superadmin.airbersih.kabupatenkepulauanyapen.municipalwaterwork.update');
+     Route::put('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/update/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkUpdate'])->name('superadmin.airbersih.kabupatenkepulauanyapen.municipalwaterwork.update');
      Route::delete('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkDestroy'])->name('superadmin.airbersih.kabupatenkepulauanyapen.municipalwaterwork.destroy');
 
 
