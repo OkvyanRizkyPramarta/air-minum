@@ -89,7 +89,7 @@
       ============================================ -->
       <script src="{{ asset('admin/js/vendor/modernizr-2.8.3.min.js') }}"></script>
 
-    <style>
+      <style>
         .dropbtn {
         color: white;
         padding: 16px;
@@ -222,48 +222,117 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
+                <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                         <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                            <li>
-                                <div class="dropdown">
-                                    <a href="#Tables" class="dropbtn" href="#">
-                                        <i class="notika-icon notika-windows"></i>
-                                        Capaian Air Bersih
-                                    </a>
-                                    <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Kabupaten Jayapura</a>
-                                        <a href="#">Kabupaten Biak Numfor</a>
-                                        <a href="#">Kabupaten Keerom</a>
-                                        <a href="#">Kabupaten Kepulauan Yapen</a>
-                                        <a href="#">Kabupaten Mamberamo Raya</a>
-                                        <a href="#">Kabupaten Sarmi</a>
-                                        <a href="#">Kabupaten Supiori</a>
-                                        <a href="#">Kabupaten Waropen</a>
-                                    </div>
-                                </div> 
-                            </li>
-                        <li><a href="#Tables"><i class="notika-icon notika-windows"></i>Ulasan</a>
+                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Minum </a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
-                        <div id="Tables" class="tab-pane notika-tab-menu-bg animated flipInX">
+                        <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="">Kota Jayapura</a>
-                                </li>
-                                <li><a href="">Kabupaten Jayapura</a>
-                                </li>
-                                <li><a href="">Kabupaten Keerom</a>
-                                </li>
-                                <li><a href="">Kabupaten Sarmi</a>
-                                </li>
-                                <li><a href="">Kabupaten Biar Numfor</a>
-                                </li>
-                                <li><a href="">Kabupaten Supiori</a>
-                                </li>
-                                <li><a href="">Kabupaten Yapen</a>
-                                </li>
-                            </ul>       
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kota Jayapura
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai Intake Sungai</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/municipalwaterwork/index') }}">PDAM Kota Jayapura</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown" style="margin-top:10px;margin-bottom:20px;">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Jayapura
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="#">PDAM Kabupaten Jayapura</a>
+                                        <a href="#">Dinas Dukcapil</a>
+                                        <a href="#">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Keerom
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="#">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Sarmi
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="#">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Biak Numfor
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Balai WIlayah Sungai</a>
+                                        <a href="#">PDAM Kabupaten Biak Numfor</a>
+                                        <a href="#">Dinas Dukcapil</a>
+                                        <a href="#">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Supiori
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="#">Dinas Dukcapil</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Kepulauan Yapen
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="#">PDAM Kabupaten Kepulauan Yapen</a>
+                                        <a href="#">Dinas Dukcapil</a>
+                                        <a href="#">Badan Pusat Statistik</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Waropen
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="#">Dinas PU Bidang SDA</a>
+                                        <a href="#">Balai WIlayah Sungai</a>
+                                        <a href="#">PDAM Kabupaten Waropen</a>
+                                        <a href="#">Dinas Dukcapil</a>
+                                        <a href="#">Badan Pusat Statistik</a>
+                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Mamberamo Raya
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="#">Dinas PU Bidang SDA</a>
+                                        <a href="#">Balai WIlayah Sungai</a>
+                                        <a href="#">PDAM Kabupaten Mamberamo Raya</a>
+                                        <a href="#">Dinas Dukcapil</a>
+                                        <a href="#">Badan Pusat Statistik</a>
+                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                    </div>
+                                </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -355,7 +424,39 @@
     <script src="{{ asset('admin/js/main.js') }}"></script>
 
 
+<script>
+    if (window.innerWidth < 992) {
 
+// close all inner dropdowns when parent is closed
+document.querySelectorAll('.navbar .dropdown').forEach(function(everydropdown){
+  everydropdown.addEventListener('hidden.bs.dropdown', function () {
+    // after dropdown is hidden, then find all submenus
+      this.querySelectorAll('.submenu').forEach(function(everysubmenu){
+        // hide every submenu as well
+        everysubmenu.style.display = 'none';
+      });
+  })
+});
+
+document.querySelectorAll('.dropdown-menu a').forEach(function(element){
+  element.addEventListener('click', function (e) {
+      let nextEl = this.nextElementSibling;
+      if(nextEl && nextEl.classList.contains('submenu')) {	
+        // prevent opening link if link needs to open dropdown
+        e.preventDefault();
+        if(nextEl.style.display == 'block'){
+          nextEl.style.display = 'none';
+        } else {
+          nextEl.style.display = 'block';
+        }
+
+      }
+  });
+})
+}
+// end if innerWidth
+}); 
+    </script>
     
 </body>
 

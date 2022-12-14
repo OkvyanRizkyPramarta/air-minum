@@ -1,7 +1,6 @@
-@extends('layouts.subadmin.master')
+@extends('layouts.superadmin.master')
 
 @section('content')
-
     <!-- Breadcomb area Start-->
     <div class="breadcomb-area">
       <div class="container">
@@ -12,8 +11,8 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
-                    <h2>Halaman Edit Data Tabel Badan Pusat Statistik (BPS)</h2>
-                      <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
+                      <h2>Halaman Tambah Data Tabel Dinas PU Bidang Sumber Daya Air</h2>
+                      <h2>Kabupaten Waropen<span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
                 </div>
@@ -26,10 +25,9 @@
     <!-- Breadcomb area End-->
     <!-- Form Element area Start-->
     <div class="form-element-area">
-        <div class="container">
-        <form method="POST" action="{{ route('subadmin.airbersih.kotajayapura.statistic.update', $statistic->id) }}" enctype="multipart/form-data">
+      <div class="container">
+        <form method="POST" action="{{ route('superadmin.airbersih.kabupatenwaropen.waterresource.store') }}" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-element-list">
@@ -40,7 +38,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Nama Kota</label>
-                                        <input type="text" name="city_id" value="{{ $statistic->city->name }}" class="form-control" Disabled/>
+                                        <input type="text" name="city_id" value="Kota Jayapura" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" Disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +48,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                       <label>Nama Berkas</label>
-                                      <input type="text" name="name" value="{{ $statistic->name }}" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
+                                      <input type="text" name="name" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
@@ -59,21 +57,21 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                      <label>Kerkas PDF</label>
-                                      <input type="file" name="file" value="{{ $statistic->file }}" class="form-control" >
-                                      </br>
-                                      <iframe width="550px" width="250px" src="{{asset('storage/'.$statistic->file)}}"></iframe>
+                                        <label>Berkas PDF</label>
+                                        <input type="file" name="file" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
                                 <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
+                                    </div>
                                     <div class="nk-int-st">
                                         <label>Tampil Pada Halaman Website</label>
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="show" value="{{($statistic->show)}}" data-live-search="true">
-                                            <option value="Yes" @if(old('show', $statistic->show) === 'Yes')  'selected' @endif>Menampilkan</option>
-                                            <option value="No" @if(old('show', $statistic->show) === 'No')  'selected' @endif>Tidak Menampilkan</option>
+                                            <select class="selectpicker" name="show" data-live-search="true">
+                                                <option value="Yes">Tampil</option>
+                                                <option value="No">Tidak Tampil</option>
                                             </select>
                                         </div>
                                     </div>
@@ -88,5 +86,7 @@
                 </div>
             </div>
         </form>
+      </div>
+    </div>
     <!-- Form Element area End-->
 @endsection

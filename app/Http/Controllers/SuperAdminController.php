@@ -26,6 +26,13 @@ class SuperAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function SuperAdminIndex()
+     {
+         return view('superadmin.index');
+     }
+ 
+
     public function AdminIndexCity()
     {
         $city = City::index();

@@ -41,7 +41,7 @@ Route::get('/signout', [AuthController::class, 'signOut'])->name('signout');
 
 Route::middleware(['auth', 'SuperAdmin'])->group(function () {
 
-    Route::get('/superadmin/index', [SuperAdminController::class, 'AdminIndexChart'])->name('superadmin.chart.index');
+    Route::get('/superadmin/index', [SuperAdminController::class, 'SuperAdminIndex']);
 
     Route::get('/superadmin/table/city/index', [SuperAdminController::class, 'AdminIndexCity'])->name('superadmin.table.city.index');
     Route::get('/superadmin/table/city/create', [SuperAdminController::class, 'AdminCreateCity'])->name('superadmin.table.city.create'); 
@@ -380,8 +380,7 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
 
 Route::middleware(['auth', 'SubAdmin'])->group(function () {
     
-        // Route::get('/superadmin/index', [SuperAdminController::class, 'AdminIndexChart'])->name('superadmin.chart.index');
-    // Route::get('/subadmin/index', [SubAdminController::class]);
+    Route::get('/subadmin/index', [SubAdminController::class, 'SubAdminIndex']);
 
     Route::get('/subadmin/table/city/index', [SubAdminController::class, 'SubAdminIndexCity'])->name('subadmin.table.city.index');
     Route::get('/subadmin/table/city/create', [SubAdminController::class, 'SubAdminCreateCity'])->name('subadmin.table.city.create'); 
