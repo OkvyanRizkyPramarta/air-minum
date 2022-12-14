@@ -250,9 +250,9 @@
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">PDAM Kabupaten Jayapura</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/municipalwaterwork/index') }}">PDAM Kabupaten Jayapura</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -261,7 +261,7 @@
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Badan Pusat Statistik</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -270,7 +270,7 @@
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Badan Pusat Statistik</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -278,10 +278,10 @@
                                         Kabupaten Biak Numfor
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Balai WIlayah Sungai</a>
-                                        <a href="#">PDAM Kabupaten Biak Numfor</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/municipalwaterwork/index') }}">PDAM Kabupaten Biak Numfor</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -290,7 +290,7 @@
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -299,9 +299,9 @@
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">PDAM Kabupaten Kepulauan Yapen</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index') }}">PDAM Kabupaten Kepulauan Yapen</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik</a>
                                     </div>
                                 </div>
                                 <div class="dropdown">
@@ -309,13 +309,7 @@
                                         Kabupaten Waropen
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Dinas PU Bidang SDA</a>
-                                        <a href="#">Balai WIlayah Sungai</a>
-                                        <a href="#">PDAM Kabupaten Waropen</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="#">Tidak Mempunyai data</a>
                                     </div>
                                 </div>
                                 <div class="dropdown">
@@ -323,13 +317,7 @@
                                         Kabupaten Mamberamo Raya
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="#">Dinas PU Bidang SDA</a>
-                                        <a href="#">Balai WIlayah Sungai</a>
-                                        <a href="#">PDAM Kabupaten Mamberamo Raya</a>
-                                        <a href="#">Dinas Dukcapil</a>
-                                        <a href="#">Badan Pusat Statistik</a>
-                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="#">Tidak Mempunyai data</a>
                                     </div>
                                 </div>
                             </ul>

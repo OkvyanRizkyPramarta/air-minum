@@ -179,39 +179,104 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
+                <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                         <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
+                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Minum </a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ url ('/superadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/district/index') }}">Tabel Kecamatan</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/population/index') }}">Tabel Populasi</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterwell/index')}}">Tabel Sumur</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/waterspring/index') }}">Tabel Mata Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/file/index') }}">Tabel Berkas</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                        </li>
-                                        <li><a href="{{ url ('/superadmin/table/map/index') }}">Tabel Peta</a>
-                                        </li>
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kota Jayapura
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai Intake Sungai</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/municipalwaterwork/index') }}">PDAM Kota Jayapura</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown" style="margin-top:10px;margin-bottom:20px;">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Jayapura
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/municipalwaterwork/index') }}">PDAM Kabupaten Jayapura</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Keerom
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Sarmi
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Biak Numfor
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/superadmin/airbersih/kota/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/municipalwaterwork/index') }}">PDAM Kabupaten Biak Numfor</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Supiori
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Kepulauan Yapen
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index') }}">PDAM Kabupaten Kepulauan Yapen</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Waropen
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Tidak Mempunyai data</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Mamberamo Raya
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Tidak Mempunyai data</a>
+                                    </div>
+                                </div>
                             </ul>
                         </div>
                     </div>

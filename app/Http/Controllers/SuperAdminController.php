@@ -10951,9 +10951,9 @@ class SuperAdminController extends Controller
     //      Alert::toast('Data Berhasil Dihapus', 'success');
     //      return redirect()->back();
     //  }
-         Alert::toast('Data Berhasil Dihapus', 'success');
-         return redirect()->back();
-     }
+    //      Alert::toast('Data Berhasil Dihapus', 'success');
+    //      return redirect()->back();
+    //  }
 
     public function AdminIndexChart()
     {

@@ -11,8 +11,8 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
-                      <h2>Halaman Ubah Data Tabel Balai Wilayah Sungai BWS Intake Sungai</h2>
-                      <h2>Kabupaten Mamberamo Raya<span class="bread-ntd"> </span></h2>
+                        <h2>Halaman Ubah Data Tabel PDAM</h2>
+                        <h2>Kabupaten Mamberamo Raya<span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
                 </div>
