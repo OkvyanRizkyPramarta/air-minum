@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\AdminPUController;
+use App\Http\Controllers\RABController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -504,6 +505,15 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
      Route::get('/superadmin/airbersih/kabupaten/supiori/municipalwaterwork/edit/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabBiakNumforMunicipalWaterworkEdit'])->name('superadmin.airbersih.kabupatensupiori.municipalwaterwork.edit');
      Route::put('/superadmin/airbersih/kabupaten/supiori/municipalwaterwork/update/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabBiakNumformiMunicipalWaterworkUpdate'])->name('superadmin.airbersih.kabupatensupiori.municipalwaterwork.update');
      Route::delete('/superadmin/airbersih/kabupaten/supiori/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabBiakNumforMunicipalWaterworkDestroy'])->name('superadmin.airbersih.kabupatensupiori.municipalwaterwork.destroy');
+
+     /** ======================== RAB ROUTES FOR SUPERADMIN ============================= */
+    Route::get('/superadmin/rab', [RABController::class, "index"])->name("superadmin.rab.index");
+    Route::get('/superadmin/rab/create', [RABController::class, "create"])->name("superadmin.rab.create");
+    Route::post('/superadmin/rab/store', [RABController::class, "store"])->name("superadmin.rab.store");
+    Route::get('/superadmin/rab/edit/{rab}', [RABController::class, "edit"])->name("superadmin.rab.edit");
+    Route::delete('/superadmin/rab/destroy/{rab}', [RABController::class, "destroy"])->name("superadmin.rab.destroy");
+    Route::post('/superadmin/rab/update', [RABController::class, "update"])->name("superadmin.rab.update");
+    Route::get('/superadmin/rab/detail/{rab}', [RABController::class, "detail"])->name("superadmin.rab.detail");
 });
 
 Route::middleware(['auth', 'SubAdmin'])->group(function () {
