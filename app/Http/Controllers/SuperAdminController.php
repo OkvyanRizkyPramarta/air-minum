@@ -3344,6 +3344,4312 @@ class SuperAdminController extends Controller
     }
 
 
+
+
+
+
+    public function SuperAdminAirBersihKabKeeromWaterResourceIndex()
+    {
+        $waterresource = WaterResource::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.waterresource.index', compact('waterresource'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterResourceCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkeerom.waterresource.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterResourceStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+            
+        $waterresource = new WaterResource;
+        $waterresource->name = $request->name;
+        $waterresource->file = $request->file('file')->store('files', 'public');
+        $waterresource->show = $request->show;
+        $waterresource->city()->associate($city);
+        $waterresource->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.waterresource.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterResourceEdit(WaterResource $waterresource)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkeerom.waterresource.edit', compact('waterresource', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterResourceUpdate(Request $request, WaterResource $waterresource)
+    {
+        $waterresource = WaterResource::findOrFail($waterresource->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $waterresource->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $waterresource->city()->associate($city);
+
+        } else {
+
+            if ($waterresource->file&&file_exists(storage_path('app/public/'.$waterresource->file))) {
+                \Storage::delete('public/'.$waterresource->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterresource->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.waterresource.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterResourceDestroy(WaterResource $waterresource)
+    {
+        $waterresource->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKeeromRiverintakeIndex()
+    {
+        $riverintake = RiverIntake::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.riverintake.index', compact('riverintake'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromRiverintakeCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.riverintake.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromRiverintakeStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $riverintake = new RiverIntake;
+        $riverintake->name = $request->name;
+        $riverintake->file = $request->file('file')->store('files', 'public');
+        $riverintake->show = $request->show;
+        $riverintake->city()->associate($city);
+        $riverintake->district()->associate($district);
+        $riverintake->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.riverintake.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromRiverintakeEdit(RiverIntake $riverintake)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.riverintake.edit', compact('city', 'district', 'riverintake'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromRiverintakeUpdate(Request $request, RiverIntake $riverintake)
+    {
+        $riverintake = RiverIntake::findOrFail($riverintake->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $riverintake->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $riverintake->city()->associate($city);
+
+        } else {
+
+            if ($riverintake->file&&file_exists(storage_path('app/public/'.$riverintake->file))) {
+                \Storage::delete('public/'.$riverintake->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $riverintake->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.riverintake.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromRiverintakeDestroy(RiverIntake $riverintake)
+    {
+        $riverintake->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKeeromWaterwellIndex()
+    {
+        $waterwell = WaterWell::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.waterwell.index', compact('waterwell'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterwellCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.waterwell.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterwellStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterwell = new WaterWell;
+        $waterwell->name = $request->name;
+        $waterwell->file = $request->file('file')->store('files', 'public');
+        $waterwell->show = $request->show;
+        $waterwell->city()->associate($city);
+        $waterwell->district()->associate($district);
+        $waterwell->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.waterwell.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterwellEdit(WaterWell $waterwell)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.waterwell.edit', compact('city', 'district', 'waterwell'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterwellUpdate(Request $request, WaterWell $waterwell)
+    {
+        $waterwell = WaterWell::findOrFail($waterwell->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterwell->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterwell->city()->associate($city);
+
+        } else {
+
+            if ($waterwell->file&&file_exists(storage_path('app/public/'.$waterwell->file))) {
+                \Storage::delete('public/'.$waterwell->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterwell->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.waterwell.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterwellDestroy(WaterWell $waterwell)
+    {
+        $waterwell->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKeeromWatertankIndex()
+    {
+        $watertank = Watertank::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.watertank.index', compact('watertank'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWatertankCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.watertank.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWatertankStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $watertank = new WaterTank;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->city()->associate($city);
+        $watertank->district()->associate($district);
+        $watertank->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.watertank.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWatertankEdit(WaterTank $watertank)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.watertank.edit', compact('city', 'district', 'watertank'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWatertankUpdate(Request $request, WaterTank $watertank)
+    {
+        $watertank = WaterTank::findOrFail($watertank->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $watertank->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $watertank->city()->associate($city);
+
+        } else {
+
+            if ($watertank->file&&file_exists(storage_path('app/public/'.$watertank->file))) {
+                \Storage::delete('public/'.$watertank->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $watertank->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.watertank.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWatertankDestroy(WaterTank $watertank)
+    {
+        $watertank->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKeeromWaterspringIndex()
+    {
+        $waterspring = Waterspring::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.waterspring.index', compact('waterspring'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterspringCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.waterspring.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterspringStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterspring = new Waterspring;
+        $waterspring->name = $request->name;
+        $waterspring->file = $request->file('file')->store('files', 'public');
+        $waterspring->show = $request->show;
+        $waterspring->city()->associate($city);
+        $waterspring->district()->associate($district);
+        $waterspring->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.waterspring.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterspringEdit(Waterspring $waterspring)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.waterspring.edit', compact('city', 'district', 'waterspring'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterspringUpdate(Request $request, Waterspring $waterspring)
+    {
+        $waterspring = Waterspring::findOrFail($waterspring->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterspring->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterspring->city()->associate($city);
+
+        } else {
+
+            if ($waterspring->file&&file_exists(storage_path('app/public/'.$waterspring->file))) {
+                \Storage::delete('public/'.$waterspring->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterspring->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.waterspring.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromWaterspringDestroy(Waterspring $waterspring)
+    {
+        $waterspring->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKeeromMunicipalWaterworkIndex()
+    {
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.municipalwaterwork.index', compact('municipalwaterwork'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromMunicipalWaterworkCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.municipalwaterwork.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromMunicipalWaterworkStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+            
+        $watertank = new MunicipalWaterwork;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->data = $request->data;
+        $watertank->city()->associate($city);
+        $watertank->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.municipalwaterwork.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromMunicipalWaterworkEdit(MunicipalWaterwork $municipalwaterwork)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.municipalwaterwork.edit', compact('city', 'district', 'municipalwaterwork'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromMunicipalWaterworkUpdate(Request $request, MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork = MunicipalWaterwork::findOrFail($municipalwaterwork->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $municipalwaterwork->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $municipalwaterwork->city()->associate($city);
+
+        } else {
+
+            if ($municipalwaterwork->file&&file_exists(storage_path('app/public/'.$municipalwaterwork->file))) {
+                \Storage::delete('public/'.$municipalwaterwork->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $municipalwaterwork->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.municipalwaterwork.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromMunicipalWaterworkDestroy(MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKeeromDukcapilIndex()
+    {
+        $dukcapil = Dukcapil::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.dukcapil.index', compact('dukcapil'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDukcapilCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkeerom.dukcapil.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDukcapilStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+            
+        $dukcapil = new Dukcapil;
+        $dukcapil->name = $request->name;
+        $dukcapil->file = $request->file('file')->store('files', 'public');
+        $dukcapil->show = $request->show;
+        $dukcapil->city()->associate($city);
+        $dukcapil->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.dukcapil.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDukcapilEdit(Dukcapil $dukcapil)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkeerom.dukcapil.edit', compact('dukcapil', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDukcapilUpdate(Request $request, Dukcapil $dukcapil)
+    {
+        $dukcapil = Dukcapil::findOrFail($dukcapil->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dukcapil->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dukcapil->city()->associate($city);
+
+        } else {
+
+            if ($dukcapil->file&&file_exists(storage_path('app/public/'.$dukcapil->file))) {
+                \Storage::delete('public/'.$dukcapil->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dukcapil->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.dukcapil.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDukcapilDestroy(Dukcapil $dukcapil)
+    {
+        $dukcapil->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+  public function SuperAdminAirBersihKabKeeromStatisticIndex()
+    {
+        $statistic = Statistic::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.statistic.index', compact('statistic'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromStatisticCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkeerom.statistic.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromStatisticStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+            
+        $statistic = new Statistic;
+        $statistic->name = $request->name;
+        $statistic->file = $request->file('file')->store('files', 'public');
+        $statistic->show = $request->show;
+        $statistic->city()->associate($city);
+        $statistic->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.statistic.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromStatisticEdit(Statistic $statistic)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkeerom.statistic.edit', compact('statistic', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromStatisticUpdate(Request $request, Statistic $statistic)
+    {
+        $statistic = Statistic::findOrFail($statistic->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $statistic->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $statistic->city()->associate($city);
+
+        } else {
+
+            if ($statistic->file&&file_exists(storage_path('app/public/'.$statistic->file))) {
+                \Storage::delete('public/'.$statistic->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $statistic->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.statistic.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromStatisticDestroy(Statistic $statistic)
+    {
+        $statistic->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+ public function SuperAdminAirBersihKabKeeromDataProcesIndex()
+    {
+        $dataproces = DataProces::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.dataproces.index', compact('dataproces'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDataProcesCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkeerom.dataproces.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDataProcesStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+            
+        $dataproces = new DataProces;
+        $dataproces->name = $request->name;
+        $dataproces->file = $request->file('file')->store('files', 'public');
+        $dataproces->show = $request->show;
+        $dataproces->city()->associate($city);
+        $dataproces->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.dataproces.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDataProcesEdit(DataProces $dataproces)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkeerom.dataproces.edit', compact('dataproces', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDataProcesUpdate(Request $request, DataProces $dataproces)
+    {
+        $dataproces = DataProces::findOrFail($dataproces->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dataproces->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dataproces->city()->associate($city);
+
+        } else {
+
+            if ($dataproces->file&&file_exists(storage_path('app/public/'.$dataproces->file))) {
+                \Storage::delete('public/'.$dataproces->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dataproces->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.dataproces.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromDataProcesDestroy(DataProces $dataproces)
+    {
+        $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+
+
+
+
+    public function SuperAdminAirBersihKabSarmiWaterResourceIndex()
+    {
+        $waterresource = WaterResource::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.waterresource.index', compact('waterresource'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterResourceCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensarmi.waterresource.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterResourceStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+            
+        $waterresource = new WaterResource;
+        $waterresource->name = $request->name;
+        $waterresource->file = $request->file('file')->store('files', 'public');
+        $waterresource->show = $request->show;
+        $waterresource->city()->associate($city);
+        $waterresource->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.waterresource.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterResourceEdit(WaterResource $waterresource)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensarmi.waterresource.edit', compact('waterresource', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterResourceUpdate(Request $request, WaterResource $waterresource)
+    {
+        $waterresource = WaterResource::findOrFail($waterresource->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $waterresource->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $waterresource->city()->associate($city);
+
+        } else {
+
+            if ($waterresource->file&&file_exists(storage_path('app/public/'.$waterresource->file))) {
+                \Storage::delete('public/'.$waterresource->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterresource->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.waterresource.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterResourceDestroy(WaterResource $waterresource)
+    {
+        $waterresource->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSarmiRiverintakeIndex()
+    {
+        $riverintake = RiverIntake::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.riverintake.index', compact('riverintake'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiRiverintakeCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.riverintake.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiRiverintakeStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $riverintake = new RiverIntake;
+        $riverintake->name = $request->name;
+        $riverintake->file = $request->file('file')->store('files', 'public');
+        $riverintake->show = $request->show;
+        $riverintake->city()->associate($city);
+        $riverintake->district()->associate($district);
+        $riverintake->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.riverintake.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiRiverintakeEdit(RiverIntake $riverintake)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.riverintake.edit', compact('city', 'district', 'riverintake'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiRiverintakeUpdate(Request $request, RiverIntake $riverintake)
+    {
+        $riverintake = RiverIntake::findOrFail($riverintake->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $riverintake->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $riverintake->city()->associate($city);
+
+        } else {
+
+            if ($riverintake->file&&file_exists(storage_path('app/public/'.$riverintake->file))) {
+                \Storage::delete('public/'.$riverintake->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $riverintake->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.riverintake.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiRiverintakeDestroy(RiverIntake $riverintake)
+    {
+        $riverintake->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSarmiWaterwellIndex()
+    {
+        $waterwell = WaterWell::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.waterwell.index', compact('waterwell'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterwellCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.waterwell.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterwellStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterwell = new WaterWell;
+        $waterwell->name = $request->name;
+        $waterwell->file = $request->file('file')->store('files', 'public');
+        $waterwell->show = $request->show;
+        $waterwell->city()->associate($city);
+        $waterwell->district()->associate($district);
+        $waterwell->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.waterwell.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterwellEdit(WaterWell $waterwell)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.waterwell.edit', compact('city', 'district', 'waterwell'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterwellUpdate(Request $request, WaterWell $waterwell)
+    {
+        $waterwell = WaterWell::findOrFail($waterwell->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterwell->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterwell->city()->associate($city);
+
+        } else {
+
+            if ($waterwell->file&&file_exists(storage_path('app/public/'.$waterwell->file))) {
+                \Storage::delete('public/'.$waterwell->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterwell->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.waterwell.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterwellDestroy(WaterWell $waterwell)
+    {
+        $waterwell->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSarmiWatertankIndex()
+    {
+        $watertank = Watertank::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.watertank.index', compact('watertank'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWatertankCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.watertank.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWatertankStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $watertank = new WaterTank;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->city()->associate($city);
+        $watertank->district()->associate($district);
+        $watertank->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.watertank.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWatertankEdit(WaterTank $watertank)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.watertank.edit', compact('city', 'district', 'watertank'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWatertankUpdate(Request $request, WaterTank $watertank)
+    {
+        $watertank = WaterTank::findOrFail($watertank->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $watertank->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $watertank->city()->associate($city);
+
+        } else {
+
+            if ($watertank->file&&file_exists(storage_path('app/public/'.$watertank->file))) {
+                \Storage::delete('public/'.$watertank->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $watertank->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.watertank.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWatertankDestroy(WaterTank $watertank)
+    {
+        $watertank->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSarmiWaterspringIndex()
+    {
+        $waterspring = Waterspring::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.waterspring.index', compact('waterspring'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterspringCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.waterspring.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterspringStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterspring = new Waterspring;
+        $waterspring->name = $request->name;
+        $waterspring->file = $request->file('file')->store('files', 'public');
+        $waterspring->show = $request->show;
+        $waterspring->city()->associate($city);
+        $waterspring->district()->associate($district);
+        $waterspring->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.waterspring.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterspringEdit(Waterspring $waterspring)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.waterspring.edit', compact('city', 'district', 'waterspring'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterspringUpdate(Request $request, Waterspring $waterspring)
+    {
+        $waterspring = Waterspring::findOrFail($waterspring->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterspring->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterspring->city()->associate($city);
+
+        } else {
+
+            if ($waterspring->file&&file_exists(storage_path('app/public/'.$waterspring->file))) {
+                \Storage::delete('public/'.$waterspring->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterspring->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.waterspring.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiWaterspringDestroy(Waterspring $waterspring)
+    {
+        $waterspring->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSarmiMunicipalWaterworkIndex()
+    {
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.municipalwaterwork.index', compact('municipalwaterwork'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiMunicipalWaterworkCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.municipalwaterwork.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiMunicipalWaterworkStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+            
+        $watertank = new MunicipalWaterwork;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->data = $request->data;
+        $watertank->city()->associate($city);
+        $watertank->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.municipalwaterwork.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiMunicipalWaterworkEdit(MunicipalWaterwork $municipalwaterwork)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.municipalwaterwork.edit', compact('city', 'district', 'municipalwaterwork'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiMunicipalWaterworkUpdate(Request $request, MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork = MunicipalWaterwork::findOrFail($municipalwaterwork->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $municipalwaterwork->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $municipalwaterwork->city()->associate($city);
+
+        } else {
+
+            if ($municipalwaterwork->file&&file_exists(storage_path('app/public/'.$municipalwaterwork->file))) {
+                \Storage::delete('public/'.$municipalwaterwork->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $municipalwaterwork->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.municipalwaterwork.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiMunicipalWaterworkDestroy(MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSarmiDukcapilIndex()
+    {
+        $dukcapil = Dukcapil::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.dukcapil.index', compact('dukcapil'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDukcapilCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensarmi.dukcapil.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDukcapilStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+            
+        $dukcapil = new Dukcapil;
+        $dukcapil->name = $request->name;
+        $dukcapil->file = $request->file('file')->store('files', 'public');
+        $dukcapil->show = $request->show;
+        $dukcapil->city()->associate($city);
+        $dukcapil->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.dukcapil.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDukcapilEdit(Dukcapil $dukcapil)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensarmi.dukcapil.edit', compact('dukcapil', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDukcapilUpdate(Request $request, Dukcapil $dukcapil)
+    {
+        $dukcapil = Dukcapil::findOrFail($dukcapil->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dukcapil->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dukcapil->city()->associate($city);
+
+        } else {
+
+            if ($dukcapil->file&&file_exists(storage_path('app/public/'.$dukcapil->file))) {
+                \Storage::delete('public/'.$dukcapil->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dukcapil->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.dukcapil.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDukcapilDestroy(Dukcapil $dukcapil)
+    {
+        $dukcapil->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+  public function SuperAdminAirBersihKabSarmiStatisticIndex()
+    {
+        $statistic = Statistic::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.statistic.index', compact('statistic'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiStatisticCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensarmi.statistic.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiStatisticStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+            
+        $statistic = new Statistic;
+        $statistic->name = $request->name;
+        $statistic->file = $request->file('file')->store('files', 'public');
+        $statistic->show = $request->show;
+        $statistic->city()->associate($city);
+        $statistic->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.statistic.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiStatisticEdit(Statistic $statistic)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensarmi.statistic.edit', compact('statistic', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiStatisticUpdate(Request $request, Statistic $statistic)
+    {
+        $statistic = Statistic::findOrFail($statistic->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $statistic->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $statistic->city()->associate($city);
+
+        } else {
+
+            if ($statistic->file&&file_exists(storage_path('app/public/'.$statistic->file))) {
+                \Storage::delete('public/'.$statistic->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $statistic->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.statistic.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiStatisticDestroy(Statistic $statistic)
+    {
+        $statistic->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+ public function SuperAdminAirBersihKabSarmiDataProcesIndex()
+    {
+        $dataproces = DataProces::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.dataproces.index', compact('dataproces'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDataProcesCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensarmi.dataproces.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDataProcesStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+            
+        $dataproces = new DataProces;
+        $dataproces->name = $request->name;
+        $dataproces->file = $request->file('file')->store('files', 'public');
+        $dataproces->show = $request->show;
+        $dataproces->city()->associate($city);
+        $dataproces->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.dataproces.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDataProcesEdit(DataProces $dataproces)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensarmi.dataproces.edit', compact('dataproces', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDataProcesUpdate(Request $request, DataProces $dataproces)
+    {
+        $dataproces = DataProces::findOrFail($dataproces->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dataproces->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dataproces->city()->associate($city);
+
+        } else {
+
+            if ($dataproces->file&&file_exists(storage_path('app/public/'.$dataproces->file))) {
+                \Storage::delete('public/'.$dataproces->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dataproces->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.dataproces.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiDataProcesDestroy(DataProces $dataproces)
+    {
+        $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+
+
+
+
+    public function SuperAdminAirBersihKabSupioriWaterResourceIndex()
+    {
+        $waterresource = WaterResource::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.waterresource.index', compact('waterresource'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterResourceCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensupiori.waterresource.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterResourceStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+            
+        $waterresource = new WaterResource;
+        $waterresource->name = $request->name;
+        $waterresource->file = $request->file('file')->store('files', 'public');
+        $waterresource->show = $request->show;
+        $waterresource->city()->associate($city);
+        $waterresource->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.waterresource.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterResourceEdit(WaterResource $waterresource)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensupiori.waterresource.edit', compact('waterresource', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterResourceUpdate(Request $request, WaterResource $waterresource)
+    {
+        $waterresource = WaterResource::findOrFail($waterresource->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $waterresource->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $waterresource->city()->associate($city);
+
+        } else {
+
+            if ($waterresource->file&&file_exists(storage_path('app/public/'.$waterresource->file))) {
+                \Storage::delete('public/'.$waterresource->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterresource->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.waterresource.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterResourceDestroy(WaterResource $waterresource)
+    {
+        $waterresource->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSupioriRiverintakeIndex()
+    {
+        $riverintake = RiverIntake::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.riverintake.index', compact('riverintake'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriRiverintakeCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.riverintake.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriRiverintakeStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $riverintake = new RiverIntake;
+        $riverintake->name = $request->name;
+        $riverintake->file = $request->file('file')->store('files', 'public');
+        $riverintake->show = $request->show;
+        $riverintake->city()->associate($city);
+        $riverintake->district()->associate($district);
+        $riverintake->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.riverintake.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriRiverintakeEdit(RiverIntake $riverintake)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.riverintake.edit', compact('city', 'district', 'riverintake'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriRiverintakeUpdate(Request $request, RiverIntake $riverintake)
+    {
+        $riverintake = RiverIntake::findOrFail($riverintake->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $riverintake->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $riverintake->city()->associate($city);
+
+        } else {
+
+            if ($riverintake->file&&file_exists(storage_path('app/public/'.$riverintake->file))) {
+                \Storage::delete('public/'.$riverintake->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $riverintake->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.riverintake.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriRiverintakeDestroy(RiverIntake $riverintake)
+    {
+        $riverintake->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSupioriWaterwellIndex()
+    {
+        $waterwell = WaterWell::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.waterwell.index', compact('waterwell'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterwellCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.waterwell.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterwellStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterwell = new WaterWell;
+        $waterwell->name = $request->name;
+        $waterwell->file = $request->file('file')->store('files', 'public');
+        $waterwell->show = $request->show;
+        $waterwell->city()->associate($city);
+        $waterwell->district()->associate($district);
+        $waterwell->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.waterwell.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterwellEdit(WaterWell $waterwell)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.waterwell.edit', compact('city', 'district', 'waterwell'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterwellUpdate(Request $request, WaterWell $waterwell)
+    {
+        $waterwell = WaterWell::findOrFail($waterwell->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterwell->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterwell->city()->associate($city);
+
+        } else {
+
+            if ($waterwell->file&&file_exists(storage_path('app/public/'.$waterwell->file))) {
+                \Storage::delete('public/'.$waterwell->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterwell->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.waterwell.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterwellDestroy(WaterWell $waterwell)
+    {
+        $waterwell->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSupioriWatertankIndex()
+    {
+        $watertank = Watertank::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.watertank.index', compact('watertank'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWatertankCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.watertank.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWatertankStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $watertank = new WaterTank;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->city()->associate($city);
+        $watertank->district()->associate($district);
+        $watertank->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.watertank.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWatertankEdit(WaterTank $watertank)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.watertank.edit', compact('city', 'district', 'watertank'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWatertankUpdate(Request $request, WaterTank $watertank)
+    {
+        $watertank = WaterTank::findOrFail($watertank->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $watertank->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $watertank->city()->associate($city);
+
+        } else {
+
+            if ($watertank->file&&file_exists(storage_path('app/public/'.$watertank->file))) {
+                \Storage::delete('public/'.$watertank->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $watertank->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.watertank.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWatertankDestroy(WaterTank $watertank)
+    {
+        $watertank->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSupioriWaterspringIndex()
+    {
+        $waterspring = Waterspring::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.waterspring.index', compact('waterspring'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterspringCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.waterspring.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterspringStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterspring = new Waterspring;
+        $waterspring->name = $request->name;
+        $waterspring->file = $request->file('file')->store('files', 'public');
+        $waterspring->show = $request->show;
+        $waterspring->city()->associate($city);
+        $waterspring->district()->associate($district);
+        $waterspring->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.waterspring.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterspringEdit(Waterspring $waterspring)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.waterspring.edit', compact('city', 'district', 'waterspring'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterspringUpdate(Request $request, Waterspring $waterspring)
+    {
+        $waterspring = Waterspring::findOrFail($waterspring->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterspring->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterspring->city()->associate($city);
+
+        } else {
+
+            if ($waterspring->file&&file_exists(storage_path('app/public/'.$waterspring->file))) {
+                \Storage::delete('public/'.$waterspring->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterspring->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.waterspring.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriWaterspringDestroy(Waterspring $waterspring)
+    {
+        $waterspring->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSupioriMunicipalWaterworkIndex()
+    {
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.municipalwaterwork.index', compact('municipalwaterwork'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriMunicipalWaterworkCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.municipalwaterwork.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriMunicipalWaterworkStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+            
+        $watertank = new MunicipalWaterwork;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->data = $request->data;
+        $watertank->city()->associate($city);
+        $watertank->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.municipalwaterwork.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriMunicipalWaterworkEdit(MunicipalWaterwork $municipalwaterwork)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.municipalwaterwork.edit', compact('city', 'district', 'municipalwaterwork'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriMunicipalWaterworkUpdate(Request $request, MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork = MunicipalWaterwork::findOrFail($municipalwaterwork->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $municipalwaterwork->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $municipalwaterwork->city()->associate($city);
+
+        } else {
+
+            if ($municipalwaterwork->file&&file_exists(storage_path('app/public/'.$municipalwaterwork->file))) {
+                \Storage::delete('public/'.$municipalwaterwork->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $municipalwaterwork->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.municipalwaterwork.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriMunicipalWaterworkDestroy(MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSupioriDukcapilIndex()
+    {
+        $dukcapil = Dukcapil::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.dukcapil.index', compact('dukcapil'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDukcapilCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensupiori.dukcapil.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDukcapilStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+            
+        $dukcapil = new Dukcapil;
+        $dukcapil->name = $request->name;
+        $dukcapil->file = $request->file('file')->store('files', 'public');
+        $dukcapil->show = $request->show;
+        $dukcapil->city()->associate($city);
+        $dukcapil->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.dukcapil.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDukcapilEdit(Dukcapil $dukcapil)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensupiori.dukcapil.edit', compact('dukcapil', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDukcapilUpdate(Request $request, Dukcapil $dukcapil)
+    {
+        $dukcapil = Dukcapil::findOrFail($dukcapil->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dukcapil->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dukcapil->city()->associate($city);
+
+        } else {
+
+            if ($dukcapil->file&&file_exists(storage_path('app/public/'.$dukcapil->file))) {
+                \Storage::delete('public/'.$dukcapil->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dukcapil->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.dukcapil.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDukcapilDestroy(Dukcapil $dukcapil)
+    {
+        $dukcapil->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+  public function SuperAdminAirBersihKabSupioriStatisticIndex()
+    {
+        $statistic = Statistic::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.statistic.index', compact('statistic'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriStatisticCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensupiori.statistic.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriStatisticStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+            
+        $statistic = new Statistic;
+        $statistic->name = $request->name;
+        $statistic->file = $request->file('file')->store('files', 'public');
+        $statistic->show = $request->show;
+        $statistic->city()->associate($city);
+        $statistic->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.statistic.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriStatisticEdit(Statistic $statistic)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensupiori.statistic.edit', compact('statistic', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriStatisticUpdate(Request $request, Statistic $statistic)
+    {
+        $statistic = Statistic::findOrFail($statistic->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $statistic->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $statistic->city()->associate($city);
+
+        } else {
+
+            if ($statistic->file&&file_exists(storage_path('app/public/'.$statistic->file))) {
+                \Storage::delete('public/'.$statistic->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $statistic->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.statistic.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriStatisticDestroy(Statistic $statistic)
+    {
+        $statistic->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+ public function SuperAdminAirBersihKabSupioriDataProcesIndex()
+    {
+        $dataproces = DataProces::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.dataproces.index', compact('dataproces'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDataProcesCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensupiori.dataproces.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDataProcesStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+            
+        $dataproces = new DataProces;
+        $dataproces->name = $request->name;
+        $dataproces->file = $request->file('file')->store('files', 'public');
+        $dataproces->show = $request->show;
+        $dataproces->city()->associate($city);
+        $dataproces->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.dataproces.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDataProcesEdit(DataProces $dataproces)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatensupiori.dataproces.edit', compact('dataproces', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDataProcesUpdate(Request $request, DataProces $dataproces)
+    {
+        $dataproces = DataProces::findOrFail($dataproces->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dataproces->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dataproces->city()->associate($city);
+
+        } else {
+
+            if ($dataproces->file&&file_exists(storage_path('app/public/'.$dataproces->file))) {
+                \Storage::delete('public/'.$dataproces->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dataproces->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.dataproces.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriDataProcesDestroy(DataProces $dataproces)
+    {
+        $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+
+
+
+
+
+    public function SuperAdminAirBersihKabKepulauanYapenWaterResourceIndex()
+    {
+        $waterresource = WaterResource::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.waterresource.index', compact('waterresource'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterResourceCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkepulauanyapen.waterresource.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterResourceStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+            
+        $waterresource = new WaterResource;
+        $waterresource->name = $request->name;
+        $waterresource->file = $request->file('file')->store('files', 'public');
+        $waterresource->show = $request->show;
+        $waterresource->city()->associate($city);
+        $waterresource->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.waterresource.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterResourceEdit(WaterResource $waterresource)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkepulauanyapen.waterresource.edit', compact('waterresource', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterResourceUpdate(Request $request, WaterResource $waterresource)
+    {
+        $waterresource = WaterResource::findOrFail($waterresource->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $waterresource->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $waterresource->city()->associate($city);
+
+        } else {
+
+            if ($waterresource->file&&file_exists(storage_path('app/public/'.$waterresource->file))) {
+                \Storage::delete('public/'.$waterresource->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterresource->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.waterresource.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterResourceDestroy(WaterResource $waterresource)
+    {
+        $waterresource->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKepulauanYapenRiverintakeIndex()
+    {
+        $riverintake = RiverIntake::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.riverintake.index', compact('riverintake'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenRiverintakeCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.riverintake.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenRiverintakeStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $riverintake = new RiverIntake;
+        $riverintake->name = $request->name;
+        $riverintake->file = $request->file('file')->store('files', 'public');
+        $riverintake->show = $request->show;
+        $riverintake->city()->associate($city);
+        $riverintake->district()->associate($district);
+        $riverintake->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.riverintake.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenRiverintakeEdit(RiverIntake $riverintake)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.riverintake.edit', compact('city', 'district', 'riverintake'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenRiverintakeUpdate(Request $request, RiverIntake $riverintake)
+    {
+        $riverintake = RiverIntake::findOrFail($riverintake->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $riverintake->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $riverintake->city()->associate($city);
+
+        } else {
+
+            if ($riverintake->file&&file_exists(storage_path('app/public/'.$riverintake->file))) {
+                \Storage::delete('public/'.$riverintake->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $riverintake->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.riverintake.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenRiverintakeDestroy(RiverIntake $riverintake)
+    {
+        $riverintake->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKepulauanYapenWaterwellIndex()
+    {
+        $waterwell = WaterWell::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.waterwell.index', compact('waterwell'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterwellCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.waterwell.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterwellStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterwell = new WaterWell;
+        $waterwell->name = $request->name;
+        $waterwell->file = $request->file('file')->store('files', 'public');
+        $waterwell->show = $request->show;
+        $waterwell->city()->associate($city);
+        $waterwell->district()->associate($district);
+        $waterwell->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.waterwell.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterwellEdit(WaterWell $waterwell)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.waterwell.edit', compact('city', 'district', 'waterwell'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterwellUpdate(Request $request, WaterWell $waterwell)
+    {
+        $waterwell = WaterWell::findOrFail($waterwell->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterwell->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterwell->city()->associate($city);
+
+        } else {
+
+            if ($waterwell->file&&file_exists(storage_path('app/public/'.$waterwell->file))) {
+                \Storage::delete('public/'.$waterwell->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterwell->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.waterwell.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterwellDestroy(WaterWell $waterwell)
+    {
+        $waterwell->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKepulauanYapenWatertankIndex()
+    {
+        $watertank = Watertank::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.watertank.index', compact('watertank'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWatertankCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.watertank.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWatertankStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $watertank = new WaterTank;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->city()->associate($city);
+        $watertank->district()->associate($district);
+        $watertank->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.watertank.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWatertankEdit(WaterTank $watertank)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.watertank.edit', compact('city', 'district', 'watertank'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWatertankUpdate(Request $request, WaterTank $watertank)
+    {
+        $watertank = WaterTank::findOrFail($watertank->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $watertank->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $watertank->city()->associate($city);
+
+        } else {
+
+            if ($watertank->file&&file_exists(storage_path('app/public/'.$watertank->file))) {
+                \Storage::delete('public/'.$watertank->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $watertank->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.watertank.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWatertankDestroy(WaterTank $watertank)
+    {
+        $watertank->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKepulauanYapenWaterspringIndex()
+    {
+        $waterspring = Waterspring::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.waterspring.index', compact('waterspring'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterspringCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.waterspring.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterspringStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+
+        $district = new District;
+        $district -> id = $request->get('district_id');
+            
+        $waterspring = new Waterspring;
+        $waterspring->name = $request->name;
+        $waterspring->file = $request->file('file')->store('files', 'public');
+        $waterspring->show = $request->show;
+        $waterspring->city()->associate($city);
+        $waterspring->district()->associate($district);
+        $waterspring->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.waterspring.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterspringEdit(Waterspring $waterspring)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.waterspring.edit', compact('city', 'district', 'waterspring'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterspringUpdate(Request $request, Waterspring $waterspring)
+    {
+        $waterspring = Waterspring::findOrFail($waterspring->id);
+
+        $city = new City;
+        $district = new District;
+
+        if($request->file('file') == "") {
+
+            $waterspring->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+                'district_id'   => $request->district_id,
+            ]);
+
+            $waterspring->city()->associate($city);
+
+        } else {
+
+            if ($waterspring->file&&file_exists(storage_path('app/public/'.$waterspring->file))) {
+                \Storage::delete('public/'.$waterspring->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $waterspring->update([
+            'name'          => $request->name,
+            'district_id'   => $request->district_id,
+            'file'          => $path->hashName(),
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.waterspring.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenWaterspringDestroy(Waterspring $waterspring)
+    {
+        $waterspring->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkIndex()
+    {
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.municipalwaterwork.index', compact('municipalwaterwork'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.municipalwaterwork.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+            
+        $watertank = new MunicipalWaterwork;
+        $watertank->name = $request->name;
+        $watertank->file = $request->file('file')->store('files', 'public');
+        $watertank->show = $request->show;
+        $watertank->data = $request->data;
+        $watertank->city()->associate($city);
+        $watertank->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.municipalwaterwork.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkEdit(MunicipalWaterwork $municipalwaterwork)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.municipalwaterwork.edit', compact('city', 'district', 'municipalwaterwork'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkUpdate(Request $request, MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork = MunicipalWaterwork::findOrFail($municipalwaterwork->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $municipalwaterwork->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $municipalwaterwork->city()->associate($city);
+
+        } else {
+
+            if ($municipalwaterwork->file&&file_exists(storage_path('app/public/'.$municipalwaterwork->file))) {
+                \Storage::delete('public/'.$municipalwaterwork->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $municipalwaterwork->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.municipalwaterwork.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenMunicipalWaterworkDestroy(MunicipalWaterwork $municipalwaterwork)
+    {
+        $municipalwaterwork->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabKepulauanYapenDukcapilIndex()
+    {
+        $dukcapil = Dukcapil::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.dukcapil.index', compact('dukcapil'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDukcapilCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkepulauanyapen.dukcapil.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDukcapilStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+            
+        $dukcapil = new Dukcapil;
+        $dukcapil->name = $request->name;
+        $dukcapil->file = $request->file('file')->store('files', 'public');
+        $dukcapil->show = $request->show;
+        $dukcapil->city()->associate($city);
+        $dukcapil->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.dukcapil.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDukcapilEdit(Dukcapil $dukcapil)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkepulauanyapen.dukcapil.edit', compact('dukcapil', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDukcapilUpdate(Request $request, Dukcapil $dukcapil)
+    {
+        $dukcapil = Dukcapil::findOrFail($dukcapil->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dukcapil->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dukcapil->city()->associate($city);
+
+        } else {
+
+            if ($dukcapil->file&&file_exists(storage_path('app/public/'.$dukcapil->file))) {
+                \Storage::delete('public/'.$dukcapil->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dukcapil->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.dukcapil.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDukcapilDestroy(Dukcapil $dukcapil)
+    {
+        $dukcapil->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+  public function SuperAdminAirBersihKabKepulauanYapenStatisticIndex()
+    {
+        $statistic = Statistic::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.statistic.index', compact('statistic'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenStatisticCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkepulauanyapen.statistic.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenStatisticStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+            
+        $statistic = new Statistic;
+        $statistic->name = $request->name;
+        $statistic->file = $request->file('file')->store('files', 'public');
+        $statistic->show = $request->show;
+        $statistic->city()->associate($city);
+        $statistic->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.statistic.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenStatisticEdit(Statistic $statistic)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkepulauanyapen.statistic.edit', compact('statistic', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenStatisticUpdate(Request $request, Statistic $statistic)
+    {
+        $statistic = Statistic::findOrFail($statistic->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $statistic->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $statistic->city()->associate($city);
+
+        } else {
+
+            if ($statistic->file&&file_exists(storage_path('app/public/'.$statistic->file))) {
+                \Storage::delete('public/'.$statistic->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $statistic->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.statistic.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenStatisticDestroy(Statistic $statistic)
+    {
+        $statistic->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+ public function SuperAdminAirBersihKabKepulauanYapenDataProcesIndex()
+    {
+        $dataproces = DataProces::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.dataproces.index', compact('dataproces'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDataProcesCreate()
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkepulauanyapen.dataproces.create', compact('city'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDataProcesStore(Request $request)
+    {
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+            
+        $dataproces = new DataProces;
+        $dataproces->name = $request->name;
+        $dataproces->file = $request->file('file')->store('files', 'public');
+        $dataproces->show = $request->show;
+        $dataproces->city()->associate($city);
+        $dataproces->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.dataproces.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDataProcesEdit(DataProces $dataproces)
+    {
+        $city = City::all();
+        return view('superadmin.kabupatenkepulauanyapen.dataproces.edit', compact('dataproces', 'city'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDataProcesUpdate(Request $request, DataProces $dataproces)
+    {
+        $dataproces = DataProces::findOrFail($dataproces->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $dataproces->update([
+                'name'      =>$request->name,
+                'show'      => $request->show,
+            ]);
+
+            $dataproces->city()->associate($city);
+
+        } else {
+
+            if ($dataproces->file&&file_exists(storage_path('app/public/'.$dataproces->file))) {
+                \Storage::delete('public/'.$dataproces->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $dataproces->update([
+            'name'      => $request->name,
+            'file'      => $path->hashName(),
+            'show'      => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.dataproces.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenDataProcesDestroy(DataProces $dataproces)
+    {
+        $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+
     // /**
     //  * Display a listing of the resource.
     //  *
