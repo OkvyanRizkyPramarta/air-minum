@@ -12,7 +12,7 @@
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
                       <h2>Halaman Ubah Data Tabel Tampungan Air</h2>
-                      <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
+                      <h2>Kabupaten Supiori <span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
                 </div>

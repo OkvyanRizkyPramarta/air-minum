@@ -12,7 +12,7 @@
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
                       <h2>Halaman Tambah Data Tabel Mata Air</h2>
-                      <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
+                      <h2>Kabupaten Biak Numfor <span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
                 </div>

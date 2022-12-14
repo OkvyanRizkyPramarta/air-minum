@@ -13,7 +13,7 @@
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
                     <h2>Halaman Tambah Data Tabel Badan Pusat Statistik (BPS)</h2>
-                      <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
+                    <h2>Kabupaten Sarmi<span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
                 </div>

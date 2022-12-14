@@ -12,7 +12,7 @@
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
                                         <h2> Data Tabel Badan Pengelolaan dan Pendataan Daerah</h2>
-										<h2> Kabupaten Keerom <span class="bread-ntd"> </span></h2>
+                                        <h2>Kabupaten Supiori <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
 							</div>

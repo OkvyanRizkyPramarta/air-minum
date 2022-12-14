@@ -12,7 +12,7 @@
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
                                         <h2> Data Tabel Dinas PU Bidang Sumber Daya Air</h2>
-										<h2> Kota Jayapura <span class="bread-ntd"> </span></h2>
+                                        <h2>Kabupaten Sarmi<span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
 							</div>

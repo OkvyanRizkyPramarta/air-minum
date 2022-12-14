@@ -13,7 +13,7 @@
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
                       <h2>Halaman Ubah Data Tabel Dinas Dukcapil</h2>
-                      <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
+                      <h2>Kabupaten Jayapura <span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
                 </div>

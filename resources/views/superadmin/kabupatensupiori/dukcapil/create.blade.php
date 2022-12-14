@@ -12,7 +12,7 @@
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
                       <h2>Halaman Tambah Data Tabel Dinas Dukcapil</h2>
-                      <h2>Kabupaten Keerom <span class="bread-ntd"> </span></h2>
+                      <h2>Kabupaten Supiori <span class="bread-ntd"> </span></h2>
                     </div>
                   </div>
                 </div>
