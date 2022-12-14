@@ -312,6 +312,70 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::get('/superadmin/airbersih/kabupaten/keerom/municipalwaterwork/edit/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabKeeromMunicipalWaterworkEdit'])->name('superadmin.airbersih.kabupatenkeerom.municipalwaterwork.edit');
     Route::put('/superadmin/airbersih/kabupaten/keerom/municipalwaterwork/update/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabKeeromMunicipalWaterworkUpdate'])->name('superadmin.airbersih.kabupatenkeerom.municipalwaterwork.update');
     Route::delete('/superadmin/airbersih/kabupaten/keerom/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabKeeromMunicipalWaterworkDestroy'])->name('superadmin.airbersih.kabupatenkeerom.municipalwaterwork.destroy');
+
+     //Kabupaten Sarmi
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterresource/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterResourceIndex'])->name('superadmin.airbersih.kabupatensarmi.waterresource.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterresource/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterResourceCreate'])->name('superadmin.airbersih.kabupatensarmi.waterresource.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/waterresource/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterResourceStore'])->name('superadmin.airbersih.kabupatensarmi.waterresource.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterresource/edit/{waterresource}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterResourceEdit'])->name('superadmin.airbersih.kabupatensarmi.waterresource.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/waterresource/update/{waterresource}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterResourceUpdate'])->name('superadmin.airbersih.kabupatensarmi.waterresource.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/waterresource/index/{waterresource}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterResourceDestroy'])->name('superadmin.airbersih.kabupatensarmi.waterresource.destroy');
+ 
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/dukcapil/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDukcapilIndex'])->name('superadmin.airbersih.kabupatensarmi.dukcapil.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/dukcapil/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDukcapilCreate'])->name('superadmin.airbersih.kabupatensarmi.dukcapil.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/dukcapil/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDukcapilStore'])->name('superadmin.airbersih.kabupatensarmi.dukcapil.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/dukcapil/edit/{dukcapil}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDukcapilEdit'])->name('superadmin.airbersih.kabupatensarmi.dukcapil.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/dukcapil/update/{dukcapil}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDukcapilUpdate'])->name('superadmin.airbersih.kabupatensarmi.dukcapil.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/dukcapil/index/{dukcapil}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDukcapilDestroy'])->name('superadmin.airbersih.kabupatensarmi.dukcapil.destroy');
+ 
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/statistic/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiStatisticIndex'])->name('superadmin.airbersih.kabupatensarmi.statistic.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/statistic/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiStatisticCreate'])->name('superadmin.airbersih.kabupatensarmi.statistic.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/statistic/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiStatisticStore'])->name('superadmin.airbersih.kabupatensarmi.statistic.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/statistic/edit/{statistic}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiStatisticEdit'])->name('superadmin.airbersih.kabupatensarmi.statistic.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/statistic/update/{statistic}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiStatisticUpdate'])->name('superadmin.airbersih.kabupatensarmi.statistic.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/statistic/index/{statistic}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiStatisticDestroy'])->name('superadmin.airbersih.kabupatensarmi.statistic.destroy');
+ 
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/dataproces/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDataProcesIndex'])->name('superadmin.airbersih.kabupatensarmi.dataproces.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/dataproces/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDataProcesCreate'])->name('superadmin.airbersih.kabupatensarmi.dataproces.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/dataproces/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDataProcesStore'])->name('superadmin.airbersih.kabupatensarmi.dataproces.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/dataproces/edit/{dataproces}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDataProcesEdit'])->name('superadmin.airbersih.kabupatensarmi.dataproces.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/dataproces/update/{dataproces}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDataProcesUpdate'])->name('superadmin.airbersih.kabupatensarmi.dataproces.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/dataproces/index/{dataproces}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiDataProcesDestroy'])->name('superadmin.airbersih.kabupatensarmi.dataproces.destroy');
+ 
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/riverintake/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiRiverintakeIndex'])->name('superadmin.airbersih.kabupatensarmi.riverintake.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/riverintake/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiRiverintakeCreate'])->name('superadmin.airbersih.kabupatensarmi.riverintake.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/riverintake/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiRiverintakeStore'])->name('superadmin.airbersih.kabupatensarmi.riverintake.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/riverintake/edit/{riverintake}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiRiverintakeEdit'])->name('superadmin.airbersih.kabupatensarmi.riverintake.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/riverintake/update/{riverintake}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiRiverintakeUpdate'])->name('superadmin.airbersih.kabupatensarmi.riverintake.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/riverintake/index/{riverintake}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiRiverintakeDestroy'])->name('superadmin.airbersih.kabupatensarmi.riverintake.destroy');
+ 
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterwell/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterwellIndex'])->name('superadmin.airbersih.kabupatensarmi.waterwell.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterwell/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterwellCreate'])->name('superadmin.airbersih.kabupatensarmi.waterwell.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/waterwell/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterwellStore'])->name('superadmin.airbersih.kabupatensarmi.waterwell.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterwell/edit/{waterwell}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterwellEdit'])->name('superadmin.airbersih.kabupatensarmi.waterwell.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/waterwell/update/{waterwell}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterwellUpdate'])->name('superadmin.airbersih.kabupatensarmi.waterwell.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/waterwell/index/{waterwell}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterwellDestroy'])->name('superadmin.airbersih.kabupatensarmi.waterwell.destroy');
+ 
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/watertank/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWatertankIndex'])->name('superadmin.airbersih.kabupatensarmi.watertank.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/watertank/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWatertankCreate'])->name('superadmin.airbersih.kabupatensarmi.watertank.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/watertank/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWatertankStore'])->name('superadmin.airbersih.kabupatensarmi.watertank.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/watertank/edit/{watertank}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWatertankEdit'])->name('superadmin.airbersih.kabupatensarmi.watertank.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/watertank/update/{watertank}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWatertankUpdate'])->name('superadmin.airbersih.kabupatensarmi.watertank.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/watertank/index/{watertank}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWatertankDestroy'])->name('superadmin.airbersih.kabupatensarmi.watertank.destroy');
+ 
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterspring/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterspringIndex'])->name('superadmin.airbersih.kabupatensarmi.waterspring.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterspring/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterspringCreate'])->name('superadmin.airbersih.kabupatensarmi.waterspring.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/waterspring/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterspringStore'])->name('superadmin.airbersih.kabupatensarmi.waterspring.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/waterspring/edit/{waterspring}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterspringEdit'])->name('superadmin.airbersih.kabupatensarmi.waterspring.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/waterspring/update/{waterspring}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiWaterspringUpdate'])->name('superadmin.airbersih.kabupatensarmi.waterspring.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/waterspring/index/{waterspring}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiwaterspringDestroy'])->name('superadmin.airbersih.kabupatensarmi.waterspring.destroy');
+ 
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/municipalwaterwork/index', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiMunicipalWaterworkIndex'])->name('superadmin.airbersih.kabupatensarmi.municipalwaterwork.index');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/municipalwaterwork/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiMunicipalWaterworkCreate'])->name('superadmin.airbersih.kabupatensarmi.municipalwaterwork.create'); 
+     Route::post('/superadmin/airbersih/kabupaten/sarmi/municipalwaterwork/create', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiMunicipalWaterworkStore'])->name('superadmin.airbersih.kabupatensarmi.municipalwaterwork.store');
+     Route::get('/superadmin/airbersih/kabupaten/sarmi/municipalwaterwork/edit/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiMunicipalWaterworkEdit'])->name('superadmin.airbersih.kabupatensarmi.municipalwaterwork.edit');
+     Route::put('/superadmin/airbersih/kabupaten/sarmi/municipalwaterwork/update/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiMunicipalWaterworkUpdate'])->name('superadmin.airbersih.kabupatensarmi.municipalwaterwork.update');
+     Route::delete('/superadmin/airbersih/kabupaten/sarmi/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabSarmiMunicipalWaterworkDestroy'])->name('superadmin.airbersih.kabupatensarmi.municipalwaterwork.destroy');
 });
 
 Route::middleware(['auth', 'SubAdmin'])->group(function () {
