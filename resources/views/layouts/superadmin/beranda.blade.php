@@ -223,9 +223,13 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                        <li><a href="{{ url ('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
                         <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Minum </a>
+                        </li>
+                        <li><a href="{{ url ('/superadmin/comment') }}"><i class="notika-icon notika-windows"></i> Ulasan </a>
+                        </li>
+                        <li><a href="{{ url ('/superadmin/rab') }}"><i class="notika-icon notika-windows"></i> Usulan Teknis </a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">

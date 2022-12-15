@@ -74,6 +74,9 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
 
     Route::get('/superadmin/index', [SuperAdminController::class, 'SuperAdminIndex']);
 
+    Route::get('/superadmin/comment', [SuperAdminController::class, 'SuperAdminIndexComment'])->name('superadmin.table.comment.index');
+    Route::delete('/superadmin/comment/{comment}', [SuperAdminController::class, 'SuperAdminDestroyComment'])->name('superadmin.table.comment.destroy');
+
     Route::get('/superadmin/table/city/index', [SuperAdminController::class, 'AdminIndexCity'])->name('superadmin.table.city.index');
     Route::get('/superadmin/table/city/create', [SuperAdminController::class, 'AdminCreateCity'])->name('superadmin.table.city.create'); 
     Route::post('/superadmin/table/city/create', [SuperAdminController::class, 'AdminStoreCity'])->name('superadmin.table.city.store');

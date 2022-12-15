@@ -32,6 +32,20 @@ class SuperAdminController extends Controller
      {
          return view('superadmin.index');
      }
+
+     public function SuperAdminIndexComment()
+     {
+        $comment = Comment::index();
+        return view('superadmin.comment.index', compact('comment'));
+     }
+
+    public function SuperAdminDestroyComment(Comment $comment)
+     {
+         $comment->delete();
+
+         Alert::toast('Data Berhasil Dihapus', 'success');
+         return redirect()->back();
+     }
  
 
     public function AdminIndexCity()
