@@ -241,7 +241,7 @@
                                         <a href="{{ url('/superadmin/airbersih/kota/jayapura/municipalwaterwork/index') }}">PDAM Kota Jayapura</a>
                                         <a href="{{ url('/superadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="{{ url('/superadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
-                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/dataproces/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown" style="margin-top:10px;margin-bottom:20px;">
@@ -278,7 +278,7 @@
                                         Kabupaten Biak Numfor
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="{{ url('/superadmin/airbersih/kota/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/municipalwaterwork/index') }}">PDAM Kabupaten Biak Numfor</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik</a>
