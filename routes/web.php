@@ -212,6 +212,13 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::put('/superadmin/airbersih/kabupaten/jayapura/municipalwaterwork/update/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraMunicipalWaterworkUpdate'])->name('superadmin.airbersih.kabupatenjayapura.municipalwaterwork.update');
     Route::delete('/superadmin/airbersih/kabupaten/jayapura/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraMunicipalWaterworkDestroy'])->name('superadmin.airbersih.kabupatenjayapura.municipalwaterwork.destroy');
 
+    Route::get('/superadmin/airbersih/kabupaten/jayapura/creation/index', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraCreationIndex'])->name('superadmin.airbersih.kabupatenjayapura.creation.index');
+    Route::get('/superadmin/airbersih/kabupaten/jayapura/creation/create', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraCreationCreate'])->name('superadmin.airbersih.kabupatenjayapura.creation.create'); 
+    Route::post('/superadmin/airbersih/kabupaten/jayapura/creation/create', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraCreationStore'])->name('superadmin.airbersih.kabupatenjayapura.creation.store');
+    Route::get('/superadmin/airbersih/kabupaten/jayapura/creation/edit/{creation}', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraCreationEdit'])->name('superadmin.airbersih.kabupatenjayapura.creation.edit');
+    Route::put('/superadmin/airbersih/kabupaten/jayapura/creation/update/{creation}', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraCreationUpdate'])->name('superadmin.airbersih.kabupatenjayapura.creation.update');
+    Route::delete('/superadmin/airbersih/kabupaten/jayapura/creation/index/{creation}', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraCreationDestroy'])->name('superadmin.airbersih.kabupatenjayapura.creation.destroy');
+
 
 
     //Kabupaten Biak Numfor
