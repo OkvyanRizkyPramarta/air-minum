@@ -249,7 +249,7 @@
                                         Kabupaten Jayapura
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/municipalwaterwork/index') }}">PDAM Kabupaten Jayapura</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
