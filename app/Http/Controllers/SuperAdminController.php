@@ -4486,7 +4486,7 @@ class SuperAdminController extends Controller
     public function SuperAdminAirBersihKabSarmiWaterResourceEdit(WaterResource $waterresource)
     {
         $city = City::all();
-        return view('superadmin.kabupatensarmi.waterresource.edit', compact('waterresource', 'city'));
+        return view('superadmin.airbersih.kabupatensarmi.waterresource.edit', compact('waterresource', 'city'));
     }
 
     /**
