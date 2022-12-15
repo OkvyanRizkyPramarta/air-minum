@@ -1,4 +1,4 @@
-@extends('layouts.superadmin.master')
+@extends('layouts.subadmin.master')
 
 @section('content')
     <!-- Breadcomb area Start-->
@@ -26,7 +26,7 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
       <div class="container">
-        <form method="POST" action="{{ route('superadmin.airbersih.kotajayapura.waterresource.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('subadmin.airbersih.kotajayapura.waterresource.store') }}" enctype="multipart/form-data">
         @csrf
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

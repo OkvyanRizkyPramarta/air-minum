@@ -1,4 +1,4 @@
-@extends('layouts.superadmin.master')
+@extends('layouts.subadmin.master')
 
 @section('content')
 
@@ -27,7 +27,7 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('superadmin.airbersih.kotajayapura.waterresource.update', $waterresource->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('subadmin.airbersih.kotajayapura.waterresource.update', $waterresource->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
             <div class="row">
