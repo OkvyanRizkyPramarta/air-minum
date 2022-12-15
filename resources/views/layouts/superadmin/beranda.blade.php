@@ -260,7 +260,7 @@
                                         Kabupaten Keerom
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/keerom/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik</a>
                                     </div>
                                 </div> 
@@ -269,7 +269,7 @@
                                         Kabupaten Sarmi
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik</a>
                                     </div>
                                 </div> 
@@ -289,7 +289,7 @@
                                         Kabupaten Supiori
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
                                     </div>
                                 </div> 
@@ -298,7 +298,7 @@
                                         Kabupaten Kepulauan Yapen
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index') }}">PDAM Kabupaten Kepulauan Yapen</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik</a>
