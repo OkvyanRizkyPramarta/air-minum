@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Creation;
 use App\Models\Population; 
 use App\Models\MunicipalWaterwork; 
 use App\Models\WaterResource; 
@@ -73,6 +74,12 @@ class UserController extends Controller
 
 
     // Kabupaten Jayapura
+    public function CapaianAirBersihCreationKabJayapura(Request $request)
+    {
+        $creation = Creation::where('city_id', '2')->where('show', 'Yes')->get();
+        return view('user.capaianairbersih.kabupatenjayapura.creation.index', compact('creation'));
+    }
+
     public function CapaianAirBersihMunicipalWaterworkKabJayapura(Request $request)
     {
         $municipalwaterwork = MunicipalWaterwork::where('city_id', '2')->where('show', 'Yes')->get();
@@ -95,6 +102,11 @@ class UserController extends Controller
 
 
     //Kabupaten Keerom
+    public function CapaianAirBersihCreationKabKeerom(Request $request)
+    {
+        $creation = Creation::where('city_id', '3')->where('show', 'Yes')->get();
+        return view('user.capaianairbersih.kabupatenkeerom.creation.index', compact('creation'));
+    }
     public function CapaianAirBersihStatisticKabKeerom(Request $request)
     {
         $statistic = Statistic::where('city_id', '3')->where('show', 'Yes')->get();
@@ -103,7 +115,13 @@ class UserController extends Controller
 
 
 
-    //Kabupaten Keerom
+    //Kabupaten Sarmi
+    public function CapaianAirBersihCreationKabSarmi(Request $request)
+    {
+        $creation = Creation::where('city_id', '6')->where('show', 'Yes')->get();
+        return view('user.capaianairbersih.kabupatensarmi.creation.index', compact('creation'));
+    }
+
     public function CapaianAirBersihStatisticKabSarmi(Request $request)
     {
         $statistic = Statistic::where('city_id', '6')->where('show', 'Yes')->get();
@@ -144,6 +162,12 @@ class UserController extends Controller
 
 
     //Kabupaten Supiori
+    public function CapaianAirBersihCreationKabSupiori(Request $request)
+    {
+        $creation = Creation::where('city_id', '7')->where('show', 'Yes')->get();
+        return view('user.capaianairbersih.kabupatensupiori.creation.index', compact('creation'));
+    }
+
     public function CapaianAirBersihDukcapilKabSupiori(Request $request)
     {
         $dukcapil = Dukcapil::where('city_id', '7')->where('show', 'Yes')->get();
@@ -153,6 +177,11 @@ class UserController extends Controller
 
 
     //Kabupaten Kepulauan Yapen
+    public function CapaianAirBersihCreationKabKepulauanYapen(Request $request)
+    {
+        $creation = Creation::where('city_id', '4')->where('show', 'Yes')->get();
+        return view('user.capaianairbersih.kabupatenkepulauanyapen.creation.index', compact('creation'));
+    }
 
     public function CapaianAirBersihMunicipalWaterworkKabKepulauanYapen(Request $request)
     {
