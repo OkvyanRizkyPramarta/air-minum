@@ -4550,6 +4550,131 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
+    public function SuperAdminAirBersihKabKeeromCreationIndex()
+    {
+        $creation = Creation::where('city_id', '3')->get();
+        return view('superadmin.kabupatenkeerom.creation.index', compact('creation'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkeerom.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkeerom.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKeeromCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+
+
+
+
+
 
 
 
@@ -5621,6 +5746,126 @@ class SuperAdminController extends Controller
     public function SuperAdminAirBersihKabSarmiDataProcesDestroy(DataProces $dataproces)
     {
         $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SuperAdminAirBersihKabSarmiCreationIndex()
+    {
+        $creation = Creation::where('city_id', '6')->get();
+        return view('superadmin.kabupatensarmi.creation.index', compact('creation'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensarmi.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensarmi.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSarmiCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
@@ -6702,6 +6947,129 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
+    public function SuperAdminAirBersihKabSupioriCreationIndex()
+    {
+        $creation = Creation::where('city_id', '7')->get();
+        return view('superadmin.kabupatensupiori.creation.index', compact('creation'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatensupiori.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatensupiori.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabSupioriCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+
+
+
 
 
 
@@ -7665,7 +8033,7 @@ class SuperAdminController extends Controller
         return redirect()->back();
     }
 
- public function SuperAdminAirBersihKabKepulauanYapenDataProcesIndex()
+    public function SuperAdminAirBersihKabKepulauanYapenDataProcesIndex()
     {
         $dataproces = DataProces::where('city_id', '4')->get();
         return view('superadmin.kabupatenkepulauanyapen.dataproces.index', compact('dataproces'));
@@ -7778,6 +8146,129 @@ class SuperAdminController extends Controller
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
     }
+
+    public function SuperAdminAirBersihKabKepulauanYapenCreationIndex()
+    {
+        $creation = Creation::where('city_id', '4')->get();
+        return view('superadmin.kabupatenkepulauanyapen.creation.index', compact('creation'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('superadmin.kabupatenkepulauanyapen.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('superadmin.airbersih.kabupatenkepulauanyapen.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SuperAdminAirBersihKabKepulauanYapenCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+
+
 
 
 
