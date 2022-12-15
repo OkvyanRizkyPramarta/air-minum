@@ -1370,7 +1370,7 @@ Route::middleware(['auth', 'AdminPU'])->group(function () {
     Route::get('/adminpu/airbersih/kota/jayapura/municipalwaterwork/index', [AdminPUController::class, 'AdminPUAirBersihKotaJayapuraMunicipalWaterworkIndex'])->name('adminpu.airbersih.kotajayapura.municipalwaterwork.index');
 
     //Kabupaten Jayapura
-    Route::get('/adminpu/airbersih/kabupaten/jayapura/waterresource/index', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraWaterResourceIndex'])->name('adminpu.airbersih.kabupatenjayapura.waterresource.index');
+    Route::get('/adminpu/airbersih/kabupaten/jayapura/waterresource/index   ', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraWaterResourceIndex'])->name('adminpu.airbersih.kabupatenjayapura.waterresource.index');
     Route::get('/adminpu/airbersih/kabupaten/jayapura/dukcapil/index', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraDukcapilIndex'])->name('adminpu.airbersih.kabupatenjayapura.dukcapil.index');
     Route::get('/adminpu/airbersih/kabupaten/jayapura/statistic/index', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraStatisticIndex'])->name('adminpu.airbersih.kabupatenjayapura.statistic.index');
     Route::get('/adminpu/airbersih/kabupaten/jayapura/dataproces/index', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraDataProcesIndex'])->name('adminpu.airbersih.kabupatenjayapura.dataproces.index');
@@ -1457,7 +1457,6 @@ Route::middleware(['auth', 'AdminPU'])->group(function () {
     Route::get('/adminpu/airbersih/kabupaten/waropen/watertank/index', [AdminPUController::class, 'AdminPUAirBersihKabWaropenWatertankIndex'])->name('adminpu.airbersih.kabupatenwaropen.watertank.index');
     Route::get('/adminpu/airbersih/kabupaten/waropen/waterspring/index', [AdminPUController::class, 'AdminPUAirBersihKabWaropenWaterspringIndex'])->name('adminpu.airbersih.kabupatenwaropen.waterspring.index');
     Route::get('/adminpu/airbersih/kabupaten/waropen/municipalwaterwork/index', [AdminPUController::class, 'AdminPUAirBersihKabWaropenMunicipalWaterworkIndex'])->name('adminpu.airbersih.kabupatenwaropen.municipalwaterwork.index');
-    
 });
 
 // Route::middleware(['auth', 'AdminPU'])->group(function () {
