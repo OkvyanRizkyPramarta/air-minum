@@ -27,7 +27,7 @@
     <!-- Form Element area Start-->
     <div class="form-element-area">
         <div class="container">
-        <form method="POST" action="{{ route('superadmin.airbersih.kabupatensarmidukcapil.update', $dukcapil->id) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('superadmin.airbersih.kabupatensarmi.dukcapil.update', $dukcapil->id) }}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
             <div class="row">
