@@ -150,7 +150,6 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::delete('/superadmin/airbersih/kota/jayapura/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraMunicipalWaterworkDestroy'])->name('superadmin.airbersih.kotajayapura.municipalwaterwork.destroy');
 
 
-
     //Kabupaten Jayapura
     Route::get('/superadmin/airbersih/kabupaten/jayapura/waterresource/index', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraWaterResourceIndex'])->name('superadmin.airbersih.kabupatenjayapura.waterresource.index');
     Route::get('/superadmin/airbersih/kabupaten/jayapura/waterresource/create', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraWaterResourceCreate'])->name('superadmin.airbersih.kabupatenjayapura.waterresource.create'); 
@@ -1520,3 +1519,4 @@ Route::get('/table/index', function () {
     return view('tablesuperadmin');
 });
 
+Route::get("/showFile/{id}", [UserController::class, "showFile"]);

@@ -71,6 +71,86 @@
     overflow-x: hidden;
 }
 
+.nav-list{
+  font-size:1.5vw;
+  padding-right:15px;
+  color:white !important;
+}
+
+.parent {
+    display: block;
+    position: relative;
+    float: left;
+    line-height: 30px;
+    z-index: 1;
+}
+
+.parent a {
+    margin: 10px;
+    color: #000;
+    text-decoration: none;
+}
+
+.parent:hover>ul {
+    display: block;
+    position: absolute;
+}
+
+.child {
+    display: none;
+    background-color: white;
+}
+
+.child li {
+    background-color: none;
+    line-height: 50px;
+    border-bottom: #CCC 1px solid;
+    width: 100%;
+    white-space: nowrap;
+}
+.child li a {
+    color: #000;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+    min-width: 10em;
+}
+
+ul ul ul {
+    left: 100%;
+    top: 0;
+}
+
+li:hover {
+    background-color: none;
+}
+
+.parent li:hover {
+    background-color: #4287f5;
+    cursor: pointer;
+}
+
+.expand {
+    font-size: 12px;
+    float: right;
+    margin-right: 5px;
+}
+
+#menu .parent > li a{
+  color: #000 !important;
+  font-size: 1vw;
+}
+
+.scrollable-dropdown{
+  /* overflow-x:scroll; */
+  overflow-y: visible;
+  max-width: 100%;
+  /* height: 200px; */
+}
+
 </style>
 </head>
 <body>
@@ -82,11 +162,75 @@
             <div><img src="{{ asset('user/images/pemerintah_papua.png') }}" style="" width="100px;"></div>  
           </div>
           <div class="col-md-8 col-sm-8">
-            <div class="" style="padding-top:2%">
-              <ul>
+            <div class="text-center" style="padding-top:2%">
+            <ul id="menu" style="display: flex; justify-content: center;">
+                <li class="parent"><a href="#" class="nav-list">Beranda</a></li>
+                  <li class="parent"><a href="#" class="nav-list">Capaian Air Bersih</a>
+                      <ul class="child scrollable-dropdown">
+                          <li class="parent"><a href="#">Kabupaten Biak Numfor</a></li>
+                          <li class="parent"><a href="#">Kabupaten Jayapura</a></li>
+                          <li class="parent"><a href="#">Kabupaten Keerom</a></li>
+                          <li class="parent"><a href="#">Kabupaten Kepulauan Yapen</a></li>
+                          <li class="parent"><a href="#">Kabupaten Mamberamo Raya</a></li>
+                          <li class="parent"><a href="#">Kabupaten Sarmi</a></li>
+                          <li class="parent"><a href="#">Kabupaten Supiori</a></li>
+                          <li class="parent"><a href="#">Kabupaten Waropen</a></li>
+                          <li class="parent "><a href="{{url('/usulan_teknik/kota/jayapura')}}">Kota Jayapura<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child">
+                                <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_pu_bidang_sda')}}" nowrap>Dinas PU Bidang SDA <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($jayapuraWaterResource as $jwr)
+                                    <li><a href="/showFile/{{encrypt($jwr->file)}}" target="_blank">{{$jwr->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_balai_wilayah_sungai')}}" nowrap>Balai Wilayah Sungai (BWS)<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                  <ul class="child">
+                                    @foreach($bws as $bws)
+                                    <li><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_pdam')}}" nowrap>PDAM<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($kotaJayapuraPDAM as $pdam)
+                                    <li><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_dukcapil')}}" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($dukcapil as $d)
+                                    <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank">{{$d->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_badan_pusat_statistik')}}" nowrap>Badan Pusat Statistik (BPS)<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($statisticJayapura as $sj)
+                                      <!-- <li><a href="/showFile/{{$sj->id}}" target="_blank">{{$sj->name}}</a></li> -->
+                                      <li><a href="/showFile/{{encrypt($sj->id)}}" target="_blank">{{$sj->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/badan_pengelolahan_dan_pendapatan_daerah')}}" nowrap>Badan Pengelolahan Dan Pendataan Daerah<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($dataproces as $d)
+                                    <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank">{{$d->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                            </ul>
+                          </li>
+                      </ul>
+                    </li>
+                  <li class="parent"><a href="#" class="nav-list">Ulasan</a></li>
+            </ul>
+              <!-- <ul>
                   <div class="text-center" style="">
-                    <a href="{{ url ('/') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Beranda</a>
-                    <div class="dropdown">
+                    <a class="nav-list" href="{{ url ('/') }}">Beranda</a> -->
+
+                    <!-- <div class="dropdown">
                       <a class="dropbtn" href="{{ url ('/peta') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Peta</a>
                       <div class="dropdown-content scrollable-menu">
                         <a href="{{ url ('/peta/kota/jayapura') }}">Kota Jayapura</a>
@@ -99,22 +243,38 @@
                         <a href="#">Kabupaten Supiori</a>
                         <a href="#">Kabupaten Waropen</a>
                       </div>
-                    </div>
-                    <div class="dropdown">
-                      <a class="dropbtn" href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Capaian Air Minum</a>
-                      <div class="dropdown-content scrollable-menu">
-                        <a href="{{ url ('/airminum/kota/jayapura') }}">Kota Jayapura</a>
-                        <a href="#">Kabupaten Jayapura</a>
-                        <a href="#">Kabupaten Biak Numfor</a>
+                    </div> -->
+                    <!-- <div class="dropdown">
+                      <a class="dropbtn" href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Usulan Teknik</a>
+                      <div class="dropdown-content scrollable-menu" style="overflow-y: hidden">
+                        <ul class="mx-3">
+                          <li>
+                            <a href="{{ url ('/airminum/kota/jayapura') }}">
+                              <div class="row">
+                                <div class="md-lg-8 mx-auto">Kota Jayapura</div>
+                                <div class="md-lg-4 ml-2"><i class="fa fa-chevron-right"></i></div>
+                              </div>
+                              </a>
+                            </li>
+                          <li>
+                            <a href="#">
+                              <div class="row">
+                                <div class="md-lg-8 mx-auto">Kabupaten Jayapura</div>
+                                <div class="md-lg-4 ml-1"><i class="fa fa-chevron-right"></i></div>
+                              </div>
+                            </a>
+                          </li>
+                          <a href="#">Kabupaten Biak Numfor</a>
                         <a href="#">Kabupaten Keerom</a>
                         <a href="#">Kabupaten Kepulauan Yapen</a>
                         <a href="#">Kabupaten Mamberamo Raya</a>
                         <a href="#">Kabupaten Sarmi</a>
                         <a href="#">Kabupaten Supiori</a>
                         <a href="#">Kabupaten Waropen</a>
+                        </ul>
                       </div>
-                    </div>
-                    <div class="dropdown">
+                    </div> -->
+                    <!-- <div class="dropdown">
                       <a class="dropbtn" href="#" style="font-size:1.5vw;padding-right:15px;color:white;">Open Data</a>
                       <div class="dropdown-content scrollable-menu">
                         <a href="#">Kota Jayapura</a>
@@ -127,10 +287,10 @@
                         <a href="#">Kabupaten Supiori</a>
                         <a href="#">Kabupaten Waropen</a>
                       </div>
-                    </div>
-                    <a href="{{ url ('/ulasan') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Ulasan</a>
+                    </div> -->
+                    <!-- <a href="{{ url ('/ulasan') }}" style="font-size:1.5vw;padding-right:15px;color:white;">Ulasan</a>
                   </div>
-              </ul>
+              </ul> -->
             </div>      
           </div>
           <div class="col-sm-2 col-md-2">
