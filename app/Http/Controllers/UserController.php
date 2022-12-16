@@ -50,6 +50,7 @@ class UserController extends Controller
         $dukcapil = Dukcapil::where(["city_id" => 9, "show" => "Yes"])->get();
         $dataproces = DataProces::where(["city_id" => 9, "show" => "Yes"])->get();
         $bws = RiverIntake::where(["city_id" => 9, "show" => "Yes"])->get();
+        $ciptaKaryaKotaJayapura = Creation::where(["city_id" => 9, "show" => "Yes"])->get();
         
         return view('user.index', compact(
             'BwsKabupatenBiakNumfor', 'PdamKabupatenBiakNumfor', 'DukcapilKabupatenBiakNumfor', 'StatistikKabupatenBiakNumfor',
@@ -58,7 +59,7 @@ class UserController extends Controller
             'CiptaKaryaKabupatenKepulauanYapen', 'PdamKabupatenKepulauanYapen', 'DukcapilKabupatenKepulauanYapen', 'StatistikKabupatenKepulauanYapen',
             'CiptaKaryaKabupatenSarmi', 'StatistikKabupatenSarmi',
             'CiptaKaryaKabupatenSupiori', 'DukcapilKabupatenSupiori',
-            'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws'));
+            'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws', 'ciptaKaryaKotaJayapura'));
     }
 
     public function UserStoreComment(Request $request)

@@ -145,10 +145,66 @@ li:hover {
 }
 
 .scrollable-dropdown{
-  /* overflow-x:scroll; */
+  overflow-x:scroll; 
   overflow-y: visible;
   max-width: 100%;
-  /* height: 200px; */
+  height: 200px;
+}
+
+.navbar-nav a.nav-link{
+  color: white !important;
+  font-size: 1.5vw;
+}
+
+.dropdown-item:hover{
+  background-color: #589cf5 !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+
+  .navbar-nav.navbar-right {
+    position: absolute;
+    left: 90%;
+    transform: translatex(-100%);
+  }
+
+  .mobile-logo{
+    display: none !important;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .desktop-logo{
+    display: none !important;
+  }
+  
+  .dropdown-menu.show{
+    font-size: 3vw !important;
+  }
+
+  .navbar-nav a.nav-link{
+    color: white !important;
+    font-size: 3vw;
+  }
+
+}
+
+.navbar-nav{
+  z-index: 1;
+}
+
+.dropdown-item.active{
+  color: white !important;
+}
+
+.dropdown-menu.show{
+  font-size: 1vw;
 }
 
 </style>
@@ -156,7 +212,987 @@ li:hover {
 <body>
 <!--header section start -->
   <div class="header_section" style="background-image:url({{url('user/images/TelukCenderawasih.jpg')}})">
-      <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: transparent !important;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <img src="{{ asset('user/images/pemerintah_papua.png') }}" width="25" height="25" class="d-inline-block align-top mobile-logo" alt="">
+            <img src="{{ asset('user/images/pu_papua.jpg') }}" width="25" height="25" class="d-inline-block align-top mobile-logo" alt="">
+            <img src="{{ asset('user/images/pemerintah_papua.png') }}" width="75" height="75" class="d-inline-block align-top desktop-logo" alt="" style="margin-left: 100%;">
+          </ul>
+            <ul class="navbar-nav mr-auto navbar-center">
+              <li class="nav-item"><a href="{{ url ('/') }}" class="nav-link">Beranda</a></li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="https://bootstrapthemes.co" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Capaian Air Bersih
+                  </a>
+                  {{-- 
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      @foreach($city as $c)
+                      <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">{{$c->name}}</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                              </ul>
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Cipta Karya</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">PDAM</a></li>
+                          </ul>
+                      </li>
+                      @endforeach
+                      <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item dropdown-toggle" href="#">Submenu</a>
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Submenu action</a></li>
+                              <li><a class="dropdown-item" href="#">Another submenu action</a></li>
+
+
+                              <li><a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+                                  <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">Subsubmenu action aa</a></li>
+                                      <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+                                  </ul>
+                              </li>
+                              <li><a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu</a>
+                                  <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">Subsubmenu action bb</a></li>
+                                      <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+                                  </ul>
+                              </li>
+                          </ul>
+                      </li>
+                      <li><a class="dropdown-item dropdown-toggle" href="#">Submenu 2</a>
+                          <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Submenu action 2</a></li>
+                              <li><a class="dropdown-item" href="#">Another submenu action 2</a></li>
+
+
+                              <li><a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+                                  <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">Subsubmenu action 1 3</a></li>
+                                      <li><a class="dropdown-item" href="#">Another subsubmenu action 2 3</a></li>
+                                  </ul>
+                              </li>
+                              <li><a class="dropdown-item dropdown-toggle" href="#">Second subsubmenu 3</a>
+                                  <ul class="dropdown-menu">
+                                      <li><a class="dropdown-item" href="#">Subsubmenu action 3 </a></li>
+                                      <li><a class="dropdown-item" href="#">Another subsubmenu action 3</a></li>
+                                  </ul>
+                              </li>
+                          </ul>
+                      </li> -->
+                  </ul>
+                  --}}
+                  {{-- 
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <!-- ======================== BEGIN KABUPATEN BIAK NUMFOR ============================== -->
+                      <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Biak Numfor</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <ul class="dropdown-menu">
+                                  
+                              </ul>
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                                @foreach($StatistikKabupatenBiakNumfor as $skbn)
+                                  <li><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                                @foreach($BwsKabupatenBiakNumfor as $bkbn)
+                                  <li><a href="/showFile/{{encrypt($bkbn->file)}}" class="dropdown-item" target="_blank">{{$bkbn->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Cipta Karya</a></li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                                @foreach($DukcapilKabupatenBiakNumfor as $dkbn)
+                                  <li><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                                @foreach($PdamKabupatenBiakNumfor as $pkbn)
+                                <li><a href="/showFile/{{encrypt($pkbn->file)}}" target="_blank">{{$pkbn->name}}</a></li>
+                                @endforeach
+                            </li>
+                          </ul>
+                      </li>
+                    <!-- ======================== END KABUPATEN BIAK NUMFOR ============================== -->
+
+                    <!-- ======================== BEGIN KABUPATEN JAYAPURA ============================== -->
+                    <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Jayapura</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <!-- <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                              </ul> -->
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                                @foreach($StatistikKabupatenJayapura as $skj)
+                                <li><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                              @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
+                                <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
+                              @endforeach
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                                @foreach($DukcapilKabupatenJayapura as $dkj)
+                                  <li><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                                @foreach($PdamKabupatenJayapura as $pkj)
+                                  <li><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
+                                @endforeach
+                            </li>
+                          </ul>
+                      </li>
+                    <!-- ======================== END KABUPATEN JAYAPURA ============================== -->
+
+                    <!-- ======================== BEGIN KABUPATEN KEEROM ============================== -->
+                    <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Keerom</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <!-- <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                              </ul> -->
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                                @foreach($StatistikKabupatenKeerom as $skk)
+                                  <li><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                                @foreach($CiptaKaryaKabupatenKeerom as $ckkk)
+                                  <li><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">PDAM</a></li>
+                          </ul>
+                      </li>
+                    <!-- ======================== END KABUPATEN KEEROM ============================== -->
+
+                    <!-- ======================== BEGIN KABUPATEN KEPULAUAN YAPEN ============================== -->
+                      <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Kepulauan Yapen</a>
+                        <ul class="dropdown-menu">
+                            <!-- <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                              </ul>
+                            </li> -->
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                              @foreach($StatistikKabupatenKepulauanYapen as $skky)
+                                <li><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
+                              @endforeach
+                            </li>
+                            <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li> -->
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                                @foreach($CiptaKaryaKabupatenKepulauanYapen as $ckkky)
+                                  <li><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                                @foreach($DukcapilKabupatenKepulauanYapen as $dkky)
+                                  <li><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li> -->
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                                @foreach($PdamKabupatenKepulauanYapen as $pkky)
+                                  <li><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
+                                @endforeach
+                            </li>
+                          </ul>
+                      </li>
+                    <!-- ======================== END KABUPATEN KEPULAUAN YAPEN ============================== -->
+
+                    <!-- ======================== BEGIN KABUPATEN MAMBERAMO RAYA ============================== -->
+                    <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Mamberamo Raya</a>
+                        <ul class="dropdown-menu">
+                          <li>Tidak ada data</li>
+                            <!-- <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                              </ul>
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Cipta Karya</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">PDAM</a></li> -->
+                          </ul>
+                      </li>
+                    <!-- ======================== END KABUPATEN MAMBERAMO RAYA ============================== -->
+
+                    <!-- ======================== BEGIN KABUPATEN SARMI ============================== -->
+                    <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Sarmi</a>
+                        <ul class="dropdown-menu">
+                            <!-- <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                              </ul>
+                            </li> -->
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                              @foreach($StatistikKabupatenSarmi as $sks)
+                                <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li> -->
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                                @foreach($CiptaKaryaKabupatenSarmi as $ckks)
+                                  <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">PDAM</a></li> -->
+                          </ul>
+                      </li>
+                    <!-- ======================== END KABUPATEN SARMI ============================== -->
+
+                    <!-- ======================== BEGIN KABUPATEN SUPIORI ============================== -->
+                    <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Supiori</a>
+                        <ul class="dropdown-menu">
+                            <!-- <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                              </ul>
+                            </li> -->
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                                @foreach($StatistikKabupatenSarmi as $sks)
+                                  <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li> -->
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                                @foreach($CiptaKaryaKabupatenSarmi as $ckks)
+                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                @endforeach
+                            </li>
+                            <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">PDAM</a></li> -->
+                          </ul>
+                      </li>
+                    <!-- ======================== END KABUPATEN SUPIORI ============================== -->
+
+                    <!-- ======================== BEGIN KABUPATEN WAROPEN ============================== -->
+                    <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Waropen</a>
+                        <ul class="dropdown-menu">
+                          <li>Tidak Ada Data</li>
+                            <!-- <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#" class="dropdown-item">Item 1</a></li>
+                              </ul>
+                            </li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Cipta Karya</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                            <li><a class="dropdown-item dropdown-toggle" href="#">PDAM</a></li> -->
+                          </ul>
+                      </li>
+                    <!-- ======================== END KABUPATEN WAROPEN ============================== -->
+
+                    <!-- ======================== BEGIN KOTA JAYAPURA ============================== -->
+                    <li>
+                        <a class="dropdown-item dropdown-toggle" href="#">Kota Jayapura</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                              <ul class="dropdown-menu">
+                                  @foreach($jayapuraWaterResource as $jwr)
+                                    <li><a href="/showFile/{{encrypt($jwr->file)}}" class="dropdown-item" target="_blank">{{$jwr->name}}</a></li>
+                                  @endforeach
+                              </ul>
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                              <ul class="dropdown-menu">
+                                  @foreach($bws as $bws)
+                                    <li><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
+                                  @endforeach
+                              </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                                  <ul class="dropdown-menu">
+                                      @foreach($kotaJayapuraPDAM as $pdam)
+                                        <li><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
+                                      @endforeach
+                                  </ul>
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                                <ul class="dropdown-menu">
+                                    @foreach($ciptaKaryaKotaJayapura as $d)
+                                      <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                                <ul class="dropdown-menu">
+                                  @if($dukcapil->count() == 0)
+                                  <li> Tidak Ada Data</li>
+                                  @else
+                                    @foreach($dukcapil as $d)
+                                      <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                    @endforeach
+                                  @endif
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                                <ul class="dropdown-menu">
+                                    @foreach($statisticJayapura as $sj)
+                                      <li><a href="/showFile/{{encrypt($sj->id)}}" target="_blank">{{$sj->name}}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                                <ul class="dropdown-menu">
+                                @if($dataproces->count() == 0)
+                                  <li> Tidak Ada Data</li>
+                                @else
+                                @foreach($dataproces as $d)
+                                <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                @endforeach
+                                @endif
+                                </ul>
+                            </li>
+                          </ul>
+                      </li>
+                    <!-- ======================== END KOTA JAYAPURA ============================== -->
+
+                  </ul>
+                  --}}
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <!-- ======================== BEGIN KABUPATEN BIAK NUMFOR ============================== -->
+                    <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Biak Numfor</a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <ul class="dropdown-menu">
+                                <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                              <ul class="dropdown-menu">
+                              @if($StatistikKabupatenBiakNumfor->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                              @foreach($StatistikKabupatenBiakNumfor as $skbn)
+                                <li><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
+                              @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                              <ul class="dropdown-menu">
+                              @if($BwsKabupatenBiakNumfor->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                              @foreach($BwsKabupatenBiakNumfor as $bkbn)
+                                <li><a href="/showFile/{{encrypt($bkbn->file)}}" class="dropdown-item" target="_blank">{{$bkbn->name}}</a></li>
+                              @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                              <ul class="dropdown-menu">
+                              @if($DukcapilKabupatenBiakNumfor->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                              @foreach($DukcapilKabupatenBiakNumfor as $dkbn)
+                                <li><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
+                              @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                              <ul class="dropdown-menu">
+                              @if($PdamKabupatenBiakNumfor->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                              @foreach($PdamKabupatenBiakNumfor as $pkbn)
+                              <li><a href="/showFile/{{encrypt($pkbn->file)}}" target="_blank">{{$pkbn->name}}</a></li>
+                              @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                        </ul>
+                    </li>
+                  <!-- ======================== END KABUPATEN BIAK NUMFOR ============================== -->
+
+                  <!-- ======================== BEGIN KABUPATEN JAYAPURA ============================== -->
+                  <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Jayapura</a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <!-- <ul class="dropdown-menu">
+                              <li><a href="#" class="dropdown-item">Item 1</a></li>
+                            </ul> -->
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                              <ul class="dropdown-menu">
+                              @if($StatistikKabupatenJayapura->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($StatistikKabupatenJayapura as $skj)
+                                <li><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                            <ul class="dropdown-menu">
+                              @if($CiptaKaryaKabupatenJayapura->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
+                                  <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                              <ul class="dropdown-menu">
+                              @if($DukcapilKabupatenJayapura->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($DukcapilKabupatenJayapura as $dkj)
+                                  <li><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                              <ul class="dropdown-menu">
+                              @if($PdamKabupatenJayapura->count() == 9)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($PdamKabupatenJayapura as $pkj)
+                                  <li><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                        </ul>
+                    </li>
+                  <!-- ======================== END KABUPATEN JAYAPURA ============================== -->
+
+                  <!-- ======================== BEGIN KABUPATEN KEEROM ============================== -->
+                  <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Keerom</a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#" class="dropdown-item">Tidak Ada Data</a></li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                              <ul class="dropdown-menu">
+                              @if($StatistikKabupatenKeerom->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($StatistikKabupatenKeerom as $skk)
+                                  <li><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                              <ul class="dropdown-menu">
+                              @if($CiptaKaryaKabupatenKeerom->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($CiptaKaryaKabupatenKeerom as $ckkk)
+                                  <li><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                  <!-- ======================== END KABUPATEN KEEROM ============================== -->
+
+                  <!-- ======================== BEGIN KABUPATEN KEPULAUAN YAPEN ============================== -->
+                    <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Kepulauan Yapen</a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                            <ul class="dropdown-menu">
+                              @if($StatistikKabupatenKepulauanYapen->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($StatistikKabupatenKepulauanYapen as $skky)
+                                  <li><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                              <ul class="dropdown-menu">
+                                <li>Tidak Ada Data</li>
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                              <ul class="dropdown-menu">
+                              @if($CiptaKaryaKabupatenKepulauanYapen->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($CiptaKaryaKabupatenKepulauanYapen as $ckkky)
+                                  <li><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                              <ul class="dropdown-menu">
+                              @if($DukcapilKabupatenKepulauanYapen->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($DukcapilKabupatenKepulauanYapen as $dkky)
+                                  <li><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                              <ul class="dropdown-menu">
+                              @if($PdamKabupatenKepulauanYapen->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($PdamKabupatenKepulauanYapen as $pkky)
+                                  <li><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                        </ul>
+                    </li>
+                  <!-- ======================== END KABUPATEN KEPULAUAN YAPEN ============================== -->
+
+                  <!-- ======================== BEGIN KABUPATEN MAMBERAMO RAYA ============================== -->
+                  <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Mamberamo Raya</a>
+                      <ul class="dropdown-menu">
+                        <li>Tidak ada data</li>
+                          <!-- <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#" class="dropdown-item">Item 1</a></li>
+                            </ul>
+                          </li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Cipta Karya</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">PDAM</a></li> -->
+                        </ul>
+                    </li>
+                  <!-- ======================== END KABUPATEN MAMBERAMO RAYA ============================== -->
+
+                  <!-- ======================== BEGIN KABUPATEN SARMI ============================== -->
+                  <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Sarmi</a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                            <ul class="dropdown-menu">
+                              @if($StatistikKabupatenSarmi->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($StatistikKabupatenSarmi as $sks)
+                                <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                              <ul class="dropdown-menu">
+                              @if($CiptaKaryaKabupatenSarmi->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                              @foreach($CiptaKaryaKabupatenSarmi as $ckks)
+                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                              @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                  <!-- ======================== END KABUPATEN SARMI ============================== -->
+
+                  <!-- ======================== BEGIN KABUPATEN SUPIORI ============================== -->
+                  <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Supiori</a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                              <ul class="dropdown-menu">
+                              @if($CiptaKaryaKabupatenSupiori->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($CiptaKaryaKabupatenSupiori as $ckks)
+                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                            <ul class="dropdown-menu">
+                              @if($DukcapilKabupatenSupiori->count() == 0)
+                                <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($DukcapilKabupatenSupiori as $ckks)
+                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                @endforeach
+                              @endif
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </li>
+                  <!-- ======================== END KABUPATEN SUPIORI ============================== -->
+
+                  <!-- ======================== BEGIN KABUPATEN WAROPEN ============================== -->
+                  <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Waropen</a>
+                      <ul class="dropdown-menu">
+                        <li>Tidak Ada Data</li>
+                          <!-- <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#" class="dropdown-item">Item 1</a></li>
+                            </ul>
+                          </li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Cipta Karya</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
+                          <li><a class="dropdown-item dropdown-toggle" href="#">PDAM</a></li> -->
+                        </ul>
+                    </li>
+                  <!-- ======================== END KABUPATEN WAROPEN ============================== -->
+
+                  <!-- ======================== BEGIN KOTA JAYAPURA ============================== -->
+                  <li>
+                      <a class="dropdown-item dropdown-toggle" href="#">Kota Jayapura</a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
+                            <ul class="dropdown-menu">
+                              @if($jayapuraWaterResource->count() == 0)
+                                <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($jayapuraWaterResource as $jwr)
+                                  <li><a href="/showFile/{{encrypt($jwr->file)}}" class="dropdown-item" target="_blank">{{$jwr->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                              <ul class="dropdown-menu">
+                                @if($bws->count() == 0)
+                                  <li>Tidak Ada Data</li>
+                                @else
+                                  @foreach($bws as $bws)
+                                    <li><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
+                                  @endforeach
+                                @endif
+                              </ul>
+                          </li>
+                          <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                                <ul class="dropdown-menu">
+                                @if($kotaJayapuraPDAM->count() == 0)
+                                <li>Tidak Ada Data</li>
+                                @else
+                                  @foreach($kotaJayapuraPDAM as $pdam)
+                                    <li><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
+                                  @endforeach
+                                @endif
+                                </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                              <ul class="dropdown-menu">
+                              @if($ciptaKaryaKotaJayapura->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($ciptaKaryaKotaJayapura as $d)
+                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                              <ul class="dropdown-menu">
+                                @if($dukcapil->count() == 0)
+                                  <li> Tidak Ada Data</li>
+                                @else
+                                  @foreach($dukcapil as $d)
+                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                  @endforeach
+                                @endif
+                              </ul>
+                          </li>
+                          <li>
+                              <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                              <ul class="dropdown-menu">
+                              @if($statisticJayapura->count() == 0)
+                              <li>Tidak Ada Data</li>
+                              @else
+                                @foreach($statisticJayapura as $sj)
+                                  <li><a href="/showFile/{{encrypt($sj->id)}}" target="_blank">{{$sj->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                          <li>
+                            <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                              <ul class="dropdown-menu">
+                              @if($dataproces->count() == 0)
+                                <li> Tidak Ada Data</li>
+                              @else
+                                @foreach($dataproces as $d)
+                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                @endforeach
+                              @endif
+                              </ul>
+                          </li>
+                        </ul>
+                    </li>
+                  <!-- ======================== END KOTA JAYAPURA ============================== -->
+
+                </ul>
+              </li>
+              <li class="nav-item"><a href="{{ url ('/ulasan') }}" class="nav-link">Ulasan</a></li>
+          </ul>
+          <!-- <ul class="navbar-nav mr-auto navbar-center">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Beranda</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Capaian Air Minum
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="{{ url ('/ulasan') }}" class="nav-link nav-list">Ulasan</a>
+            </li>
+          </ul> -->
+          <ul class="navbar-nav navbar-right">
+            <img src="{{ asset('user/images/pu_papua.jpg') }}" width="75" height="75" class="d-inline-block align-top desktop-logo" alt="">
+          </ul>
+        </div>
+      </nav>
+      {{-- <div class="container">
         <div class="row">
           <div class="col-sm-2 col-md-2">
             <div><img src="{{ asset('user/images/pemerintah_papua.png') }}" style="" width="100px;"></div>  
@@ -306,7 +1342,7 @@ li:hover {
                             </ul>
                           </li>
                           <li class="parent"><a href="#">Kabupaten Supiori<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
-                          <ul class="child" style="width:300px;">
+                            <ul class="child" style="width:300px;">
                                 <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($CiptaKaryaKabupatenSarmi as $ckks)
@@ -355,7 +1391,7 @@ li:hover {
                                 <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_dukcapil')}}" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($dukcapil as $d)
-                                    <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank">{{$d->name}}</a></li>
+                                    <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
@@ -370,7 +1406,7 @@ li:hover {
                                 <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/badan_pengelolahan_dan_pendapatan_daerah')}}" nowrap>Badan Pengelolahan Dan Pendataan Daerah<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($dataproces as $d)
-                                    <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank">{{$d->name}}</a></li>
+                                    <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
@@ -451,7 +1487,7 @@ li:hover {
             <div><img src="{{ asset('user/images/pu_papua.jpg') }}" style="padding-right:-30px;" width="100px;"></div>  
           </div>
         </div>
-      </div>
+      </div> --}}
       
     @yield('content')
     
@@ -500,6 +1536,36 @@ li:hover {
      function closeNav() {
      document.getElementById("myNav").style.width = "0%";
     }
+
+    $( document ).ready( function () {
+        $( '.dropdown-menu a.dropdown-toggle' ).on( 'click', function ( e ) {
+            var $el = $( this );
+            $el.toggleClass('active-dropdown');
+            var $parent = $( this ).offsetParent( ".dropdown-menu" );
+            if ( !$( this ).next().hasClass( 'show' ) ) {
+                $( this ).parents( '.dropdown-menu' ).first().find( '.show' ).removeClass( "show" );
+            }
+            var $subMenu = $( this ).next( ".dropdown-menu" );
+            $subMenu.toggleClass( 'show' );
+            
+            $( this ).parent( "li" ).toggleClass( 'show' );
+
+            $( this ).parents( 'li.nav-item.dropdown.show' ).on( 'hidden.bs.dropdown', function ( e ) {
+                $( '.dropdown-menu .show' ).removeClass( "show" );
+                $el.removeClass('active-dropdown');
+            } );
+            
+            if ( !$parent.parent().hasClass( 'navbar-nav' ) ) {
+                $el.next().css( { "top": $el[0].offsetTop, "left": $parent.outerWidth() - 4 } );
+            }
+
+            return false;
+        } );
+
+        $(".dropdown-item").onclick(function(){
+          $(this).addClass("active");
+        });
+    } );
     </script>  
 </body>
 </html>
