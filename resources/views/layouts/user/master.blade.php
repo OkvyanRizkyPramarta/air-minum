@@ -188,21 +188,21 @@ li:hover {
                                     @endforeach
                                   </ul>
                                 </li>
-                                <li class="parent"><a href="#" nowrap>Balai Wilayah Sungai (BWS)<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                <li class="parent"><a href="#" nowrap>PDAM <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($PdamKabupatenJayapura as $pkj)
                                     <li><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
-                                <li class="parent"><a href="#" nowrap>PDAM<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                <li class="parent"><a href="#" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($DukcapilKabupatenJayapura as $dkj)
                                     <li><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
-                                <li class="parent"><a href="#" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                <li class="parent"><a href="#" nowrap>Badan Pusat Statistik<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($StatistikKabupatenJayapura as $skj)
                                     <li><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>

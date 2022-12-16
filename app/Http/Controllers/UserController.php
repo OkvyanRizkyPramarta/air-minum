@@ -54,6 +54,10 @@ class UserController extends Controller
         return view('user.index', compact(
             'BwsKabupatenBiakNumfor', 'PdamKabupatenBiakNumfor', 'DukcapilKabupatenBiakNumfor', 'StatistikKabupatenBiakNumfor',
             'CiptaKaryaKabupatenJayapura', 'PdamKabupatenJayapura', 'DukcapilKabupatenJayapura', 'StatistikKabupatenJayapura',
+            'CiptaKaryaKabupatenKeerom', 'StatistikKabupatenKeerom',
+            'CiptaKaryaKabupatenKepulauanYapen', 'PdamKabupatenKepulauanYapen', 'DukcapilKabupatenKepulauanYapen', 'StatistikKabupatenKepulauanYapen',
+            'CiptaKaryaKabupatenSarmi', 'StatistikKabupatenSarmi',
+            'CiptaKaryaKabupatenSupiori', 'DukcapilKabupatenSupiori',
             'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws'));
     }
 
