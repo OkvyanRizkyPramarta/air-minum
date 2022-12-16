@@ -21,6 +21,7 @@ use App\Models\Map;
 use App\Models\Dukcapil;
 use App\Models\Statistic;
 use App\Models\DataProces;
+use App\Models\Creation;
 
 class SubAdminController extends Controller
 {
@@ -2893,6 +2894,121 @@ class SubAdminController extends Controller
         return redirect()->back();
     }
 
+    public function SubAdminAirBersihKabJayapuraCreationIndex()
+    {
+        $creation = Creation::where('city_id', '2')->get();
+        return view('subadmin.kabupatenjayapura.creation.index', compact('creation'));
+    }
+
+    public function SubAdminAirBersihKabJayapuraCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatenjayapura.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabJayapuraCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '2');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatenjayapura.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabJayapuraCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatenjayapura.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabJayapuraCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatenjayapura.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabJayapuraCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
 
 
 
@@ -5046,6 +5162,126 @@ class SubAdminController extends Controller
         return redirect()->back();
     }
 
+    public function SubAdminAirBersihKabKeeromCreationIndex()
+    {
+        $creation = Creation::where('city_id', '3')->get();
+        return view('subadmin.kabupatenkeerom.creation.index', compact('creation'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKeeromCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatenkeerom.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKeeromCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '3');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatenkeerom.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKeeromCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatenkeerom.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKeeromCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatenkeerom.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKeeromCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
 
 
 
@@ -6117,6 +6353,127 @@ class SubAdminController extends Controller
     public function SubAdminAirBersihKabSarmiDataProcesDestroy(DataProces $dataproces)
     {
         $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSarmiCreationIndex()
+    {
+        $creation = Creation::where('city_id', '6')->get();
+        return view('subadmin.kabupatensarmi.creation.index', compact('creation'));
+    }
+
+    public function SubAdminAirBersihKabSarmiCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatensarmi.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSarmiCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '6');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatensarmi.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSarmiCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatensarmi.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSarmiCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatensarmi.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSarmiCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
@@ -7198,6 +7555,127 @@ class SubAdminController extends Controller
         return redirect()->back();
     }
 
+    public function SubAdminAirBersihKabSupioriCreationIndex()
+    {
+        $creation = Creation::where('city_id', '7')->get();
+        return view('subadmin.kabupatensupiori.creation.index', compact('creation'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSupioriCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatensupiori.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSupioriCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '7');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatensupiori.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSupioriCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatensupiori.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSupioriCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatensupiori.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabSupioriCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+
 
 
 
@@ -8269,6 +8747,126 @@ class SubAdminController extends Controller
     public function SubAdminAirBersihKabKepulauanYapenDataProcesDestroy(DataProces $dataproces)
     {
         $dataproces->delete();
+
+        Alert::toast('Data Berhasil Dihapus', 'success');
+        return redirect()->back();
+    }
+
+    public function SubAdminAirBersihKabKepulauanYapenCreationIndex()
+    {
+        $creation = Creation::where('city_id', '4')->get();
+        return view('subadmin.kabupatenkepulauanyapen.creation.index', compact('creation'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKepulauanYapenCreationCreate()
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatenkepulauanyapen.creation.create', compact('city','district'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKepulauanYapenCreationStore(Request $request)
+    {
+
+        $city = new City;
+        $city->id = $request->get('city_id', '4');
+            
+        $creation = new Creation;
+        $creation->name = $request->name;
+        $creation->file = $request->file('file')->store('files', 'public');
+        $creation->show = $request->show;
+        $creation->data = $request->data;
+        $creation->city()->associate($city);
+        $creation->save();
+
+        Alert::toast('Informasi Berhasil Disimpan', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatenkepulauanyapen.creation.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKepulauanYapenCreationEdit(Creation $creation)
+    {
+        $city = City::index();
+        $district = District::index();
+        return view('subadmin.kabupatenkepulauanyapen.creation.edit', compact('city', 'district', 'creation'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKepulauanYapenCreationUpdate(Request $request, Creation $creation)
+    {
+        $creation = Creation::findOrFail($creation->id);
+
+        $city = new City;
+
+        if($request->file('file') == "") {
+
+            $creation->update([
+                'name'      =>$request->name,
+                'data'      => $request->data,
+                'show'      => $request->show,
+            ]);
+
+            $creation->city()->associate($city);
+
+        } else {
+
+            if ($creation->file&&file_exists(storage_path('app/public/'.$creation->file))) {
+                \Storage::delete('public/'.$creation->file);
+            }
+
+        $path = $request->file('file');
+        $path->storeAs('public/', $path->hashName());
+
+        $creation->update([
+            'name'          => $request->name,
+            'file'          => $path->hashName(),
+            'data'          => $request->data,
+            'show'          => $request->show,
+        ]);
+        }
+       
+        Alert::toast('Informasi Berhasil Diganti', 'success');
+        return redirect()->route('subadmin.airbersih.kabupatenkepulauanyapen.creation.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function SubAdminAirBersihKabKepulauanYapenCreationDestroy(Creation $creation)
+    {
+        $creation->delete();
 
         Alert::toast('Data Berhasil Dihapus', 'success');
         return redirect()->back();
