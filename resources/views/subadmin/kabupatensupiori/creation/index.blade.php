@@ -1,4 +1,4 @@
-@extends('layouts.superadmin.beranda')
+@extends('layouts.subadmin.beranda')
 
 @section('content')
 	<!-- Breadcomb area Start-->
@@ -12,14 +12,14 @@
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
                                         <h2>Data Tabel Bidang Cipta Karya </h2>
-										<h2>Kabupaten Kepulauan Yapen <span class="bread-ntd"> </span></h2>
+										<h2>Kabupaten Supiori <span class="bread-ntd"> </span></h2>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
 									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
-                                    <a href="{{url('/superadmin/airbersih/kabupaten/kepulauanyapen/creation/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
+                                    <a href="{{url('/subadmin/airbersih/kabupaten/supiori/creation/create')}}" type="button" data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" class="btn"><b>Buat Data Baru</b></a>
                                 </div>
 							</div>
 						</div>
@@ -64,12 +64,12 @@
                                         <div class="row">
                                             <td class="text-center">
                                                 <div class="col-lg-6">
-                                                    <a href="{{ route('superadmin.airbersih.kabupatenkepulauanyapen.creation.edit', $c->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
+                                                    <a href="{{ route('subadmin.airbersih.kabupatensupiori.creation.edit', $c->id) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <form action="{{ route('superadmin.airbersih.kabupatenkepulauanyapen.creation.destroy', $c->id) }}" method="POST" class="d-inline">
+                                                    <form action="{{ route('subadmin.airbersih.kabupatensupiori.creation.destroy', $c->id) }}" method="POST" class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
