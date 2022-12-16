@@ -167,20 +167,10 @@ li:hover {
                 <li class="parent"><a href="{{ url ('/') }}" class="nav-list">Beranda</a></li>
                   <li class="parent"><a href="#" class="nav-list">Capaian Air Bersih</a>
                       <ul class="child scrollable-dropdown">
-                          <li class="parent"><a href="#">Kabupaten Biak Numfor<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
-                            <ul class="child">
-                                <li class="parent"><a href="{{url('/capaian/air/bersih/kabupaten/biaknumfor/balai/wilayah/sungai')}}" nowrap>Badan Wilayah Sungai</a>
-                                </li>
-                                <li class="parent"><a href="{{url('/capaian/air/bersih/kabupaten/biaknumfor/pdam')}}" nowrap>PDAM</a>
-                                </li>
-                                <li class="parent"><a href="{{url('/capaian/air/bersih/kabupaten/biaknumfor/dinas/dukcapil')}}" nowrap>Dinas Dukcapil</a>
-                                </li>
-                                <li class="parent"><a href="{{url('/capaian/air/bersih/kabupaten/biaknumfor/badan/pusat/statistik')}}" nowrap>Badan Pusat Statistik</a>
-                                </li>
-                            </ul>
+                          <li class="parent"><a href="#">Kabupaten Biak Numfor</a>
                           </li>
                           <li class="parent"><a href="#">Kabupaten Jayapura<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
-                            <ul class="child">
+                            <ul class="child" style="width:200px;">
                                 <li class="parent"><a href="#" nowrap>Dinas Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($CiptaKaryaKabupatenJayapura as $ckkj)

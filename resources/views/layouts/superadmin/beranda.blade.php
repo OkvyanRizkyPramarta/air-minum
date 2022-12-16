@@ -193,6 +193,8 @@
                                 </li>
                                 <li><a data-target="#Charts" href="{{ url('/superadmin/comment') }}">Ulasan</a>
                                 </li>
+                                <li><a data-target="#Charts" href="{{ url('/superadmin/rab') }}">Usulan Teknis</a>
+                                </li>
                                 <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Capaian Air Bersih</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
                                         <li><a href="">Kota Jayapura</a>
