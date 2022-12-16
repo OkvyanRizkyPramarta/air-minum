@@ -7,7 +7,7 @@
           <div class="col-sm-6 col-md-12 col-sm-12" style="padding-top: 60px;">
             <h1 class="text-center" style="font-size:3vw;color:white;text-shadow: 2px 2px black;"><b>SELAMAT DATANG DI WEBSITE</b></h1>
             <h1 class="text-center" style="font-size:3vw;color:white;text-shadow: 2px 2px black;"><b>SISTEM INFORMASI DATABASE</b></h1>
-            <h1 class="text-center" style="font-size:3vw;color:white;text-shadow: 2px 2px black;"><b>AIR MINUM PROVINSI PAPUA</b></h1> 
+            <h1 class="text-center" style="font-size:3vw;color:white;text-shadow: 2px 2px black;"><b>AIR BERSIH PROVINSI PAPUA</b></h1> 
           </div>
         </div>
       </div>
