@@ -1501,7 +1501,7 @@ li:hover {
     <div class="copyright_section" style="background-color:#10597D;">
       <div class="container">
         <p class="" style="color:white;">Copyright 2022 All Right Reserved By <a>PU Papua Air Bersih</a></p>
-        <p class="" style="color:white;">Terms Of Use / Privacy Policy</p>
+        <!-- <p class="" style="color:white;">Terms Of Use / Privacy Policy</p> -->
       </div>
     </div>
     <!-- copyright section end -->
