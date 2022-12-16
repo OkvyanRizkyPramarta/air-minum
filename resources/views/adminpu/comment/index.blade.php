@@ -54,10 +54,6 @@
                                         <td class="text-center">{{ $c->telp_number }}</td>
                                         <td class="text-center">{{ $c->email }}</td>
                                         <td class="text-center">{{ $c->description }}</td>
-                                        <div class="row">
-                                            <td class="text-center">
-                                            </td>
-                                        </div>
                                     </tr>
                                 @endforeach
                                 </tbody>

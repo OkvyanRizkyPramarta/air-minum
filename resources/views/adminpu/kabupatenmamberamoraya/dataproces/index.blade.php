@@ -58,10 +58,6 @@
 												@endif
 											</span>
 										</td>
-                                        <div class="row">
-                                            <td class="text-center">
-                                            </td>
-                                        </div>
                                     </tr>
                                 @endforeach
                                 </tbody>
