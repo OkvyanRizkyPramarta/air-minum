@@ -164,11 +164,53 @@ li:hover {
           <div class="col-md-8 col-sm-8">
             <div class="text-center" style="padding-top:2%">
             <ul id="menu" style="display: flex; justify-content: center;">
-                <li class="parent"><a href="#" class="nav-list">Beranda</a></li>
+                <li class="parent"><a href="{{ url ('/') }}" class="nav-list">Beranda</a></li>
                   <li class="parent"><a href="#" class="nav-list">Capaian Air Bersih</a>
                       <ul class="child scrollable-dropdown">
-                          <li class="parent"><a href="#">Kabupaten Biak Numfor</a></li>
-                          <li class="parent"><a href="#">Kabupaten Jayapura</a></li>
+                          <li class="parent"><a href="#">Kabupaten Biak Numfor<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child">
+                                <li class="parent"><a href="{{url('/capaian/air/bersih/kabupaten/biaknumfor/balai/wilayah/sungai')}}" nowrap>Badan Wilayah Sungai</a>
+                                </li>
+                                <li class="parent"><a href="{{url('/capaian/air/bersih/kabupaten/biaknumfor/pdam')}}" nowrap>PDAM</a>
+                                </li>
+                                <li class="parent"><a href="{{url('/capaian/air/bersih/kabupaten/biaknumfor/dinas/dukcapil')}}" nowrap>Dinas Dukcapil</a>
+                                </li>
+                                <li class="parent"><a href="{{url('/capaian/air/bersih/kabupaten/biaknumfor/badan/pusat/statistik')}}" nowrap>Badan Pusat Statistik</a>
+                                </li>
+                            </ul>
+                          </li>
+                          <li class="parent"><a href="#">Kabupaten Jayapura<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child">
+                                <li class="parent"><a href="#" nowrap>Dinas Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
+                                    <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Balai Wilayah Sungai (BWS)<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                  <ul class="child">
+                                    @foreach($PdamKabupatenJayapura as $pkj)
+                                    <li><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>PDAM<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($DukcapilKabupatenJayapura as $dkj)
+                                    <li><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($StatistikKabupatenJayapura as $skj)
+                                    <li><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                            </ul>
+                          </li>
                           <li class="parent"><a href="#">Kabupaten Keerom</a></li>
                           <li class="parent"><a href="#">Kabupaten Kepulauan Yapen</a></li>
                           <li class="parent"><a href="#">Kabupaten Mamberamo Raya</a></li>
@@ -224,7 +266,7 @@ li:hover {
                           </li>
                       </ul>
                     </li>
-                  <li class="parent"><a href="#" class="nav-list">Ulasan</a></li>
+                  <li class="parent"><a href="{{ url ('/ulasan') }}" class="nav-list">Ulasan</a></li>
             </ul>
               <!-- <ul>
                   <div class="text-center" style="">

@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <h3 class="text-center" style="color:#10597D;padding-top:150px;">
-                    <span style=""><b>Data PDAM Kota Jayapura</b></span>
+                    <span style=""><b>Data PDAM</b></span>
                   </h3>
                     <div class="data-table-list">
                         <div class="table-responsive">

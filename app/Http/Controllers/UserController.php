@@ -20,6 +20,30 @@ class UserController extends Controller
 {
     public function UserIndex(Request $request)
     {
+        $BwsKabupatenBiakNumfor = RiverIntake::where(["city_id" => 1, "show" => "Yes"])->get();
+        $PdamKabupatenBiakNumfor = MunicipalWaterwork::where(["city_id" => 1, "show" => "Yes"])->get();
+        $DukcapilKabupatenBiakNumfor = Dukcapil::where(["city_id" => 1, "show" => "Yes"])->get();
+        $StatistikKabupatenBiakNumfor = Statistic::where(["city_id" => 1, "show" => "Yes"])->get();
+
+        $CiptaKaryaKabupatenJayapura = Creation::where(["city_id" => 2, "show" => "Yes"])->get();
+        $PdamKabupatenJayapura = MunicipalWaterwork::where(["city_id" => 2, "show" => "Yes"])->get();
+        $DukcapilKabupatenJayapura = Dukcapil::where(["city_id" => 2, "show" => "Yes"])->get();
+        $StatistikKabupatenJayapura = Statistic::where(["city_id" => 2, "show" => "Yes"])->get();
+
+        $CiptaKaryaKabupatenKeerom = Creation::where(["city_id" => 3, "show" => "Yes"])->get();
+        $StatistikKabupatenKeerom = Statistic::where(["city_id" => 3, "show" => "Yes"])->get();
+
+        $CiptaKaryaKabupatenKepulauanYapen = Creation::where(["city_id" => 4, "show" => "Yes"])->get();
+        $PdamKabupatenKepulauanYapen = MunicipalWaterwork::where(["city_id" => 4, "show" => "Yes"])->get();
+        $DukcapilKabupatenKepulauanYapen = Dukcapil::where(["city_id" => 4, "show" => "Yes"])->get();
+        $StatistikKabupatenKepulauanYapen = Statistic::where(["city_id" => 4, "show" => "Yes"])->get();
+
+        $CiptaKaryaKabupatenSarmi = Creation::where(["city_id" => 6, "show" => "Yes"])->get();
+        $StatistikKabupatenSarmi = Statistic::where(["city_id" => 6, "show" => "Yes"])->get();
+
+        $CiptaKaryaKabupatenSupiori = Creation::where(["city_id" => 7, "show" => "Yes"])->get();
+        $DukcapilKabupatenSupiori = Dukcapil::where(["city_id" => 7, "show" => "Yes"])->get();
+
         $jayapuraWaterResource = WaterResource::where(["city_id" => 9, "show" => "Yes"])->get();
         $statisticJayapura = Statistic::where(["city_id" => 9, "show" => "Yes"])->get();
         $kotaJayapuraPDAM = MunicipalWaterwork::where(["city_id" => 9, "show" => "Yes"])->get();
@@ -27,7 +51,10 @@ class UserController extends Controller
         $dataproces = DataProces::where(["city_id" => 9, "show" => "Yes"])->get();
         $bws = RiverIntake::where(["city_id" => 9, "show" => "Yes"])->get();
         
-        return view('user.index', compact("jayapuraWaterResource", "statisticJayapura", "kotaJayapuraPDAM", "dukcapil", "dataproces", "bws"));
+        return view('user.index', compact(
+            'BwsKabupatenBiakNumfor', 'PdamKabupatenBiakNumfor', 'DukcapilKabupatenBiakNumfor', 'StatistikKabupatenBiakNumfor',
+            'CiptaKaryaKabupatenJayapura', 'PdamKabupatenJayapura', 'DukcapilKabupatenJayapura', 'StatistikKabupatenJayapura',
+            'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws'));
     }
 
     public function UserStoreComment(Request $request)
@@ -142,26 +169,54 @@ class UserController extends Controller
     //Kabupaten Biak Numfor
     public function CapaianAirBersihRiverIntakeKabBiakNumfor(Request $request)
     {
+        $jayapuraWaterResource = WaterResource::where(["city_id" => 9, "show" => "Yes"])->get();
+        $statisticJayapura = Statistic::where(["city_id" => 9, "show" => "Yes"])->get();
+        $kotaJayapuraPDAM = MunicipalWaterwork::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dukcapil = Dukcapil::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dataproces = DataProces::where(["city_id" => 9, "show" => "Yes"])->get();
+        $bws = RiverIntake::where(["city_id" => 9, "show" => "Yes"])->get();
+        
         $riverintake = RiverIntake::where('city_id', '1')->where('show', 'Yes')->get();
-        return view('user.capaianairbersih.kabupatenbiaknumfor.riverintake.index', compact('riverintake'));
+        return view('user.capaianairbersih.kabupatenbiaknumfor.riverintake.index', compact('riverintake', 'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws'));
     }
 
     public function CapaianAirBersihMunicipalWaterworkKabBiakNumfor(Request $request)
     {
+        $jayapuraWaterResource = WaterResource::where(["city_id" => 9, "show" => "Yes"])->get();
+        $statisticJayapura = Statistic::where(["city_id" => 9, "show" => "Yes"])->get();
+        $kotaJayapuraPDAM = MunicipalWaterwork::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dukcapil = Dukcapil::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dataproces = DataProces::where(["city_id" => 9, "show" => "Yes"])->get();
+        $bws = RiverIntake::where(["city_id" => 9, "show" => "Yes"])->get();
+
         $municipalwaterwork = MunicipalWaterwork::where('city_id', '1')->where('show', 'Yes')->get();
-        return view('user.capaianairbersih.kabupatenbiaknumfor.municipalwaterwork.index', compact('municipalwaterwork'));
+        return view('user.capaianairbersih.kabupatenbiaknumfor.municipalwaterwork.index', compact('municipalwaterwork', 'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws'));
     }
 
     public function CapaianAirBersihDukcapilKabBiakNumfor(Request $request)
     {
+        $jayapuraWaterResource = WaterResource::where(["city_id" => 9, "show" => "Yes"])->get();
+        $statisticJayapura = Statistic::where(["city_id" => 9, "show" => "Yes"])->get();
+        $kotaJayapuraPDAM = MunicipalWaterwork::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dukcapil = Dukcapil::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dataproces = DataProces::where(["city_id" => 9, "show" => "Yes"])->get();
+        $bws = RiverIntake::where(["city_id" => 9, "show" => "Yes"])->get();
+
         $dukcapil = Dukcapil::where('city_id', '1')->where('show', 'Yes')->get();
-        return view('user.capaianairbersih.kabupatenbiaknumfor.dukcapil.index', compact('dukcapil'));
+        return view('user.capaianairbersih.kabupatenbiaknumfor.dukcapil.index', compact('dukcapil', 'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws'));
     }
 
     public function CapaianAirBersihStatisticKabBiakNumfor(Request $request)
     {
+        $jayapuraWaterResource = WaterResource::where(["city_id" => 9, "show" => "Yes"])->get();
+        $statisticJayapura = Statistic::where(["city_id" => 9, "show" => "Yes"])->get();
+        $kotaJayapuraPDAM = MunicipalWaterwork::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dukcapil = Dukcapil::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dataproces = DataProces::where(["city_id" => 9, "show" => "Yes"])->get();
+        $bws = RiverIntake::where(["city_id" => 9, "show" => "Yes"])->get();
+        
         $statistic = Statistic::where('city_id', '1')->where('show', 'Yes')->get();
-        return view('user.capaianairbersih.kabupatenbiaknumfor.statistic.index', compact('statistic'));
+        return view('user.capaianairbersih.kabupatenbiaknumfor.statistic.index', compact('statistic', 'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws'));
     }
 
 
@@ -269,8 +324,15 @@ class UserController extends Controller
 
     public function UserUlasan(Request $request)
     {
+        $jayapuraWaterResource = WaterResource::where(["city_id" => 9, "show" => "Yes"])->get();
+        $statisticJayapura = Statistic::where(["city_id" => 9, "show" => "Yes"])->get();
+        $kotaJayapuraPDAM = MunicipalWaterwork::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dukcapil = Dukcapil::where(["city_id" => 9, "show" => "Yes"])->get();
+        $dataproces = DataProces::where(["city_id" => 9, "show" => "Yes"])->get();
+        $bws = RiverIntake::where(["city_id" => 9, "show" => "Yes"])->get();
+
         $comment = Comment::index();
-        return view('user.ulasan', compact('comment'));
+        return view('user.ulasan', compact('comment', 'jayapuraWaterResource', 'statisticJayapura', 'kotaJayapuraPDAM', 'dukcapil', 'dataproces', 'bws'));
     }
 
     public function showFile($id){
