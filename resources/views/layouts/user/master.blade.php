@@ -213,13 +213,17 @@ li:hover {
 <!--header section start -->
   <div class="header_section" style="background-image:url({{url('user/images/TelukCenderawasih.jpg')}})">
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: transparent !important;">
+          <a href="#" class="navbar-brand">
+            <img src="{{ asset('user/images/pemerintah_papua.png') }}" width="25" height="25" class="d-inline-block align-top mobile-logo" alt="">
+            <img src="{{ asset('user/images/pu_papua.jpg') }}" width="25" height="25" class="d-inline-block align-top mobile-logo" alt="">
+          </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <img src="{{ asset('user/images/pemerintah_papua.png') }}" width="25" height="25" class="d-inline-block align-top mobile-logo" alt="">
-            <img src="{{ asset('user/images/pu_papua.jpg') }}" width="25" height="25" class="d-inline-block align-top mobile-logo" alt="">
+            <!-- <img src="{{ asset('user/images/pemerintah_papua.png') }}" width="25" height="25" class="d-inline-block align-top mobile-logo" alt=""> -->
+            <!-- <img src="{{ asset('user/images/pu_papua.jpg') }}" width="25" height="25" class="d-inline-block align-top mobile-logo" alt=""> -->
             <img src="{{ asset('user/images/pemerintah_papua.png') }}" width="75" height="75" class="d-inline-block align-top desktop-logo" alt="" style="margin-left: 100%;">
           </ul>
             <ul class="navbar-nav mr-auto navbar-center">
@@ -702,9 +706,9 @@ li:hover {
                       <ul class="dropdown-menu">
                           <li>
                             <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
-                            <!-- <ul class="dropdown-menu">
-                              <li><a href="#" class="dropdown-item">Item 1</a></li>
-                            </ul> -->
+                            <ul class="dropdown-menu">
+                              <li>Tidak Ada Data</li>
+                            </ul>
                           </li>
                           <li>
                             <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
@@ -1496,7 +1500,7 @@ li:hover {
     <!-- copyright section start -->
     <div class="copyright_section" style="background-color:#10597D;">
       <div class="container">
-        <p class="" style="color:white;">Copyright 2020 All Right Reserved By <a>PU Papua Air Bersih</a></p>
+        <p class="" style="color:white;">Copyright 2022 All Right Reserved By <a>PU Papua Air Bersih</a></p>
         <p class="" style="color:white;">Terms Of Use / Privacy Policy</p>
       </div>
     </div>
