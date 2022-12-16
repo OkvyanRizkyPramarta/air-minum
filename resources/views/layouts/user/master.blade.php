@@ -167,11 +167,41 @@ li:hover {
                 <li class="parent"><a href="{{ url ('/') }}" class="nav-list">Beranda</a></li>
                   <li class="parent"><a href="#" class="nav-list">Capaian Air Bersih</a>
                       <ul class="child scrollable-dropdown">
-                          <li class="parent"><a href="#">Kabupaten Biak Numfor</a>
+                          <li class="parent"><a href="#">Kabupaten Biak Numfor<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child" style="width:300px;">
+                                <li class="parent"><a href="#" nowrap>Balai Wilayah Sungai <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($BwsKabupatenBiakNumfor as $bkbn)
+                                    <li><a href="/showFile/{{encrypt($bkbn->file)}}" target="_blank">{{$bkbn->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>PDAM <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                  <ul class="child">
+                                    @foreach($PdamKabupatenBiakNumfor as $pkbn)
+                                    <li><a href="/showFile/{{encrypt($pkbn->file)}}" target="_blank">{{$pkbn->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($DukcapilKabupatenBiakNumfor as $dkbn)
+                                    <li><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Badan Pusat Statistik<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($StatistikKabupatenBiakNumfor as $skbn)
+                                    <li><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                            </ul>
                           </li>
                           <li class="parent"><a href="#">Kabupaten Jayapura<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
-                            <ul class="child" style="width:200px;">
-                                <li class="parent"><a href="#" nowrap>Dinas Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                            <ul class="child" style="width:300px;">
+                                <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
                                     <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
@@ -201,22 +231,114 @@ li:hover {
                                 </li>
                             </ul>
                           </li>
-                          <li class="parent"><a href="#">Kabupaten Keerom</a></li>
-                          <li class="parent"><a href="#">Kabupaten Kepulauan Yapen</a></li>
-                          <li class="parent"><a href="#">Kabupaten Mamberamo Raya</a></li>
-                          <li class="parent"><a href="#">Kabupaten Sarmi</a></li>
-                          <li class="parent"><a href="#">Kabupaten Supiori</a></li>
-                          <li class="parent"><a href="#">Kabupaten Waropen</a></li>
+                          <li class="parent"><a href="#">Kabupaten Keerom<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child" style="width:300px;">
+                                <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($CiptaKaryaKabupatenKeerom as $ckkk)
+                                    <li><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Badan Pusat Statistik <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                  <ul class="child">
+                                    @foreach($StatistikKabupatenKeerom as $skk)
+                                    <li><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                            </ul>
+                          </li>
+                          <li class="parent"><a href="#">Kab Kepulauan Yapen<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child" style="width:300px;">
+                                <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($CiptaKaryaKabupatenKepulauanYapen as $ckkky)
+                                    <li><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>PDAM <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                  <ul class="child">
+                                    @foreach($PdamKabupatenKepulauanYapen as $pkky)
+                                    <li><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Dinas Dukcapil <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($DukcapilKabupatenKepulauanYapen as $dkky)
+                                    <li><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Badan Pusat Statistik <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                  <ul class="child">
+                                    @foreach($StatistikKabupatenKepulauanYapen as $skky)
+                                    <li><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                            </ul>
+                          </li>
+                          <li class="parent"><a href="#">Kab Mamberamo Raya<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child" style="width:300px;">
+                                <li class="parent"><a href="#" nowrap>Tidak Ada Data </a>
+                                </li>
+                            </ul>  
+                          </li>
+                          <li class="parent"><a href="#">Kabupaten Sarmi<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child" style="width:300px;">
+                                <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($CiptaKaryaKabupatenSarmi as $ckks)
+                                    <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Badan Pusat Statistik <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                  <ul class="child">
+                                    @foreach($StatistikKabupatenSarmi as $sks)
+                                    <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                            </ul>
+                          </li>
+                          <li class="parent"><a href="#">Kabupaten Supiori<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                          <ul class="child" style="width:300px;">
+                                <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                  <ul class="child">
+                                    @foreach($CiptaKaryaKabupatenSarmi as $ckks)
+                                    <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                                <li class="parent"><a href="#" nowrap>Badan Pusat Statistik <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                  <ul class="child">
+                                    @foreach($StatistikKabupatenSarmi as $sks)
+                                    <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                    @endforeach
+                                  </ul>
+                                </li>
+                            </ul>
+                          </li>
+                          <li class="parent"><a href="#">Kabupaten Waropen<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                            <ul class="child" style="width:300px;">
+                                <li class="parent"><a href="#" nowrap>Tidak Ada Data </a>
+                                </li>
+                            </ul> 
+                          </li>
                           <li class="parent "><a href="{{url('/usulan_teknik/kota/jayapura')}}">Kota Jayapura<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                             <ul class="child">
-                                <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_pu_bidang_sda')}}" nowrap>Dinas PU Bidang SDA <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
+                                <li class="parent"><a href="#" nowrap>Dinas PU Bidang SDA <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($jayapuraWaterResource as $jwr)
                                     <li><a href="/showFile/{{encrypt($jwr->file)}}" target="_blank">{{$jwr->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
-                                <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_balai_wilayah_sungai')}}" nowrap>Balai Wilayah Sungai (BWS)<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
+                                <li class="parent"><a href="#" nowrap>Balai Wilayah Sungai (BWS)<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($bws as $bws)
                                     <li><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
