@@ -60,8 +60,6 @@
 												@endif
 											</span>
 										</td>
-                                        <div class="row">
-                                            <td class="text-center">
                                     </tr>
                                 @endforeach
                                 </tbody>

@@ -7,6 +7,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\City;
 use App\Models\Comment;
+use App\Models\Creation;
 use App\Models\MunicipalWaterwork;
 use App\Models\District;
 use App\Models\Village;
@@ -93,12 +94,16 @@ class AdminPUController extends Controller
         return view('adminpu.kotajayapura.statistic.index', compact('statistic'));
     }
 
-    
     public function AdminPUAirBersihKotaJayapuraDataProcesIndex()
     {
         $dataproces = DataProces::where('city_id', '9')->get();
         return view('adminpu.kotajayapura.dataproces.index', compact('dataproces'));
     }
+
+
+
+
+
 
     public function AdminPUAirBersihKabJayapuraWaterResourceIndex()
     {
@@ -154,6 +159,17 @@ class AdminPUController extends Controller
         $dataproces = DataProces::where('city_id', '2')->get();
         return view('adminpu.kabupatenjayapura.dataproces.index', compact('dataproces'));
     }
+
+    public function AdminPUAirBersihKabJayapuraCreationIndex()
+    {
+        $creation = Creation::where('city_id', '2')->get();
+        return view('adminpu.kabupatenjayapura.creation.index', compact('creation'));
+    }
+
+
+
+
+
 
     public function AdminPUAirBersihKabBiakNumforWaterResourceIndex()
     {
@@ -265,6 +281,19 @@ class AdminPUController extends Controller
         return view('adminpu.kabupatenkeerom.dataproces.index', compact('dataproces'));
     }
 
+    public function AdminPUAirBersihKabKeeromCreationIndex()
+    {
+        $creation = Creation::where('city_id', '3')->get();
+        return view('adminpu.kabupatenkeerom.creation.index', compact('creation'));
+    }
+
+
+
+
+
+
+
+
     public function AdminPUAirBersihKabSarmiWaterResourceIndex()
     {
         $waterresource = WaterResource::where('city_id', '6')->get();
@@ -318,6 +347,19 @@ class AdminPUController extends Controller
         $dataproces = DataProces::where('city_id', '6')->get();
         return view('adminpu.kabupatensarmi.dataproces.index', compact('dataproces'));
     }
+
+    public function AdminPUAirBersihKabSarmiCreationIndex()
+    {
+        $creation = Creation::where('city_id', '6')->get();
+        return view('adminpu.kabupatensarmi.creation.index', compact('creation'));
+    }
+
+
+
+
+
+
+
 
     public function AdminPUAirBersihKabSupioriWaterResourceIndex()
     {
@@ -374,6 +416,20 @@ class AdminPUController extends Controller
         return view('adminpu.kabupatensupiori.dataproces.index', compact('dataproces'));
     }
 
+    public function AdminPUAirBersihKabSupioriCreationIndex()
+    {
+        $creation = Creation::where('city_id', '7')->get();
+        return view('adminpu.kabupatensupiori.creation.index', compact('creation'));
+    }
+
+
+
+
+
+
+
+
+
     public function AdminPUAirBersihKabKepulauanYapenWaterResourceIndex()
     {
         $waterresource = WaterResource::where('city_id', '4')->get();
@@ -427,6 +483,21 @@ class AdminPUController extends Controller
         $dataproces = DataProces::where('city_id', '4')->get();
         return view('adminpu.kabupatenkepulauanyapen.dataproces.index', compact('dataproces'));
     }
+
+    public function AdminPUAirBersihKabKepulauanYapenCreationIndex()
+    {
+        $creation = Creation::where('city_id', '4')->get();
+        return view('adminpu.kabupatenkepulauanyapen.creation.index', compact('creation'));
+    }
+
+
+
+
+
+
+
+
+
 
 
     public function AdminPUAirBersihKabWaropenWaterResourceIndex()

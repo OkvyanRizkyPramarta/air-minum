@@ -18,6 +18,7 @@
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 								<div class="breadcomb-report">
+									<button data-toggle="tooltip" style="background-color:white; color:black;" data-placement="left" title="Download Report" class="btn"><i class="notika-icon notika-sent"></i></button>
                                 </div>
 							</div>
 						</div>
@@ -57,10 +58,6 @@
 												@endif
 											</span>
 										</td>
-                                        <div class="row">
-                                            <td class="text-center">
-                                            </td>
-                                        </div>
                                     </tr>
                                 @endforeach
                                 </tbody>

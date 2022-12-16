@@ -11,8 +11,8 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-ctn">
-                                    <h2> Data Tabel Badan Pusat Statistik (BPS)</h2>
-                                    <h2>Kabupaten Biak Numfor <span class="bread-ntd"> </span></h2>
+                                    <h2>Data Tabel Bidang Cipta Karya </h2>
+                                    <h2>Kabupaten Supiori <span class="bread-ntd"> </span></h2>
                                 </div>
                             </div>
                         </div>
@@ -40,19 +40,21 @@
                                 <tr>
                                     <th class="text-center" width="auto">Kota/Kabupaten</th>
                                     <th class="text-center" width="auto">Nama</th>
+                                    <th class="text-center" width="auto">Data</th>
                                     <th class="text-center" width="auto">Menampilkan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($statistic as $s)
+                                @foreach($creation as $c)
                                 <tr>
-                                    <td class="text-center">{{ $s -> city -> name }}</td>
+                                    <td class="text-center">{{ $c -> city -> name }}</td>
                                     <td class="text-center">
-                                        <p><a href="{{ asset ('storage/'.$s->file)}}" target="_blank">{{ $s->name }}</a>.</p>
+                                        <p><a href="{{ asset ('storage/'.$c->file)}}" target="_blank">{{ $c->name }}</a>.</p>
                                     </td>
+                                    <td class="text-center">{{ $c -> data }}</td>
                                     <td class="text-center">
                                         <span>
-                                            @if ($s->show == 'Yes')
+                                            @if ($c->show == 'Yes')
                                             <span>Menampilkan</span>
                                             @else
                                             <span>Tidak Menampilkan</span>
@@ -65,6 +67,7 @@
                             <tfoot>
                                 <tr>
                                     <th class="text-center" width="auto">Kota/Kabupaten</th>
+                                    <th class="text-center" width="auto">Kecamatan</th>
                                     <th class="text-center" width="auto">Nama</th>
                                     <th class="text-center" width="auto">Menampilkan</th>
                                 </tr>

@@ -150,7 +150,6 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::delete('/superadmin/airbersih/kota/jayapura/municipalwaterwork/index/{municipalwaterwork}', [SuperAdminController::class, 'SuperAdminAirBersihKotaJayapuraMunicipalWaterworkDestroy'])->name('superadmin.airbersih.kotajayapura.municipalwaterwork.destroy');
 
 
-
     //Kabupaten Jayapura
     Route::get('/superadmin/airbersih/kabupaten/jayapura/waterresource/index', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraWaterResourceIndex'])->name('superadmin.airbersih.kabupatenjayapura.waterresource.index');
     Route::get('/superadmin/airbersih/kabupaten/jayapura/waterresource/create', [SuperAdminController::class, 'SuperAdminAirBersihKabJayapuraWaterResourceCreate'])->name('superadmin.airbersih.kabupatenjayapura.waterresource.create'); 
@@ -1444,6 +1443,8 @@ Route::middleware(['auth', 'AdminPU'])->group(function () {
     Route::get('/adminpu/airbersih/kota/jayapura/municipalwaterwork/index', [AdminPUController::class, 'AdminPUAirBersihKotaJayapuraMunicipalWaterworkIndex'])->name('adminpu.airbersih.kotajayapura.municipalwaterwork.index');
 
     //Kabupaten Jayapura
+    
+    Route::get('/adminpu/airbersih/kabupaten/jayapura/creation/index', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraCreationIndex'])->name('adminpu.airbersih.kabupatenjayapura.creation.index');
     Route::get('/adminpu/airbersih/kabupaten/jayapura/waterresource/index   ', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraWaterResourceIndex'])->name('adminpu.airbersih.kabupatenjayapura.waterresource.index');
     Route::get('/adminpu/airbersih/kabupaten/jayapura/dukcapil/index', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraDukcapilIndex'])->name('adminpu.airbersih.kabupatenjayapura.dukcapil.index');
     Route::get('/adminpu/airbersih/kabupaten/jayapura/statistic/index', [AdminPUController::class, 'AdminPUAirBersihKabJayapuraStatisticIndex'])->name('adminpu.airbersih.kabupatenjayapura.statistic.index');
@@ -1467,6 +1468,7 @@ Route::middleware(['auth', 'AdminPU'])->group(function () {
     Route::get('/adminpu/airbersih/kabupaten/biaknumfor/municipalwaterwork/index', [AdminPUController::class, 'AdminPUAirBersihKabBiakNumforMunicipalWaterworkIndex'])->name('adminpu.airbersih.kabupatenbiaknumfor.municipalwaterwork.index');
 
      //Kabupaten KEEROM
+    Route::get('/adminpu/airbersih/kabupaten/keerom/creation/index', [AdminPUController::class, 'AdminPUAirBersihKabKeeromCreationIndex'])->name('adminpu.airbersih.kabupatenkeerom.creation.index');
     Route::get('/adminpu/airbersih/kabupaten/keerom/waterresource/index', [AdminPUController::class, 'AdminPUAirBersihKabKeeromWaterResourceIndex'])->name('adminpu.airbersih.kabupatenkeerom.waterresource.index');
     Route::get('/adminpu/airbersih/kabupaten/keerom/dukcapil/index', [AdminPUController::class, 'AdminPUAirBersihKabKeeromDukcapilIndex'])->name('adminpu.airbersih.kabupatenkeerom.dukcapil.index');
     Route::get('/adminpu/airbersih/kabupaten/keerom/statistic/index', [AdminPUController::class, 'AdminPUAirBersihKabKeeromStatisticIndex'])->name('adminpu.airbersih.kabupatenkeerom.statistic.index');
@@ -1478,6 +1480,7 @@ Route::middleware(['auth', 'AdminPU'])->group(function () {
     Route::get('/adminpu/airbersih/kabupaten/keerom/municipalwaterwork/index', [AdminPUController::class, 'AdminPUAirBersihKabKeeromMunicipalWaterworkIndex'])->name('adminpu.airbersih.kabupatenkeerom.municipalwaterwork.index');
      
     //Kabupaten Sarmi
+    Route::get('/adminpu/airbersih/kabupaten/sarmi/creation/index', [AdminPUController::class, 'AdminPUAirBersihKabSarmiCreationIndex'])->name('adminpu.airbersih.kabupatensarmi.creation.index');
     Route::get('/adminpu/airbersih/kabupaten/sarmi/waterresource/index', [AdminPUController::class, 'AdminPUAirBersihKabSarmiWaterResourceIndex'])->name('adminpu.airbersih.kabupatensarmi.waterresource.index');
     Route::get('/adminpu/airbersih/kabupaten/sarmi/dukcapil/index', [AdminPUController::class, 'AdminPUAirBersihKabSarmiDukcapilIndex'])->name('adminpu.airbersih.kabupatensarmi.dukcapil.index');
     Route::get('/adminpu/airbersih/kabupaten/sarmi/statistic/index', [AdminPUController::class, 'AdminPUAirBersihKabSarmiStatisticIndex'])->name('adminpu.airbersih.kabupatensarmi.statistic.index');
@@ -1489,6 +1492,7 @@ Route::middleware(['auth', 'AdminPU'])->group(function () {
     Route::get('/adminpu/airbersih/kabupaten/sarmi/municipalwaterwork/index', [AdminPUController::class, 'AdminPUAirBersihKabSarmiMunicipalWaterworkIndex'])->name('adminpu.airbersih.kabupatensarmi.municipalwaterwork.index');
        
     //Kabupaten SUPIORI
+    Route::get('/adminpu/airbersih/kabupaten/supiori/creation/index', [AdminPUController::class, 'AdminPUAirBersihKabSupioriCreationIndex'])->name('adminpu.airbersih.kabupatensupiori.creation.index');
     Route::get('/adminpu/airbersih/kabupaten/supiori/waterresource/index', [AdminPUController::class, 'AdminPUAirBersihKabSupioriWaterResourceIndex'])->name('adminpu.airbersih.kabupatensupiori.waterresource.index');
     Route::get('/adminpu/airbersih/kabupaten/supiori/dukcapil/index', [AdminPUController::class, 'AdminPUAirBersihKabSupioriDukcapilIndex'])->name('adminpu.airbersih.kabupatensupiori.dukcapil.index');
     Route::get('/adminpu/airbersih/kabupaten/supiori/statistic/index', [AdminPUController::class, 'AdminPUAirBersihKabSupioriStatisticIndex'])->name('adminpu.airbersih.kabupatensupiori.statistic.index');
@@ -1500,6 +1504,7 @@ Route::middleware(['auth', 'AdminPU'])->group(function () {
     Route::get('/adminpu/airbersih/kabupaten/supiori/municipalwaterwork/index', [AdminPUController::class, 'AdminPUAirBersihKabSupioriMunicipalWaterworkIndex'])->name('adminpu.airbersih.kabupatensupiori.municipalwaterwork.index');
        
     //Kabupaten KEPULAUAN YAPEN
+    Route::get('/adminpu/airbersih/kabupaten/kepulauanyapen/creation/index', [AdminPUController::class, 'AdminPUAirBersihKabKepulauanYapenCreationIndex'])->name('adminpu.airbersih.kabupatenkepulauanyapen.creation.index');
     Route::get('/adminpu/airbersih/kabupaten/kepulauanyapen/waterresource/index', [AdminPUController::class, 'AdminPUAirBersihKabKepulauanYapenWaterResourceIndex'])->name('adminpu.airbersih.kabupatenkepulauanyapen.waterresource.index');
     Route::get('/adminpu/airbersih/kabupaten/kepulauanyapen/dukcapil/index', [AdminPUController::class, 'AdminPUAirBersihKabKepulauanYapenDukcapilIndex'])->name('adminpu.airbersih.kabupatenkepulauanyapen.dukcapil.index');
     Route::get('/adminpu/airbersih/kabupaten/kepulauanyapen/statistic/index', [AdminPUController::class, 'AdminPUAirBersihKabKepulauanYapenStatisticIndex'])->name('adminpu.airbersih.kabupatenkepulauanyapen.statistic.index');
@@ -1549,3 +1554,4 @@ Route::get('/table/index', function () {
     return view('tablesuperadmin');
 });
 
+Route::get("/showFile/{id}", [UserController::class, "showFile"]);
