@@ -26,6 +26,24 @@ use App\Models\DataProces;
 class AdminPUController extends Controller
 {
 
+    public function AdminPUIndex()
+     {
+         return view('adminpu.index');
+     }
+
+     public function AdminPUIndexComment()
+     {
+        $comment = Comment::index();
+        return view('adminpu.comment.index', compact('comment'));
+     }
+
+    public function AdminPUDestroyComment(Comment $comment)
+     {
+         $comment->delete();
+
+         Alert::toast('Data Berhasil Dihapus', 'success');
+         return redirect()->back();
+     }
 
     public function AdminPUAirBersihKotaJayapuraWaterResourceIndex()
     {

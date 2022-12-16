@@ -78,7 +78,50 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="{{ asset('admin/js/vendor/modernizr-2.8.3.min.js') }}"></script>
-</head>
+    <style>
+        .dropbtn {
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+
+        .scrollable-menu {
+            height: auto;
+            max-height: 200px;
+            overflow-x: hidden;
+        }
+
+    </style>
+  </head>
 
 <body>
     @include('sweetalert::alert')
@@ -179,39 +222,106 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
+                <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                         <li><a href="{{ url('/subadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li class="active"><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Halaman Data</a>
+                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Minum </a>
+                        </li>
+                        <li><a href="{{ url ('/subadmin/comment') }}"><i class="notika-icon notika-windows"></i> Ulasan </a>
                         </li>
                     </ul>
                     <div class="tab-content custom-menu-content">
                         <div id="Tables" class="tab-pane active notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                            <li><a href="{{ url ('/subadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/district/index') }}">Tabel Kecamatan</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/population/index') }}">Tabel Populasi</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/waterwell/index')}}">Tabel Sumur</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/waterspring/index') }}">Tabel Mata Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/file/index') }}">Tabel Berkas</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/map/index') }}">Tabel Peta</a>
-                                        </li>
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kota Jayapura
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai Intake Sungai</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/municipalwaterwork/index') }}">PDAM Kota Jayapura</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/dataproces/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown" style="margin-top:10px;margin-bottom:20px;">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Jayapura
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/municipalwaterwork/index') }}">PDAM Kabupaten Jayapura</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Keerom
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/keerom/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Sarmi
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/sarmi/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Biak Numfor
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/municipalwaterwork/index') }}">PDAM Kabupaten Biak Numfor</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Supiori
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/supiori/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
+                                    </div>
+                                </div> 
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Kepulauan Yapen
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index') }}">PDAM Kabupaten Kepulauan Yapen</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Waropen
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Tidak Mempunyai data</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a class="dropbtn" href="#" style="color:black;">
+                                        Kabupaten Mamberamo Raya
+                                    </a>
+                                    <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Tidak Mempunyai data</a>
+                                    </div>
+                                </div>
                             </ul>
                         </div>
                     </div>

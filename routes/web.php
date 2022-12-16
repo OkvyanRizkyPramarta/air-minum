@@ -1385,15 +1385,17 @@ Route::middleware(['auth', 'SubAdmin'])->group(function () {
 
 
 
-    Route::get('/subadmin/table/comment/index', [SubAdminController::class, 'SubAdminIndexComment'])->name('subadmin.table.comment.index'); 
-    Route::delete('/subadmin/table/comment/index/{comment}', [SubAdminController::class, 'SubAdminDestroyComment'])->name('subadmin.table.comment.destroy');
+    Route::get('/subadmin/comment', [SubAdminController::class, 'SubAdminIndexComment'])->name('subadmin.table.comment.index');
+    Route::delete('/subadmin/comment/{comment}', [SubAdminController::class, 'SubAdminDestroyComment'])->name('subadmin.table.comment.destroy');
 });
 
 Route::middleware(['auth', 'AdminPU'])->group(function () {
     Route::get('/adminpu/table/comment/index', [AdminPUController::class, 'AdminPUIndexComment'])->name('adminpu.table.comment.index'); 
     
 
-    Route::get('/adminpu/index', [SuperAdminController::class, 'SuperAdminIndex']);
+    Route::get('/adminpu/index', [AdminPUController::class, 'AdminPUIndex']);
+
+    Route::get('/adminpu/comment', [AdminPUController::class, 'AdminPUIndexComment'])->name('adminpu.table.comment.index');
 
     //Kota Jayapura
     Route::get('/adminpu/airbersih/kota/jayapura/waterresource/index', [AdminPUController::class, 'AdminPUAirBersihKotaJayapuraWaterResourceIndex'])->name('adminpu.airbersih.kotajayapura.waterresource.index');

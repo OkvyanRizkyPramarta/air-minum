@@ -30,6 +30,20 @@ class SubAdminController extends Controller
          return view('subadmin.index');
      }
 
+     public function SubAdminIndexComment()
+     {
+        $comment = Comment::index();
+        return view('subadmin.comment.index', compact('comment'));
+     }
+
+    public function SubAdminDestroyComment(Comment $comment)
+     {
+         $comment->delete();
+
+         Alert::toast('Data Berhasil Dihapus', 'success');
+         return redirect()->back();
+     }
+
     public function AdminIndexCity()
     {
         $city = City::index();
