@@ -225,7 +225,7 @@
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
                         <li><a href="{{ url('/superadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Minum </a>
+                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Bersih </a>
                         </li>
                         <li><a href="{{ url ('/superadmin/comment') }}"><i class="notika-icon notika-windows"></i> Ulasan </a>
                         </li>

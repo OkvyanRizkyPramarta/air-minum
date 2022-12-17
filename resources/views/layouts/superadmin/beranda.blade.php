@@ -227,7 +227,7 @@
                                             <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik</a>
                                               </ul>
                                         </li>
-                                        <li><a href="">Kabupaten Biar Numfor</a>
+                                        <li><a href="">Kabupaten Biak Numfor</a>
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                             <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai</a>
                                             <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/municipalwaterwork/index') }}">PDAM Kabupaten Biak Numfor</a>
@@ -241,12 +241,22 @@
                                             <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
                                               </ul>
                                         </li>
-                                        <li><a href="">Kabupaten Yapen</a>
+                                        <li><a href="">Kabupaten Kepulauan Yapen</a>
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                             <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                             <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index') }}">PDAM Kabupaten Kepulauan Yapen</a>
                                             <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
                                             <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik</a>
+                                              </ul>
+                                        </li>
+                                        <li><a href="">Kabupaten Waropen</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                            <a href="#">Tidak Mempunyai data</a>
+                                              </ul>
+                                        </li>
+                                        <li><a href="">Kabupaten Mamberamo Raya</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                            <a href="#">Tidak Mempunyai data</a>
                                               </ul>
                                         </li>
                                     </ul>
