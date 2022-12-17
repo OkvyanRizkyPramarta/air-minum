@@ -1126,7 +1126,7 @@ function stopPrntScr() {
                               <li>Tidak Ada Data</li>
                               @else
                                 @foreach($statisticJayapura as $sj)
-                                  <li><a href="/showFile/{{encrypt($sj->id)}}" target="_blank">{{$sj->name}}</a></li>
+                                  <li><a href="/showFile/{{encrypt($sj->file)}}" target="_blank">{{$sj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
