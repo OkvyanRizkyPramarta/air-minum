@@ -334,7 +334,6 @@ function stopPrntScr() {
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pengelolahan Dan Pendataan Daerah</a>
                               <ul class="dropdown-menu">
-                                  
                               </ul>
                             </li>
                             <li>
@@ -598,7 +597,7 @@ function stopPrntScr() {
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
                               <ul class="dropdown-menu">
                                 @foreach($statisticJayapura as $sj)
-                                  <li><a href="/showFile/{{encrypt($sj->id)}}" target="_blank">{{$sj->name}}</a></li>
+                                  <li><a href="/showFile/{{encrypt($sj->file)}}" target="_blank">{{$sj->name}}</a></li>
                                 @endforeach
                               </ul>
                             </li>
