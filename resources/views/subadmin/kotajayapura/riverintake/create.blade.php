@@ -47,22 +47,6 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                        <label>Kecamatan</label>
-                                        <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="district_id" data-live-search="true">
-                                                @foreach($district as $d)
-                                                <option value="{{ $d->id }}">{{ $d->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" style="padding-bottom:30px;">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                    </div>
-                                    <div class="nk-int-st">
                                       <label>Nama Berkas</label>
                                       <input type="text" name="name" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" >
                                     </div>

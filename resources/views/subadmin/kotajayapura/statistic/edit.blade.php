@@ -12,7 +12,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <div class="breadcomb-wp">
                     <div class="breadcomb-ctn">
-                    <h2>Halaman Edit Data Tabel Badan Pusat Statistik (BPS)</h2>
+                    <h2>Halaman Ubah Data Tabel Badan Pusat Statistik (BPS)</h2>
                       <h2>Kota Jayapura <span class="bread-ntd"> </span></h2>
                     </div>
                   </div>

@@ -13,7 +13,7 @@ class RiverIntake extends Model
     protected $fillable = [
         'name',
         'city_id',
-        'district_id',
+        // 'district_id',
         'file',
         'show',
     ];

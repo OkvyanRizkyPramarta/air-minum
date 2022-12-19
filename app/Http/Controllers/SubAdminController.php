@@ -1220,8 +1220,8 @@ class SubAdminController extends Controller
     public function SubAdminAirBersihKotaJayapuraRiverintakeCreate()
     {
         $city = City::index();
-        $district = District::index();
-        return view('subadmin.kotajayapura.riverintake.create', compact('city','district'));
+        // $district = District::index();
+        return view('subadmin.kotajayapura.riverintake.create', compact('city'));
     }
 
     /**
@@ -1236,15 +1236,15 @@ class SubAdminController extends Controller
         $city = new City;
         $city->id = $request->get('city_id', '9');
 
-        $district = new District;
-        $district -> id = $request->get('district_id');
+        // $district = new District;
+        // $district -> id = $request->get('district_id');
             
         $riverintake = new RiverIntake;
         $riverintake->name = $request->name;
         $riverintake->file = $request->file('file')->store('files', 'public');
         $riverintake->show = $request->show;
         $riverintake->city()->associate($city);
-        $riverintake->district()->associate($district);
+        // $riverintake->district()->associate($district);
         $riverintake->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
@@ -1267,8 +1267,8 @@ class SubAdminController extends Controller
     public function SubAdminAirBersihKotaJayapuraRiverintakeEdit(RiverIntake $riverintake)
     {
         $city = City::index();
-        $district = District::index();
-        return view('subadmin.kotajayapura.riverintake.edit', compact('city', 'district', 'riverintake'));
+        // $district = District::index();
+        return view('subadmin.kotajayapura.riverintake.edit', compact('city', 'riverintake'));
     }
 
     /**
@@ -1283,14 +1283,14 @@ class SubAdminController extends Controller
         $riverintake = RiverIntake::findOrFail($riverintake->id);
 
         $city = new City;
-        $district = new District;
+        // $district = new District;
 
         if($request->file('file') == "") {
 
             $riverintake->update([
                 'name'      =>$request->name,
                 'show'      => $request->show,
-                'district_id'   => $request->district_id,
+                // 'district_id'   => $request->district_id,
             ]);
 
             $riverintake->city()->associate($city);
@@ -1306,7 +1306,7 @@ class SubAdminController extends Controller
 
         $riverintake->update([
             'name'          => $request->name,
-            'district_id'   => $request->district_id,
+            // 'district_id'   => $request->district_id,
             'file'          => $path->hashName(),
             'show'          => $request->show,
         ]);
@@ -3141,8 +3141,8 @@ class SubAdminController extends Controller
     public function SubAdminAirBersihKabBiakNumforRiverintakeCreate()
     {
         $city = City::index();
-        $district = District::index();
-        return view('subadmin.kabupatenbiaknumfor.riverintake.create', compact('city','district'));
+        // $district = District::index();
+        return view('subadmin.kabupatenbiaknumfor.riverintake.create', compact('city'));
     }
 
     /**
@@ -3157,15 +3157,15 @@ class SubAdminController extends Controller
         $city = new City;
         $city->id = $request->get('city_id', '1');
 
-        $district = new District;
-        $district -> id = $request->get('district_id');
+        // $district = new District;
+        // $district -> id = $request->get('district_id');
             
         $riverintake = new RiverIntake;
         $riverintake->name = $request->name;
         $riverintake->file = $request->file('file')->store('files', 'public');
         $riverintake->show = $request->show;
         $riverintake->city()->associate($city);
-        $riverintake->district()->associate($district);
+        // $riverintake->district()->associate($district);
         $riverintake->save();
 
         Alert::toast('Informasi Berhasil Disimpan', 'success');
@@ -3188,7 +3188,7 @@ class SubAdminController extends Controller
     public function SubAdminAirBersihKabBiakNumforRiverintakeEdit(RiverIntake $riverintake)
     {
         $city = City::index();
-        $district = District::index();
+        // $district = District::index();
         return view('subadmin.kabupatenbiaknumfor.riverintake.edit', compact('city', 'district', 'riverintake'));
     }
 
@@ -3211,7 +3211,7 @@ class SubAdminController extends Controller
             $riverintake->update([
                 'name'      =>$request->name,
                 'show'      => $request->show,
-                'district_id'   => $request->district_id,
+                // 'district_id'   => $request->district_id,
             ]);
 
             $riverintake->city()->associate($city);
@@ -3227,7 +3227,7 @@ class SubAdminController extends Controller
 
         $riverintake->update([
             'name'          => $request->name,
-            'district_id'   => $request->district_id,
+            // 'district_id'   => $request->district_id,
             'file'          => $path->hashName(),
             'show'          => $request->show,
         ]);

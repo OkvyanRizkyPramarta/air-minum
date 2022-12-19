@@ -40,7 +40,6 @@
                             <thead>
                                     <tr>
                                         <th class="text-center" width="auto">Kota/Kabupaten</th>
-                                        <th class="text-center" width="auto">Kecamatan</th>
                                         <th class="text-center" width="auto">Nama</th>
                                         <th class="text-center" width="auto">Menampilkan</th>
                                         <th class="text-center" width="auto">Action</th>
@@ -50,7 +49,6 @@
                                 @foreach($riverintake as $r)
                                     <tr>
                                         <td class="text-center">{{ $r -> city -> name }}</td>
-                                        <td class="text-center">{{ $r -> district -> name }}</td>
                                         <td class="text-center"><p><a href="{{ asset ('storage/'.$r->file)}}" target="_blank">{{ $r->name }}</a>.</p></td>
                                         <td class="text-center">
 											<span>
@@ -84,7 +82,6 @@
                                 <tfoot>
                                     <tr>
                                         <th class="text-center" width="auto">Kota/Kabupaten</th>
-                                        <th class="text-center" width="auto">Kecamatan</th>
                                         <th class="text-center" width="auto">Nama</th>
                                         <th class="text-center" width="auto">Menampilkan</th>
                                         <th class="text-center" width="auto">Action</th>

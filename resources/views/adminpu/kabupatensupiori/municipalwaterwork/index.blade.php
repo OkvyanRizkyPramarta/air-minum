@@ -65,9 +65,9 @@
                                 <tfoot>
                                     <tr>
                                         <th class="text-center" width="auto">Kota/Kabupaten</th>
-                                        <th class="text-center" width="auto">Kecamatan</th>
                                         <th class="text-center" width="auto">Nama</th>
-                                        <th class="text-center" width="auto">Menampilkan</th>
+                                        <th class="text-center" width="auto">Data</th>
+                                        <th class="text-center" width="auto">Menampilkan</th>   
                                     </tr>
                                 </tfoot>
                             </table>
