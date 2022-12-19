@@ -375,14 +375,9 @@ class UserController extends Controller
     }
 
     public function showFile($id){
-        // $bps = Statistic::find($id);
         $id = decrypt($id);
         $path = storage_path()."/app/public/{$id}";
         $content_type = mime_content_type($path);
-        // return $pdf->stream("", array("Attachments" => false));
-        // return $pdf->stream();
-        return response()->make(file_get_contents($path), 200, [
-            "content-type" => $content_type
-        ]);
+        return view("user.template", ["path" => $id, "content_type" => $content_type]);
     }
 }

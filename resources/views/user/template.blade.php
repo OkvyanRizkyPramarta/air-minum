@@ -1,0 +1,1 @@
+<embed src="{{asset('storage/'.$path)}}#toolbar=0" type="{{$content_type}}" width="100%" height="700px"></embed>
