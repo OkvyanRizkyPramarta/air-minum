@@ -128,7 +128,7 @@
                                         <td class="text-center">Rp. {{ number_format($w->total_cost,0, 0,'.') }}</td>
                                         <div class="row">
                                             <td class="text-center">
-                                                <div>
+                                                <div class="form-group">
                                                     <a href="{{ route('superadmin.rab.edit', $w->kode_rab) }}" class="btn notika-btn-black" style="color:white;"><i class="fa fa-edit"></i>
                                                         Edit
                                                     </a>
@@ -138,11 +138,11 @@
                                                     @csrf
                                                     @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
-                                                        Delete</a>
+                                                        Delete</button>
                                                     </form>
                                                 </div>
                                                 <div>
-                                                    <a href="{{ route('superadmin.rab.detail', $w->kode_rab) }}" class="btn notika-btn-blue" style="color: white;"><i class="fa fa-info"></i>
+                                                    <a href="{{ route('superadmin.rab.detail', $w->kode_rab) }}" class="btn notika-btn-blue" style="color: white;" target="_blank"><i class="fa fa-info"></i>
                                                         Detail
                                                     </a>
                                                 </div>

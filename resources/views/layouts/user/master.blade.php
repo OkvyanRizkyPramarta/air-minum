@@ -197,13 +197,15 @@ li:hover {
 }
 
 .custom-dropdown-item{
-  padding: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
 .custom-dropdown-item:hover{
   color: black !important;
+  background-color:#4287f5;
 }
 
 @media (max-width: 768px) {
@@ -372,27 +374,27 @@ function stopPrntScr() {
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
                                 @foreach($StatistikKabupatenBiakNumfor as $skbn)
-                                  <li><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
                                 @endforeach
                             </li>
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
                                 @foreach($BwsKabupatenBiakNumfor as $bkbn)
-                                  <li><a href="/showFile/{{encrypt($bkbn->file)}}" class="custom-dropdown-item" target="_blank">{{$bkbn->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bkbn->file)}}#toolbar=0" target="_blank">{{$bkbn->name}}</a></li>
                                 @endforeach
                             </li>
                             <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Cipta Karya</a></li>
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
                                 @foreach($DukcapilKabupatenBiakNumfor as $dkbn)
-                                  <li><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
                                 @endforeach
                             </li>
                             <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
                                 @foreach($PdamKabupatenBiakNumfor as $pkbn)
-                                <li><a href="/showFile/{{encrypt($pkbn->file)}}" target="_blank">{{$pkbn->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkbn->file)}}" target="_blank">{{$pkbn->name}}</a></li>
                                 @endforeach
                             </li>
                           </ul>
@@ -412,27 +414,27 @@ function stopPrntScr() {
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
                                 @foreach($StatistikKabupatenJayapura as $skj)
-                                <li><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
                                 @endforeach
                             </li>
                             <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
                               @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
-                                <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
                               @endforeach
                             </li>
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
                                 @foreach($DukcapilKabupatenJayapura as $dkj)
-                                  <li><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
                                 @endforeach
                             </li>
                             <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li>
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
                                 @foreach($PdamKabupatenJayapura as $pkj)
-                                  <li><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
                                 @endforeach
                             </li>
                           </ul>
@@ -452,14 +454,14 @@ function stopPrntScr() {
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
                                 @foreach($StatistikKabupatenKeerom as $skk)
-                                  <li><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
                                 @endforeach
                             </li>
                             <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li>
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
                                 @foreach($CiptaKaryaKabupatenKeerom as $ckkk)
-                                  <li><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
                                 @endforeach
                             </li>
                             <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
@@ -482,27 +484,27 @@ function stopPrntScr() {
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
                               @foreach($StatistikKabupatenKepulauanYapen as $skky)
-                                <li><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
                               @endforeach
                             </li>
                             <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li> -->
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
                                 @foreach($CiptaKaryaKabupatenKepulauanYapen as $ckkky)
-                                  <li><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
                                 @endforeach
                             </li>
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
                                 @foreach($DukcapilKabupatenKepulauanYapen as $dkky)
-                                  <li><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
                                 @endforeach
                             </li>
                             <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a></li> -->
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
                                 @foreach($PdamKabupatenKepulauanYapen as $pkky)
-                                  <li><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
                                 @endforeach
                             </li>
                           </ul>
@@ -543,14 +545,14 @@ function stopPrntScr() {
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
                               @foreach($StatistikKabupatenSarmi as $sks)
-                                <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
                                 @endforeach
                             </li>
                             <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li> -->
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
                                 @foreach($CiptaKaryaKabupatenSarmi as $ckks)
-                                  <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                             </li>
                             <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
@@ -573,14 +575,14 @@ function stopPrntScr() {
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
                                 @foreach($StatistikKabupatenSarmi as $sks)
-                                  <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
                                 @endforeach
                             </li>
                             <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li> -->
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
                                 @foreach($CiptaKaryaKabupatenSarmi as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                             </li>
                             <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>
@@ -622,7 +624,7 @@ function stopPrntScr() {
                                   <li class="dropdown-item"> Tidak Ada Data</li>
                                 @else
                                 @foreach($dataproces as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                 @endforeach
                               </ul>
                             </li>
@@ -630,7 +632,7 @@ function stopPrntScr() {
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
                               <ul class="dropdown-menu">
                                 @foreach($statisticJayapura as $sj)
-                                  <li><a href="/showFile/{{encrypt($sj->file)}}" target="_blank">{{$sj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sj->file)}}" target="_blank">{{$sj->name}}</a></li>
                                 @endforeach
                               </ul>
                             </li>
@@ -638,7 +640,7 @@ function stopPrntScr() {
                               <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
                                 <ul class="dropdown-menu">
                                   @foreach($bws as $bws)
-                                    <li><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
                                   @endforeach
                                 </ul>
                             </li>
@@ -646,7 +648,7 @@ function stopPrntScr() {
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
                                 <ul class="dropdown-menu">
                                     @foreach($ciptaKaryaKotaJayapura as $ckkj)
-                                      <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank"> {{$ckkj->name}}</a></li>
+                                      <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank"> {{$ckkj->name}}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -657,7 +659,7 @@ function stopPrntScr() {
                                   <li class="dropdown-item"> Tidak Ada Data</li>
                                   @else
                                     @foreach($dukcapil as $d)
-                                      <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                      <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                     @endforeach
                                   @endif
                                 </ul>
@@ -666,7 +668,7 @@ function stopPrntScr() {
                                 <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
                                 <ul class="dropdown-menu">
                                   @foreach($jayapuraWaterResource as $jwr)
-                                    <li><a href="/showFile/{{encrypt($jwr->file)}}" class="custom-dropdown-item" target="_blank">{{$jwr->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($jwr->file)}}#toolbar=0" target="_blank">{{$jwr->name}}</a></li>
                                   @endforeach
                                 </ul>
                             </li>
@@ -674,7 +676,7 @@ function stopPrntScr() {
                               <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
                                 <ul class="dropdown-menu">
                                 @foreach($kotaJayapuraPDAM as $pdam)
-                                  <li><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
                                 @endforeach
                                 @endif
                                 </ul>
@@ -686,6 +688,79 @@ function stopPrntScr() {
                   </ul>
                   --}}
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <!-- ======================== BEGIN KABUPATEN BIAK NUMFOR ============================== -->
+                  <li>
+                    <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Biak Numfor</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropleft dinas">
+                          <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown">Badan Pengelolahan Dan Pendataan Daerah</a>
+                          <ul class="dropdown-menu left">
+                              <li class="dropdown-item">Tidak Ada Data</li>
+                          </ul>
+                        </li>
+                        <li class="dropleft dinas">
+                          <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
+                            <ul class="dropdown-menu left">
+                            @if($StatistikKabupatenBiakNumfor->count() == 0)
+                            <li class="dropdown-item">Tidak Ada Data</li>
+                            @else
+                            @foreach($StatistikKabupatenBiakNumfor as $skbn)
+                              <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
+                            @endforeach
+                            @endif
+                            </ul>
+                        </li>
+                        <li class="dropleft dinas">
+                          <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
+                            <ul class="dropdown-menu left">
+                            @if($BwsKabupatenBiakNumfor->count() == 0)
+                            <li class="dropdown-item">Tidak Ada Data</li>
+                            @else
+                            @foreach($BwsKabupatenBiakNumfor as $bkbn)
+                              <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bkbn->file)}}#toolbar=0" target="_blank">{{$bkbn->name}}</a></li>
+                            @endforeach
+                            @endif
+                            </ul>
+                        </li>
+                        <li class="dropleft dinas">
+                          <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
+                          <ul class="dropdown-menu left">
+                            <li class="dropdown-item">Tidak Ada Data</li>
+                          </ul>
+                        </li>
+                        <li class="dropleft dinas">
+                          <a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a>
+                            <ul class="dropdown-menu left">
+                            @if($DukcapilKabupatenBiakNumfor->count() == 0)
+                            <li class="dropdown-item">Tidak Ada Data</li>
+                            @else
+                            @foreach($DukcapilKabupatenBiakNumfor as $dkbn)
+                              <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
+                            @endforeach
+                            @endif
+                            </ul>
+                        </li>
+                        <li class="dropleft dinas">
+                          <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang SDA</a>
+                          <ul class="dropdown-menu left">
+                            <li class="dropdown-item">Tidak Ada Data</li>
+                          </ul>
+                        </li>
+                        <li class="dropleft dinas">
+                          <a class="dropdown-item dropdown-toggle" href="#">PDAM</a>
+                            <ul class="dropdown-menu left">
+                            @if($PdamKabupatenBiakNumfor->count() == 0)
+                            <li class="dropdown-item">Tidak Ada Data</li>
+                            @else
+                            @foreach($PdamKabupatenBiakNumfor as $pkbn)
+                            <li class="dropdown-item"><a href="/showFile/{{encrypt($pkbn->file)}}" target="_blank">{{$pkbn->name}}</a></li>
+                            @endforeach
+                            @endif
+                            </ul>
+                        </li>
+                      </ul>
+                  </li>
+                  <!-- ======================== END KABUPATEN BIAK NUMFOR ============================== -->
                   <li>
                       <a class="dropdown-item dropdown-toggle" href="#">Kabupaten Jayapura</a>
                       <ul class="dropdown-menu">
@@ -702,7 +777,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenJayapura as $skj)
-                                <li><a href="/showFile/{{encrypt($skj->file)}}"class="custom-dropdown-item" target="_blank">{{$skj->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skj->file)}}#toolbar=0" target="_blank">{{$skj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -720,7 +795,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
-                                  <li><a href="/showFile/{{encrypt($ckkj->file)}}"class="custom-dropdown-item" target="_blank">{{$ckkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkj->file)}}#toolbar=0" target="_blank">{{$ckkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -732,7 +807,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenJayapura as $dkj)
-                                  <li><a href="/showFile/{{encrypt($dkj->file)}}"class="custom-dropdown-item" target="_blank">{{$dkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkj->file)}}#toolbar=0" target="_blank">{{$dkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -750,7 +825,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($PdamKabupatenJayapura as $pkj)
-                                  <li><a href="/showFile/{{encrypt($pkj->file)}}"class="custom-dropdown-item" target="_blank">{{$pkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkj->file)}}#toolbar=0" target="_blank">{{$pkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -776,7 +851,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenKeerom as $skk)
-                                  <li><a href="/showFile/{{encrypt($skk->file)}}"class="custom-dropdown-item" target="_blank">{{$skk->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skk->file)}}#toolbar=0" target="_blank">{{$skk->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -794,7 +869,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenKeerom as $ckkk)
-                                  <li><a href="/showFile/{{encrypt($ckkk->file)}}"class="custom-dropdown-item" target="_blank">{{$ckkk->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkk->file)}}#toolbar=0" target="_blank">{{$ckkk->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -838,14 +913,14 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenKepulauanYapen as $skky)
-                                  <li><a href="/showFile/{{encrypt($skky->file)}}"class="custom-dropdown-item" target="_blank">{{$skky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skky->file)}}#toolbar=0" target="_blank">{{$skky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
                           </li>
                           <li class="dropleft dinas">
                             <a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a>
-                              <ul class="dropdown-menu">
+                              <ul class="dropdown-menu left">
                                 <li class="dropdown-item">Tidak Ada Data</li>
                               </ul>
                           </li>
@@ -856,7 +931,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenKepulauanYapen as $ckkky)
-                                  <li><a href="/showFile/{{encrypt($ckkky->file)}}"class="custom-dropdown-item" target="_blank">{{$ckkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkky->file)}}#toolbar=0" target="_blank">{{$ckkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -868,7 +943,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenKepulauanYapen as $dkky)
-                                  <li><a href="/showFile/{{encrypt($dkky->file)}}"class="custom-dropdown-item" target="_blank">{{$dkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkky->file)}}#toolbar=0" target="_blank">{{$dkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -886,7 +961,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($PdamKabupatenKepulauanYapen as $pkky)
-                                  <li><a href="/showFile/{{encrypt($pkky->file)}}"class="custom-dropdown-item" target="_blank">{{$pkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkky->file)}}#toolbar=0" target="_blank">{{$pkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -933,7 +1008,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenSarmi as $sks)
-                                <li><a href="/showFile/{{encrypt($sks->file)}}"class="custom-dropdown-item" target="_blank">{{$sks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sks->file)}}#toolbar=0" target="_blank">{{$sks->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -951,7 +1026,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                               @foreach($CiptaKaryaKabupatenSarmi as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}"class="custom-dropdown-item" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}#toolbar=0" target="_blank">{{$ckks->name}}</a></li>
                               @endforeach
                               @endif
                               </ul>
@@ -1007,7 +1082,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenSupiori as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}"class="custom-dropdown-item" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}#toolbar=0" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1019,7 +1094,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenSupiori as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}"class="custom-dropdown-item" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}#toolbar=0" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                               @endif
                             </ul>
@@ -1072,7 +1147,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item"> Tidak Ada Data</li>
                               @else
                                 @foreach($dataproces as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}"class="custom-dropdown-item" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}#toolbar=0" target="_blank"> {{$d->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1084,7 +1159,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($statisticJayapura as $sj)
-                                  <li><a href="/showFile/{{encrypt($sj->file)}}"class="custom-dropdown-item" target="_blank">{{$sj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sj->file)}}#toolbar=0" target="_blank">{{$sj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1096,7 +1171,7 @@ function stopPrntScr() {
                                   <li class="dropdown-item">Tidak Ada Data</li>
                                 @else
                                   @foreach($bws as $bws)
-                                    <li><a href="/showFile/{{encrypt($bws->file)}}"class="custom-dropdown-item" target="_blank">{{$bws->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bws->file)}}#toolbar=0" target="_blank">{{$bws->name}}</a></li>
                                   @endforeach
                                 @endif
                                 
@@ -1109,7 +1184,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($ciptaKaryaKotaJayapura as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}" class="custom-dropdown-item" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}#toolbar=0" target="_blank"> {{$d->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1121,7 +1196,7 @@ function stopPrntScr() {
                                   <li class="dropdown-item"> Tidak Ada Data</li>
                                 @else
                                   @foreach($dukcapil as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}"class="custom-dropdown-item" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}#toolbar=0" target="_blank"> {{$d->name}}</a></li>
                                   @endforeach
                                 @endif
                               </ul>
@@ -1133,7 +1208,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($jayapuraWaterResource as $jwr)
-                                  <li><a href="/showFile/{{encrypt($jwr->file)}}" class="dropdown-item"class="custom-dropdown-item" target="_blank">{{$jwr->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($jwr->file)}}#toolbar=0#zoom=85&scrollbar=0&toolbar=0&navpanes=0" target="_blank">{{$jwr->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1145,7 +1220,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item">Tidak Ada Data</li>
                                 @else
                                   @foreach($kotaJayapuraPDAM as $pdam)
-                                    <li><a href="/showFile/{{encrypt($pdam->file)}}"class="custom-dropdown-item" target="_blank">{{$pdam->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pdam->file)}}#toolbar=0" target="_blank">{{$pdam->name}}</a></li>
                                   @endforeach
                               @endif
                               </ul>
@@ -1171,7 +1246,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenJayapura as $skj)
-                                <li><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1189,7 +1264,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
-                                  <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1201,7 +1276,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenJayapura as $dkj)
-                                  <li><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1219,7 +1294,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($PdamKabupatenJayapura as $pkj)
-                                  <li><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1245,7 +1320,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenKeerom as $skk)
-                                  <li><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1263,7 +1338,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenKeerom as $ckkk)
-                                  <li><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1307,7 +1382,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenKepulauanYapen as $skky)
-                                  <li><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1325,7 +1400,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenKepulauanYapen as $ckkky)
-                                  <li><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1337,7 +1412,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenKepulauanYapen as $dkky)
-                                  <li><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1355,7 +1430,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($PdamKabupatenKepulauanYapen as $pkky)
-                                  <li><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1402,7 +1477,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenSarmi as $sks)
-                                <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1420,7 +1495,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                               @foreach($CiptaKaryaKabupatenSarmi as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                               @endforeach
                               @endif
                               </ul>
@@ -1476,7 +1551,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenSupiori as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1488,7 +1563,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenSupiori as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                               @endif
                             </ul>
@@ -1541,7 +1616,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item"> Tidak Ada Data</li>
                               @else
                                 @foreach($dataproces as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1553,7 +1628,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($statisticJayapura as $sj)
-                                  <li><a href="/showFile/{{encrypt($sj->file)}}" target="_blank">{{$sj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sj->file)}}" target="_blank">{{$sj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1565,7 +1640,7 @@ function stopPrntScr() {
                                   <li class="dropdown-item">Tidak Ada Data</li>
                                 @else
                                   @foreach($bws as $bws)
-                                    <li><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
                                   @endforeach
                                 @endif
                                 
@@ -1578,7 +1653,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($ciptaKaryaKotaJayapura as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1590,7 +1665,7 @@ function stopPrntScr() {
                                   <li class="dropdown-item"> Tidak Ada Data</li>
                                 @else
                                   @foreach($dukcapil as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                   @endforeach
                                 @endif
                               </ul>
@@ -1602,7 +1677,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($jayapuraWaterResource as $jwr)
-                                  <li><a href="/showFile/{{encrypt($jwr->file)}}" class="custom-dropdown-item" target="_blank">{{$jwr->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($jwr->file)}}#toolbar=0" target="_blank">{{$jwr->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1614,7 +1689,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item">Tidak Ada Data</li>
                                 @else
                                   @foreach($kotaJayapuraPDAM as $pdam)
-                                    <li><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
                                   @endforeach
                               @endif
                               </ul>
@@ -1642,7 +1717,7 @@ function stopPrntScr() {
                             <li class="dropdown-item">Tidak Ada Data</li>
                             @else
                             @foreach($StatistikKabupatenBiakNumfor as $skbn)
-                              <li><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
+                              <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
                             @endforeach
                             @endif
                             </ul>
@@ -1654,7 +1729,7 @@ function stopPrntScr() {
                             <li class="dropdown-item">Tidak Ada Data</li>
                             @else
                             @foreach($BwsKabupatenBiakNumfor as $bkbn)
-                              <li><a href="/showFile/{{encrypt($bkbn->file)}}" class="custom-dropdown-item" target="_blank">{{$bkbn->name}}</a></li>
+                              <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bkbn->file)}}#toolbar=0" target="_blank">{{$bkbn->name}}</a></li>
                             @endforeach
                             @endif
                             </ul>
@@ -1672,7 +1747,7 @@ function stopPrntScr() {
                             <li class="dropdown-item">Tidak Ada Data</li>
                             @else
                             @foreach($DukcapilKabupatenBiakNumfor as $dkbn)
-                              <li><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
+                              <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
                             @endforeach
                             @endif
                             </ul>
@@ -1716,7 +1791,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenJayapura as $skj)
-                                <li><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1734,7 +1809,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
-                                  <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1746,7 +1821,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenJayapura as $dkj)
-                                  <li><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1764,7 +1839,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($PdamKabupatenJayapura as $pkj)
-                                  <li><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1790,7 +1865,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenKeerom as $skk)
-                                  <li><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1808,7 +1883,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenKeerom as $ckkk)
-                                  <li><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1852,7 +1927,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenKepulauanYapen as $skky)
-                                  <li><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1870,7 +1945,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenKepulauanYapen as $ckkky)
-                                  <li><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1882,7 +1957,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenKepulauanYapen as $dkky)
-                                  <li><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1900,7 +1975,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($PdamKabupatenKepulauanYapen as $pkky)
-                                  <li><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1947,7 +2022,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($StatistikKabupatenSarmi as $sks)
-                                <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -1965,7 +2040,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                               @foreach($CiptaKaryaKabupatenSarmi as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                               @endforeach
                               @endif
                               </ul>
@@ -2021,7 +2096,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($CiptaKaryaKabupatenSupiori as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -2033,7 +2108,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($DukcapilKabupatenSupiori as $ckks)
-                                <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                               @endif
                             </ul>
@@ -2086,7 +2161,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item"> Tidak Ada Data</li>
                               @else
                                 @foreach($dataproces as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -2098,7 +2173,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($statisticJayapura as $sj)
-                                  <li><a href="/showFile/{{encrypt($sj->file)}}" target="_blank">{{$sj->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sj->file)}}" target="_blank">{{$sj->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -2110,7 +2185,7 @@ function stopPrntScr() {
                                   <li class="dropdown-item">Tidak Ada Data</li>
                                 @else
                                   @foreach($bws as $bws)
-                                    <li><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
                                   @endforeach
                                 @endif
                                 
@@ -2123,7 +2198,7 @@ function stopPrntScr() {
                               <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($ciptaKaryaKotaJayapura as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -2135,7 +2210,7 @@ function stopPrntScr() {
                                   <li class="dropdown-item"> Tidak Ada Data</li>
                                 @else
                                   @foreach($dukcapil as $d)
-                                  <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                   @endforeach
                                 @endif
                               </ul>
@@ -2147,7 +2222,7 @@ function stopPrntScr() {
                                 <li class="dropdown-item">Tidak Ada Data</li>
                               @else
                                 @foreach($jayapuraWaterResource as $jwr)
-                                  <li><a href="/showFile/{{encrypt($jwr->file)}}" class="custom-dropdown-item" target="_blank">{{$jwr->name}}</a></li>
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($jwr->file)}}#toolbar=0" target="_blank">{{$jwr->name}}</a></li>
                                 @endforeach
                               @endif
                               </ul>
@@ -2212,28 +2287,28 @@ function stopPrntScr() {
                                 <li class="parent"><a href="#" nowrap>Balai Wilayah Sungai <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($BwsKabupatenBiakNumfor as $bkbn)
-                                    <li><a href="/showFile/{{encrypt($bkbn->file)}}" target="_blank">{{$bkbn->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bkbn->file)}}" target="_blank">{{$bkbn->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>PDAM <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($PdamKabupatenBiakNumfor as $pkbn)
-                                    <li><a href="/showFile/{{encrypt($pkbn->file)}}" target="_blank">{{$pkbn->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkbn->file)}}" target="_blank">{{$pkbn->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($DukcapilKabupatenBiakNumfor as $dkbn)
-                                    <li><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkbn->file)}}" target="_blank">{{$dkbn->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Badan Pusat Statistik<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($StatistikKabupatenBiakNumfor as $skbn)
-                                    <li><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skbn->file)}}" target="_blank">{{$skbn->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
@@ -2244,28 +2319,28 @@ function stopPrntScr() {
                                 <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($CiptaKaryaKabupatenJayapura as $ckkj)
-                                    <li><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkj->file)}}" target="_blank">{{$ckkj->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>PDAM <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($PdamKabupatenJayapura as $pkj)
-                                    <li><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkj->file)}}" target="_blank">{{$pkj->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($DukcapilKabupatenJayapura as $dkj)
-                                    <li><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkj->file)}}" target="_blank">{{$dkj->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Badan Pusat Statistik<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($StatistikKabupatenJayapura as $skj)
-                                    <li><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skj->file)}}" target="_blank">{{$skj->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
@@ -2276,14 +2351,14 @@ function stopPrntScr() {
                                 <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($CiptaKaryaKabupatenKeerom as $ckkk)
-                                    <li><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkk->file)}}" target="_blank">{{$ckkk->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Badan Pusat Statistik <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($StatistikKabupatenKeerom as $skk)
-                                    <li><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skk->file)}}" target="_blank">{{$skk->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
@@ -2294,28 +2369,28 @@ function stopPrntScr() {
                                 <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($CiptaKaryaKabupatenKepulauanYapen as $ckkky)
-                                    <li><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckkky->file)}}" target="_blank">{{$ckkky->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>PDAM <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($PdamKabupatenKepulauanYapen as $pkky)
-                                    <li><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pkky->file)}}" target="_blank">{{$pkky->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Dinas Dukcapil <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($DukcapilKabupatenKepulauanYapen as $dkky)
-                                    <li><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($dkky->file)}}" target="_blank">{{$dkky->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Badan Pusat Statistik <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($StatistikKabupatenKepulauanYapen as $skky)
-                                    <li><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($skky->file)}}" target="_blank">{{$skky->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
@@ -2332,14 +2407,14 @@ function stopPrntScr() {
                                 <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($CiptaKaryaKabupatenSarmi as $ckks)
-                                    <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Badan Pusat Statistik <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($StatistikKabupatenSarmi as $sks)
-                                    <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
@@ -2350,14 +2425,14 @@ function stopPrntScr() {
                                 <li class="parent"><a href="#" nowrap>Dinas PU Bidang Cipta Karya <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($CiptaKaryaKabupatenSarmi as $ckks)
-                                    <li><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Badan Pusat Statistik <span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($StatistikKabupatenSarmi as $sks)
-                                    <li><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
@@ -2374,43 +2449,43 @@ function stopPrntScr() {
                                 <li class="parent"><a href="#" nowrap>Dinas PU Bidang SDA <span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($jayapuraWaterResource as $jwr)
-                                    <li><a href="/showFile/{{encrypt($jwr->file)}}" target="_blank">{{$jwr->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($jwr->file)}}" target="_blank">{{$jwr->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="#" nowrap>Balai Wilayah Sungai (BWS)<span class="expand"><i class="fa fa-chevron-right"></i></span></a>
                                   <ul class="child">
                                     @foreach($bws as $bws)
-                                    <li><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($bws->file)}}" target="_blank">{{$bws->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_pdam')}}" nowrap>PDAM<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($kotaJayapuraPDAM as $pdam)
-                                    <li><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($pdam->file)}}" target="_blank">{{$pdam->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_dukcapil')}}" nowrap>Dinas Dukcapil<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($dukcapil as $d)
-                                    <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/dinas_badan_pusat_statistik')}}" nowrap>Badan Pusat Statistik (BPS)<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($statisticJayapura as $sj)
-                                      <!-- <li><a href="/showFile/{{$sj->id}}" target="_blank">{{$sj->name}}</a></li> -->
-                                      <li><a href="/showFile/{{encrypt($sj->id)}}" target="_blank">{{$sj->name}}</a></li>
+                                      <!-- <li class="custom-dropdown-item"><a href="/showFile/{{$sj->id}}" target="_blank">{{$sj->name}}</a></li> -->
+                                      <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sj->id)}}" target="_blank">{{$sj->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>
                                 <li class="parent"><a href="{{url('/usulan_teknik/kota/jayapura/badan_pengelolahan_dan_pendapatan_daerah')}}" nowrap>Badan Pengelolahan Dan Pendataan Daerah<span class="expand"><i class="fa fa-chevron-right"></span></i></a>
                                   <ul class="child">
                                     @foreach($dataproces as $d)
-                                    <li><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
+                                    <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($d->file)}}" target="_blank"> {{$d->name}}</a></li>
                                     @endforeach
                                   </ul>
                                 </li>

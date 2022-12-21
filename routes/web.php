@@ -7,6 +7,8 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\SubAdminController;
 use App\Http\Controllers\AdminPUController;
 use App\Http\Controllers\RABController;
+use Illuminate\Support\Facades\Artisan;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,8 @@ use App\Http\Controllers\RABController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get("/display_data/{id}", [UserController::class, "displayData"])->name("display_data");
 
 Route::get('/', [UserController::class, 'UserIndex'])->name('user.index');
 Route::post('/', [UserController::class, 'UserStoreComment'])->name('user.comment.store');

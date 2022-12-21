@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membuat Laporan PDF Dengan DOMPDF Laravel</title>
+	<title>RAB PUPRPKP PAPUA</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('user/css/bootstrap.min.css') }}"> -->
 </head>
 <body>
 	<style type="text/css">
@@ -21,7 +22,6 @@
 	</style>
 	<center>
 		<h2>Perusahaan Air Minum</h2>
-		<!-- <h6><a target="_blank" href="https://www.malasngoding.com/membuat-laporan-…n-dompdf-laravel/">www.malasngoding.com</a></h5> -->
 	</center>
  
 	<div class="data-table-area">
@@ -52,7 +52,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $id_row = 1 ?>
+                                    
                                     @foreach($detail_rab->unique("kode_kategori_pekerjaan") as $k)
                                     <tr class="kategori-{{$k->kode_kategori_pekerjaan}}">
                                         <td class="text-center"><b>{{$k->kode_kategori_pekerjaan}}</b></td>
@@ -61,18 +61,17 @@
                                         <td></td>
                                         <td></td>
                                     </tr>
-                                    @foreach($detail_rab as $dr)
-                                        @if($dr->kode_kategori_pekerjaan == $k->kode_kategori_pekerjaan)
-                                        <?php ++$id_row?>
-                                        <tr>
-                                            <td class="text-center">{{$dr->number_row}}</td>
-                                            <td>{{$dr->uraian_pekerjaan}}</td>
-                                            <td class="text-center">{{$dr->volume}}</td>
-                                            <td class="text-right">Rp. {{number_format($dr->harga_satuan, 0, ',', '.')}}</td>
-                                            <td class="text-right">Rp. {{number_format($dr->jumlah_harga, 0, ',', '.')}}</td>
-                                        </tr>
-                                        @endif
-                                    @endforeach
+                                        @foreach($detail_rab as $dr)
+                                            @if($dr->kode_kategori_pekerjaan == $k->kode_kategori_pekerjaan)
+                                            <tr>
+                                                <td class="text-center">{{$dr->number_row}}</td>
+                                                <td>{{$dr->uraian_pekerjaan}}</td>
+                                                <td class="text-center">{{$dr->volume}}</td>
+                                                <td class="text-right">Rp. {{number_format($dr->harga_satuan, 0, ',', '.')}}</td>
+                                                <td class="text-right">Rp. {{number_format($dr->jumlah_harga, 0, ',', '.')}}</td>
+                                            </tr>
+                                            @endif
+                                        @endforeach
                                     @endforeach
                                 </tbody>
                             </table>
@@ -86,19 +85,19 @@
                     <table>
                         <tr>
                             <th>Real Cost</th>
-                            <th style="padding-left: 100px;">Rp. {{number_format($rab->real_cost, 0, ',', '.')}}</th>
+                            <th style="padding-left: 100px; white-space: nowrap;">Rp. {{number_format($rab->real_cost, 0, ',', '.')}}</th>
                         </tr>
                         <tr>
                             <th>PPN(11%)</th>
-                            <th style="padding-left: 100px;">Rp. {{number_format($rab->ppn, 0, ',', '.')}}</th>
+                            <th style="padding-left: 100px; white-space: nowrap;">Rp. {{number_format($rab->ppn, 0, ',', '.')}}</th>
                         </tr>
                         <tr>
                             <th>Total Cost</th>
-                            <th style="padding-left: 100px;">Rp. {{number_format($rab->total_cost, 0, ',', '.')}}</th>
+                            <th style="padding-left: 100px; white-space: nowrap;">Rp. {{number_format($rab->total_cost, 0, ',', '.')}}</th>
                         </tr>
                         <tr>
                             <th>Dibulatkan</th>
-                            <th style="padding-left: 100px;">Rp. {{number_format(round($rab->total_cost, 2), 0, ',', '.')}}</th>
+                            <th style="padding-left: 100px; white-space: nowrap;">Rp. {{number_format(round($rab->total_cost, 2), 0, ',', '.')}}</th>
                         </tr>
                     </table>
                 </div>
@@ -110,12 +109,21 @@
                 <i class="notika-icon notika-right-arrow"></i> 
             </button> -->
         </div>
-    </div>    
-    <div id="editor"></div>
- 
+    </div>
+    <!-- <object data="" type="{{$content_type}}"></object> -->
+    <!-- <object width="100%" height="650" type="{{$content_type}}" data="{{asset('storage/'.$rab->file)}}" id="pdf_content" style="pointer-events: none;">
+        <p>Insert your error message here, if the PDF cannot be displayed.</p>
+    </object> -->
+
 </body>
 </html>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+@if($berkas_type != "application/pdf")
+<div>
+    <img src="{{public_path().'/storage/'.$rab->file}}" alt="">
+</div>
+@endif
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
     var doc = new jsPDF();
     var specialElementHandlers = {
@@ -130,5 +138,5 @@
                 'elementHandlers': specialElementHandlers
         });
         doc.save('{{$rab->kode_rab}}.pdf');
-    });
+    }); -->
 </script>
