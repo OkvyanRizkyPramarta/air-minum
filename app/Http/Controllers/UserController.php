@@ -15,6 +15,7 @@ use App\Models\RiverIntake;
 use App\Models\DataProces;
 use App\Models\Dukcapil;
 use App\Models\Statistic;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -376,8 +377,38 @@ class UserController extends Controller
 
     public function showFile($id){
         $id = decrypt($id);
-        $path = storage_path()."/app/public/{$id}";
+        $path = storage_path()."/app/public/files/{$id}";
+        $location = 'files/'.$id;
+        if(!file_exists($path)){
+            $path = storage_path()."/app/public/{$id}";
+            $location = $id;
+        }
         $content_type = mime_content_type($path);
-        return view("user.template", ["path" => $id, "content_type" => $content_type]);
+        
+        return view("user.template", ["path" => $location, "content_type" => $content_type]);
+        // $id = decrypt($id);
+        // $path = storage_path()."/app/public/files/{$id}";
+        // $location = 'files/'.$id;
+        // if(!file_exists($path)){
+        //     $path = storage_path()."/app/public/{$id}";
+        //     $location = $id;
+        // }
+        // $content_type = mime_content_type($path);
+        
+        // return view("user.template", ["path" => $location, "content_type" => $content_type]);
     }
+
+    // public function displayData($id){
+    //     $id=  encrypt($id);
+    //     $id = decrypt($id);
+    //     $path = storage_path()."/app/public/files/{$id}";
+    //     $location = 'files/'.$id;
+    //     if(!file_exists($path)){
+    //         $path = storage_path()."/app/public/{$id}";
+    //         $location = $id;
+    //     }
+    //     $content_type = mime_content_type($path);
+
+    //     return $response;
+    // }
 }

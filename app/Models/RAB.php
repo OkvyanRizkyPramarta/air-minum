@@ -19,6 +19,7 @@ class RAB extends Model
         "real_cost",
         "ppn",
         "total_cost",
-        "dibulatkan"
+        "dibulatkan",
+        "file"
     ];
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->bigInteger("ppn");
             $table->bigInteger("total_cost");
             $table->bigInteger("dibulatkan")->nullable();
+            $table->string("file");
             $table->timestamps();
         });
     }

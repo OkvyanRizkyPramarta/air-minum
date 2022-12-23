@@ -165,6 +165,10 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="form-group">
+                                      <label for="#inputFile">Pilih Berkas ( pdf/gambar )</label>
+                                      <input type="file" class="form-control" name="file" id="inputFile">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -379,7 +383,7 @@
 
             $(".volume").keyup(function(){
                 let idRow = this.getAttribute("id-row");
-                let harga_satuan = $(".harga-satuan[id-row="+idRow+"]").val().split(".")[0];
+                let harga_satuan = $(".harga-satuan[id-row="+idRow+"]").val().split(".").join("");
                 let volume = this.value.split(" ")[0];
                 let hasil = harga_satuan * volume;
                 $(".jumlah-harga[id-row="+idRow+"]").val(formatRupiah(String(hasil)));

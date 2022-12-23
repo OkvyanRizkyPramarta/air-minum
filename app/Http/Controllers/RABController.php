@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DetailRAB;
 use App\Models\RAB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\Cast\Object_;
 use stdClass;
 use PDF;
@@ -43,6 +44,11 @@ class RABController extends Controller
         }
         $ppn = $real_cost * 0.11;
         $total_cost = $real_cost + $ppn;
+        $file = $request->file("file");
+        $ext = $file->getClientOriginalExtension();
+        $filename = $kode_rab.".".$ext;
+        $upload = $file->storeAs('public/files/', $filename);
+
         RAB::create([
             "kode_rab" => $kode_rab,
             "pekerjaan" => $request->judul_pekerjaan,
@@ -50,7 +56,8 @@ class RABController extends Controller
             "real_cost" => $real_cost,
             "ppn" => $ppn,
             "total_cost" => $total_cost,
-            "dibulatkan" => $total_cost
+            "dibulatkan" => $total_cost,
+            "file" => "files/".$filename,
         ]);
 
         return redirect("/superadmin/rab");
@@ -132,8 +139,18 @@ class RABController extends Controller
     public function detail($id){
         $rab = RAB::where("kode_rab", $id)->first();
         $detail_rab = DetailRAB::where("kode_rab", $id)->get();
-        $pdf = PDF::loadView('/superadmin/rab/view_pdf', ["detail_rab" => $detail_rab, "rab" => $rab]);
-        return $pdf->download("{$rab->kode_rab}.pdf");
-        // return view("/superadmin/rab/view_pdf", ["detail_rab" => $detail_rab, "rab" => $rab]);
+        $path = storage_path()."/app/public/".$rab->file;
+        $content_type = mime_content_type($path);
+        $berkas = storage_path('/app/public/'.$rab->file);
+        $berkas_type = mime_content_type($berkas);
+        $pdf = PDF::loadView('/superadmin/rab/view_pdf', ["detail_rab" => $detail_rab, "rab" => $rab, "content_type" => $content_type, "berkas_type" => $berkas_type]);
+
+        $content = $pdf->download()->getOriginalContent();
+        Storage::put('public/files/'.$id.'_temp.pdf', $content);
+        if($content_type == "application/pdf"){
+            return view("/superadmin/rab/detail", ["rab" => $rab, "content_type" => $berkas_type]);
+        }else{
+            return $pdf->stream($id.".pdf", ["Attachment" => false]);
+        }
     }
 }
