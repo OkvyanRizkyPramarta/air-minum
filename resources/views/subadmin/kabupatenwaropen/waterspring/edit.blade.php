@@ -76,7 +76,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                      <label>Kerkas PDF</label>
+                                      <label>Berkas PDF</label>
                                       <input type="file" name="file" value="{{ $waterspring->file }}" class="form-control" >
                                       </br>
                                       <iframe width="550px" width="250px" src="{{asset('storage/'.$waterspring->file)}}"></iframe>

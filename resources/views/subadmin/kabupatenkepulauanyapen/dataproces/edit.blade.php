@@ -59,7 +59,7 @@
                                     <div class="form-ic-cmp">
                                     </div>
                                     <div class="nk-int-st">
-                                      <label>Kerkas PDF</label>
+                                      <label>Berkas PDF</label>
                                       <input type="file" name="file" value="{{ $dataproces->file }}" class="form-control" >
                                       </br>
                                       <iframe width="550px" width="250px" src="{{asset('storage/'.$dataproces->file)}}"></iframe>

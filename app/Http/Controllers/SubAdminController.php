@@ -3189,7 +3189,7 @@ class SubAdminController extends Controller
     {
         $city = City::index();
         // $district = District::index();
-        return view('subadmin.kabupatenbiaknumfor.riverintake.edit', compact('city', 'district', 'riverintake'));
+        return view('subadmin.kabupatenbiaknumfor.riverintake.edit', compact('city', 'riverintake'));
     }
 
     /**
