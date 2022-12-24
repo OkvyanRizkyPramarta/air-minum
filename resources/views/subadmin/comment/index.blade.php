@@ -1,4 +1,4 @@
-@extends('layouts.subadmin.master')
+@extends('layouts.subadmin.beranda')
 
 @section('content')
 	<!-- Breadcomb area Start-->

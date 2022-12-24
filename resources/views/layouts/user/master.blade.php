@@ -574,15 +574,15 @@ function stopPrntScr() {
                             </li> -->
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Badan Pusat Statistik (BPS)</a>
-                                @foreach($StatistikKabupatenSarmi as $sks)
-                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sks->file)}}" target="_blank">{{$sks->name}}</a></li>
+                                @foreach($StatistikKabupatenSupiori as $sksi)
+                                  <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($sksi->file)}}" target="_blank">{{$sks->name}}</a></li>
                                 @endforeach
                             </li>
                             <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Balai Wilayah Sungai (BWS)</a></li> -->
                             <li>
                               <a class="dropdown-item dropdown-toggle" href="#">Dinas PU Bidang Cipta Karya</a>
-                                @foreach($CiptaKaryaKabupatenSarmi as $ckks)
-                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckks->file)}}" target="_blank">{{$ckks->name}}</a></li>
+                                @foreach($CiptaKaryaKabupatenSupiori as $ckksi)
+                                <li class="custom-dropdown-item"><a href="/showFile/{{encrypt($ckksi->file)}}" target="_blank">{{$ckks->name}}</a></li>
                                 @endforeach
                             </li>
                             <!-- <li><a class="dropdown-item dropdown-toggle" href="#">Dinas Dukcapil</a></li>

@@ -718,6 +718,10 @@ Route::middleware(['auth', 'SuperAdmin'])->group(function () {
     Route::delete('/superadmin/rab/destroy/{rab}', [RABController::class, "destroy"])->name("superadmin.rab.destroy");
     Route::post('/superadmin/rab/update', [RABController::class, "update"])->name("superadmin.rab.update");
     Route::get('/superadmin/rab/detail/{rab}', [RABController::class, "detail"])->name("superadmin.rab.detail");
+    // Route::post('/superadmin/rab/upload/{rab}', [RABController::class, "upload"])->name("superadmin.rab.upload");
+    Route::get('/superadmin/rab/upload/{rab}', [RABController::class, "upload"])->name("superadmin.rab.upload");
+    Route::post('/superadmin/rab/upload_file/{rab}', [RABController::class, "upload_file"])->name("superadmin.rab.upload_file");
+
     });
 
     

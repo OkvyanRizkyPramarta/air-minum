@@ -86,7 +86,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-                    <h2>Halaman Ubah Data Tabel RAB</h2>
+                    <h2>Halaman Ubah Data Tabel Usulan Teknis</h2>
 										<h2>Provinsi Papua<span class="bread-ntd"></span></h2>
 									</div>
 								</div>
@@ -161,7 +161,7 @@
                                                         <input type="text" class="form-control jumlah-harga" value="{{number_format($dr->jumlah_harga, 0, ',', '.')}}" name="jumlah_harga_{{$k->kode_kategori_pekerjaan}}[]" id-row="{{$id_row}}" required readonly>
                                                     </td>
                                                     <td class="text-center">
-                                                        <!-- <button type="button" class="btn btn-danger btn-remove" data-kategori="A"><i class="fa fa-trash"></i></button> -->
+                                                        <button type="button" class="btn btn-danger btn-remove" data-kategori="A"><i class="fa fa-trash"></i></button>
                                                         <button type="button" class="btn btn-success btn-add-row" data-kategori="{{$k->kode_kategori_pekerjaan}}"><i class="fa fa-plus"></i></button>
                                                     </td>
                                                 </tr>
@@ -174,6 +174,10 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <!-- <div class="form-group">
+                                      <label for="#inputFile">Pilih Berkas ( pdf/gambar )</label>
+                                      <input type="file" class="form-control" name="file" id="inputFile">
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -290,27 +294,52 @@
         let countRow = JSON.parse("{{$obj}}".split("&quot;").join('"'));
         let id_row = {{$id_row}};
         let kategori = $(".btn-add-row:last").attr("data-kategori");
-
+        
         function btnFunction(){
+
             $(".btn-remove").click(function(){
                 let kodeKategori = this.getAttribute("data-kategori");
-                let countedRow = $(".kategori-"+kodeKategori+"").length;
+                let countedRow = $(".kategori-"+kodeKategori+"").length -1;
                 let latestKey = Object.keys(countRow)[Object.keys(countRow).length-1];
                 let rowLength = Object.keys(countRow).length;
-                if((kodeKategori > latestKey) && rowLength > 1 && countedRow > 2){
+                if(kodeKategori > 'A'){
+                  if(rowLength > 1 && countedRow > 1){
+                    $(this).closest("tr").remove();
+                  }else{
                     $(".kategori-"+kodeKategori+"").remove();
                     delete countRow[kodeKategori];
                     kategori = String.fromCharCode(kategori.charCodeAt(0) - 1);
-                }else if((kodeKategori < latestKey) && rowLength > 1 && countedRow > 2){
+                  }
+                }else{
+                  let countRow = $(".kategori-"+kodeKategori).length - 1;
+                  if(countRow > 1){
                     $(this).closest("tr").remove();
-                    Object.keys(countRow).forEach(function(val){
-                        if(val != 'A'){
-                            $(".kategori-"+kodeKategori+"").remove();
-                            delete countRow[kodeKategori];
-                            kategori = String.fromCharCode(kategori.charCodeAt(0) - 1);
-                        }
-                    })
+                  }
                 }
+                // if((kodeKategori > latestKey) && rowLength > 1 && countedRow == 2){
+                //     $(".kategori-"+kodeKategori+"").remove();
+                //     delete countRow[kodeKategori];
+                //     kategori = String.fromCharCode(kategori.charCodeAt(0) - 1);
+                // }else{
+                //   $(this).closest("tr").remove();
+                // }
+                // if((kodeKategori > latestKey) && rowLength > 1 && countedRow > 2){
+                //     $(".kategori-"+kodeKategori+"").remove();
+                //     delete countRow[kodeKategori];
+                //     kategori = String.fromCharCode(kategori.charCodeAt(0) - 1);
+                // }else if((kodeKategori < latestKey) && rowLength > 1 && countedRow > 2 && kodeKategori != 'A'){
+                //     $(this).closest("tr").remove();
+                //     Object.keys(countRow).forEach(function(val){
+                //         if(val != 'A'){
+                //             $(".kategori-"+kodeKategori+"").remove();
+                //             delete countRow[kodeKategori];
+                //             kategori = String.fromCharCode(kategori.charCodeAt(0) - 1);
+                //         }
+                //     })
+                //     $(".kategori-"+kodeKategori+"").remove();
+                //       delete countRow[kodeKategori];
+                //       kategori = String.fromCharCode(kategori.charCodeAt(0) - 1);
+                // }
             })
 
             $(".btn-add-row").unbind("click").bind("click", function(){
@@ -324,7 +353,7 @@
                             '<td><input type="text" class="form-control harga-satuan" value="" name="harga_satuan_'+curKategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control jumlah-harga" value="" name="jumlah_harga_'+curKategori+'[]" id-row="'+id_row+'" required readonly></td>'+
                             '<td class="text-center">'+
-                                // '<button type="button" class="btn btn-danger btn-remove" data-kategori="'+curKategori+'"><i class="fa fa-trash"></i></button>'+
+                                '<button type="button" class="btn btn-danger btn-remove" data-kategori="'+curKategori+'"><i class="fa fa-trash"></i></button>'+
                                 ' <button type="button" class="btn btn-success btn-add-row" data-kategori="'+curKategori+'"><i class="fa fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>';
@@ -348,13 +377,13 @@
                             '<td><input type="text" class="form-control harga-satuan" value="" name="harga_satuan_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control jumlah-harga" value="" name="jumlah_harga_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td class="text-center">'+
-                                // '<button type="button" class="btn btn-danger btn-remove" data-kategori="'+kategori+'"><i class="fa fa-trash"></i></button>'+
+                                '<button type="button" class="btn btn-danger btn-remove" data-kategori="'+kategori+'"><i class="fa fa-trash"></i></button>'+
                                 ' <button type="button" class="btn btn-success btn-add-row" data-kategori="'+kategori+'"><i class="fa fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>';
                 $(row).insertBefore("#rowKategori");
                 btnFunction();
-            })
+            });
 
             $(".harga-satuan").keyup(function(){
                 let idRow = this.getAttribute("id-row");
@@ -376,20 +405,24 @@
         btnFunction();
         
         function formatRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                split = number_string.split(","),
-                sisa = split[0].length % 3,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+          var number_string = angka.replace(/[^,\d]/g, "").toString(),
+              split = number_string.split(","),
+              sisa = split[0].length % 3,
+              rupiah = split[0].substr(0, sisa),
+              ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-            // tambahkan titik jika yang di input sudah menjadi angka ribuan
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
+          // tambahkan titik jika yang di input sudah menjadi angka ribuan
+          if (ribuan) {
+              separator = sisa ? "." : "";
+              rupiah += separator + ribuan.join(".");
+          }
 
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
-            }
+          rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+          return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
+          }
+
+          function resetNumbering(){
+
+          }
     </script>
 @endsection
