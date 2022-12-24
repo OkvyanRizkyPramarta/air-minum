@@ -48,7 +48,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKotaJayapuraWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '9')->get();
+        $waterresource = WaterResource::where('city_id', '9')->where("show", "yes")->get();
         return view('adminpu.kotajayapura.waterresource.index', compact('waterresource'));
     }
 
@@ -78,7 +78,8 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKotaJayapuraMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '9')->get();
+
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '9')->where("show", "yes")->get();
         return view('adminpu.kotajayapura.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
@@ -107,7 +108,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabJayapuraWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '2')->get();
+        $waterresource = WaterResource::where('city_id', '2')->where("show", "yes")->get();
         return view('adminpu.kabupatenjayapura.waterresource.index', compact('waterresource'));
     }
 
@@ -138,7 +139,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabJayapuraMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '2')->get();
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '2')->where("show", "yes")->get();
         return view('adminpu.kabupatenjayapura.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
@@ -173,7 +174,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabBiakNumforWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '1')->get();
+        $waterresource = WaterResource::where('city_id', '1')->where("show", "yes")->get();
         return view('adminpu.kabupatenbiaknumfor.waterresource.index', compact('waterresource'));
     }
 
@@ -204,7 +205,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabBiakNumforMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '1')->get();
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '1')->where("show", "yes")->get();
         return view('adminpu.kabupatenbiaknumfor.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
@@ -228,7 +229,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabKeeromWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '3')->get();
+        $waterresource = WaterResource::where('city_id', '3')->where("show", "yes")->get();
         return view('adminpu.kabupatenkeerom.waterresource.index', compact('waterresource'));
     }
 
@@ -259,7 +260,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabKeeromMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '3')->get();
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '3')->where("show", "yes")->get();
         return view('adminpu.kabupatenkeerom.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
@@ -296,7 +297,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabSarmiWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '6')->get();
+        $waterresource = WaterResource::where('city_id', '6')->where("show", "yes")->get();
         return view('adminpu.kabupatensarmi.waterresource.index', compact('waterresource'));
     }
 
@@ -326,7 +327,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabSarmiMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '6')->get();
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '6')->where("show", "yes")->get();
         return view('adminpu.kabupatensarmi.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
@@ -363,7 +364,8 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabSupioriWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '7')->get();
+        $waterresource = WaterResource::where('city_id', '7')->where("show", "yes")->get();
+        
         return view('adminpu.kabupatensupiori.waterresource.index', compact('waterresource'));
     }
 
@@ -394,7 +396,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabSupioriMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '7')->get();
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '7')->where("show", "yes")->get();
         return view('adminpu.kabupatensupiori.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
@@ -432,7 +434,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabKepulauanYapenWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '4')->get();
+        $waterresource = WaterResource::where('city_id', '4')->where("show", "yes")->get();
         return view('adminpu.kabupatenkepulauanyapen.waterresource.index', compact('waterresource'));
     }
 
@@ -462,7 +464,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabKepulauanYapenMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '4')->get();
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '4')->where("show", "yes")->get();
         return view('adminpu.kabupatenkepulauanyapen.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
@@ -502,7 +504,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabWaropenWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '8')->get();
+        $waterresource = WaterResource::where('city_id', '8')->where("show", "yes")->get();
         return view('adminpu.kabupatenwaropen.waterresource.index', compact('waterresource'));
     }
 
@@ -532,7 +534,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabWaropenMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '8')->get();
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '8')->where("show", "yes")->get();
         return view('adminpu.kabupatenwaropen.municipalwaterwork.index', compact('municipalwaterwork'));
     }
 
@@ -557,7 +559,7 @@ class AdminPUController extends Controller
 
     public function AdminPUAirBersihKabMamberamoRayaWaterResourceIndex()
     {
-        $waterresource = WaterResource::where('city_id', '5')->get();
+        $waterresource = WaterResource::where('city_id', '5')->where("show", "yes")->get();
         return view('adminpu.kabupatenmamberamoraya.waterresource.index', compact('waterresource'));
     }
     
@@ -587,7 +589,7 @@ class AdminPUController extends Controller
     
     public function AdminPUAirBersihKabMamberamoRayaMunicipalWaterworkIndex()
     {
-        $municipalwaterwork = MunicipalWaterwork::where('city_id', '5')->get();
+        $municipalwaterwork = MunicipalWaterwork::where('city_id', '5')->where("show", "yes")->get();
         return view('adminpu.kabupatenmamberamoraya.municipalwaterwork.index', compact('municipalwaterwork'));
     }
     
