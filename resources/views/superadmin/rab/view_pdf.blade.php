@@ -118,7 +118,7 @@
 </body>
 </html>
 
-@if($berkas_type != "application/pdf")
+@if($berkas_type != "application/pdf" && $berkas_type != "")
 <div>
     <img src="{{public_path().'/storage/'.$rab->file}}" alt="">
 </div>
