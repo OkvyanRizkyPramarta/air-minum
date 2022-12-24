@@ -170,6 +170,27 @@ class RABController extends Controller
     }
 
     public function upload(Request $request, $id){
+        $rab = RAB::where("kode_rab", $id)->first();
+        $path = storage_path()."/app/public/".$rab->file;
+        $content_type = "none";
+        if(file_exists($path)){
+            $content_type = mime_content_type($path);
+        }
+
+        return view("/superadmin/rab/upload", ["rab" => $rab, "content_type" => $content_type]);
+        // $file = $request->file("file");
+        // $ext = $file->getClientOriginalExtension();
+        // $filename = $id.".".$ext;
+        // $upload = $file->storeAs('public/files/', $filename);
+
+        // RAB::where("kode_rab", $id)->update([
+        //     'file' => "files/".$filename
+        // ]);
+        
+        // return redirect()->back();
+    }
+
+    public function upload_file(Request $request, $id){
         $file = $request->file("file");
         $ext = $file->getClientOriginalExtension();
         $filename = $id.".".$ext;
@@ -179,6 +200,6 @@ class RABController extends Controller
             'file' => "files/".$filename
         ]);
         
-        return redirect()->back();
+        return redirect("/superadmin/rab");
     }
 }

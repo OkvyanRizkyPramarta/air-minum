@@ -147,9 +147,12 @@
                                                     </a>
                                                 </div>
                                                 <div class="form-group">
-                                                    <button type="button" class="btn notika-btn-green btn-berkas" data-id="{{$w->kode_rab}}" data-toggle="modal" data-target="#myModalone" style="color: white;"><i class="fa fa-file"></i>
+                                                    <a href="/superadmin/rab/upload/{{$w->kode_rab}}" class="btn notika-btn-green btn-berkas" style="color: white;"><i class="fa fa-file"></i>
                                                     Berkas
-                                                    </button>
+                                                    </a>
+                                                    <!-- <button type="button" class="btn notika-btn-green btn-berkas" data-id="{{$w->kode_rab}}" data-toggle="modal" data-target="#myModalone" style="color: white;"><i class="fa fa-file"></i>
+                                                    Berkas
+                                                    </button> -->
                                                 </div>
                                             </td>
                                         </div>
