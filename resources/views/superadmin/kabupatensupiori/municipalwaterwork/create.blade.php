@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="nk-int-st">
                                         <label>Nama Kota</label>
-                                        <input type="text" name="city_id" value="Kota Jayapura" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" Disabled/>
+                                        <input type="text" name="city_id" value="Kabupaten Supiori" class="form-control" required="required" data-validation-required-message="Silahkan Masukkan Data" Disabled/>
                                     </div>
                                 </div>
                             </div>
