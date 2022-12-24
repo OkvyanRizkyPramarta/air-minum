@@ -66,7 +66,7 @@ class UserController extends Controller
     public function UserStoreComment(Request $request)
     {
         Comment::store($request);
-        Alert::toast('Kritik Dan Saran Berhasil Disimpan', 'success');
+        Alert::toast('Kritik Dan Saran Berhasil Disimpan');
         return redirect()->back();
     }
 

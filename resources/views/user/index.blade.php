@@ -51,19 +51,22 @@
               <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ asset('user/images/gallery/gambar1.jpeg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/1.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/gallery/gambar2.jpeg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/2.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/gallery/gambar3.jpeg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/3.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/gallery/gambar4.jpeg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/4.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/gallery/gambar5.jpeg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/5.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="{{ asset('user/images/6.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -85,7 +88,7 @@
       <div class="container">
       <form method="POST" action="{{ route('user.comment.store') }}" enctype="multipart/form-data">
         <div class="row">
-          <div class="col-md-4 col-md-4 col-sm-12" style="padding-top:10%">
+          <div class="col-md-4 col-sm-12" style="padding-top:10%">
             <h1 class="newsletter_text" style="color:#10597D;">Kritik Dan Saran</h1>
             <p class="tempor_text" style="color:black;">
               Apabila ada kritik dan saran silahkan tuliskan pada kolom yang tertera.
@@ -93,7 +96,7 @@
             </p>
           </div>
           @csrf 
-          <div class="col-md-8 col-md-8 col-sm-12" style="">
+          <div class="col-md-8 col-sm-12" style="">
             <div>
               <input type="text" name="name" class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Nama Anda" required> <br> <br> <br>
               <input type="number" name="telp_number"  class="mail_text" style="width:80%;border-radius: 4px;background-color:#D9D9D9;" placeholder="Masukkan Nomer Telepon Anda" required> <br> <br> <br>
