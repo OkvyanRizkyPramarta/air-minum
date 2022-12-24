@@ -86,7 +86,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-										<h2>Data Tabel RAB</h2>
+										<h2>Data Tabel Usulan Teknis</h2>
 										<h2>Provinsi Papua<span class="bread-ntd"></span></h2>
 									</div>
 								</div>

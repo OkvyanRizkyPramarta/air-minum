@@ -86,7 +86,7 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
-                    <h2>Halaman Tambah Data Tabel RAB</h2>
+                    <h2>Halaman Tambah Data Tabel Usulan Teknis</h2>
 										<h2>Provinsi Papua<span class="bread-ntd"></span></h2>
 									</div>
 								</div>
@@ -113,7 +113,7 @@
                                           <label for="judul_pekerjaan">Judul Pekerjaan : </label>
                                         </div>
                                         <div class="col-md-3">
-                                          <input type="text" name="judul_pekerjaan" class="form-control">
+                                          <input type="text" name="judul_pekerjaan" class="form-control" required>
                                         </div>
                                       </div>
                                     </div>
@@ -167,7 +167,7 @@
                                     </div>
                                     <div class="form-group">
                                       <label for="#inputFile">Pilih Berkas ( pdf/gambar )</label>
-                                      <input type="file" class="form-control" name="file" id="inputFile">
+                                      <input type="file" class="form-control" name="file" id="inputFile" required>
                                     </div>
                                 </div>
                             </div>
