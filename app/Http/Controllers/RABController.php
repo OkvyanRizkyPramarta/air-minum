@@ -85,6 +85,7 @@ class RABController extends Controller
     public function update(Request $request){
         $total_cost = $real_cost = $ppn = $dibulatkan = 0;
         $kode_rab = $request->kode_rab;
+        $rab = RAB::where("kode_rab", $kode_rab)->first();
         foreach($request->kode_kategori_pekerjaan as $x => $kkp){
             foreach($request->input("uraian_pekerjaan_$kkp") as $i => $up){
                 $jumlah_harga = str_replace(".", "", $request->input("jumlah_harga_{$kkp}")[$i]);
@@ -117,13 +118,22 @@ class RABController extends Controller
         }
         $ppn = $real_cost * 0.11;
         $total_cost = $real_cost + $ppn;
+        $filename = explode("/", $rab->file)[1];
+        if(!empty($request->file("file"))){
+            $file = $request->file("file");
+            $ext = $file->getClientOriginalExtension();
+            $filename = $kode_rab.".".$ext;
+            $upload = $file->storeAs('public/files/', $filename);
+        }
+
         RAB::where("kode_rab", $kode_rab)->update([
             "pekerjaan" => $request->judul_pekerjaan,
             "tahun_anggaran" => date("Y"),
             "real_cost" => $real_cost,
             "ppn" => $ppn,
             "total_cost" => $total_cost,
-            "dibulatkan" => $total_cost
+            "dibulatkan" => $total_cost,
+            "file" => "files/".$filename,
         ]);
 
         return redirect("/superadmin/rab");
