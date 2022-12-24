@@ -814,7 +814,7 @@ Route::middleware(['auth', 'SubAdmin'])->group(function () {
      Route::post('/subadmin/airbersih/kota/jayapura/waterresource/create', [SubAdminController::class, 'SubAdminAirBersihKotaJayapuraWaterResourceStore'])->name('subadmin.airbersih.kotajayapura.waterresource.store');
      Route::get('/subadmin/airbersih/kota/jayapura/waterresource/edit/{waterresource}', [SubAdminController::class, 'SubAdminAirBersihKotaJayapuraWaterResourceEdit'])->name('subadmin.airbersih.kotajayapura.waterresource.edit');
      Route::put('/subadmin/airbersih/kota/jayapura/waterresource/update/{waterresource}', [SubAdminController::class, 'SubAdminAirBersihKotaJayapuraWaterResourceUpdate'])->name('subadmin.airbersih.kotajayapura.waterresource.update');
-     Route::delete('/subadmin/airbersih/kota/jayapura/waterresource/index/{waterresource}', [SubAdminController::class, 'SubAdminAirBersihKotaJayapuraWaterResourceUpdate'])->name('subadmin.airbersih.kotajayapura.waterresource.destroy');
+     Route::delete('/subadmin/airbersih/kota/jayapura/waterresource/index/{waterresource}', [SubAdminController::class, 'SubAdminAirBersihKotaJayapuraWaterResourceDestroy'])->name('subadmin.airbersih.kotajayapura.waterresource.destroy');
 
     Route::get('/subadmin/airbersih/kota/jayapura/dukcapil/index', [SubAdminController::class, 'SubAdminAirBersihKotaJayapuraDukcapilIndex'])->name('subadmin.airbersih.kotajayapura.dukcapil.index');
     Route::get('/subadmin/airbersih/kota/jayapura/dukcapil/create', [SubAdminController::class, 'SubadminAirBersihKotaJayapuraDukcapilCreate'])->name('subadmin.airbersih.kotajayapura.dukcapil.create'); 
@@ -1029,7 +1029,7 @@ Route::middleware(['auth', 'SubAdmin'])->group(function () {
     Route::delete('/subadmin/airbersih/kabupaten/keerom/dukcapil/index/{dukcapil}', [SubAdminController::class, 'SubAdminAirBersihKabKeeromDukcapilDestroy'])->name('subadmin.airbersih.kabupatenkeerom.dukcapil.destroy');
 
     Route::get('/subadmin/airbersih/kabupaten/keerom/statistic/index', [SubAdminController::class, 'SubAdminAirBersihKabKeeromStatisticIndex'])->name('subadmin.airbersih.kabupatenkeerom.statistic.index');
-    Route::get('/subadmin/airbersih/kabupaten/keerom/statistic/create', [SubperAdminController::class, 'SubAdminAirBersihKabKeeromStatisticCreate'])->name('subadmin.airbersih.kabupatenkeerom.statistic.create'); 
+    Route::get('/subadmin/airbersih/kabupaten/keerom/statistic/create', [SubAdminController::class, 'SubAdminAirBersihKabKeeromStatisticCreate'])->name('subadmin.airbersih.kabupatenkeerom.statistic.create'); 
     Route::post('/subadmin/airbersih/kabupaten/keerom/statistic/create', [SubAdminController::class, 'SubAdminAirBersihKabKeeromStatisticStore'])->name('subadmin.airbersih.kabupatenkeerom.statistic.store');
     Route::get('/subadmin/airbersih/kabupaten/keerom/statistic/edit/{statistic}', [SubAdminController::class, 'SubAdminAirBersihKabKeeromStatisticEdit'])->name('subadmin.airbersih.kabupatenkeerom.statistic.edit');
     Route::put('/subadmin/airbersih/kabupaten/keerom/statistic/update/{statistic}', [SubAdminController::class, 'SubAdminAirBersihKabKeeromStatisticUpdate'])->name('subadmin.airbersih.kabupatenkeerom.statistic.update');
