@@ -1,4 +1,4 @@
-@extends('layouts.superadmin.master')
+@extends('layouts.superadmin.beranda')
 <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
       <!-- Bootstrap CSS
       ============================================ -->
