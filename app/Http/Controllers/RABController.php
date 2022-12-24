@@ -44,10 +44,10 @@ class RABController extends Controller
         }
         $ppn = $real_cost * 0.11;
         $total_cost = $real_cost + $ppn;
-        $file = $request->file("file");
-        $ext = $file->getClientOriginalExtension();
-        $filename = $kode_rab.".".$ext;
-        $upload = $file->storeAs('public/files/', $filename);
+        // $file = $request->file("file");
+        // $ext = $file->getClientOriginalExtension();
+        // $filename = $kode_rab.".".$ext;
+        // $upload = $file->storeAs('public/files/', $filename);
 
         RAB::create([
             "kode_rab" => $kode_rab,
@@ -57,7 +57,7 @@ class RABController extends Controller
             "ppn" => $ppn,
             "total_cost" => $total_cost,
             "dibulatkan" => $total_cost,
-            "file" => "files/".$filename,
+            "file" => "none"
         ]);
 
         return redirect("/superadmin/rab");
@@ -118,13 +118,13 @@ class RABController extends Controller
         }
         $ppn = $real_cost * 0.11;
         $total_cost = $real_cost + $ppn;
-        $filename = explode("/", $rab->file)[1];
-        if(!empty($request->file("file"))){
-            $file = $request->file("file");
-            $ext = $file->getClientOriginalExtension();
-            $filename = $kode_rab.".".$ext;
-            $upload = $file->storeAs('public/files/', $filename);
-        }
+        // $filename = explode("/", $rab->file)[1];
+        // if(!empty($request->file("file"))){
+        //     $file = $request->file("file");
+        //     $ext = $file->getClientOriginalExtension();
+        //     $filename = $kode_rab.".".$ext;
+        //     $upload = $file->storeAs('public/files/', $filename);
+        // }
 
         RAB::where("kode_rab", $kode_rab)->update([
             "pekerjaan" => $request->judul_pekerjaan,
@@ -133,7 +133,6 @@ class RABController extends Controller
             "ppn" => $ppn,
             "total_cost" => $total_cost,
             "dibulatkan" => $total_cost,
-            "file" => "files/".$filename,
         ]);
 
         return redirect("/superadmin/rab");
@@ -149,6 +148,12 @@ class RABController extends Controller
     public function detail($id){
         $rab = RAB::where("kode_rab", $id)->first();
         $detail_rab = DetailRAB::where("kode_rab", $id)->get();
+        if($rab->file == "none"){
+            $pdf = PDF::loadView('/superadmin/rab/view_pdf', ["detail_rab" => $detail_rab, "rab" => $rab, "content_type" => "application/pdf", "berkas_type" => ""]);
+            return $pdf->stream($id.".pdf", ["Attachment" => false]);
+
+            // return view("/superadmin/rab/detail", ["rab" => $rab, "content_type" => "application/pdf"]);
+        }
         $path = storage_path()."/app/public/".$rab->file;
         $content_type = mime_content_type($path);
         $berkas = storage_path('/app/public/'.$rab->file);
@@ -162,5 +167,18 @@ class RABController extends Controller
         }else{
             return $pdf->stream($id.".pdf", ["Attachment" => false]);
         }
+    }
+
+    public function upload(Request $request, $id){
+        $file = $request->file("file");
+        $ext = $file->getClientOriginalExtension();
+        $filename = $id.".".$ext;
+        $upload = $file->storeAs('public/files/', $filename);
+
+        RAB::where("kode_rab", $id)->update([
+            'file' => "files/".$filename
+        ]);
+        
+        return redirect()->back();
     }
 }

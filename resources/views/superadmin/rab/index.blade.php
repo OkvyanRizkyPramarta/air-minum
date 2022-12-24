@@ -141,10 +141,15 @@
                                                         Delete</button>
                                                     </form>
                                                 </div>
-                                                <div>
+                                                <div class="form-group">
                                                     <a href="{{ route('superadmin.rab.detail', $w->kode_rab) }}" class="btn notika-btn-blue" style="color: white;" target="_blank"><i class="fa fa-info"></i>
                                                         Detail
                                                     </a>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="button" class="btn notika-btn-green btn-berkas" data-id="{{$w->kode_rab}}" data-toggle="modal" data-target="#myModalone" style="color: white;"><i class="fa fa-file"></i>
+                                                    Berkas
+                                                    </button>
                                                 </div>
                                             </td>
                                         </div>
@@ -167,4 +172,38 @@
         </div>
     </div>
     <!-- Data Table area End-->
+    <div class="modal fade in" id="myModalone" role="dialog" style="">
+        <div class="modal-dialog modals-default">
+            <div class="modal-content">
+                <form action="#" class="" enctype="multipart/form-data" id="formBerkas" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Attachment</h2>
+                        <hr>
+                            <div class="form-group">
+                                <label for="#pilihBerkas">Pilih Berkas</label>
+                                <input type="file" class="form-control" name="file" id="pilihBerkas">
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-default waves-effect">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+@endsection
+@section("script")
+<script>
+    $(".btn-berkas").click(function(){
+        let id_rab = this.getAttribute("data-id");
+        let url = "/superadmin/rab/upload/"+id_rab;
+        $("#formBerkas").attr("action", url);
+    });
+</script>
 @endsection

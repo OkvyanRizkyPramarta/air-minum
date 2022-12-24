@@ -165,10 +165,10 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                       <label for="#inputFile">Pilih Berkas ( pdf/gambar )</label>
                                       <input type="file" class="form-control" name="file" id="inputFile" required>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
