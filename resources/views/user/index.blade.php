@@ -21,7 +21,7 @@
         <div class="row">
           <div class="col-md-6 py-4">
             <div>
-              <img src="{{ asset('user/images/gallery/kids.jpeg') }}" style="max-width: 500px;width: 100%;">
+              <img src="{{ asset('user/images/gallery/kids.jpeg') }}" style="max-width: 500px;width: 100%; padding-top:17%;">
             </div>
           </div>
           <div class="col-md-6">
@@ -32,21 +32,7 @@
             </p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <p class="ipsum_text" style="text-align:justify;">
-              Penyediaan air minum merupakan salah satu kebutuhan dasar dan hak sosial ekonomi 
-              masyarakat yang harus dipenuhi oleh pemerintah, baik Pemerintah Daerah maupun 
-              Pemerintah Pusat. Ketersediaan air minum merupakan salah satu penentu peningkatan 
-              kesejahteraan masyarakat. Diharapkan dengan ketersediaan air minum yang mencukupi 
-              dapat meningkatkan derajat kesehatan masyarakat, dan dapat mendorong peningkatan 
-              produktivitas masyarakat, sehingga dapat terjadi peningkatan pertumbuhan ekonomi 
-              masyarakat. Hal ini seiring dengan program Pemerintah Pusat dalam pengembang 
-              permukiman berkelanjutan, dengan mencapai 100 persen akses air minum, mengurangi 
-              kawasan kumuh 0 persen, dan 100 persen akses sanitasi untuk masyarakat.</p>
-          </div>
-        </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="padding-top:10%;">
           <div class="col-md-8">
               <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">

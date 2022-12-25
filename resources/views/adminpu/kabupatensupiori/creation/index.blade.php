@@ -11,7 +11,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="breadcomb-wp">
                                 <div class="breadcomb-ctn">
-                                    <h2>Data Tabel Bidang Cipta Karya </h2>
+                                    <h2>Data Tabel Dinas PU Bidang Cipta Karya</h2>
                                     <h2>Kabupaten Supiori <span class="bread-ntd"> </span></h2>
                                 </div>
                             </div>

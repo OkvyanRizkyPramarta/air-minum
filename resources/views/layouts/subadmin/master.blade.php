@@ -171,41 +171,106 @@
         </div>
     </div>
     <!-- End Header Top Area -->
-      <!-- Mobile Menu start -->
-      <div class="mobile-menu-area" style="background-color:#61BDEB;">
+    <!-- Mobile Menu start -->
+    <div class="mobile-menu-area" style="background-color:#61BDEB;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul class="mobile-menu-nav">
                                 <li><a data-target="#Charts" href="{{ url('/subadmin/index') }}">Halaman Utama</a>
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Data</a>
+                                  <li><a data-target="#Charts" href="{{ url('/subadmin/comment') }}">Ulasan</a>
+                                </li>
+                                <li><a data-toggle="collapse" data-target="#demodepart" href="#">Halaman Capaian Air Bersih</a>
                                     <ul id="demodepart" class="collapse dropdown-header-top">
-                                    <li><a href="{{ url ('/subadmin/table/city/index') }}">Tabel Kota/Kabupaten</a>
+                                        <li><a href="">Kota Jayapura</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                                <a href="{{ url('/subadmin/airbersih/kota/jayapura/dataproces/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
+                                                <a href="{{ url('/subadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                                <a href="{{ url('/subadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai (BWS)</a>
+                                                <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                                <a href="{{ url('/subadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                                <a href="{{ url('/subadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
+                                                <a href="{{ url('/subadmin/airbersih/kota/jayapura/municipalwaterwork/index') }}">PDAM Kota Jayapura</a>    
+                                            </ul>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/district/index') }}">Tabel Kecamatan</a>
+                                        <li><a href="">Kabupaten Jayapura</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                                <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                                <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                                <a href="#">Dinas PU Bidang SDA</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/municipalwaterwork/index') }}">PDAM Kabupaten Jayapura</a>      
+                                            </ul>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/village/index') }}">Tabel Desa/Kelurahan</a>
+                                        <li><a href="">Kabupaten Keerom</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                                <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                                <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/keerom/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                                <a href="#">Dinas Dukcapil</a>
+                                                <a href="#">Dinas PU Bidang SDA</a>
+                                                <a href="#">PDAM Kabupaten Keerom</a>   
+                                            </ul>
+                                        </li> 
+                                        <li><a href="">Kabupaten Sarmi</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                                <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                                <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/sarmi/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                                <a href="#">Dinas Dukcapil</a>
+                                                <a href="#">Dinas PU Bidang SDA</a>
+                                                <a href="#">PDAM Kabupaten Sarmi</a>   
+                                            </ul>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/population/index') }}">Tabel Populasi</a>
+                                        <li><a href="">Kabupaten Biak Numfor</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                                <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai (BWS)</a>
+                                                <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/dukcapil/index') }}">Dinas Dukcapil</a>
+                                                <a href="#">Dinas PU Bidang SDA</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/municipalwaterwork/index') }}">PDAM Kabupaten Biak Numfor</a>   
+                                            </ul>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/riverintake/index') }}">Tabel Intake Sungai</a>
+                                        <li><a href="">Kabupaten Supiori</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                                <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                                <a href="#">Badan Pusat Statistik (BPS)</a>
+                                                <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/supiori/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
+                                                <a href="#">Dinas PU Bidang SDA</a>
+                                                <a href="#">PDAM Kabupaten Supiori</a>   
+                                            </ul>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/waterwell/index')}}">Tabel Sumur</a>
+                                        <li><a href="">Kabupaten Kepulauan Yapen</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                                <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                                <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
+                                                <a href="#">Dinas PU Bidang SDA</a>
+                                                <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index') }}">PDAM Kabupaten Kepulauan Yapen</a>   
+                                            </ul>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/watertank/index') }}">Tabel Tampungan Air</a>
+                                        <li><a href="">Kabupaten Waropen</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                            <a href="#">Tidak Mempunyai data</a>
+                                              </ul>
                                         </li>
-                                        <li><a href="{{ url ('/subadmin/table/municipalwaterwork/index') }}">Tabel PDAM</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/waterspring/index') }}">Tabel Mata Air</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/file/index') }}">Tabel Berkas</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/comment/index') }}">Tabel Kritik Dan Saran</a>
-                                        </li>
-                                        <li><a href="{{ url ('/subadmin/table/map/index') }}">Tabel Peta</a>
+                                        <li><a href="">Kabupaten Mamberamo Raya</a>
+                                            <ul id="demodepart" class="collapse dropdown-header-top">
+                                            <a href="#">Tidak Mempunyai data</a>
+                                              </ul>
                                         </li>
                                     </ul>
                                 </li>
@@ -223,9 +288,9 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-                        <li><a href="{{ url('/subadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
+                        <li><a href="{{ url ('/subadmin/index') }}"><i class="notika-icon notika-house"></i> Halaman Utama</a>
                         </li>
-                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Minum </a>
+                        <li><a data-toggle="tab" href="#Tables"><i class="notika-icon notika-windows"></i> Capaian Air Bersih </a>
                         </li>
                         <li><a href="{{ url ('/subadmin/comment') }}"><i class="notika-icon notika-windows"></i> Ulasan </a>
                         </li>
@@ -238,12 +303,13 @@
                                         Kota Jayapura
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
-                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai Intake Sungai</a>
-                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/municipalwaterwork/index') }}">PDAM Kota Jayapura</a>
-                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
-                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
                                         <a href="{{ url('/subadmin/airbersih/kota/jayapura/dataproces/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
+                                        <a href="{{ url('/subadmin/airbersih/kota/jayapura/municipalwaterwork/index') }}">PDAM Kota Jayapura</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown" style="margin-top:10px;margin-bottom:20px;">
@@ -251,10 +317,13 @@
                                         Kabupaten Jayapura
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/municipalwaterwork/index') }}">PDAM Kabupaten Jayapura</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik</a>
+                                        <a href="#">Dinas PU Bidang SDA</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/jayapura/municipalwaterwork/index') }}">PDAM Kabupaten Jayapura</a>      
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -262,8 +331,13 @@
                                         Kabupaten Keerom
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/keerom/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik</a>
+                                        <a href="#">Dinas Dukcapil</a>
+                                        <a href="#">Dinas PU Bidang SDA</a>
+                                        <a href="#">PDAM Kabupaten Keerom</a> 
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -271,8 +345,13 @@
                                         Kabupaten Sarmi
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/sarmi/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik</a>
+                                        <a href="#">Dinas Dukcapil</a>
+                                        <a href="#">Dinas PU Bidang SDA</a>
+                                        <a href="#">PDAM Kabupaten Sarmi</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -280,10 +359,13 @@
                                         Kabupaten Biak Numfor
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai</a>
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/municipalwaterwork/index') }}">PDAM Kabupaten Biak Numfor</a>
+                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="#">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/dukcapil/index') }}">Dinas Dukcapil</a>
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik</a>
+                                        <a href="#">Dinas PU Bidang SDA</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/biaknumfor/municipalwaterwork/index') }}">PDAM Kabupaten Biak Numfor</a>   
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -291,8 +373,13 @@
                                         Kabupaten Supiori
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="#">Badan Pusat Statistik (BPS)</a>
+                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/supiori/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
+                                        <a href="#">Dinas PU Bidang SDA</a>
+                                        <a href="#">PDAM Kabupaten Supiori</a>
                                     </div>
                                 </div> 
                                 <div class="dropdown">
@@ -300,10 +387,13 @@
                                         Kabupaten Kepulauan Yapen
                                     </a>
                                     <div class="dropdown-content scrollable-menu" >
+                                        <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
+                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index') }}">PDAM Kabupaten Kepulauan Yapen</a>
                                         <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
-                                        <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik</a>
+                                        <a href="#">Dinas PU Bidang SDA</a>
+                                        <a href="{{ url('/subadmin/airbersih/kabupaten/kepulauanyapen/municipalwaterwork/index') }}">PDAM Kabupaten Kepulauan Yapen</a>   
                                     </div>
                                 </div>
                                 <div class="dropdown">
@@ -341,7 +431,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="footer-copy-right">
-                        <p>Copyright © 2018 
+                        <p>Copyright © 2022 
 . All rights reserved. By  <a href="#">PUPRPKP PAPUA AIR BERSIH</a>.</p>
                     </div>
                 </div>
