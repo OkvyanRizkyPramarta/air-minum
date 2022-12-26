@@ -40,6 +40,15 @@
                                           <input type="text" name="judul_pekerjaan" class="form-control" required>
                                         </div>
                                       </div>
+                                      <br>
+                                      <div class="row">
+                                        <div class="col-md-2">
+                                          <label for="tahun_anggaran">Tahun Anggaran : </label>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <input type="text" name="tahun_anggaran" class="form-control" required>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div class="table-responsive">
                                         <table id="data-table-basic" class="table table-striped form-table">
@@ -48,6 +57,7 @@
                                                     <th class="text-center" width="80px">No</th>
                                                     <th class="text-center" width="auto">Uraian Pekerjaan</th>
                                                     <th class="text-center" width="auto">Volume</th>
+                                                    <th class="text-center" width="auto">Satuan</th>
                                                     <th class="text-center" width="auto">Harga Satuan (Rp)</th>
                                                     <th class="text-center" width="auto">Jumlah Harga (Rp)</th>
                                                     <th class="text-center" width="auto">Action</th>
@@ -70,7 +80,10 @@
                                                         <input type="text" class="form-control uraian-pekerjaan" value="" name="uraian_pekerjaan_A[]" required>
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control volume" value="" name="volume_A[]" id-row="1" required>
+                                                        <input type="number" class="form-control volume" value="" name="volume_A[]" id-row="1" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control satuan" value="" name="satuan_A[]" id-row="1" required>
                                                     </td>
                                                     <td>
                                                         <input type="text" class="form-control harga-satuan" value="" name="harga_satuan_A[]" id-row="1" required>
@@ -261,7 +274,8 @@
                 let row = '<tr class="kategori-'+curKategori+'">'+
                             '<td><input type="number" class="form-control input-transparent no-data" value="'+countRow[kategori]+'" name="number_row_'+curKategori+'[]" readonly></td>'+
                             '<td><input type="text" class="form-control uraian-pekerjaan" value="" name="uraian_pekerjaan_'+curKategori+'[]" required></td>'+
-                            '<td><input type="text" class="form-control volume" value="" name="volume_'+curKategori+'[]" id-row="'+id_row+'" required></td>'+
+                            '<td><input type="number" class="form-control volume" value="" name="volume_'+curKategori+'[]" id-row="'+id_row+'" required></td>'+
+                            '<td><input type="text" class="form-control satuan" value="" name="satuan_'+curKategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control harga-satuan" value="" name="harga_satuan_'+curKategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control jumlah-harga" value="" name="jumlah_harga_'+curKategori+'[]" id-row="'+id_row+'" required readonly></td>'+
                             '<td class="text-center">'+
@@ -285,7 +299,8 @@
                             '<tr class="kategori-'+kategori+'">'+
                             '<td><input type="number" class="form-control input-transparent no-data" value="'+countRow[kategori]+'" name="number_row_'+kategori+'[]" readonly></td>'+
                             '<td><input type="text" class="form-control uraian-pekerjaan" value="" name="uraian_pekerjaan_'+kategori+'[]" required></td>'+
-                            '<td><input type="text" class="form-control volume" value="" name="volume_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
+                            '<td><input type="number" class="form-control volume" value="" name="volume_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
+                            '<td><input type="text" class="form-control satuan" value="" name="satuan_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control harga-satuan" value="" name="harga_satuan_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control jumlah-harga" value="" name="jumlah_harga_'+kategori+'[]" id-row="'+id_row+'" required readonly></td>'+
                             '<td class="text-center">'+

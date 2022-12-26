@@ -21,7 +21,7 @@
         }
 	</style>
 	<center>
-		<h2>Perusahaan Air Minum</h2>
+		<h2>REKAPITULASI<br>RENCANA ANGGARAN BIAYA (RAB)</h2>
 	</center>
  
 	<div class="data-table-area">
@@ -66,7 +66,7 @@
                                             <tr>
                                                 <td class="text-center">{{$dr->number_row}}</td>
                                                 <td>{{$dr->uraian_pekerjaan}}</td>
-                                                <td class="text-center">{{$dr->volume}}</td>
+                                                <td class="text-center">{{$dr->volume}} {{$dr->satuan}}</td>
                                                 <td class="text-right">Rp. {{number_format($dr->harga_satuan, 0, ',', '.')}}</td>
                                                 <td class="text-right">Rp. {{number_format($dr->jumlah_harga, 0, ',', '.')}}</td>
                                             </tr>

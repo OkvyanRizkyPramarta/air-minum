@@ -69,7 +69,7 @@
                                                 <div class="col-lg-6">
                                                     <form action="{{ route('subadmin.airbersih.kotajayapura.waterresource.destroy', $w->id) }}" method="POST" class="d-inline">
                                                     @csrf
-                                                    @method('DELETE')
+                                                        @method('DELETE')
                                                         <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
                                                         Delete</a>
                                                     </form>

@@ -40,19 +40,16 @@
                     <img class="d-block w-100" src="{{ asset('user/images/1.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/2.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/2.jpg') }}?auto=yes&bg=777&fg=555&text=Second Slide" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/3.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/3.jpg') }}?auto=yes&bg=777&fg=555&text=Third slide" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/4.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/4.jpg') }}?auto=yes&bg=777&fg=555&text=Fourth slide" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/5.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
-                  </div>
-                  <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ asset('user/images/6.jpg') }}?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset('user/images/5.jpg') }}?auto=yes&bg=777&fg=555&text=Fifth slide" alt="First slide">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

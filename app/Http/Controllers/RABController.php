@@ -36,6 +36,7 @@ class RABController extends Controller
                     "nama_kategori_pekerjaan" => $request->nama_kategori_pekerjaan[$x],
                     "uraian_pekerjaan" => $up,
                     "volume" => $request->input("volume_{$kkp}")[$i],
+                    "satuan" => $request->input("satuan_{$kkp}")[$i],
                     "harga_satuan" => str_replace(".", "", $request->input("harga_satuan_{$kkp}")[$i]),
                     "jumlah_harga" => $jumlah_harga,
                 ]);
@@ -52,7 +53,7 @@ class RABController extends Controller
         RAB::create([
             "kode_rab" => $kode_rab,
             "pekerjaan" => $request->judul_pekerjaan,
-            "tahun_anggaran" => date("Y"),
+            "tahun_anggaran" => $request->tahun_anggaran,
             "real_cost" => $real_cost,
             "ppn" => $ppn,
             "total_cost" => $total_cost,
@@ -98,6 +99,7 @@ class RABController extends Controller
                         "nama_kategori_pekerjaan" => $request->nama_kategori_pekerjaan[$x],
                         "uraian_pekerjaan" => $up,
                         "volume" => $request->input("volume_{$kkp}")[$i],
+                        "satuan" => $request->input("satuan_{$kkp}")[$i],
                         "harga_satuan" => str_replace(".", "", $request->input("harga_satuan_{$kkp}")[$i]),
                         "jumlah_harga" => $jumlah_harga,
                     ]);
@@ -109,6 +111,7 @@ class RABController extends Controller
                         "nama_kategori_pekerjaan" => $request->nama_kategori_pekerjaan[$x],
                         "uraian_pekerjaan" => $up,
                         "volume" => $request->input("volume_{$kkp}")[$i],
+                        "satuan" => $request->input("satuan_{$kkp}")[$i],
                         "harga_satuan" => str_replace(".", "", $request->input("harga_satuan_{$kkp}")[$i]),
                         "jumlah_harga" => $jumlah_harga,
                     ]);
@@ -128,7 +131,7 @@ class RABController extends Controller
 
         RAB::where("kode_rab", $kode_rab)->update([
             "pekerjaan" => $request->judul_pekerjaan,
-            "tahun_anggaran" => date("Y"),
+            "tahun_anggaran" => $request->tahun_anggaran,
             "real_cost" => $real_cost,
             "ppn" => $ppn,
             "total_cost" => $total_cost,

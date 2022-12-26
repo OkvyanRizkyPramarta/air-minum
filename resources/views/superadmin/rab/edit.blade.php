@@ -41,6 +41,15 @@
                                           <input type="hidden" name="kode_rab" value="{{$rab->kode_rab}}">
                                         </div>
                                       </div>
+                                      <br>
+                                      <div class="row">
+                                        <div class="col-md-2">
+                                          <label for="tahun_anggaran">Tahun Anggaran : </label>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <input type="text" name="tahun_anggaran" class="form-control" value="{{$rab->tahun_anggaran}}" required>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div class="table-responsive">
                                         <table id="data-table-basic" class="table table-striped form-table">
@@ -76,7 +85,10 @@
                                                         <input type="text" class="form-control uraian-pekerjaan" value="{{$dr->uraian_pekerjaan}}" name="uraian_pekerjaan_{{$k->kode_kategori_pekerjaan}}[]" required>
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control volume" value="{{$dr->volume}}" name="volume_{{$k->kode_kategori_pekerjaan}}[]" id-row="{{$id_row}}" required>
+                                                        <input type="number" class="form-control volume" value="{{$dr->volume}}" name="volume_{{$k->kode_kategori_pekerjaan}}[]" id-row="{{$id_row}}" required>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control satuan" value="{{$dr->satuan}}" name="satuan_{{$k->kode_kategori_pekerjaan}}[]" id-row="{{$id_row}}" required>
                                                     </td>
                                                     <td>
                                                         <input type="text" class="form-control harga-satuan" value="{{number_format($dr->harga_satuan, 0, ',', '.')}}" name="harga_satuan_{{$k->kode_kategori_pekerjaan}}[]" id-row="{{$id_row}}" required>
@@ -274,6 +286,7 @@
                             '<td><input type="number" class="form-control input-transparent no-data" value="'+countRow[curKategori]+'" name="number_row_'+curKategori+'[]" readonly></td>'+
                             '<td><input type="text" class="form-control uraian-pekerjaan" value="" name="uraian_pekerjaan_'+curKategori+'[]" required></td>'+
                             '<td><input type="text" class="form-control volume" value="" name="volume_'+curKategori+'[]" id-row="'+id_row+'" required></td>'+
+                            '<td><input type="text" class="form-control satuan" value="" name="satuan_'+curKategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control harga-satuan" value="" name="harga_satuan_'+curKategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control jumlah-harga" value="" name="jumlah_harga_'+curKategori+'[]" id-row="'+id_row+'" required readonly></td>'+
                             '<td class="text-center">'+
@@ -298,6 +311,7 @@
                             '<td><input type="number" class="form-control input-transparent no-data" value="'+countRow[kategori]+'" name="number_row_'+kategori+'[]" readonly></td>'+
                             '<td><input type="text" class="form-control uraian-pekerjaan" value="" name="uraian_pekerjaan_'+kategori+'[]" required></td>'+
                             '<td><input type="text" class="form-control volume" value="" name="volume_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
+                            '<td><input type="text" class="form-control satuan" value="" name="satuan_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control harga-satuan" value="" name="harga_satuan_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td><input type="text" class="form-control jumlah-harga" value="" name="jumlah_harga_'+kategori+'[]" id-row="'+id_row+'" required></td>'+
                             '<td class="text-center">'+

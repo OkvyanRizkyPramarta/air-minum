@@ -19,6 +19,7 @@ class DetailRAB extends Model
         "nama_kategori_pekerjaan",
         "uraian_pekerjaan",
         "volume",
+        "satuan",
         "harga_satuan",
         "jumlah_harga",
     ];

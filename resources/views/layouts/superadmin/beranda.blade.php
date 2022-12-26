@@ -201,7 +201,7 @@
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                               <a href="{{ url('/superadmin/airbersih/kota/jayapura/dataproces/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
                                               <a href="{{ url('/superadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                              <a href="{{ url('/superadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai (BWS)</a>
+                                              <a href="{{ url('/superadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai Wilayah Sungai (BWS)</a>
                                               <a href="#">Dinas PU Bidang Cipta Karya</a>
                                               <a href="{{ url('/superadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
                                               <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
@@ -212,7 +212,7 @@
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                               <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                              <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                              <a href="#">Balai Wilayah Sungai (BWS)</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
                                               <a href="#">Dinas PU Bidang SDA</a>
@@ -223,7 +223,7 @@
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                               <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                              <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                              <a href="#">Balai Wilayah Sungai (BWS)</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/keerom/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                               <a href="#">Dinas Dukcapil</a>
                                               <a href="#">Dinas PU Bidang SDA</a>
@@ -234,7 +234,7 @@
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                               <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                              <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                              <a href="#">Balai Wilayah Sungai (BWS)</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                               <a href="#">Dinas Dukcapil</a>
                                               <a href="#">Dinas PU Bidang SDA</a>
@@ -245,7 +245,7 @@
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                               <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                              <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai (BWS)</a>
+                                              <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai Wilayah Sungai (BWS)</a>
                                               <a href="#">Dinas PU Bidang Cipta Karya</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/dukcapil/index') }}">Dinas Dukcapil</a>
                                               <a href="#">Dinas PU Bidang SDA</a>
@@ -256,7 +256,7 @@
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                               <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                               <a href="#">Badan Pusat Statistik (BPS)</a>
-                                              <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                              <a href="#">Balai Wilayah Sungai (BWS)</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
                                               <a href="#">Dinas PU Bidang SDA</a>
@@ -267,7 +267,7 @@
                                             <ul id="demodepart" class="collapse dropdown-header-top">
                                               <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                              <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                              <a href="#">Balai Wilayah Sungai (BWS)</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                               <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
                                               <a href="#">Dinas PU Bidang SDA</a>
@@ -319,7 +319,7 @@
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="{{ url('/superadmin/airbersih/kota/jayapura/dataproces/index') }}">Badan Pengelolaan dan Pendataan Daerah</a>
                                         <a href="{{ url('/superadmin/airbersih/kota/jayapura/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="{{ url('/superadmin/airbersih/kota/jayapura/riverintake/index') }}">Balai Wilayah Sungai (BWS)</a>
                                         <a href="#">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kota/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="{{ url('/superadmin/airbersih/kota/jayapura/waterresource/index') }}">Dinas PU Bidang SDA</a>
@@ -333,7 +333,7 @@
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="#">Balai Wilayah Sungai (BWS)</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/jayapura/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="#">Dinas PU Bidang SDA</a>
@@ -347,7 +347,7 @@
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/keerom/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="#">Balai Wilayah Sungai (BWS)</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/keerom/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="#">Dinas Dukcapil</a>
                                         <a href="#">Dinas PU Bidang SDA</a>
@@ -361,7 +361,7 @@
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="#">Balai Wilayah Sungai (BWS)</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/sarmi/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="#">Dinas Dukcapil</a>
                                         <a href="#">Dinas PU Bidang SDA</a>
@@ -375,7 +375,7 @@
                                     <div class="dropdown-content scrollable-menu" >                              
                                         <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/riverintake/index') }}">Balai Wilayah Sungai (BWS)</a>
                                         <a href="#">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/biaknumfor/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="#">Dinas PU Bidang SDA</a>
@@ -389,7 +389,7 @@
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                         <a href="#">Badan Pusat Statistik (BPS)</a>
-                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="#">Balai Wilayah Sungai (BWS)</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/supiori/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="#">Dinas PU Bidang SDA</a>
@@ -403,7 +403,7 @@
                                     <div class="dropdown-content scrollable-menu" >
                                         <a href="#">Badan Pengelolaan dan Pendataan Daerah</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/statistic/index') }}">Badan Pusat Statistik (BPS)</a>
-                                        <a href="#">Balai WIlayah Sungai (BWS)</a>
+                                        <a href="#">Balai Wilayah Sungai (BWS)</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/creation/index') }}">Dinas PU Bidang Cipta Karya</a>
                                         <a href="{{ url('/superadmin/airbersih/kabupaten/kepulauanyapen/dukcapil/index') }}">Dinas Dukcapil</a>
                                         <a href="#">Dinas PU Bidang SDA</a>
@@ -438,7 +438,6 @@
     @yield('content')
     
     @include('sweetalert::alert')
-
     <div class="footer-copyright-area">
         <div class="container">
             <div class="row">

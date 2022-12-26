@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string("kode_kategori_pekerjaan");
             $table->string("nama_kategori_pekerjaan");
             $table->text("uraian_pekerjaan");
-            $table->string("volume", 50);
+            $table->integer("volume");
+            $table->string("satuan", 50);
             $table->integer("harga_satuan");
             $table->bigInteger("jumlah_harga");
             $table->timestamps();
